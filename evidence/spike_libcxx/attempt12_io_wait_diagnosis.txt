@@ -1,0 +1,40 @@
+attempt12 final-link read-only diagnosis (2026-07-16 CST)
+
+Observed ninja line:
+[32518s] [51531/51539] LINK ./chrome_tizen
+
+systemd service:
+chromium-libcxx-attempt12-incremental.service
+ActiveState=active
+SubState=running
+NRestarts=0
+MemoryPeak=9067569152
+
+cgroup memory.events:
+low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+
+ld.lld PID 1500800 process state:
+main thread 1500800: S (sleeping), wchan=futex_do_wait
+worker 1501652: D (disk sleep), wchan=folio_wait_bit_common
+worker 1501653: D (disk sleep), wchan=folio_wait_bit_common
+
+30-second /proc/<pid>/task/*/io delta:
+worker 1501652 read_bytes: 118962946048 -> 119137697792
+worker 1501653 read_bytes: 118801502208 -> 118975877120
+total delta: 349126656 bytes (~11.1 MiB/s)
+
+Conclusion anchored only to the observations above:
+The linker had not deadlocked or hit the cgroup memory limit; its two worker
+threads were making forward progress while blocked predominantly on file-page
+I/O. No build process was restarted or interrupted.
+
+Stale monitor cleanup:
+Two monitor shells left by the interrupted session were stopped:
+PID 1154870 (full-log wc every 30 seconds)
+PID 1194202 (tail/status every 45 seconds)
+The build service and ld.lld PID remained active after cleanup.

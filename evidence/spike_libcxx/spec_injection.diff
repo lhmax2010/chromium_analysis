@@ -1,0 +1,13 @@
+diff --git a/packaging/chromium-efl.spec b/packaging/chromium-efl.spec
+index 0fab5304a2ff..03898238ea9f 100644
+--- a/packaging/chromium-efl.spec
++++ b/packaging/chromium-efl.spec
+@@ -716,6 +716,8 @@ fi
+ %else
+   "is_clang=false" \
+ %endif
++  "use_custom_libcxx=true" \
++  "use_custom_libcxx_for_host=true" \
+ %if "%{?__use_system_icu}" == "1"
+   "use_system_icu=true" \
+ %else

@@ -1,0 +1,72 @@
+info: generate repositories ...
+warning: No local package repository for arch armv7l
+info: build conf has been downloaded at:
+      /var/tmp/linhao-gbs/tizen_unified_standard.conf
+info: start building packages from: /home/linhao/Toolchain/plan_evaluation/chromium-efl-spike-libcxx-wt (git)
+2026-07-14 15:38 +0800
+gbs 2.0.6
+info: prepare sources...
+info: start export source from: /home/linhao/Toolchain/plan_evaluation/chromium-efl-spike-libcxx-wt ...
+info: the following uncommitted changes would be included:
+   packaging/chromium-efl.spec
+info: Creating (native) source archive chromium-efl-1.1.144.tar.gz from '63662f6217b76ec71fe6ff62189be930ee2ed26a'
+info: package files have been exported to:
+     /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/sources/tizen_unified_standard/chromium-efl-1.1.144-1
+info: retrieving repo metadata...
+info: parsing package data...
+info: building repo metadata ...
+info: resolving skipped packages ...
+info: package dependency resolving ...
+info: there is no circle in 1 packages
+info: *** [1/1] building chromium-efl-1.1.144-1 armv7l tizen_unified_standard (worker: 0) ***
+logging output to /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/.build.log...
+[    0s] on X86_64, no limit mem size
+[    0s] Using BUILD_ROOT=/home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0
+[    0s] Using BUILD_ARCH=armv7l:armv7el:armv6l:armv5tejl:armv5tel:armv5l:armv4tl:armv4l:armv3l:noarch
+[    0s] 
+[    0s] 
+[    0s] linhao-linux started "build chromium-efl.spec" at Tue Jul 14 08:06:50 UTC 2026.
+[    0s] 
+[    0s] 
+[    0s] processing recipe /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/sources/tizen_unified_standard/chromium-efl-1.1.144-1/chromium-efl.spec ...
+[    0s] init_buildsystem --configdir /usr/lib/build/configs --cachedir /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/cache --repository /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/repos/tizen_unified_standard/armv7l/RPMS --repository https://download.tizen.org/snapshots/TIZEN/Tizen/Tizen-Base-Toolchain/reference/repos/standard/packages/ --repository https://download.tizen.org/snapshots/TIZEN/Tizen/Tizen-Unified-Toolchain/reference/repos/standard/packages/ /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/sources/tizen_unified_standard/chromium-efl-1.1.144-1/chromium-efl.spec ...
+[    0s] expanding package dependencies...
+[    1s] Warning: spec file parser line 565: can't expand %(...)
+[    1s] Warning: spec file parser line 684: can't expand %(...)
+[    1s] Warning: spec file parser line 685: can't expand %(...)
+[    1s] Warning: spec file parser line 727: can't expand %(...)
+[    1s] Warning: spec file parser line 734: can't expand %(...)
+[    1s] Warning: spec file parser line 745: can't expand %(...)
+[    1s] Warning: spec file parser line 746: can't expand %(...)
+[    1s] Warning: spec file parser line 747: can't expand %(...)
+[    1s] Warning: spec file parser line 764: can't expand %(...)
+[    1s] Warning: spec file parser line 765: can't expand %(...)
+[    1s] Warning: spec file parser line 766: can't expand %(...)
+[    1s] Warning: spec file parser line 770: can't expand %(...)
+[    1s] copying qemu
+[    1s] 
+[    1s] registering binfmt handlers for cross build
+[    1s] calculating packages to download...
+[    9s] [1/473] downloading https://download.tizen.org/snapshots/TIZEN/Tizen/Tizen-Base-Toolchain/reference/repos/standard/packages/armv7l/acl-2.3.2-1.5.armv7l.rpm ... 
+[   10s] retrying https://download.tizen.org/snapshots/TIZEN/Tizen/Tizen-Base-Toolchain/reference/repos/standard/packages/armv7l/acl-2.3.2-1.5.armv7l.rpm
+[   11s] retrying https://download.tizen.org/snapshots/TIZEN/Tizen/Tizen-Base-Toolchain/reference/repos/standard/packages/armv7l/acl-2.3.2-1.5.armv7l.rpm
+[   12s] reqesting https://download.tizen.org/snapshots/TIZEN/Tizen/Tizen-Base-Toolchain/reference/repos/standard/packages/armv7l/acl-2.3.2-1.5.armv7l.rpm failed: 404 Not Found
+[   12s] 
+[   12s] linhao-linux failed "build chromium-efl.spec" at Tue Jul 14 08:07:02 UTC 2026.
+[   12s] 
+warning: build failed, Leaving the logs in /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/repos/tizen_unified_standard/armv7l/logs/fail/chromium-efl-1.1.144-1/log.txt
+info: *** Build Status Summary ***
+=== the following packages failed to build due to rpmbuild issue (1) ===
+chromium-efl: /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/repos/tizen_unified_standard/armv7l/logs/fail/chromium-efl-1.1.144-1/log.txt
+=== Total succeeded built packages: (0) ===
+info: generated html format report:
+     /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/repos/tizen_unified_standard/armv7l/index.html
+info: generated RPM packages can be found from local repo:
+     /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/repos/tizen_unified_standard/armv7l/RPMS
+info: generated source RPM packages can be found from local repo:
+     /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/repos/tizen_unified_standard/armv7l/SRPMS
+info: build logs can be found in:
+     /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/repos/tizen_unified_standard/armv7l/logs
+info: build roots located in:
+     /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.*
+error: <gbs>some packages failed to be built

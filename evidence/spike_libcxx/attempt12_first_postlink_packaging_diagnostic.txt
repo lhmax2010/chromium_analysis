@@ -1,0 +1,160 @@
+[71842s] + install -m 644 -D out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/pt_BR/LC_MESSAGES/wrtjs.mo /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/share/locale/pt_BR/LC_MESSAGES/wrtjs.mo
+[71842s] + for file in '$(find out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/ -type f -name *.mo)'
+[71842s] + install -m 644 -D out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/vi/LC_MESSAGES/wrtjs.mo /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/share/locale/vi/LC_MESSAGES/wrtjs.mo
+[71842s] + for file in '$(find out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/ -type f -name *.mo)'
+[71842s] + install -m 644 -D out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/fa/LC_MESSAGES/wrtjs.mo /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/share/locale/fa/LC_MESSAGES/wrtjs.mo
+[71842s] + for file in '$(find out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/ -type f -name *.mo)'
+[71842s] + install -m 644 -D out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/en_US/LC_MESSAGES/wrtjs.mo /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/share/locale/en_US/LC_MESSAGES/wrtjs.mo
+[71842s] + for file in '$(find out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/ -type f -name *.mo)'
+[71842s] + install -m 644 -D out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/th/LC_MESSAGES/wrtjs.mo /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/share/locale/th/LC_MESSAGES/wrtjs.mo
+[71842s] + for file in '$(find out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/ -type f -name *.mo)'
+[71842s] + install -m 644 -D out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/ru_RU/LC_MESSAGES/wrtjs.mo /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/share/locale/ru_RU/LC_MESSAGES/wrtjs.mo
+[71842s] + for file in '$(find out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/ -type f -name *.mo)'
+[71842s] + install -m 644 -D out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/es_US/LC_MESSAGES/wrtjs.mo /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/share/locale/es_US/LC_MESSAGES/wrtjs.mo
+[71842s] + for file in '$(find out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/ -type f -name *.mo)'
+[71842s] + install -m 644 -D out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/en_PH/LC_MESSAGES/wrtjs.mo /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/share/locale/en_PH/LC_MESSAGES/wrtjs.mo
+[71842s] + for file in '$(find out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/ -type f -name *.mo)'
+[71842s] + install -m 644 -D out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/ta/LC_MESSAGES/wrtjs.mo /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/share/locale/ta/LC_MESSAGES/wrtjs.mo
+[71842s] + for file in '$(find out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/ -type f -name *.mo)'
+[71842s] + install -m 644 -D out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/pa/LC_MESSAGES/wrtjs.mo /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/share/locale/pa/LC_MESSAGES/wrtjs.mo
+[71842s] + for file in '$(find out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/ -type f -name *.mo)'
+[71842s] + install -m 644 -D out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/km/LC_MESSAGES/wrtjs.mo /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/share/locale/km/LC_MESSAGES/wrtjs.mo
+[71842s] + for file in '$(find out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/ -type f -name *.mo)'
+[71842s] + install -m 644 -D out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/mr/LC_MESSAGES/wrtjs.mo /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/share/locale/mr/LC_MESSAGES/wrtjs.mo
+[71842s] + for file in '$(find out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/ -type f -name *.mo)'
+[71842s] + install -m 644 -D out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/as/LC_MESSAGES/wrtjs.mo /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/share/locale/as/LC_MESSAGES/wrtjs.mo
+[71842s] + for file in '$(find out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/ -type f -name *.mo)'
+[71842s] + install -m 644 -D out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/gu/LC_MESSAGES/wrtjs.mo /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/share/locale/gu/LC_MESSAGES/wrtjs.mo
+[71842s] + for file in '$(find out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/ -type f -name *.mo)'
+[71842s] + install -m 644 -D out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/id/LC_MESSAGES/wrtjs.mo /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/share/locale/id/LC_MESSAGES/wrtjs.mo
+[71842s] + for file in '$(find out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/ -type f -name *.mo)'
+[71842s] + install -m 644 -D out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/ur/LC_MESSAGES/wrtjs.mo /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/share/locale/ur/LC_MESSAGES/wrtjs.mo
+[71842s] + for file in '$(find out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/ -type f -name *.mo)'
+[71842s] + install -m 644 -D out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/te/LC_MESSAGES/wrtjs.mo /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/share/locale/te/LC_MESSAGES/wrtjs.mo
+[71842s] + for file in '$(find out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/ -type f -name *.mo)'
+[71842s] + install -m 644 -D out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/my_ZG/LC_MESSAGES/wrtjs.mo /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/share/locale/my_ZG/LC_MESSAGES/wrtjs.mo
+[71842s] + for file in '$(find out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/ -type f -name *.mo)'
+[71842s] + install -m 644 -D out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/pt_PT/LC_MESSAGES/wrtjs.mo /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/share/locale/pt_PT/LC_MESSAGES/wrtjs.mo
+[71842s] + for file in '$(find out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/ -type f -name *.mo)'
+[71842s] + install -m 644 -D out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/zh_CN/LC_MESSAGES/wrtjs.mo /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/share/locale/zh_CN/LC_MESSAGES/wrtjs.mo
+[71842s] + for file in '$(find out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/ -type f -name *.mo)'
+[71842s] + install -m 644 -D out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/kn/LC_MESSAGES/wrtjs.mo /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/share/locale/kn/LC_MESSAGES/wrtjs.mo
+[71842s] + for file in '$(find out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/ -type f -name *.mo)'
+[71842s] + install -m 644 -D out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/tr_TR/LC_MESSAGES/wrtjs.mo /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/share/locale/tr_TR/LC_MESSAGES/wrtjs.mo
+[71842s] + for file in '$(find out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/ -type f -name *.mo)'
+[71842s] + install -m 644 -D out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/ms/LC_MESSAGES/wrtjs.mo /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/share/locale/ms/LC_MESSAGES/wrtjs.mo
+[71842s] + for file in '$(find out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/ -type f -name *.mo)'
+[71842s] + install -m 644 -D out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/en/LC_MESSAGES/wrtjs.mo /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/share/locale/en/LC_MESSAGES/wrtjs.mo
+[71842s] + for file in '$(find out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/ -type f -name *.mo)'
+[71842s] + install -m 644 -D out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/bn_BD/LC_MESSAGES/wrtjs.mo /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/share/locale/bn_BD/LC_MESSAGES/wrtjs.mo
+[71842s] + for file in '$(find out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/ -type f -name *.mo)'
+[71842s] + install -m 644 -D out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/si/LC_MESSAGES/wrtjs.mo /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/share/locale/si/LC_MESSAGES/wrtjs.mo
+[71842s] + for file in '$(find out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/ -type f -name *.mo)'
+[71842s] + install -m 644 -D out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/bn/LC_MESSAGES/wrtjs.mo /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/share/locale/bn/LC_MESSAGES/wrtjs.mo
+[71842s] + for file in '$(find out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/ -type f -name *.mo)'
+[71842s] + install -m 644 -D out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/tl/LC_MESSAGES/wrtjs.mo /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/share/locale/tl/LC_MESSAGES/wrtjs.mo
+[71842s] + for file in '$(find out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/ -type f -name *.mo)'
+[71842s] + install -m 644 -D out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/lo/LC_MESSAGES/wrtjs.mo /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/share/locale/lo/LC_MESSAGES/wrtjs.mo
+[71842s] + for file in '$(find out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/ -type f -name *.mo)'
+[71842s] + install -m 644 -D out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/locales/hi/LC_MESSAGES/wrtjs.mo /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/share/locale/hi/LC_MESSAGES/wrtjs.mo
+[71842s] + install -m 0644 out.chrome.tz_v11.0.standard.armv7l/gen/wrt/resources/wrtjs_tizen.edj /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/share/edje/wrtjs
+[71842s] + install -d /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/share/dbus-1/services
+[71842s] + install -m 0755 out.chrome.tz_v11.0.standard.armv7l/wrt-service /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/bin
+[71842s] + install -m 0755 out.chrome.tz_v11.0.standard.armv7l/wrt-service-launcher /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/bin
+[71842s] + install -m 0755 out.chrome.tz_v11.0.standard.armv7l/libnode-runtime.so /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/lib/tizen-extensions-crosswalk
+[71842s] + install -m 0755 wrt/src/service/node/node-runtime.js /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/lib/tizen-extensions-crosswalk
+[71842s] + install -m 0644 out.chrome.tz_v11.0.standard.armv7l/libwrt-c++wrapper.so /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/share/chromium-efl/lib/
+[71842s] + install -d /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/include/wrt
+[71842s] + install -m 0644 electron/electron.d.ts /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/include/wrt/
+[71842s] + install -m 0644 wrt/native_wrtjs.d.ts /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/include/wrt/
+[71842s] + ls -l /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/share/chromium-efl/lib/libchromium-impl.so
+[71843s] -rw-r--r-- 1 abuild abuild 1091251872 Jul 16 08:41 /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/share/chromium-efl/lib/libchromium-impl.so
+[71843s] + size -G /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/share/chromium-efl/lib/libchromium-impl.so
+[71843s]       text       data        bss      total filename
+[71843s]   83112158   34028056    2361992  119502206 /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/share/chromium-efl/lib/libchromium-impl.so
+[71843s] + install -m 0644 out.chrome.tz_v11.0.standard.armv7l/tizen-manifest-browser.xml /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/share/packages/org.tizen.chromium-efl-browser.xml
+[71843s] + install -d /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/apps/org.tizen.chromium-efl-browser
+[71843s] + install -d /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/apps/org.tizen.chromium-efl-browser/bin
+[71843s] + install -d /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/apps/org.tizen.chromium-efl-browser/bin/locales
+[71843s] + install -d /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/apps/org.tizen.chromium-efl-browser/shared/res
+[71843s] + install -m 0755 out.chrome.tz_v11.0.standard.armv7l/chrome_tizen /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/apps/org.tizen.chromium-efl-browser/bin
+[71843s] + install -m 0644 out.chrome.tz_v11.0.standard.armv7l/chrome_100_percent.pak /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/apps/org.tizen.chromium-efl-browser/bin
+[71843s] + install -m 0644 out.chrome.tz_v11.0.standard.armv7l/resources.pak /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/apps/org.tizen.chromium-efl-browser/bin
+[71843s] + install -m 0644 out.chrome.tz_v11.0.standard.armv7l/locales/en-US.pak /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/apps/org.tizen.chromium-efl-browser/bin/locales
+[71843s] + install -m 0644 out.chrome.tz_v11.0.standard.armv7l/snapshot_blob.bin /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/apps/org.tizen.chromium-efl-browser/bin
+[71843s] + install -m 0644 out.chrome.tz_v11.0.standard.armv7l/product_logo_48.png /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/apps/org.tizen.chromium-efl-browser/shared/res/org.tizen.chromium-efl-browser.png
+[71843s] + install -m 0644 out.chrome.tz_v11.0.standard.armv7l/icudtl.dat /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/apps/org.tizen.chromium-efl-browser/bin
+[71843s] + /usr/lib/rpm/find-debuginfo.sh -j2 --build-id-seed 1.1.144-1 --unique-debug-src-base chromium-efl-1.1.144-1.arm -S debugsourcefiles.list /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144
+[71845s] 1+0 records in
+[71845s] 1+0 records out
+[71845s] 1+0 records in
+[71845s] 1+0 records out
+[71846s] extracting debug info from /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/apps/org.tizen.chromium-efl/bin/efl_webview_app
+[71846s] extracting debug info from /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/apps/org.tizen.chromium-efl-browser/bin/chrome_tizen
+[71846s] 1+0 records in
+[71846s] 1+0 records out
+[71846s] 1+0 records in
+[71846s] 1+0 records out
+[71846s] extracting debug info from /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/apps/org.tizen.chromium-efl/bin/mini_browser
+[71846s] extracting debug info from /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/apps/org.tizen.chromium-efl/bin/ubrowser
+[71846s] 1+0 records in
+[71846s] 1+0 records out
+[71846s] 1+0 records in
+[71846s] 1+0 records out
+[71846s] extracting debug info from /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/bin/efl_webprocess
+[71846s] extracting debug info from /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/bin/wrt
+[71846s] 1+0 records in
+[71846s] 1+0 records out
+[71846s] 1+0 records in
+[71846s] 1+0 records out
+[71846s] extracting debug info from /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/bin/wrt-service
+[71846s] extracting debug info from /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/bin/wrt-service-launcher
+[71846s] 1+0 records in
+[71846s] 1+0 records out
+[71846s] 1+0 records in
+[71846s] 1+0 records out
+[71846s] extracting debug info from /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/lib/tizen-extensions-crosswalk/libnode-runtime.so
+[71846s] extracting debug info from /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/lib/libchromium-ewk.so
+[71846s] 1+0 records in
+[71846s] 1+0 records out
+[71846s] 1+0 records in
+[71846s] 1+0 records out
+[71846s] extracting debug info from /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/lib/tizen-extensions-crosswalk/libsplash_screen_plugin.so
+[71846s] extracting debug info from /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/lib/tizen-extensions-crosswalk/libwidget_plugin.so
+[71846s] 1+0 records in
+[71846s] 1+0 records out
+[71846s] 1+0 records in
+[71846s] 1+0 records out
+[71846s] extracting debug info from /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/lib/tizen-extensions-crosswalk/libwrt-service-override.so
+[71846s] extracting debug info from /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/share/chromium-efl/lib/libchromium-impl.so
+[71846s] 1+0 records in
+[71846s] 1+0 records out
+[71847s] extracting debug info from /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/share/chromium-efl/lib/libnode.so
+[71847s] 1+0 records in
+[71847s] 1+0 records out
+[71847s] extracting debug info from /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/share/chromium-efl/lib/libv8.so
+[71849s] 1+0 records in
+[71849s] 1+0 records out
+[71849s] extracting debug info from /home/abuild/rpmbuild/BUILDROOT/chromium-efl-1.1.144-1.arm/usr/share/chromium-efl/lib/libwrt-c++wrapper.so
+[71850s] 0+0 records in
+[71850s] 0+0 records out
+[71887s] 0+0 records in
+[71887s] 0+0 records out
+[71954s] cpio: out.chrome.tz_v11.0.standard.armv7l/NONE: Cannot stat: No such file or directory
+[71954s] cpio: out.chrome.tz_v11.0.standard.armv7l/emoji_presentation_scanner.c: Cannot stat: No such file or directory
+[71954s] cpio: out.chrome.tz_v11.0.standard.armv7l/emoji_presentation_scanner.rl: Cannot stat: No such file or directory
+[71985s] cpio: out.chrome.tz_v11.0.standard.armv7l/glslang.l: Cannot stat: No such file or directory
+[71985s] cpio: out.chrome.tz_v11.0.standard.armv7l/hb-number-parser.hh: Cannot stat: No such file or directory
+[71985s] cpio: out.chrome.tz_v11.0.standard.armv7l/hb-number-parser.rl: Cannot stat: No such file or directory
+[71985s] cpio: out.chrome.tz_v11.0.standard.armv7l/hb-ot-shaper-indic-machine.hh: Cannot stat: No such file or directory
+[71985s] cpio: out.chrome.tz_v11.0.standard.armv7l/hb-ot-shaper-indic-machine.rl: Cannot stat: No such file or directory
+[71985s] cpio: out.chrome.tz_v11.0.standard.armv7l/hb-ot-shaper-khmer-machine.hh: Cannot stat: No such file or directory
+[71985s] cpio: out.chrome.tz_v11.0.standard.armv7l/hb-ot-shaper-khmer-machine.rl: Cannot stat: No such file or directory
+[71985s] cpio: out.chrome.tz_v11.0.standard.armv7l/hb-ot-shaper-myanmar-machine.hh: Cannot stat: No such file or directory
+[71985s] cpio: out.chrome.tz_v11.0.standard.armv7l/hb-ot-shaper-myanmar-machine.rl: Cannot stat: No such file or directory
+[71985s] cpio: out.chrome.tz_v11.0.standard.armv7l/hb-ot-shaper-use-machine.hh: Cannot stat: No such file or directory
+[71985s] cpio: out.chrome.tz_v11.0.standard.armv7l/hb-ot-shaper-use-machine.rl: Cannot stat: No such file or directory
+[71985s] cpio: out.chrome.tz_v11.0.standard.armv7l/preprocessor.l: Cannot stat: No such file or directory
+[71985s] cpio: out.chrome.tz_v11.0.standard.armv7l/third_party/blink/renderer/core/xml/xpath_grammar.y: Cannot stat: No such file or directory
+[71985s] cpio: out.chrome.tz_v11.0.standard.armv7l/third_party/blink/renderer/core/xml/xpath_grammar_generated.cc: Cannot stat: No such file or directory
+[71985s] cpio: out.chrome.tz_v11.0.standard.armv7l/third_party/blink/renderer/core/xml/xpath_grammar_generated.h: Cannot stat: No such file or directory

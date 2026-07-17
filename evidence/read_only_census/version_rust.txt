@@ -1,0 +1,187 @@
+# 4a/4b raw evidence: Chromium version and Rust-off path
+
+$ nl -ba chromium-efl/chrome/VERSION
+     1	MAJOR=144
+     2	MINOR=0
+     3	BUILD=7559
+     4	PATCH=132
+
+$ nl -ba chromium-efl/packaging/chromium-efl.spec | sed -n '67,70p;724,733p'
+    67	%define __enable_rust 0
+    68	%if "%{?_enable_rust}" != ""
+    69	%define __enable_rust %{_enable_rust}
+    70	%endif
+   724	  "tizen_release_build=%{macro_to_bool __tizen_release_build}" \
+   725	%if 0%{?__build_chrome} || %{__create_next_browser_tpk} == 1
+   726	  "build_chrome=true" \
+   727	  "tizen_video_assistant=true" \
+   728	%else
+   729	  "build_chrome=false" \
+   730	%endif
+   731	  "enable_rust=%{macro_to_bool __enable_rust}" \
+   732	%if "%{?tizen_profile_name}" == "tv"
+   733	  "lib_dir_path=\"%{_libdir}\"" \
+
+$ nl -ba chromium-efl/build/config/rust.gni | sed -n '20,36p;118,158p;338,355p;381,384p'
+    20	declare_args() {
+    21	  # Rust is available in the Chromium build but 3p repos that use //build may
+    22	  # not use Rust and thus won't want to depend on having the Rust toolchain
+    23	  # present, so this defaults to off in those cases.
+    24	  #
+    25	  # Chromium-based projects that are built for for architectures Chrome does not
+    26	  # support may need to disable this as well, though they may need to replace
+    27	  # code with C/C++ to get a functional product.
+    28	  #
+    29	  # Based on the above:
+    30	  #
+    31	  # * `enable_rust` may be consulted under `//build` and `//testing` directories
+    32	  #   (which may be used outside of Chromium build)
+    33	  # * `enable_rust` should *not* be consulted in other Chromium directories
+    34	  #   (including `//base`, `//net`, etc.)
+    35	  enable_rust = build_with_chromium
+    36
+   118	# Platform support for the Rust toolchain.
+   119	chromium_toolchain_supports_platform = !is_wasm
+   120	custom_toolchain_supports_platform = true
+   121
+   122	# Not all target triples (GN toolchains) are supported by the Rust compiler.
+   123	# Define if we support the current GN toolchain.
+   124	toolchain_has_rust = false
+   125
+   126	# The rustc_revision is used to introduce a dependency on the toolchain version
+   127	# (so e.g. rust targets are rebuilt, and the standard library is re-copied when
+   128	# the toolchain changes). It is left empty for custom toolchains.
+   129	rustc_revision = ""
+   130
+   131	if (enable_rust) {
+   132	  if (use_chromium_rust_toolchain) {
+   133	    toolchain_has_rust = chromium_toolchain_supports_platform
+   134	    if (toolchain_has_rust) {
+   135	      rustc_revision =
+   136	          read_file("//third_party/rust-toolchain/VERSION", "trim string")
+   137
+   138	      # Example:
+   139	      # rustc 1.88.0 c8f94230282a8e8c1148f3e657f0199aad909228 (c8f94230282a8e8c1148f3e657f0199aad909228-1-llvmorg-21-init-9266-g09006611 chromium)
+   140	      # Trim it down as much as we can using GN.
+   141	      rustc_revision = string_replace(rustc_revision, "rustc ", "")
+   142	      rustc_revision = string_replace(rustc_revision, " chromium", "")
+   143	      rustc_revision = string_replace(rustc_revision, "init-", "")
+   144	      rustc_revision = string_replace(rustc_revision, "llvmorg-", "")
+   145	      rustc_revision = string_replace(rustc_revision, " ", "")
+   146	      rustc_revision = string_replace(rustc_revision, ".", "")
+   147	      rustc_revision = string_replace(rustc_revision, "(", "-")
+   148	      rustc_revision = string_replace(rustc_revision, ")", "")
+   149	    }
+   150
+   151	    # The same as written in `config.toml.template`.
+   152	    rust_channel = "dev"
+   153	  } else {
+   154	    toolchain_has_rust = custom_toolchain_supports_platform
+   155	    rustc_revision = rustc_version
+   156	  }
+   157	}
+   158
+   338	}
+   339
+   340	if (toolchain_has_rust) {
+   341	  assert(rust_abi_target != "")
+   342
+   343	  _known_rust_target_triples_filepath = "//build/rust/known-target-triples.txt"
+   344	  _is_rust_abi_target_a_known_triple = false
+   345	  _known_rust_target_triples_ =
+   346	      read_file(_known_rust_target_triples_filepath, "list lines")
+   347	  foreach(_known_triple, _known_rust_target_triples_) {
+   348	    if (_known_triple == rust_abi_target) {
+   349	      _is_rust_abi_target_a_known_triple = true
+   350	    }
+   351	  }
+   352	  assert(_is_rust_abi_target_a_known_triple,
+   353	         "`${rust_abi_target}` needs to be added to " +
+   354	             "`//${_known_rust_target_triples_filepath}`")
+   355	}
+   381	}
+   382
+   383	assert(!toolchain_has_rust || rust_target_arch != "")
+   384
+
+$ nl -ba chromium-efl/build/rust/gni_impl/rust_target.gni | sed -n '40,48p'
+    40	template("rust_target") {
+    41	if (!enable_rust) {
+    42	  not_needed(invoker, "*")
+    43	  not_needed("*")
+    44	} else {
+    45	  assert(enable_rust)
+    46	  _target_name = target_name
+    47
+    48	  # NOTE: TargetName=>CrateName mangling algorithm should be updated
+
+$ nl -ba chromium-efl/BUILD.gn | sed -n '829,858p'
+   829	    ]
+   830
+   831	    # Rust build targets.
+   832	    if (enable_rust) {
+   833	      deps += [ ":all_rust" ]
+   834	    }
+   835
+   836	    if (!is_android && !is_ios) {
+   837	      deps += [ "//components/cronet:cronet_tests" ]
+   838	    }
+   839	  }
+   840
+   841	  if (is_chrome_for_testing) {
+   842	    deps += [ "//chrome/browser/chrome_for_testing" ]
+   843	  }
+   844
+   845	  if (enable_src_internal) {
+   846	    deps += [ "//internal:all" ]
+   847	  }
+   848
+   849	  if (checkout_clusterfuzz_data) {
+   850	    deps += [ "//clusterfuzz-data:all" ]
+   851	  }
+   852	}
+   853
+   854	# All Rust targets. This is provided for convenience while developing Rust to
+   855	# e.g. test build config or toolchain changes.
+   856	if (enable_rust) {
+   857	  group("all_rust") {
+   858	    testonly = true
+
+$ rg -n -U 'assert\([^\)]{0,240}(enable_rust|toolchain_has_rust)' chromium-efl/build/config/rust.gni chromium-efl/build/rust chromium-efl/BUILD.gn
+chromium-efl/build/config/rust.gni:383:assert(!toolchain_has_rust || rust_target_arch != "")
+chromium-efl/build/rust/std/BUILD.gn:222:      assert(toolchain_has_rust,
+chromium-efl/build/rust/std/BUILD.gn:223:             "Some C++ target is depending on Rust code even though " +
+chromium-efl/build/rust/std/BUILD.gn:224:                 "toolchain_has_rust=false. Usually this would mean" +
+chromium-efl/build/rust/std/BUILD.gn:314:      assert(enable_rust,
+chromium-efl/build/rust/std/BUILD.gn:315:             "Some C++ target is including Rust code even though " +
+chromium-efl/build/rust/std/BUILD.gn:316:                 "enable_rust=false")
+chromium-efl/build/rust/gni_impl/rust_target.gni:45:  assert(enable_rust)
+
+$ nl -ba chromium-efl/build/rust/std/BUILD.gn | sed -n '218,227p;312,318p'
+   218	    # Builds and links against the Rust stdlib. Both Rust and C++ targets should
+   219	    # depend on this, as it provides the path to the library and includes the
+   220	    # allocator hooks.
+   221	    group("std") {
+   222	      assert(toolchain_has_rust,
+   223	             "Some C++ target is depending on Rust code even though " +
+   224	                 "toolchain_has_rust=false. Usually this would mean" +
+   225	                 "a NaCl target is depending on Rust, as there's no Rust " +
+   226	                 "toolchain targetting NaCl.")
+   227	      all_dependent_configs = [
+   312	    prebuilt_rustc_sysroot = "$root_out_dir/prebuilt_rustc_sysroot"
+   313	    copy("prebuilt_rustc_copy_to_sysroot") {
+   314	      assert(enable_rust,
+   315	             "Some C++ target is including Rust code even though " +
+   316	                 "enable_rust=false")
+   317	      deps = [ ":find_stdlib" ]
+   318	      sources = get_target_outputs(":find_stdlib")
+
+$ git -C chromium-efl show --no-ext-diff --format=medium --stat 46061f7673c2224dc87777ae239247c30572027b | sed -n '1,18p'
+commit 46061f7673c2224dc87777ae239247c30572027b
+Author: v-saha <v.saha@samsung.com>
+Date:   Tue Sep 30 10:10:18 2025 +0530
+
+    [M138] Fix build errors for tizen standard profile
+
+    Fix standard profile build errors with rust disabled.
+

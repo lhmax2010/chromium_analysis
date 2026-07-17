@@ -1,0 +1,11 @@
+NRestarts=0
+Slice=chromium-libcxx.slice
+CPUWeight=20
+CPUQuotaPerSecUSec=2s
+IOWeight=20
+MemoryMax=12884901888
+MemorySwapMax=0
+ManagedOOMPreference=omit
+Nice=10
+ActiveState=active
+SubState=running

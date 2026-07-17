@@ -1,0 +1,8 @@
+obj/third_party/jsoncpp/jsoncpp/json_reader.o
+obj/third_party/jsoncpp/jsoncpp/json_value.o
+obj/third_party/jsoncpp/jsoncpp/json_writer.o
+obj/third_party/icu/icudata/icudtl_dat.o
+obj/third_party/icu/libicui18n.a
+obj/third_party/icu/libicuuc.a
+phony/third_party/jsoncpp/jsoncpp
+phony/third_party/icu/icudata

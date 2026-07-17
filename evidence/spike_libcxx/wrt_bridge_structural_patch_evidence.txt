@@ -1,0 +1,81 @@
+Structural repair files:
+M	packaging/chromium-efl.spec
+M	tizen_src/build/gn_chromiumefl.sh
+M	wrt/BUILD.gn
+M	wrt/cxx_wrapper/BUILD.gn
+Independent packaging gate:
+wrt/cxx_wrapper/BUILD.gn-4-}
+wrt/cxx_wrapper/BUILD.gn-5-
+wrt/cxx_wrapper/BUILD.gn:6:group("cxx_wrapper") {
+wrt/cxx_wrapper/BUILD.gn-7-  public_configs = [ ":config" ]
+wrt/cxx_wrapper/BUILD.gn-8-}
+--
+wrt/BUILD.gn-343-    ":mojo_bindings",
+wrt/BUILD.gn-344-    ":wrt_packed_resources",
+wrt/BUILD.gn:345:    "cxx_wrapper",
+wrt/BUILD.gn-346-    "resources",
+wrt/BUILD.gn-347-    "//base",
+--
+packaging/chromium-efl.spec-123-%endif
+packaging/chromium-efl.spec-124-
+packaging/chromium-efl.spec:125:%define __use_bundled_libcxx 1
+packaging/chromium-efl.spec-126-
+packaging/chromium-efl.spec-127-%define __use_system_icu 0
+packaging/chromium-efl.spec:128:%if !0%{?__use_bundled_libcxx} && (%{tizen_version} >= 100  || "%{_use_system_icu}" == "1") && "%{?_with_emulator}" != "1"
+packaging/chromium-efl.spec-129-%define __use_system_icu 1
+packaging/chromium-efl.spec-130-%endif
+packaging/chromium-efl.spec-131-
+packaging/chromium-efl.spec:132:%if !0%{?__disable_node_v8_component} && !0%{?__use_system_icu} && !0%{?__use_bundled_libcxx}
+packaging/chromium-efl.spec-133-%error "use_system_icu should be enabled when disable_node_v8_component is false"
+packaging/chromium-efl.spec-134-%endif
+--
+packaging/chromium-efl.spec-635-%endif
+packaging/chromium-efl.spec-636-
+packaging/chromium-efl.spec:637:%if 0%{?__use_bundled_libcxx}
+packaging/chromium-efl.spec-638-# Keep the WRT manifest bridge on the platform GCC/libstdc++ ABI side.
+packaging/chromium-efl.spec:639:./wrt/cxx_wrapper/build.sh %{?tizen_profile_name} "$GN_GENERATOR_OUTPUT"
+packaging/chromium-efl.spec-640-%endif
+packaging/chromium-efl.spec-641-
+--
+packaging/chromium-efl.spec-724-  "is_clang=false" \
+packaging/chromium-efl.spec-725-%endif
+packaging/chromium-efl.spec:726:  "use_custom_libcxx=%{macro_to_bool __use_bundled_libcxx}" \
+packaging/chromium-efl.spec:727:  "use_custom_libcxx_for_host=%{macro_to_bool __use_bundled_libcxx}" \
+packaging/chromium-efl.spec-728-%if "%{?__use_system_icu}" == "1"
+packaging/chromium-efl.spec-729-  "use_system_icu=true" \
+--
+packaging/chromium-efl.spec-1246-  install -m 0755 wrt/src/service/node/node-runtime.js            %{buildroot}%{__xwalk_extension_path}
+packaging/chromium-efl.spec-1247-%endif
+packaging/chromium-efl.spec:1248:%if 0%{?__use_bundled_libcxx}
+packaging/chromium-efl.spec:1249:  install -m 0644 %{OUTPUT_FOLDER}/libwrt-c++wrapper.so           %{buildroot}%{CHROMIUM_LIB_DIR}/lib/
+packaging/chromium-efl.spec-1250-%endif
+packaging/chromium-efl.spec-1251-
+--
+packaging/chromium-efl.spec-1520-  %{_bindir}/wrt-client
+packaging/chromium-efl.spec-1521-  %{_sysconfdir}/profile.d/wrt_env.sh
+packaging/chromium-efl.spec:1522:%if 0%{?__use_bundled_libcxx}
+packaging/chromium-efl.spec:1523:  %{CHROMIUM_LIB_DIR}/lib/libwrt-c++wrapper.so
+packaging/chromium-efl.spec-1524-%endif
+packaging/chromium-efl.spec-1525-  %{CHROMIUM_LIB_DIR}/bin/wrt_resources.pak
+GCC bridge command:
+8-mkdir -p "$output_dir"
+9-
+10:packages=(wgt-manifest-handlers)
+11-sources=("$source_dir/wgt_manifest_handlers.cc")
+12-defines=()
+--
+21-read -r -a package_libs <<< "$(pkg-config --libs "${packages[@]}")"
+22-
+23:gcc \
+24-  -shared \
+25-  -std=c++17 \
+--
+28-  -Wl,--no-undefined \
+29-  -Wl,-soname,libwrt-c++wrapper.so \
+30:  -Wl,--version-script,"$source_dir/wrt-c++wrapper.map" \
+31-  "${defines[@]}" \
+32-  "${package_cflags[@]}" \
+33-  "${sources[@]}" \
+34-  "${package_libs[@]}" \
+35:  -lstdc++ \
+36-  -o "$output_dir/libwrt-c++wrapper.so"

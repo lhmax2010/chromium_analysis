@@ -1,0 +1,61 @@
+FAILED: [code=1] gen/electron/js2c/isolated_bundle.js 
+python3 ../wrt/build/npm-run.py webpack --config /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/electron/build/webpack/webpack.config.isolated_renderer.js --output-filename isolated_bundle.js --output-path /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/out.chrome.tz_v11.0.standard.armv7l/gen/electron/js2c --env buildflags=/home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/out.chrome.tz_v11.0.standard.armv7l/gen/wrt/electron/buildflags/buildflags.h --env mode=production
+Traceback (most recent call last):
+  File "/home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/out.chrome.tz_v11.0.standard.armv7l/../wrt/build/npm-run.py", line 24, in <module>
+    subprocess.check_output(args, stderr=subprocess.STDOUT, cwd = ELECTRON_ROOT)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/subprocess.py", line 472, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+           ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+               **kwargs).stdout
+               ^^^^^^^^^
+  File "/usr/lib/python3.14/subprocess.py", line 554, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/subprocess.py", line 1038, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        pass_fds, cwd, env,
+                        ^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+                        gid, gids, uid, umask,
+                        ^^^^^^^^^^^^^^^^^^^^^^
+                        start_new_session, process_group)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/subprocess.py", line 1989, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'node'
+[28679/32590] ACTION //wrt:electron_browser_bundle(//tizen_src/build/toolchain/tizen:tizen_clang_arm)
+FAILED: [code=1] gen/electron/js2c/browser_init.js 
+python3 ../wrt/build/npm-run.py webpack --config /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/electron/build/webpack/webpack.config.browser.js --output-filename browser_init.js --output-path /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/out.chrome.tz_v11.0.standard.armv7l/gen/electron/js2c --env buildflags=/home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/out.chrome.tz_v11.0.standard.armv7l/gen/wrt/electron/buildflags/buildflags.h --env mode=production
+Traceback (most recent call last):
+  File "/home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/out.chrome.tz_v11.0.standard.armv7l/../wrt/build/npm-run.py", line 24, in <module>
+    subprocess.check_output(args, stderr=subprocess.STDOUT, cwd = ELECTRON_ROOT)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/subprocess.py", line 472, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+           ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+               **kwargs).stdout
+               ^^^^^^^^^
+  File "/usr/lib/python3.14/subprocess.py", line 554, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/subprocess.py", line 1038, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        pass_fds, cwd, env,
+                        ^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+                        gid, gids, uid, umask,
+                        ^^^^^^^^^^^^^^^^^^^^^^
+                        start_new_session, process_group)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/subprocess.py", line 1989, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'node'
+[28680/32590] CXX obj/chrome/browser/ui/webui/app_settings/impl/web_app_settings_ui.o
+[28681/32590] CXX obj/ui/webui/tracked_element/tracked_element/tracked_element_web_ui.o
+[28682/32590] CXX obj/chrome/browser/k_anonymity_storage_proto/k_anonymity_storage.pb.o
+[28683/32590] CXX obj/ui/webui/resources/cr_components/app_management/mojo_bindings/app_management.mojom.o
+[28684/32590] CXX obj/chrome/browser/error_reporting/error_reporting/chrome_js_error_report_processor.o
+[28685/32590] CXX obj/chrome/browser/error_reporting/error_reporting/chrome_js_error_report_processor_nonchromeos.o

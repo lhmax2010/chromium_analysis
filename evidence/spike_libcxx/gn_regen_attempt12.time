@@ -1,0 +1,23 @@
+	Command being timed: "taskset -c 0,1 sudo -n chroot /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0 su - abuild -c cd '/home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144' && export BUILD_ARCH=armv7l BUILD_CHROME=1 GN_GENERATOR_OUTPUT='/home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/out.chrome.tz_v11.0.standard.armv7l' && ./tizen_src/build/gn_chromiumefl.sh is_tizen=true 'lib_ro_root_dir="/usr/share/chromium-efl"' 'app_ro_root_dir="/usr/apps/org.tizen.chromium-efl"' 'app_rw_root_dir="/opt/usr/globalapps/org.tizen.chromium-efl"' 'package_id="org.tizen.chromium-efl"' tizen_version=110 tizen_version_major=11 tizen_version_minor=0 tizen_version_patch=0 exclude_unwind_tables=false enable_mlgo=false use_wayland=true is_clang=true use_custom_libcxx=true use_custom_libcxx_for_host=true use_system_icu=false tizen_release_build=false build_chrome=true tizen_video_assistant=true enable_rust=false enable_ewk_interface=true ozone_auto_platforms=false enable_wrt_js=true enable_process_group=false tizen_atmos_decoder_enable=false 'xwalk_extension_path="/usr/lib/tizen-extensions-crosswalk"' 'xwalk_extension_service_path="/usr/lib/tizen-extensions-crosswalk-service"' enable_platform_api_wrapper=false disable_node_v8_component=false enable_toolkit_views=false"
+	User time (seconds): 21.65
+	System time (seconds): 4.75
+	Percent of CPU this job got: 70%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:37.59
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 3188968
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 29
+	Minor (reclaiming a frame) page faults: 1614524
+	Voluntary context switches: 63441
+	Involuntary context switches: 24797
+	Swaps: 0
+	File system inputs: 265552
+	File system outputs: 2398832
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

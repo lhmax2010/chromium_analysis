@@ -1,0 +1,23 @@
+[undo unbundle GN files]
+usage: replace_gn_files.py [-h] [--system-libraries [SYSTEM_LIBRARIES ...]]
+                           [--undo]
+replace_gn_files.py: error: unrecognized arguments: jsoncpp icu
+
+[restore bundled ICU source tree]
+
+[post-state]
+ls: cannot access '/home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/third_party/icu/source': No such file or directory
+-rw-r--r-- 1 linhao linhao 799 Jul 14 16:40 /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/third_party/jsoncpp/BUILD.gn
+39:use_system_icu = false
+63:use_custom_libcxx = true
+64:use_custom_libcxx_for_host = true
+65:use_system_icu = false
+[undo unbundle GN files retry]
+
+[restore bundled ICU source tree retry]
+
+[post-state]
+drwxr-xr-x 13 linhao linhao 4096 Jul 14 16:12 /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/third_party/icu/source
+-rw-r--r--  1 linhao linhao 1594 Jul 14 16:40 /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/third_party/jsoncpp/BUILD.gn
+ls: cannot access '/home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/third_party/jsoncpp/BUILD.gn.orig': No such file or directory
+ls: cannot access '/home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/third_party/icu/BUILD.gn.orig': No such file or directory

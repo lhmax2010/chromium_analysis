@@ -1,0 +1,126 @@
+arm
+/home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/out.chrome.tz_v11.0.standard.armv7l
+** use system lib : replace **
+** use system brotli library **
+  From /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/build/linux/unbundle/brotli.gn
+  To /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/third_party/brotli/BUILD.gn
+** use system freetype library **
+  From /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/build/linux/unbundle/freetype.gn
+  To /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/build/config/freetype/freetype.gni
+** use system libpng library **
+  From /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/build/linux/unbundle/libpng.gn
+  To /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/third_party/libpng/BUILD.gn
+** use system libvpx library **
+  From /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/build/linux/unbundle/libvpx.gn
+  To /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/third_party/libvpx/BUILD.gn
+** use system libwebp library **
+  From /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/build/linux/unbundle/libwebp.gn
+  To /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/third_party/libwebp/BUILD.gn
+** use system libxml library **
+  From /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/build/linux/unbundle/libxml.gn
+  To /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/third_party/libxml/BUILD.gn
+** use system libxslt library **
+  From /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/build/linux/unbundle/libxslt.gn
+  To /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/third_party/libxslt/BUILD.gn
+** use system opus library **
+  From /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/build/linux/unbundle/opus.gn
+  To /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/third_party/opus/BUILD.gn
+** use system zlib library **
+  From /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/build/linux/unbundle/zlib.gn
+  To /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/third_party/zlib/BUILD.gn
+GN_ARGUMENTS:
+    * gen
+    * /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/out.chrome.tz_v11.0.standard.armv7l
+    * --root=/home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144
+    * --dotfile=/home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/.gn
+    * --args=
+    * use_libjpeg_turbo=true
+    * rtc_enable_sctp=true
+    * use_alsa=false
+    * use_aura=true
+    * use_kerberos=false
+    * use_ozone=true
+    * ozone_auto_platforms=false
+    * toolkit_views=true
+    * use_pango=false
+    * use_cairo=false
+    * enable_plugins=true
+    * enable_extensions=true
+    * enable_print_preview=false
+    * enable_oop_printing=false
+    * use_cups=false
+    * depth="/home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144"
+    * use_libpci=false
+    * is_tizen=true
+    * gcc_ver="14.2.0"
+    * enable_plugins=true
+    * python_ver="3.14"
+    * is_official_build=true
+    * use_xkbcommon=true
+    * target_os="tizen"
+    * target_sysroot="/"
+    * current_cpu="arm"
+    * host_cpu="arm"
+    * target_cpu="arm"
+    * use_real_dbus_clients=false
+    * use_nss_certs=true
+    * use_system_libwayland=true
+    * v8_use_external_startup_data=true
+    * ozone_auto_platforms=false
+    * host_toolchain="//tizen_src/build/toolchain/tizen:tizen_clang_arm"
+    * v8_snapshot_toolchain="//tizen_src/build/toolchain/tizen:tizen_clang_arm"
+    * use_lld=true
+    * use_thin_lto=true
+    * icu_use_data_file=true
+    * tizen_multimedia=true
+    * proprietary_codecs=true
+    * tizen_audio_io=true
+    * tizen_web_speech_recognition=true
+    * tizen_tbm_support=true
+    * ffmpeg_branding="Chrome"
+    * arm_use_neon=true
+    * lto_level="z"
+    * symbol_level=1
+    * target_cpu="arm"
+    * is_tizen=true
+    * lib_ro_root_dir="/usr/share/chromium-efl"
+    * app_ro_root_dir="/usr/apps/org.tizen.chromium-efl"
+    * app_rw_root_dir="/opt/usr/globalapps/org.tizen.chromium-efl"
+    * package_id="org.tizen.chromium-efl"
+    * tizen_version=110
+    * tizen_version_major=11
+    * tizen_version_minor=0
+    * tizen_version_patch=0
+    * exclude_unwind_tables=false
+    * enable_mlgo=false
+    * use_wayland=true
+    * is_clang=true
+    * use_custom_libcxx=true
+    * use_custom_libcxx_for_host=true
+    * use_system_icu=false
+    * tizen_release_build=false
+    * build_chrome=true
+    * tizen_video_assistant=true
+    * enable_rust=false
+    * enable_ewk_interface=true
+    * ozone_auto_platforms=false
+    * enable_wrt_js=true
+    * enable_process_group=false
+    * tizen_atmos_decoder_enable=false
+    * xwalk_extension_path="/usr/lib/tizen-extensions-crosswalk"
+    * xwalk_extension_service_path="/usr/lib/tizen-extensions-crosswalk-service"
+    * enable_platform_api_wrapper=false
+    * disable_node_v8_component=false
+    * enable_toolkit_views=false
+    * --system-libraries
+    * libpng
+    * libxml
+    * libxslt
+    * zlib
+    * brotli
+    * freetype
+    * libvpx
+    * libwebp
+    * opus
+Done. Made 27034 targets from 4079 files in 35452ms
+Updating projects from gn files...

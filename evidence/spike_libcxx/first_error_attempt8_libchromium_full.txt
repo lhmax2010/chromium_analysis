@@ -1,0 +1,82 @@
+[188/197] LINK ./efl_webprocess
+[189/197] LINK ./efl_webview_app
+[190/197] LINK ./mini_browser
+[191/197] LINK ./ubrowser
+[192/197] AR obj/wrt/libwrt_lib.a
+[193/197] SOLINK ./libnode-runtime.so
+[194/197] SOLINK ./libchromium-impl.so
+FAILED: [code=1] libchromium-impl.so libchromium-impl.so.TOC 
+"python3" "../build/toolchain/gcc_solink_wrapper.py" --readelf="readelf" --nm="nm"  --sofile="./libchromium-impl.so" --tocfile="./libchromium-impl.so.TOC" --output="./libchromium-impl.so" -- ../tizen_src/buildtools/llvm-22/bin/clang++ -shared -Wl,-soname="libchromium-impl.so" -Wl,--as-needed -Wl,--no-undefined -Wl,--version-script=/home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/tizen_src/ewk/chromium-ewk.filter -Wl,-rpath=\$ORIGIN/ -fuse-ld=lld -Wl,--build-id=sha1 -fPIC -latomic -Wl,-z,noexecstack -Wl,-z,relro -Wl,-z,now -Wl,--icf=all -Wl,--color-diagnostics -Wl,--thinlto-cache-dir=thinlto-cache -Wl,--thinlto-cache-policy=cache_size=10\%:cache_size_bytes=40g:cache_size_files=100000 -flto=thin -Wl,--thinlto-jobs=all -Wl,-mllvm,-import-instr-limit=30 -Wl,-mllvm,-inlinehint-threshold=360 -march=armv7-a -Wl,--undefined-version -Wl,--no-call-graph-profile-sort -no-canonical-prefixes --target=armv7l-tizen-linux-gnueabi -Wl,--gc-sections -Wl,-O1 -nostdlib++ --sysroot=../../../../../../ -Wl,--lto-O0 -L/usr/lib/hal -L/usr/usr/lib -o "./libchromium-impl.so" @"./libchromium-impl.so.rsp"  
+ld.lld: error: undefined symbol: wgt::parse::WidgetConfigParser::ParseManifest(std::__Cr::filesystem::path const&)
+>>> referenced by wgt_manifest_handlers.cc:218 (../wrt/cxx_wrapper/wgt_manifest_handlers.cc:218)
+>>>               obj/wrt/cxx_wrapper/libchromium-impl.so.lto.libcxx_wrapper_static_library.a(wgt_manifest_handlers.o at 120).o:(widget_config_create)
+
+ld.lld: error: undefined symbol: wgt::parse::AddonInfo::Key()
+>>> referenced by wgt_manifest_handlers.cc:227 (../wrt/cxx_wrapper/wgt_manifest_handlers.cc:227)
+>>>               obj/wrt/cxx_wrapper/libchromium-impl.so.lto.libcxx_wrapper_static_library.a(wgt_manifest_handlers.o at 120).o:(widget_config_create)
+
+ld.lld: error: undefined symbol: wgt::parse::AllowedNavigationInfo::Key()
+>>> referenced by wgt_manifest_handlers.cc:233 (../wrt/cxx_wrapper/wgt_manifest_handlers.cc:233)
+>>>               obj/wrt/cxx_wrapper/libchromium-impl.so.lto.libcxx_wrapper_static_library.a(wgt_manifest_handlers.o at 120).o:(widget_config_create)
+
+ld.lld: error: undefined symbol: wgt::parse::AppControlInfo::Key()
+>>> referenced by wgt_manifest_handlers.cc:238 (../wrt/cxx_wrapper/wgt_manifest_handlers.cc:238)
+>>>               obj/wrt/cxx_wrapper/libchromium-impl.so.lto.libcxx_wrapper_static_library.a(wgt_manifest_handlers.o at 120).o:(widget_config_create)
+
+ld.lld: error: undefined symbol: wgt::parse::CategoryInfoList::Key()
+>>> referenced by wgt_manifest_handlers.cc:243 (../wrt/cxx_wrapper/wgt_manifest_handlers.cc:243)
+>>>               obj/wrt/cxx_wrapper/libchromium-impl.so.lto.libcxx_wrapper_static_library.a(wgt_manifest_handlers.o at 120).o:(widget_config_create)
+
+ld.lld: error: undefined symbol: wgt::parse::ContentInfo::Key()
+>>> referenced by wgt_manifest_handlers.cc:248 (../wrt/cxx_wrapper/wgt_manifest_handlers.cc:248)
+>>>               obj/wrt/cxx_wrapper/libchromium-impl.so.lto.libcxx_wrapper_static_library.a(wgt_manifest_handlers.o at 120).o:(widget_config_create)
+
+ld.lld: error: undefined symbol: wgt::parse::CSPInfo::Key()
+>>> referenced by wgt_manifest_handlers.cc:252 (../wrt/cxx_wrapper/wgt_manifest_handlers.cc:252)
+>>>               obj/wrt/cxx_wrapper/libchromium-impl.so.lto.libcxx_wrapper_static_library.a(wgt_manifest_handlers.o at 120).o:(widget_config_create)
+
+ld.lld: error: undefined symbol: wgt::parse::CSPInfo::Report_only_key()
+>>> referenced by wgt_manifest_handlers.cc:257 (../wrt/cxx_wrapper/wgt_manifest_handlers.cc:257)
+>>>               obj/wrt/cxx_wrapper/libchromium-impl.so.lto.libcxx_wrapper_static_library.a(wgt_manifest_handlers.o at 120).o:(widget_config_create)
+
+ld.lld: error: undefined symbol: wgt::parse::LaunchScreenInfo::Key()
+>>> referenced by wgt_manifest_handlers.cc:262 (../wrt/cxx_wrapper/wgt_manifest_handlers.cc:262)
+>>>               obj/wrt/cxx_wrapper/libchromium-impl.so.lto.libcxx_wrapper_static_library.a(wgt_manifest_handlers.o at 120).o:(widget_config_create)
+
+ld.lld: error: undefined symbol: wgt::parse::MetaDataInfo::Key()
+>>> referenced by wgt_manifest_handlers.cc:267 (../wrt/cxx_wrapper/wgt_manifest_handlers.cc:267)
+>>>               obj/wrt/cxx_wrapper/libchromium-impl.so.lto.libcxx_wrapper_static_library.a(wgt_manifest_handlers.o at 120).o:(widget_config_create)
+
+ld.lld: error: undefined symbol: wgt::parse::PermissionsInfo::Key()
+>>> referenced by wgt_manifest_handlers.cc:272 (../wrt/cxx_wrapper/wgt_manifest_handlers.cc:272)
+>>>               obj/wrt/cxx_wrapper/libchromium-impl.so.lto.libcxx_wrapper_static_library.a(wgt_manifest_handlers.o at 120).o:(widget_config_create)
+
+ld.lld: error: undefined symbol: wgt::parse::ProfileTagInfo::Key()
+>>> referenced by wgt_manifest_handlers.cc:277 (../wrt/cxx_wrapper/wgt_manifest_handlers.cc:277)
+>>>               obj/wrt/cxx_wrapper/libchromium-impl.so.lto.libcxx_wrapper_static_library.a(wgt_manifest_handlers.o at 120).o:(widget_config_create)
+
+ld.lld: error: undefined symbol: wgt::parse::ServiceInfo::Key()
+>>> referenced by wgt_manifest_handlers.cc:282 (../wrt/cxx_wrapper/wgt_manifest_handlers.cc:282)
+>>>               obj/wrt/cxx_wrapper/libchromium-impl.so.lto.libcxx_wrapper_static_library.a(wgt_manifest_handlers.o at 120).o:(widget_config_create)
+
+ld.lld: error: undefined symbol: wgt::parse::SettingInfo::Key()
+>>> referenced by wgt_manifest_handlers.cc:287 (../wrt/cxx_wrapper/wgt_manifest_handlers.cc:287)
+>>>               obj/wrt/cxx_wrapper/libchromium-impl.so.lto.libcxx_wrapper_static_library.a(wgt_manifest_handlers.o at 120).o:(widget_config_create)
+
+ld.lld: error: undefined symbol: wgt::parse::TizenApplicationInfo::Key()
+>>> referenced by wgt_manifest_handlers.cc:295 (../wrt/cxx_wrapper/wgt_manifest_handlers.cc:295)
+>>>               obj/wrt/cxx_wrapper/libchromium-impl.so.lto.libcxx_wrapper_static_library.a(wgt_manifest_handlers.o at 120).o:(widget_config_create)
+
+ld.lld: error: undefined symbol: wgt::parse::WarpInfo::Key()
+>>> referenced by wgt_manifest_handlers.cc:306 (../wrt/cxx_wrapper/wgt_manifest_handlers.cc:306)
+>>>               obj/wrt/cxx_wrapper/libchromium-impl.so.lto.libcxx_wrapper_static_library.a(wgt_manifest_handlers.o at 120).o:(widget_config_create)
+
+ld.lld: error: undefined symbol: wgt::parse::WidgetInfo::Key()
+>>> referenced by wgt_manifest_handlers.cc:310 (../wrt/cxx_wrapper/wgt_manifest_handlers.cc:310)
+>>>               obj/wrt/cxx_wrapper/libchromium-impl.so.lto.libcxx_wrapper_static_library.a(wgt_manifest_handlers.o at 120).o:(widget_config_create)
+
+ld.lld: error: undefined symbol: wgt::parse::WidgetConfigParser::GetManifestData(std::__Cr::basic_string<char, std::__Cr::char_traits<char>, std::__Cr::allocator<char>> const&) const
+>>> referenced by wgt_manifest_handlers.cc:0 (../wrt/cxx_wrapper/wgt_manifest_handlers.cc:0)
+>>>               obj/wrt/cxx_wrapper/libchromium-impl.so.lto.libcxx_wrapper_static_library.a(wgt_manifest_handlers.o at 120).o:(widget_config_create)
+clang++: error: linker command failed with exit code 1 (use -v to see invocation)
+ninja: build stopped: subcommand failed.

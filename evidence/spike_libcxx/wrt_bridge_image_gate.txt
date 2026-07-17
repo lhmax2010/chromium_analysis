@@ -1,0 +1,113 @@
+[artifact]
+/home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/out.chrome.tz_v11.0.standard.armv7l/libwrt-c++wrapper.so: ELF 32-bit LSB shared object, ARM, EABI5 version 1 (SYSV), dynamically linked, BuildID[sha1]=e46171e46a819bf4bf18d238dd4f7005be4782cb, with debug_info, not stripped
+size_bytes=45340 path=/home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/out.chrome.tz_v11.0.standard.armv7l/libwrt-c++wrapper.so
+[dynamic section NEEDED]
+ 0x00000001 (NEEDED)                     Shared library: [libwgt-manifest-handlers.so.1]
+ 0x00000001 (NEEDED)                     Shared library: [libmanifest-parser.so.1]
+ 0x00000001 (NEEDED)                     Shared library: [libxml2.so.16]
+ 0x00000001 (NEEDED)                     Shared library: [libstdc++.so.6]
+ 0x00000001 (NEEDED)                     Shared library: [libgcc_s.so.1]
+ 0x00000001 (NEEDED)                     Shared library: [libc.so.6]
+ 0x0000000e (SONAME)                     Library soname: [libwrt-c++wrapper.so]
+[defined GLOBAL/WEAK dynamic symbols]
+    49: 0000365c     8 FUNC    GLOBAL DEFAULT   12 widget_config_widget_info_get_default_locale
+    50: 00003550     8 FUNC    GLOBAL DEFAULT   12 widget_config_tizen_application_info_get_id
+    51: 00003684   924 FUNC    GLOBAL DEFAULT   12 widget_config_widget_info_get_preferences
+    52: 00002ff4     8 FUNC    GLOBAL DEFAULT   12 widget_config_get_AppControlInfoList
+    53: 00003514     8 FUNC    GLOBAL DEFAULT   12 widget_config_setting_info_get_hwkey_enabled
+    54: 0000363c     8 FUNC    GLOBAL DEFAULT   12 widget_config_get_WidgetInfo
+    55: 000032a0     8 FUNC    GLOBAL DEFAULT   12 widget_config_launch_screen_data_get_background_images
+    56: 000034a0    44 FUNC    GLOBAL DEFAULT   12 widget_config_service_info_array_destroy
+    57: 00002fec     8 FUNC    GLOBAL DEFAULT   12 widget_config_allowed_navigation_info_get_GetAllowedDomains
+    58: 00003344    44 FUNC    GLOBAL DEFAULT   12 widget_config_metadata_pair_array_destroy
+    59: 000031cc     8 FUNC    GLOBAL DEFAULT   12 widget_config_get_CSPReportInfo
+    60: 00003a40   156 FUNC    GLOBAL DEFAULT   12 widget_config_preference_info_array_destroy
+    61: 000030f0     8 FUNC    GLOBAL DEFAULT   12 widget_config_content_info_get_encoding
+    62: 00003540     8 FUNC    GLOBAL DEFAULT   12 widget_config_setting_info_get_sound_mode
+    63: 00002fe4     8 FUNC    GLOBAL DEFAULT   12 widget_config_get_AllowedNavigationInfo
+    64: 00003644     8 FUNC    GLOBAL DEFAULT   12 widget_config_widget_info_get_author
+    65: 000030e8     8 FUNC    GLOBAL DEFAULT   12 widget_config_get_ContentInfo
+    66: 000034d4     8 FUNC    GLOBAL DEFAULT   12 widget_config_service_info_get_id
+    67: 000031d4     4 FUNC    GLOBAL DEFAULT   12 widget_config_csp_report_info_allocate_security_rules
+    68: 00003418   136 FUNC    GLOBAL DEFAULT   12 widget_config_service_list_get_services
+    69: 00003af4    44 FUNC    GLOBAL DEFAULT   12 widget_config_localized_string_array_destroy
+    70: 00003560     8 FUNC    GLOBAL DEFAULT   12 widget_config_tizen_application_info_get_required_version
+    71: 00003634     8 FUNC    GLOBAL DEFAULT   12 widget_config_access_info_get_subdomains
+    72: 00003568     8 FUNC    GLOBAL DEFAULT   12 widget_config_get_WarpInfo
+    73: 00003378     8 FUNC    GLOBAL DEFAULT   12 widget_config_metadata_pair_get_value
+    74: 00002fdc     8 FUNC    GLOBAL DEFAULT   12 widget_config_addon_info_get_required_version
+    75: 00003108     8 FUNC    GLOBAL DEFAULT   12 widget_config_get_CSPInfo
+    76: 00003290     8 FUNC    GLOBAL DEFAULT   12 widget_config_launch_screen_data_get_orientation
+    77: 000030b0     8 FUNC    GLOBAL DEFAULT   12 widget_config_app_control_info_get_src
+    78: 0000325c     8 FUNC    GLOBAL DEFAULT   12 widget_config_launch_screen_info_get_ready_when
+    79: 00003a28     8 FUNC    GLOBAL DEFAULT   12 widget_config_widget_info_get_version
+    80: 00003600    44 FUNC    GLOBAL DEFAULT   12 widget_config_access_info_array_destroy
+    81: 000034cc     8 FUNC    GLOBAL DEFAULT   12 widget_config_service_info_get_content
+    82: 00003504     8 FUNC    GLOBAL DEFAULT   12 widget_config_setting_info_get_context_menu_enabled
+    83: 000034e4     8 FUNC    GLOBAL DEFAULT   12 widget_config_get_SettingInfo
+    84: 00003298     8 FUNC    GLOBAL DEFAULT   12 widget_config_launch_screen_data_get_background_color
+    85: 000032c8   124 FUNC    GLOBAL DEFAULT   12 widget_config_metadata_info_get_metadata
+    86: 00003388   124 FUNC    GLOBAL DEFAULT   12 widget_config_permissions_info_get_GetAPIPermissions
+    87: 00003548     8 FUNC    GLOBAL DEFAULT   12 widget_config_get_TizenApplicationInfo
+    88: 000032b0     8 FUNC    GLOBAL DEFAULT   12 widget_config_launch_screen_data_get_images
+    89: 00002fd4     8 FUNC    GLOBAL DEFAULT   12 widget_config_addon_info_get_package
+    90: 00002fcc     8 FUNC    GLOBAL DEFAULT   12 widget_config_get_AddonInfo
+    91: 0000367c     8 FUNC    GLOBAL DEFAULT   12 widget_config_widget_info_get_name_set
+    92: 0000350c     8 FUNC    GLOBAL DEFAULT   12 widget_config_setting_info_get_encryption_enabled
+    93: 00003b20     8 FUNC    GLOBAL DEFAULT   12 widget_config_localized_string_get_lang
+    94: 00002fa0    44 FUNC    GLOBAL DEFAULT   12 widget_config_string_array_destroy
+    95: 000030f8     8 FUNC    GLOBAL DEFAULT   12 widget_config_content_info_get_src
+    96: 0000351c     8 FUNC    GLOBAL DEFAULT   12 widget_config_setting_info_has_long_polling
+    97: 00003370     8 FUNC    GLOBAL DEFAULT   12 widget_config_metadata_pair_get_key
+    98: 000032a8     8 FUNC    GLOBAL DEFAULT   12 widget_config_launch_screen_data_get_image_border
+    99: 00003410     8 FUNC    GLOBAL DEFAULT   12 widget_config_get_ServiceList
+   100: 00003538     8 FUNC    GLOBAL DEFAULT   12 widget_config_setting_info_get_screen_orientation
+   101: 0000364c     8 FUNC    GLOBAL DEFAULT   12 widget_config_widget_info_get_author_email
+   102: 00003ae4     8 FUNC    GLOBAL DEFAULT   12 widget_config_preference_info_get_value
+   103: 0000340c     4 FUNC    GLOBAL DEFAULT   12 widget_config_profile_tag_info_allocate_GetProfileType
+   104: 0000362c     8 FUNC    GLOBAL DEFAULT   12 widget_config_access_info_get_origin
+   105: 00003570   144 FUNC    GLOBAL DEFAULT   12 widget_config_warp_info_get_access_map
+   106: 000032b8     8 FUNC    GLOBAL DEFAULT   12 widget_config_launch_screen_data_get_video
+   107: 00003100     8 FUNC    GLOBAL DEFAULT   12 widget_config_content_info_get_type
+   108: 000034dc     8 FUNC    GLOBAL DEFAULT   12 widget_config_service_info_get_type
+   109: 000030d0     8 FUNC    GLOBAL DEFAULT   12 widget_config_app_control_info_get_reload
+   110: 00003a38     8 FUNC    GLOBAL DEFAULT   12 widget_config_widget_info_get_width
+   111: 00002ffc   136 FUNC    GLOBAL DEFAULT   12 widget_config_app_control_info_list_get_controls
+   112: 000030b8     8 FUNC    GLOBAL DEFAULT   12 widget_config_app_control_info_get_operation
+   113: 00003110   188 FUNC    GLOBAL DEFAULT   12 widget_config_csp_info_allocate_security_rules
+   114: 00003aec     8 FUNC    GLOBAL DEFAULT   12 widget_config_preference_info_get_readonly
+   115: 0000366c     8 FUNC    GLOBAL DEFAULT   12 widget_config_widget_info_get_height
+   116: 000030e0     8 FUNC    GLOBAL DEFAULT   12 widget_config_category_info_list_get_categories
+   117: 00003a30     8 FUNC    GLOBAL DEFAULT   12 widget_config_widget_info_get_view_modes
+   118: 00002f80    32 FUNC    GLOBAL DEFAULT   12 widget_config_destroy
+   119: 000030c0     8 FUNC    GLOBAL DEFAULT   12 widget_config_app_control_info_get_uri
+   120: 00003b30 10076 FUNC    GLOBAL DEFAULT   12 widget_config_create
+   121: 00003404     8 FUNC    GLOBAL DEFAULT   12 widget_config_get_ProfileTagInfo
+   122: 00003674     8 FUNC    GLOBAL DEFAULT   12 widget_config_widget_info_get_id
+   123: 00003558     8 FUNC    GLOBAL DEFAULT   12 widget_config_tizen_application_info_get_package
+   124: 000034fc     8 FUNC    GLOBAL DEFAULT   12 widget_config_setting_info_get_background_vibration
+   125: 000031e0   124 FUNC    GLOBAL DEFAULT   12 widget_config_launch_screen_info_get_launch_screen_data
+   126: 000031d8     8 FUNC    GLOBAL DEFAULT   12 widget_config_get_LaunchScreenInfo
+   127: 00003664     8 FUNC    GLOBAL DEFAULT   12 widget_config_widget_info_get_description_set
+   128: 00003adc     8 FUNC    GLOBAL DEFAULT   12 widget_config_preference_info_get_name
+   129: 00003084    44 FUNC    GLOBAL DEFAULT   12 widget_config_app_control_info_array_destroy
+   130: 00003524    20 FUNC    GLOBAL DEFAULT   12 widget_config_setting_info_get_long_polling
+   131: 00003654     8 FUNC    GLOBAL DEFAULT   12 widget_config_widget_info_get_author_href
+   132: 000034f4     8 FUNC    GLOBAL DEFAULT   12 widget_config_setting_info_get_background_support_enabled
+   133: 00003a20     8 FUNC    GLOBAL DEFAULT   12 widget_config_widget_info_get_short_name_set
+   134: 00003380     8 FUNC    GLOBAL DEFAULT   12 widget_config_get_PermissionsInfo
+   135: 000030d8     8 FUNC    GLOBAL DEFAULT   12 widget_config_get_CategoryInfoList
+   136: 00003b28     8 FUNC    GLOBAL DEFAULT   12 widget_config_localized_string_get_value
+   137: 00003264    44 FUNC    GLOBAL DEFAULT   12 widget_config_launch_screen_data_array_destroy
+   138: 000032c0     8 FUNC    GLOBAL DEFAULT   12 widget_config_get_MetaDataInfo
+   139: 000030c8     8 FUNC    GLOBAL DEFAULT   12 widget_config_app_control_info_get_mime
+   140: 000034ec     8 FUNC    GLOBAL DEFAULT   12 widget_config_setting_info_get_backbutton_presence
+[gate counts]
+whitelist_count=92
+actual_export_count=92
+unexpected_export_count=0
+missing_export_count=0
+std_mangled_export_count=0
+needed_libstdcxx_count=1
+[unexpected exports]
+[missing exports]

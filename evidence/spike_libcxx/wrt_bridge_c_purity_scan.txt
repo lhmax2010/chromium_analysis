@@ -1,0 +1,8 @@
+Scope: wrt/cxx_wrapper/**/*.h
+Command: rg -n --glob *.h (std:: or common STL include) wrt/cxx_wrapper
+rg_exit_status=1
+hit_count=0
+Header inventory:
+wrt/cxx_wrapper/wgt_manifest_handlers.h
+wrt/cxx_wrapper/tv/settings_api.h
+VERDICT=PASS: no std:: tokens or selected STL includes in bridge headers

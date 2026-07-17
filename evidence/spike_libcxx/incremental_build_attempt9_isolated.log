@@ -1,0 +1,7 @@
+v24.11.1
+ninja: Entering directory `out.chrome.tz_v11.0.standard.armv7l'
+[1/61] LINK ./wrt
+[2/61] LINK ./wrt-service
+[3/61] LINK ./wrt-service-launcher
+[4/61] ACTION //components/resources:about_credits(//tizen_src/build/toolchain/tizen:tizen_clang_arm)
+[5/5] SOLINK ./libchromium-impl.so

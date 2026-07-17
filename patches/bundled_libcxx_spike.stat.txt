@@ -1,0 +1,7 @@
+ build/config/c++/BUILD.gn         | 13 +++++++++++++
+ packaging/chromium-efl.spec       | 18 ++++++++++++++----
+ tizen_src/build/gn_chromiumefl.sh |  3 +++
+ tizen_src/ewk/chromium-ewk.filter |  4 +++-
+ wrt/BUILD.gn                      |  2 +-
+ wrt/cxx_wrapper/BUILD.gn          | 15 ++-------------
+ 6 files changed, 36 insertions(+), 19 deletions(-)

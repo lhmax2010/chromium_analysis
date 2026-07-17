@@ -1,0 +1,36 @@
+[before]
+drwxr-xr-x 2 root root 4096 Jul 14 16:32 /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/dev/shm
+
+[command]
+sudo chmod 1777 /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/dev/shm
+sudo: a terminal is required to read the password; either use the -S option to read from standard input or configure an askpass helper
+sudo: a password is required
+
+[after]
+drwxr-xr-x 2 root root 4096 Jul 14 16:32 /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/dev/shm
+
+[probe]
+Traceback (most recent call last):
+  File "<stdin>", line 2, in <module>
+  File "/usr/lib/python3.14/multiprocessing/context.py", line 68, in Lock
+    return Lock(ctx=self.get_context())
+  File "/usr/lib/python3.14/multiprocessing/synchronize.py", line 176, in __init__
+    SemLock.__init__(self, SEMAPHORE, 1, 1, ctx=ctx)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/multiprocessing/synchronize.py", line 56, in __init__
+    sl = self._semlock = _multiprocessing.SemLock(
+                         ~~~~~~~~~~~~~~~~~~~~~~~~^
+        kind, value, maxvalue, self._make_name(),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        unlink_now)
+        ^^^^^^^^^^^
+PermissionError: [Errno 13] Permission denied
+
+[retry through allowed chroot command]
+sudo chroot /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0 /bin/chmod 1777 /dev/shm
+
+[retry after]
+drwxrwxrwt 2 root root 4096 Jul 14 16:32 /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/dev/shm
+
+[retry probe]
+lock-ok <Lock(owner=None)>

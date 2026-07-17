@@ -1,0 +1,34 @@
+[    0s] on X86_64, no limit mem size
+[    0s] Using BUILD_ROOT=/home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0
+[    0s] Using BUILD_ARCH=armv7l:armv7el:armv6l:armv5tejl:armv5tel:armv5l:armv4tl:armv4l:armv3l:noarch
+[    0s] 
+[    0s] 
+[    0s] linhao-linux started "build chromium-efl.spec" at Tue Jul 14 08:06:50 UTC 2026.
+[    0s] 
+[    0s] 
+[    0s] processing recipe /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/sources/tizen_unified_standard/chromium-efl-1.1.144-1/chromium-efl.spec ...
+[    0s] init_buildsystem --configdir /usr/lib/build/configs --cachedir /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/cache --repository /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/repos/tizen_unified_standard/armv7l/RPMS --repository https://download.tizen.org/snapshots/TIZEN/Tizen/Tizen-Base-Toolchain/reference/repos/standard/packages/ --repository https://download.tizen.org/snapshots/TIZEN/Tizen/Tizen-Unified-Toolchain/reference/repos/standard/packages/ /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/sources/tizen_unified_standard/chromium-efl-1.1.144-1/chromium-efl.spec ...
+[    0s] expanding package dependencies...
+[    1s] Warning: spec file parser line 565: can't expand %(...)
+[    1s] Warning: spec file parser line 684: can't expand %(...)
+[    1s] Warning: spec file parser line 685: can't expand %(...)
+[    1s] Warning: spec file parser line 727: can't expand %(...)
+[    1s] Warning: spec file parser line 734: can't expand %(...)
+[    1s] Warning: spec file parser line 745: can't expand %(...)
+[    1s] Warning: spec file parser line 746: can't expand %(...)
+[    1s] Warning: spec file parser line 747: can't expand %(...)
+[    1s] Warning: spec file parser line 764: can't expand %(...)
+[    1s] Warning: spec file parser line 765: can't expand %(...)
+[    1s] Warning: spec file parser line 766: can't expand %(...)
+[    1s] Warning: spec file parser line 770: can't expand %(...)
+[    1s] copying qemu
+[    1s] 
+[    1s] registering binfmt handlers for cross build
+[    1s] calculating packages to download...
+[    9s] [1/473] downloading https://download.tizen.org/snapshots/TIZEN/Tizen/Tizen-Base-Toolchain/reference/repos/standard/packages/armv7l/acl-2.3.2-1.5.armv7l.rpm ... 
+[   10s] retrying https://download.tizen.org/snapshots/TIZEN/Tizen/Tizen-Base-Toolchain/reference/repos/standard/packages/armv7l/acl-2.3.2-1.5.armv7l.rpm
+[   11s] retrying https://download.tizen.org/snapshots/TIZEN/Tizen/Tizen-Base-Toolchain/reference/repos/standard/packages/armv7l/acl-2.3.2-1.5.armv7l.rpm
+[   12s] reqesting https://download.tizen.org/snapshots/TIZEN/Tizen/Tizen-Base-Toolchain/reference/repos/standard/packages/armv7l/acl-2.3.2-1.5.armv7l.rpm failed: 404 Not Found
+[   12s] 
+[   12s] linhao-linux failed "build chromium-efl.spec" at Tue Jul 14 08:07:02 UTC 2026.
+[   12s] 

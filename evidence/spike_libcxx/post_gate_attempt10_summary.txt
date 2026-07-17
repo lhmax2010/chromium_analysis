@@ -1,0 +1,8 @@
+artifact=/home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/out.chrome.tz_v11.0.standard.armv7l/libchromium-impl.so
+size_bytes=1102069260
+export_count=778
+und_count=2921
+G1_export_namespace_hits=0
+G2_und_namespace_hits=0
+G3_needed_libcxx_hits=0
+verbose_abort_dynsym_hits=

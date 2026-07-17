@@ -1,0 +1,141 @@
+[spec branch controlling system ICU]
+Command: rg -n -C 3 '__use_system_icu|use_system_icu=' packaging/chromium-efl.spec
+124-
+125-%define __use_bundled_libcxx 1
+126-
+127:%define __use_system_icu 0
+128-%if !0%{?__use_bundled_libcxx} && (%{tizen_version} >= 100  || "%{_use_system_icu}" == "1") && "%{?_with_emulator}" != "1"
+129:%define __use_system_icu 1
+130-%endif
+131-
+132:%if !0%{?__disable_node_v8_component} && !0%{?__use_system_icu} && !0%{?__use_bundled_libcxx}
+133-%error "use_system_icu should be enabled when disable_node_v8_component is false"
+134-%endif
+135-
+--
+726-%endif
+727-  "use_custom_libcxx=%{macro_to_bool __use_bundled_libcxx}" \
+728-  "use_custom_libcxx_for_host=%{macro_to_bool __use_bundled_libcxx}" \
+729:%if "%{?__use_system_icu}" == "1"
+730:  "use_system_icu=true" \
+731-%else
+732:  "use_system_icu=false" \
+733-%endif
+734-  "tizen_release_build=%{macro_to_bool __tizen_release_build}" \
+735-%if 0%{?__build_chrome} || %{__create_next_browser_tpk} == 1
+--
+1024-cp -r "%{OUTPUT_FOLDER}"/locale/* "%{buildroot}"%{CHROMIUM_LIB_DIR}/res/locale/
+1025-chmod -R a=r,u+w,a+X              "%{buildroot}"%{CHROMIUM_LIB_DIR}/res/locale/*
+1026-
+1027:%if "%{?__use_system_icu}" != "1"
+1028-  install -m 0644 "%{OUTPUT_FOLDER}"/icudtl.dat           "%{buildroot}"%{CHROMIUM_LIB_DIR}/bin/
+1029-%endif
+1030-
+--
+1042-install -m 0644 "%{OUTPUT_FOLDER}"/images/*.png    "%{buildroot}"%{CHROMIUM_LIB_DIR}/res/images/
+1043-install -m 0644 "%{OUTPUT_FOLDER}"/resources/*.edj "%{buildroot}"%{CHROMIUM_LIB_DIR}/res/themes/
+1044-
+1045:%if "%{?__use_system_icu}" != "1"
+1046-  install -m 0644 "%{OUTPUT_FOLDER}"/icudtl.dat           "%{buildroot}"%{CHROMIUM_LIB_DIR}/bin/
+1047-%endif
+1048-
+--
+1090-install -m 0644 "%{OUTPUT_FOLDER}"/libv8.so                  %{buildroot}%{TIZEN_BLINK_UT_DIR}
+1091-%endif
+1092-
+1093:%if "%{?__use_system_icu}" != "1"
+1094-  install -m 0644 "%{OUTPUT_FOLDER}"/icudtl.dat              %{buildroot}%{TIZEN_BLINK_UT_DIR}
+1095-%endif
+1096-%endif
+--
+1163-install -m 0755 -p -D "%{OUTPUT_FOLDER}"/v8_build_config.json            "%{buildroot}"%{TIZEN_V8_UT_DIR}/bin
+1164-install -m 0755 -p -D "%{OUTPUT_FOLDER}"/wasm_api_tests                  "%{buildroot}"%{TIZEN_V8_UT_DIR}/bin
+1165-
+1166:%if "%{?__use_system_icu}" != "1"
+1167-  install -m 0644 "%{OUTPUT_FOLDER}"/icudtl.dat  "%{buildroot}"%{TIZEN_V8_UT_DIR}/bin
+1168-%endif
+1169-
+--
+1504-%{CHROMIUM_LIB_DIR}/res/images/*.png
+1505-%{CHROMIUM_LIB_DIR}/res/themes/*.edj
+1506-
+1507:%if "%{?__use_system_icu}" != "1"
+1508-  %{CHROMIUM_LIB_DIR}/bin/icudtl.dat
+1509-%endif
+1510-
+--
+1614-%{TIZEN_BLINK_UT_DIR}/libv8.so
+1615-%endif
+1616-
+1617:%if "%{?__use_system_icu}" != "1"
+1618-%{TIZEN_BLINK_UT_DIR}/icudtl.dat
+1619-%endif
+1620-%endif
+[GN wrapper system dependency removal]
+Command: rg -n -C 3 'system_deps|use_system_icu=false|use_custom_libcxx=true' tizen_src/build/gn_chromiumefl.sh
+28-source $(dirname $0)/common.sh
+29-trap 'error_report $0 $LINENO' ERR SIGINT SIGTERM SIGQUIT
+30-host_arch=$(getHostArch)
+31:system_deps=$(getSystemDeps $(get_profile))
+32-export HOST_ARCH=$host_arch
+33-
+34-supported_targets=("tizen" "desktop")
+--
+75-      tizen_product_da=true
+76-      ;;
+77-    use_system_icu=true)
+78:      system_deps=("${system_deps[@]/icu/}")
+79:      system_deps+=" icu"
+80-      ;;
+81:    use_system_icu=false)
+82:      system_deps=("${system_deps[@]/icu/}")
+83-      ;;
+84:    use_custom_libcxx=true)
+85:      system_deps=("${system_deps[@]/jsoncpp/}")
+86-      ;;
+87-    is_clang=true)
+88-      is_clang=true
+--
+240-                              "
+241-  fi
+242-
+243:  if [[ "${system_deps[@]}" =~ "icu" ]]; then
+244-    ADDITIONAL_GN_PARAMETERS+="icu_use_data_file=false
+245-                               use_system_icu=true
+246-                              "
+--
+359-  fi
+360-fi
+361-
+362:if [ "$system_deps" != "" ]; then
+363-  echo "** use system lib : replace **"
+364:  #replacing original files with correct ones according to $system_deps
+365:  $TOPDIR/build/linux/unbundle/replace_gn_files.py $system_deps
+366-fi
+367-
+368-_GN_ARGS="
+--
+391-for arg in $_GN_ARGS; do
+392-  printf "    * ${arg##-D}\n"
+393-done
+394:for arg in $system_deps; do
+395-  printf "    * ${arg##-D}\n"
+396-done
+397-
+[attempt 3 mksnapshot system library link evidence]
+Command: rg -n -- '-ljsoncpp|-licui18n|-licuuc|Json::Value' first_error_full.txt
+2:[ 3309s] "python3" "../build/toolchain/gcc_link_wrapper.py" --output="./mksnapshot" -- ../tizen_src/buildtools/llvm-22/bin/clang++ -fuse-ld=lld -Wl,--build-id=sha1 -fPIC -latomic -Wl,-z,noexecstack -Wl,-z,relro -Wl,-z,now -Wl,--icf=all -Wl,--color-diagnostics -Wl,--thinlto-cache-dir=thinlto-cache -Wl,--thinlto-cache-policy=cache_size=10\%:cache_size_bytes=40g:cache_size_files=100000 -flto=thin -Wl,--thinlto-jobs=all -Wl,-mllvm,-import-instr-limit=30 -Wl,-mllvm,-inlinehint-threshold=360 -march=armv7-a -Wl,--undefined-version -Wl,--no-call-graph-profile-sort -no-canonical-prefixes --target=armv7l-tizen-linux-gnueabi -nostdlib++ --sysroot=../../../../../../ -Wl,--lto-O0 -Wl,-O2 -Wl,--gc-sections -Wl,--icf=none -o "./mksnapshot" -Wl,--start-group @"./mksnapshot.rsp" -Wl,--end-group   -ldl -lpthread -lrt -ldlog -licui18n -licuuc -ljsoncpp -lz -Wl,--start-group  -Wl,--end-group 
+3:[ 3309s] ld.lld: error: undefined symbol: Json::Value::getMemberNames() const
+12:[ 3309s] ld.lld: error: undefined symbol: Json::Value::operator[](std::__Cr::basic_string<char, std::__Cr::char_traits<char>, std::__Cr::allocator<char>> const&)
+21:[ 3309s] ld.lld: error: undefined symbol: Json::Value::Value(std::__Cr::basic_string<char, std::__Cr::char_traits<char>, std::__Cr::allocator<char>> const&)
+30:[ 3309s] ld.lld: error: undefined symbol: Json::Value::asString() const
+39:[ 3309s] ld.lld: error: undefined symbol: Json::Value::operator[](std::__Cr::basic_string<char, std::__Cr::char_traits<char>, std::__Cr::allocator<char>> const&) const
+[attempt 9 resolved args]
+Command: rg -n 'use_system_icu|use_custom_libcxx' gn_resolved_attempt9.txt
+40:use_system_icu = false
+64:use_custom_libcxx = true
+65:use_custom_libcxx_for_host = true
+66:use_system_icu = false
+1042:use_custom_libcxx = true
+1043:use_custom_libcxx_for_host = true
+1120:use_system_icu = false

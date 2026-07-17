@@ -1,0 +1,13 @@
+[attempt11 classification]
+E-structural wiring: empty tizen_profile_name argument was not quoted; bridge build received four positional arguments.
+[fix]
+packaging/chromium-efl.spec: preserve an empty profile as argv[1] with double quotes.
+[quota]
+structural bridge implementation adjustment; small-fix quota remains 4/5.
+[diff check]
+[fixed source line]
+   637	%if 0%{?__use_bundled_libcxx}
+   638	# Keep the WRT manifest bridge on the platform GCC/libstdc++ ABI side.
+   639	./wrt/cxx_wrapper/build.sh "%{?tizen_profile_name}" "$GN_GENERATOR_OUTPUT" \
+   640	  %{tizen_version_major} %{tizen_version_minor} %{tizen_version_patch}
+   641	%endif

@@ -1,0 +1,6 @@
+ 0x00000001 (NEEDED)                     Shared library: [libwgt-manifest-handlers.so.1]
+ 0x00000001 (NEEDED)                     Shared library: [libmanifest-parser.so.1]
+ 0x00000001 (NEEDED)                     Shared library: [libxml2.so.16]
+ 0x00000001 (NEEDED)                     Shared library: [libstdc++.so.6]
+ 0x00000001 (NEEDED)                     Shared library: [libgcc_s.so.1]
+ 0x00000001 (NEEDED)                     Shared library: [libc.so.6]

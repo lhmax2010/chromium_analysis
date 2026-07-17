@@ -1,0 +1,15 @@
+Slice=chromium-libcxx.slice
+MemoryCurrent=2658304
+MemoryPeak=2658304
+CPUUsageNSec=6506000
+TasksCurrent=2
+CPUWeight=20
+CPUQuotaPerSecUSec=2s
+IOWeight=20
+MemoryMax=12884901888
+MemorySwapMax=0
+ManagedOOMPreference=omit
+Nice=10
+Id=chromium-libcxx-attempt12-incremental.service
+ActiveState=active
+SubState=running

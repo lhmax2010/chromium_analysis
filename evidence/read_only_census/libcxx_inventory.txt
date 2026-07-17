@@ -1,0 +1,280 @@
+# 4c raw evidence: bundled libc++ / libc++abi material, GN wiring, ABI namespace, history
+
+$ for d in buildtools/third_party/libc++ buildtools/third_party/libc++abi third_party/libc++/src third_party/libc++abi/src; do ...; done
+buildtools/third_party/libc++ files=7
+buildtools/third_party/libc++ dirs=1
+120K chromium-efl/buildtools/third_party/libc++
+BUILD.gn,OWNERS,__assertion_handler,__config_site,generate_libcxx_headers.py,libcxx_headers.gni,modules.gni
+buildtools/third_party/libc++abi files=3
+buildtools/third_party/libc++abi dirs=1
+20K chromium-efl/buildtools/third_party/libc++abi
+BUILD.gn,OWNERS,cxa_demangle_stub.cc
+third_party/libc++/src files=12062
+third_party/libc++/src dirs=2392
+95M chromium-efl/third_party/libc++/src
+.clang-format,.clang-tidy,.gitignore,CMakeLists.txt,CREDITS.TXT,LICENSE.TXT,Maintainers.md,TODO.TXT,cmake,docs,include,lib,modules,src,test,utils,vendor
+third_party/libc++abi/src files=161
+third_party/libc++abi/src dirs=21
+6.7M chromium-efl/third_party/libc++abi/src
+.clang-format,.gitignore,CMakeLists.txt,CREDITS.TXT,LICENSE.TXT,cmake,fuzz,include,lib,src,test,www
+
+$ nl -ba chromium-efl/build/config/c++/c++.gni | sed -n '10,29p;54,84p;137,170p;173,186p'
+    10	declare_args() {
+    11	  # Use in-tree libc++ (buildtools/third_party/libc++ and
+    12	  # buildtools/third_party/libc++abi) instead of the system C++ library for C++
+    13	  # standard library support.
+    14	  #
+    15	  # WARNING: Bringing your own C++ standard library is deprecated and will not
+    16	  # be supported in the future. This flag will be removed.
+    17	  use_custom_libcxx = !is_tizen
+    18
+    19	  # Use libc++ instead of stdlibc++ when using the host_cpu toolchain, even if
+    20	  # use_custom_libcxx is false. This is useful for cross-compiles where a custom
+    21	  # toolchain for the target_cpu has been set as the default toolchain, but
+    22	  # use_custom_libcxx should still be true when building for the host.  The
+    23	  # expected usage is to set use_custom_libcxx=false and
+    24	  # use_custom_libcxx_for_host=true in the passed in buildargs.
+    25	  #
+    26	  # WARNING: Bringing your own C++ standard library is deprecated and will not
+    27	  # be supported in the future. This flag will be removed.
+    28	  use_custom_libcxx_for_host = !is_tizen
+    29
+    54	use_custom_libcxx =
+    55	    use_custom_libcxx || (use_custom_libcxx_for_host && !is_a_target_toolchain)
+    56
+    57	declare_args() {
+    58	  # WARNING: Setting this to a non-default value is highly discouraged.
+    59	  # If true, libc++ will be built as a shared library; otherwise libc++ will be
+    60	  # linked statically. Setting this to something other than the default is
+    61	  # unsupported and can be broken by libc++ rolls. Note that if this is set to
+    62	  # true, you must also set libcxx_abi_unstable=false, which is bad for
+    63	  # performance and memory use.
+    64	  libcxx_is_shared = use_custom_libcxx && is_component_build
+    65
+    66	  # In case the C++ standard library implementation used is libstdc++, then
+    67	  # enable its own hardening checks. As we cannot determine in GN if libstdc++
+    68	  # is used or not, by default enable it for Linux without the custom libc++.
+    69	  #
+    70	  # WARNING: Bringing your own C++ standard library is deprecated and will not
+    71	  # be supported in the future. This flag will be removed.
+    72	  use_safe_libstdcxx = is_linux && !use_custom_libcxx
+    73	}
+    74
+    75	# The saigo libc++ is distinct from the custom hermetic libc++. However, since
+    76	# the Chrome team controls the saigo toolchain, it is safe to unconditionally
+    77	# enable libc++ hardening there as well.
+    78	use_safe_libcxx = use_custom_libcxx && enable_safe_libcxx
+    79
+    80	# libc++abi needs to be exported from executables to be picked up by shared
+    81	# libraries on certain instrumented builds.
+    82	export_libcxxabi_from_executables =
+    83	    use_custom_libcxx && !is_apple && !is_win && !is_component_build &&
+    84	    (is_asan || is_ubsan_vptr)
+   137	  libcxx_prefix = "//third_party/libc++/src"
+   138	}
+   139	libcxxabi_prefix = "//third_party/libc++abi/src"
+   140
+   141	assert(!(is_ios && libcxx_is_shared),
+   142	       "Can't build libc++ as a shared library on iOS.")
+   143
+   144	if (libcxx_is_shared) {
+   145	  libcxx_target_type = "shared_library"
+   146	} else if (is_win) {
+   147	  libcxx_target_type = "source_set"
+   148	} else {
+   149	  # Build as a static_library instead of a source_set when possible.
+   155	  libcxx_target_type = "static_library"
+   156	}
+   157
+   158	if (libcxx_target_type == "shared_library" ||
+   159	    export_libcxxabi_from_executables) {
+   168	  libcxxabi_target_type = "source_set"
+   169	} else {
+   170	  libcxxabi_target_type = libcxx_target_type
+   173	# Chromium will require using its libc++ library implementation. Warn if the
+   174	# current configuration is not using it.
+   175	if ((!use_custom_libcxx || !use_custom_libcxx_for_host) &&
+   176	    # Standalone use of //build outside of Chromium can disable libc++.
+   177	    build_with_chromium &&
+   180	    current_toolchain == default_toolchain) {
+   181	  print("*********************************************************************")
+   182	  print("WARNING: Support for linking against a C++ standard library other ")
+   183	  print("  than the one in-tree (buildtools/third_party/libc++) is deprecated")
+   184	  print("  and support for this will end. We plan to remove this option in ")
+   185	  print("  M138.")
+   186	  print("*********************************************************************")
+
+$ nl -ba chromium-efl/build/config/c++/BUILD.gn | sed -n '8,14p;22,40p;81,93p'
+     8	assert(use_custom_libcxx, "should only be used if use_custom_libcxx is set")
+     9
+    10	# This is included by reference in the //build/config/compiler:runtime_library
+    11	# config that is applied to all targets.
+    14	config("runtime_library") {
+    22	  # Fixed libc++ configuration macros are in
+    23	  # buildtools/third_party/libc++/__config_site. This config only has defines
+    24	  # that vary depending on gn args, and non-define flags.
+    36	  if (!use_clang_modules) {
+    37	    # In non-clang modules build, custom libc++ headers are used from this
+    38	    # directory instead of under gen dir.
+    39	    include_dirs += [ "//buildtools/third_party/libc++" ]
+    40	  }
+    81	  } else {
+    82	    cflags_cc += [
+    83	      "-nostdinc++",
+    84	      "-isystem" + rebase_path("$libcxx_prefix/include", root_build_dir),
+    85	      "-isystem" + rebase_path("$libcxxabi_prefix/include", root_build_dir),
+    86	    ]
+    90	    # Make sure we don't link against the system libstdc++ or libc++.
+    91	    if (is_clang) {
+    92	      ldflags += [ "-nostdlib++" ]
+    93	    } else {
+
+$ nl -ba chromium-efl/build/config/compiler/BUILD.gn | sed -n '1948,1955p'; nl -ba chromium-efl/build/config/BUILD.gn | sed -n '280,310p;320,325p'
+  1948	  # The order of this config is important: it must appear before
+  1949	  # android:runtime_library.
+  1952	  if (use_custom_libcxx) {
+  1953	    configs += [ "//build/config/c++:runtime_library" ]
+  1954	  }
+   280	group("common_deps") {
+   287	  # WARNING: This group is a dependency of **every executable and shared
+   288	  # library**.  Please be careful adding new dependencies here.
+   289	  public_deps = [ ":common_deps_without_libcxx" ]
+   290
+   291	  if (use_custom_libcxx) {
+   292	    public_deps += [ "//buildtools/third_party/libc++" ]
+   293	  }
+   301	}
+   303	# Only the executable template in BUILDCONFIG.gn should reference this.
+   304	group("executable_deps") {
+   305	  if (!toolchain_for_rust_host_build_tools) {
+   306	    public_deps = [ ":common_deps" ]
+   307	    if (export_libcxxabi_from_executables) {
+   308	      public_deps += [ "//buildtools/third_party/libc++abi" ]
+   309	    }
+   310	  }
+   320	# Only the shared_library template in BUILDCONFIG.gn should reference this.
+   321	group("shared_library_deps") {
+   322	  if (!toolchain_for_rust_host_build_tools) {
+   323	    public_deps = [ ":common_deps" ]
+   324	  }
+   325	}
+
+$ nl -ba chromium-efl/buildtools/third_party/libc++/BUILD.gn | sed -n '479,520p;616,620p;675,680p'
+   479	target(libcxx_target_type, "libc++") {
+   480	  # Most things that need to depend on libc++ should do so via the implicit
+   481	  # 'common_deps' dependency below.
+   483	  visibility = [
+   484	    "//build/config:common_deps",
+   485	    "//third_party/catapult/devil",
+   486	  ]
+   516	  # TODO(crbug.com/40273848): Move this build file to third_party/libc++/BUILD.gn
+   517	  # once submodule migration is done.
+   518	  sources = [
+   519	    "//third_party/libc++/src/src/algorithm.cpp",
+   520	    "//third_party/libc++/src/src/any.cpp",
+   616	  deps = [
+   617	    ":custom_headers",
+   618	    ":libcxx_headers",
+   619	    "//third_party/llvm-libc:llvm-libc-shared",
+   620	  ]
+   675	  if (!is_win) {
+   676	    defines += [ "LIBCXX_BUILDING_LIBCXXABI" ]
+   677	    if (!export_libcxxabi_from_executables) {
+   678	      deps += [ "//buildtools/third_party/libc++abi" ]
+   679	    }
+   680	  }
+
+$ nl -ba chromium-efl/buildtools/third_party/libc++abi/BUILD.gn | sed -n '9,20p;28,48p;76,87p'
+     9	target(libcxxabi_target_type, "libc++abi") {
+    10	  if (export_libcxxabi_from_executables) {
+    11	    visibility = [ "//build/config:executable_deps" ]
+    12	  } else {
+    13	    visibility = [ "//buildtools/third_party/libc++" ]
+    14	  }
+    16	  deps = [
+    17	    "//buildtools/third_party/libc++:custom_headers",
+    18	    "//buildtools/third_party/libc++:libcxx_headers",
+    19	  ]
+    28	  # TODO(crbug.com/40273848): Move this build file to third_party/libc++/BUILD.gn once submodule migration is done
+    29	  sources = [
+    30	    "//third_party/libc++abi/src/src/abort_message.cpp",
+    31	    "//third_party/libc++abi/src/src/cxa_aux_runtime.cpp",
+    32	    "//third_party/libc++abi/src/src/cxa_default_handlers.cpp",
+    33	    "//third_party/libc++abi/src/src/cxa_exception.cpp",
+    76	  configs -= [
+    82	  configs += [
+    83	    "//build/config/compiler:no_chromium_code",
+    84	    "//build/config/compiler:exceptions",
+    85	    "//build/config/compiler:rtti",
+    86	    "//buildtools/third_party/libc++:config",
+    87	  ]
+
+$ nl -ba chromium-efl/buildtools/third_party/libc++/__config_site | sed -n '9,22p'
+     9	// We set a custom _LIBCPP_ABI_NAMESPACE for the following reasons:
+    10	//
+    11	// 1. When libcxx_is_shared is true, symbols from libc++.so are exported for all
+    12	//    DSOs to use.  If the system libc++ gets loaded (indirectly through a
+    13	//    a system library), then it will conflict with our libc++.so.
+    14	// 2. The default value of _LIBCPP_ABI_NAMESPACE is the string
+    15	//    "_LIBCPP_ABI_NAMESPACE". This contributes to an increase in binary size;
+    18	//    _LIBCPP_ABI_NAMESPACE to a shorter value.
+    19	#define _LIBCPP_ABI_NAMESPACE __Cr
+    20
+    21	#define _LIBCPP_ABI_VERSION 2
+    22
+
+$ git -C chromium-efl show --no-ext-diff --format=medium --unified=3 46061f7673c2224dc87777ae239247c30572027b -- build/config/c++/c++.gni
+commit 46061f7673c2224dc87777ae239247c30572027b
+Author: v-saha <v.saha@samsung.com>
+Date:   Tue Sep 30 10:10:18 2025 +0530
+
+    [M138] Fix build errors for tizen standard profile
+
+    Fix standard profile build errors with rust disabled.
+
+@@ -14,7 +14,7 @@ declare_args() {
+-  use_custom_libcxx = true
++  use_custom_libcxx = !is_tizen
+@@ -25,7 +25,7 @@ declare_args() {
+-  use_custom_libcxx_for_host = true
++  use_custom_libcxx_for_host = !is_tizen
+
+$ git -C chromium-efl log -10 --oneline --follow -- build/config/c++/BUILD.gn
+fe525af8af67 Upload upstream chromium 144.0.7559.132 without conflicts
+e9372d8699c7 Upload upstream chromium 138.0.7204.183
+aaa65fc33edb Upload upstream chromium 130.0.6723.116 Part-1
+45eba4d51c0a Upload upstream chromium 126.0.6478.126
+2a73ce88be22 Upload upstream chromium 120.0.6099.5
+85e2e8ae449c Upload upstream chromium 114.0.5735.31
+eaf54128d554 Upload upstream chromium 108.0.5359.1
+37b299d9acf2 Upload upstream chromium 94.0.4606.31
+c32dc2689dcc Upload upstream chromium 85.0.4183.84
+
+$ git -C chromium-efl log --oneline --all -G'is_tizen' -- build/config/c++/BUILD.gn buildtools/third_party/libc++/BUILD.gn buildtools/third_party/libc++abi/BUILD.gn
+[no output]
+
+$ git -C chromium-efl blame -L 291,292 build/config/BUILD.gn
+aaa65fc33edb7 (Suhaspoornachandra 2024-12-13 16:30:53 +0530 291)   if (use_custom_libcxx) {
+aaa65fc33edb7 (Suhaspoornachandra 2024-12-13 16:30:53 +0530 292)     public_deps += [ "//buildtools/third_party/libc++" ]
+
+$ git -C chromium-efl blame -L 479,479 buildtools/third_party/libc++/BUILD.gn; git -C chromium-efl blame -L 616,620 buildtools/third_party/libc++/BUILD.gn; git -C chromium-efl blame -L 675,679 buildtools/third_party/libc++/BUILD.gn
+e9372d8699c70 (Suhas Poornachandra 2025-08-12 17:40:49 +0530 479) target(libcxx_target_type, "libc++") {
+1303fa6926468 (Insoon Kim 2025-12-15 13:18:46 +0900 616)   deps = [
+1303fa6926468 (Insoon Kim 2025-12-15 13:18:46 +0900 617)     ":custom_headers",
+1303fa6926468 (Insoon Kim 2025-12-15 13:18:46 +0900 618)     ":libcxx_headers",
+1303fa6926468 (Insoon Kim 2025-12-15 13:18:46 +0900 619)     "//third_party/llvm-libc:llvm-libc-shared",
+1303fa6926468 (Insoon Kim 2025-12-15 13:18:46 +0900 620)   ]
+e9372d8699c70 (Suhas Poornachandra 2025-08-12 17:40:49 +0530 678)       deps += [ "//buildtools/third_party/libc++abi" ]
+
+$ git -C chromium-efl blame -L 9,19 buildtools/third_party/libc++abi/BUILD.gn | rg '(^e9372|^beda2)'
+e9372d8699c70 (Suhas Poornachandra 2025-08-12 17:40:49 +0530  9) target(libcxxabi_target_type, "libc++abi") {
+beda2b06c6c5e (v-saha              2025-12-01 15:53:34 +0530 16)   deps = [
+beda2b06c6c5e (v-saha              2025-12-01 15:53:34 +0530 17)     "//buildtools/third_party/libc++:custom_headers",
+beda2b06c6c5e (v-saha              2025-12-01 15:53:34 +0530 18)     "//buildtools/third_party/libc++:libcxx_headers",
+beda2b06c6c5e (v-saha              2025-12-01 15:53:34 +0530 19)   ]
+
+$ for h in aaa65fc33edb7 e9372d8699c70 1303fa6926468 beda2b06c6c5e; do git -C chromium-efl log -1 --format='%h %s' "$h"; done
+aaa65fc33edb Upload upstream chromium 130.0.6723.116 Part-1
+e9372d8699c7 Upload upstream chromium 138.0.7204.183
+1303fa692646 cherry-pick: 142.0.7444.175 (conflicts)
+beda2b06c6c5 cherry-pick: 142.0.7444.175 (no-conflict UD,DU)

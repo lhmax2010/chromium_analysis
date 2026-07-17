@@ -1,0 +1,271 @@
+v24.11.1
+ninja: Entering directory `out.chrome.tz_v11.0.standard.armv7l'
+[1/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/javascript_dialog_manager_efl.o
+[2/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/authentication_challenge_popup.o
+[3/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/javascript_modal_dialog_efl.o
+[4/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/navigation_throttle_efl.o
+[5/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/policy_response_delegate_efl.o
+[6/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/proxying_url_loader_factory_efl.o
+[7/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/context_menu_controller_efl.o
+[8/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/cookie_manager.o
+[9/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/content_browser_client_efl.o
+[10/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/devtools_manager_delegate_efl.o
+[11/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/devtools_delegate_efl.o
+[12/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/efl_webprocess_main.o
+[13/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/download_manager_delegate_efl.o
+[14/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/eweb_context.o
+[15/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/eweb_view.o
+[16/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/file_chooser_controller_efl.o
+[17/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/focus_client_efl.o
+[18/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/geolocation_permission_popup.o
+[19/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_global_data.o
+[20/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/http_user_agent_settings_efl.o
+[21/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/network_delegate_efl.o
+[22/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/notification_permission_popup.o
+[23/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/login_delegate_efl.o
+[24/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/permission_controller_delegate_efl.o
+[25/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/popup_controller_efl.o
+[26/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/shared_url_loader_factory_efl.o
+[27/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/text_encoding_map_efl.o
+[28/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/scroll_detector.o
+[29/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/url_request_context_getter_efl.o
+[30/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/url_request_job_efl.o
+[31/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/url_request_interceptor_efl.o
+[32/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/usermedia_permission_popup.o
+[33/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/web_contents_view_delegate_efl.o
+[34/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/web_contents_delegate_efl.o
+[35/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/window_parenting_client_efl.o
+[36/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/webview_delegate_efl.o
+[37/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/autocomplete_history_manager_factory.o
+[38/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/favicon_commands.o
+[39/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/favicon_database.o
+[40/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/favicon_database_p.o
+[41/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/favicon_downloader.o
+[42/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/location_provider_efl.o
+[43/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/geolocation_permission_context_efl.o
+[44/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/color_chooser_efl.o
+[45/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/gin_native_bound_object.o
+[46/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/input_picker.o
+[47/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/gin_native_bridge_dispatcher_host.o
+[48/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/browser_url_loader_throttle_efl.o
+[49/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/notification_helper.o
+[50/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/password_helper_efl.o
+[51/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/notification_controller_efl.o
+[52/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/password_store_factory.o
+[53/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/password_manager_client_efl.o
+[54/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/select_picker_mobile.o
+[55/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/vibration_provider_client.o
+[56/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/web_cache_manager_efl.o
+[57/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/select_picker_tv.o
+[58/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/web_data_service.o
+[59/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/xwalk_extension_browser_efl.o
+[60/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/content_client_efl.o
+[61/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/content_switches_efl.o
+[62/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/gin_native_bridge_errors.o
+[63/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/gin_native_bridge_value.o
+[64/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/navigation_policy_params.o
+[65/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/navigation_policy_params_mojom_traits.o
+[66/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/print_pages_params.o
+[67/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/skia_bitmap_utils.o
+[68/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/version_info.o
+[69/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/web_data_service_factory.o
+[70/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/web_contents_utils.o
+[71/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_autofill_profile_private.o
+[72/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_back_forward_list_private.o
+[73/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_certificate_private.o
+[74/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_app_control_private.o
+[75/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_context_private.o
+[76/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_error_private.o
+[77/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_file_chooser_request_private.o
+[78/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_frame_private.o
+[79/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_context_form_autofill_profile_private.o
+[80/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_geolocation_private.o
+[81/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_hit_test_private.o
+[82/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_history_private.o
+[83/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_main_private.o
+[84/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_manifest_private.o
+[85/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_notification_private.o
+[86/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_intercept_request_private.o
+[87/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_quota_permission_request_private.o
+[88/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_security_origin_private.o
+[89/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_policy_decision_private.o
+[90/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_suspendable_object.o
+[91/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_tracing_private.o
+[92/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_settings_private.o
+[93/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_user_media_private.o
+[94/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_web_application_icon_data_private.o
+[95/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_view_private.o
+[96/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_wrt_private.o
+[97/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_application_cache_manager.o
+[98/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_auth_challenge.o
+[99/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_auth_request.o
+[100/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_autofill_credit_card.o
+[101/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_autofill_profile.o
+[102/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_back_forward_list.o
+[103/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_back_forward_list_item.o
+[104/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_certificate.o
+[105/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_chromium.o
+[106/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_console_message.o
+[107/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_content_screening_detection.o
+[108/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/webview_delegate_ewk.o
+[109/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_context.o
+[110/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_context_menu.o
+[111/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_cookie_parser.o
+[112/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_custom_handlers.o
+[113/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_dispatcher.o
+[114/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_error.o
+[115/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_cookie_manager.o
+[116/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_file_chooser_request.o
+[117/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_form_repost_decision.o
+[118/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_frame.o
+[119/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_geolocation.o
+[120/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_highcontrast.o
+[121/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_history.o
+[122/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_favicon_database.o
+[123/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_intercept_request.o
+[124/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_ipc_message.o
+[125/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_main.o
+[126/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_manifest.o
+[127/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_media_playback_info.o
+[128/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_media_subtitle_info.o
+[129/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_hit_test.o
+[130/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_object.o
+[131/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_page_group.o
+[132/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_notification.o
+[133/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_popup_menu_item.o
+[134/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_quota_permission_request.o
+[135/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_policy_decision.o
+[136/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_security_origin.o
+[137/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_storage_manager.o
+[138/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_text_style.o
+[139/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_tracing.o
+[140/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_settings.o
+[141/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_user_media.o
+[142/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_web_application_icon_data.o
+[143/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_view.o
+[144/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/ewk_window_features.o
+[145/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/content_settings_client_efl.o
+[146/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/gin_native_bridge_dispatcher.o
+[147/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/content_renderer_client_efl.o
+[148/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/gin_native_bridge_value_converter.o
+[149/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/gin_native_bridge_object.o
+[150/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/gin_native_function_invocation_helper.o
+[151/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/hole_layer.o
+[152/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/plugin_placeholder_avplayer.o
+[153/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/plugin_placeholder_efl.o
+[154/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/print_web_view_helper_efl.o
+[155/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/plugin_placeholder_hole.o
+[156/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/render_frame_observer_efl.o
+[157/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/tizen_extensible.o
+[158/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/render_thread_observer_efl.o
+[159/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/web_view_observer_efl.o
+[160/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/dynamicplugin.o
+[161/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/v8widget.o
+[162/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/wrt_dynamicplugin.o
+[163/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/wrt_widget_host.o
+[164/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/wrtwidget.o
+[165/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/eweb_accessibility.o
+[166/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/web_contents_observer_efl.o
+[167/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/eweb_accessibility_object.o
+[168/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/eweb_accessibility_util.o
+[169/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/personal_data_manager_factory.o
+[170/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/autofill_client_efl.o
+[171/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/application_type.o
+[172/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/proxy_config_monitor.o
+[173/197] CXX obj/tizen_src/platform/ui-gadget-1/ui-gadget-1-proxy/ui_gadget_1_proxy.o
+[174/197] CXX obj/wrt/node-runtime/service_node.o
+[175/197] CXX obj/wrt/node-runtime/wrt_node_extension_api.o
+[176/197] CXX obj/wrt/node-runtime/wrt_node_extension_dummy.o
+[177/197] CXX obj/wrt/node-runtime/xwalk_extension_node.o
+[178/197] CXX obj/wrt/node-runtime/xwalk_extension_service_object.o
+[179/197] CXX obj/wrt/wrt/wrt_main.o
+[180/197] CXX obj/wrt/wrt-service/service_main.o
+[181/197] CXX obj/tizen_src/ewk/efl_integration/chromium-ewk/autofill_popup_view_efl.o
+[182/197] CXX obj/wrt/wrt-service/wrt_ipc.o
+[183/197] CXX obj/wrt/wrt-service-launcher/service_launcher_main.o
+[184/197] CXX obj/wrt/wrt-service-launcher/wrt_ipc.o
+[185/197] CXX obj/wrt/wrt-service-launcher/wrt_service_launcher.o
+[186/197] SOLINK ./libwrt-service-override.so
+[187/197] LINK ./chrome_tizen
+[188/197] LINK ./efl_webprocess
+[189/197] LINK ./efl_webview_app
+[190/197] LINK ./mini_browser
+[191/197] LINK ./ubrowser
+[192/197] AR obj/wrt/libwrt_lib.a
+[193/197] SOLINK ./libnode-runtime.so
+[194/197] SOLINK ./libchromium-impl.so
+FAILED: [code=1] libchromium-impl.so libchromium-impl.so.TOC 
+"python3" "../build/toolchain/gcc_solink_wrapper.py" --readelf="readelf" --nm="nm"  --sofile="./libchromium-impl.so" --tocfile="./libchromium-impl.so.TOC" --output="./libchromium-impl.so" -- ../tizen_src/buildtools/llvm-22/bin/clang++ -shared -Wl,-soname="libchromium-impl.so" -Wl,--as-needed -Wl,--no-undefined -Wl,--version-script=/home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/tizen_src/ewk/chromium-ewk.filter -Wl,-rpath=\$ORIGIN/ -fuse-ld=lld -Wl,--build-id=sha1 -fPIC -latomic -Wl,-z,noexecstack -Wl,-z,relro -Wl,-z,now -Wl,--icf=all -Wl,--color-diagnostics -Wl,--thinlto-cache-dir=thinlto-cache -Wl,--thinlto-cache-policy=cache_size=10\%:cache_size_bytes=40g:cache_size_files=100000 -flto=thin -Wl,--thinlto-jobs=all -Wl,-mllvm,-import-instr-limit=30 -Wl,-mllvm,-inlinehint-threshold=360 -march=armv7-a -Wl,--undefined-version -Wl,--no-call-graph-profile-sort -no-canonical-prefixes --target=armv7l-tizen-linux-gnueabi -Wl,--gc-sections -Wl,-O1 -nostdlib++ --sysroot=../../../../../../ -Wl,--lto-O0 -L/usr/lib/hal -L/usr/usr/lib -o "./libchromium-impl.so" @"./libchromium-impl.so.rsp"  
+ld.lld: error: undefined symbol: wgt::parse::WidgetConfigParser::ParseManifest(std::__Cr::filesystem::path const&)
+>>> referenced by wgt_manifest_handlers.cc:218 (../wrt/cxx_wrapper/wgt_manifest_handlers.cc:218)
+>>>               obj/wrt/cxx_wrapper/libchromium-impl.so.lto.libcxx_wrapper_static_library.a(wgt_manifest_handlers.o at 120).o:(widget_config_create)
+
+ld.lld: error: undefined symbol: wgt::parse::AddonInfo::Key()
+>>> referenced by wgt_manifest_handlers.cc:227 (../wrt/cxx_wrapper/wgt_manifest_handlers.cc:227)
+>>>               obj/wrt/cxx_wrapper/libchromium-impl.so.lto.libcxx_wrapper_static_library.a(wgt_manifest_handlers.o at 120).o:(widget_config_create)
+
+ld.lld: error: undefined symbol: wgt::parse::AllowedNavigationInfo::Key()
+>>> referenced by wgt_manifest_handlers.cc:233 (../wrt/cxx_wrapper/wgt_manifest_handlers.cc:233)
+>>>               obj/wrt/cxx_wrapper/libchromium-impl.so.lto.libcxx_wrapper_static_library.a(wgt_manifest_handlers.o at 120).o:(widget_config_create)
+
+ld.lld: error: undefined symbol: wgt::parse::AppControlInfo::Key()
+>>> referenced by wgt_manifest_handlers.cc:238 (../wrt/cxx_wrapper/wgt_manifest_handlers.cc:238)
+>>>               obj/wrt/cxx_wrapper/libchromium-impl.so.lto.libcxx_wrapper_static_library.a(wgt_manifest_handlers.o at 120).o:(widget_config_create)
+
+ld.lld: error: undefined symbol: wgt::parse::CategoryInfoList::Key()
+>>> referenced by wgt_manifest_handlers.cc:243 (../wrt/cxx_wrapper/wgt_manifest_handlers.cc:243)
+>>>               obj/wrt/cxx_wrapper/libchromium-impl.so.lto.libcxx_wrapper_static_library.a(wgt_manifest_handlers.o at 120).o:(widget_config_create)
+
+ld.lld: error: undefined symbol: wgt::parse::ContentInfo::Key()
+>>> referenced by wgt_manifest_handlers.cc:248 (../wrt/cxx_wrapper/wgt_manifest_handlers.cc:248)
+>>>               obj/wrt/cxx_wrapper/libchromium-impl.so.lto.libcxx_wrapper_static_library.a(wgt_manifest_handlers.o at 120).o:(widget_config_create)
+
+ld.lld: error: undefined symbol: wgt::parse::CSPInfo::Key()
+>>> referenced by wgt_manifest_handlers.cc:252 (../wrt/cxx_wrapper/wgt_manifest_handlers.cc:252)
+>>>               obj/wrt/cxx_wrapper/libchromium-impl.so.lto.libcxx_wrapper_static_library.a(wgt_manifest_handlers.o at 120).o:(widget_config_create)
+
+ld.lld: error: undefined symbol: wgt::parse::CSPInfo::Report_only_key()
+>>> referenced by wgt_manifest_handlers.cc:257 (../wrt/cxx_wrapper/wgt_manifest_handlers.cc:257)
+>>>               obj/wrt/cxx_wrapper/libchromium-impl.so.lto.libcxx_wrapper_static_library.a(wgt_manifest_handlers.o at 120).o:(widget_config_create)
+
+ld.lld: error: undefined symbol: wgt::parse::LaunchScreenInfo::Key()
+>>> referenced by wgt_manifest_handlers.cc:262 (../wrt/cxx_wrapper/wgt_manifest_handlers.cc:262)
+>>>               obj/wrt/cxx_wrapper/libchromium-impl.so.lto.libcxx_wrapper_static_library.a(wgt_manifest_handlers.o at 120).o:(widget_config_create)
+
+ld.lld: error: undefined symbol: wgt::parse::MetaDataInfo::Key()
+>>> referenced by wgt_manifest_handlers.cc:267 (../wrt/cxx_wrapper/wgt_manifest_handlers.cc:267)
+>>>               obj/wrt/cxx_wrapper/libchromium-impl.so.lto.libcxx_wrapper_static_library.a(wgt_manifest_handlers.o at 120).o:(widget_config_create)
+
+ld.lld: error: undefined symbol: wgt::parse::PermissionsInfo::Key()
+>>> referenced by wgt_manifest_handlers.cc:272 (../wrt/cxx_wrapper/wgt_manifest_handlers.cc:272)
+>>>               obj/wrt/cxx_wrapper/libchromium-impl.so.lto.libcxx_wrapper_static_library.a(wgt_manifest_handlers.o at 120).o:(widget_config_create)
+
+ld.lld: error: undefined symbol: wgt::parse::ProfileTagInfo::Key()
+>>> referenced by wgt_manifest_handlers.cc:277 (../wrt/cxx_wrapper/wgt_manifest_handlers.cc:277)
+>>>               obj/wrt/cxx_wrapper/libchromium-impl.so.lto.libcxx_wrapper_static_library.a(wgt_manifest_handlers.o at 120).o:(widget_config_create)
+
+ld.lld: error: undefined symbol: wgt::parse::ServiceInfo::Key()
+>>> referenced by wgt_manifest_handlers.cc:282 (../wrt/cxx_wrapper/wgt_manifest_handlers.cc:282)
+>>>               obj/wrt/cxx_wrapper/libchromium-impl.so.lto.libcxx_wrapper_static_library.a(wgt_manifest_handlers.o at 120).o:(widget_config_create)
+
+ld.lld: error: undefined symbol: wgt::parse::SettingInfo::Key()
+>>> referenced by wgt_manifest_handlers.cc:287 (../wrt/cxx_wrapper/wgt_manifest_handlers.cc:287)
+>>>               obj/wrt/cxx_wrapper/libchromium-impl.so.lto.libcxx_wrapper_static_library.a(wgt_manifest_handlers.o at 120).o:(widget_config_create)
+
+ld.lld: error: undefined symbol: wgt::parse::TizenApplicationInfo::Key()
+>>> referenced by wgt_manifest_handlers.cc:295 (../wrt/cxx_wrapper/wgt_manifest_handlers.cc:295)
+>>>               obj/wrt/cxx_wrapper/libchromium-impl.so.lto.libcxx_wrapper_static_library.a(wgt_manifest_handlers.o at 120).o:(widget_config_create)
+
+ld.lld: error: undefined symbol: wgt::parse::WarpInfo::Key()
+>>> referenced by wgt_manifest_handlers.cc:306 (../wrt/cxx_wrapper/wgt_manifest_handlers.cc:306)
+>>>               obj/wrt/cxx_wrapper/libchromium-impl.so.lto.libcxx_wrapper_static_library.a(wgt_manifest_handlers.o at 120).o:(widget_config_create)
+
+ld.lld: error: undefined symbol: wgt::parse::WidgetInfo::Key()
+>>> referenced by wgt_manifest_handlers.cc:310 (../wrt/cxx_wrapper/wgt_manifest_handlers.cc:310)
+>>>               obj/wrt/cxx_wrapper/libchromium-impl.so.lto.libcxx_wrapper_static_library.a(wgt_manifest_handlers.o at 120).o:(widget_config_create)
+
+ld.lld: error: undefined symbol: wgt::parse::WidgetConfigParser::GetManifestData(std::__Cr::basic_string<char, std::__Cr::char_traits<char>, std::__Cr::allocator<char>> const&) const
+>>> referenced by wgt_manifest_handlers.cc:0 (../wrt/cxx_wrapper/wgt_manifest_handlers.cc:0)
+>>>               obj/wrt/cxx_wrapper/libchromium-impl.so.lto.libcxx_wrapper_static_library.a(wgt_manifest_handlers.o at 120).o:(widget_config_create)
+clang++: error: linker command failed with exit code 1 (use -v to see invocation)
+ninja: build stopped: subcommand failed.

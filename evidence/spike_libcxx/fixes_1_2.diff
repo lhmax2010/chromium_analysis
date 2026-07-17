@@ -1,0 +1,44 @@
+diff --git a/packaging/chromium-efl.spec b/packaging/chromium-efl.spec
+index 0fab5304a2ff..44aee76616da 100644
+--- a/packaging/chromium-efl.spec
++++ b/packaging/chromium-efl.spec
+@@ -122,12 +122,14 @@ Source4: org.tizen.next-browser.spec.in
+ %define _tizen_atmos_decoder_enable 1
+ %endif
+ 
++%define __use_bundled_libcxx 1
++
+ %define __use_system_icu 0
+-%if (%{tizen_version} >= 100  || "%{_use_system_icu}" == "1") && "%{?_with_emulator}" != "1"
++%if !0%{?__use_bundled_libcxx} && (%{tizen_version} >= 100  || "%{_use_system_icu}" == "1") && "%{?_with_emulator}" != "1"
+ %define __use_system_icu 1
+ %endif
+ 
+-%if !0%{?__disable_node_v8_component} && !0%{?__use_system_icu}
++%if !0%{?__disable_node_v8_component} && !0%{?__use_system_icu} && !0%{?__use_bundled_libcxx}
+ %error "use_system_icu should be enabled when disable_node_v8_component is false"
+ %endif
+ 
+@@ -716,6 +718,8 @@ fi
+ %else
+   "is_clang=false" \
+ %endif
++  "use_custom_libcxx=%{macro_to_bool __use_bundled_libcxx}" \
++  "use_custom_libcxx_for_host=%{macro_to_bool __use_bundled_libcxx}" \
+ %if "%{?__use_system_icu}" == "1"
+   "use_system_icu=true" \
+ %else
+diff --git a/tizen_src/build/gn_chromiumefl.sh b/tizen_src/build/gn_chromiumefl.sh
+index 54872cd3cbb6..114ecb14ce55 100755
+--- a/tizen_src/build/gn_chromiumefl.sh
++++ b/tizen_src/build/gn_chromiumefl.sh
+@@ -81,6 +81,9 @@ while [[ $# > 0 ]]; do
+     use_system_icu=false)
+       system_deps=("${system_deps[@]/icu/}")
+       ;;
++    use_custom_libcxx=true)
++      system_deps=("${system_deps[@]/jsoncpp/}")
++      ;;
+     is_clang=true)
+       is_clang=true
+       ;;

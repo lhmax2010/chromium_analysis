@@ -1,0 +1,30 @@
+# 6 raw evidence: installed EWK public API header scan
+
+$ nl -ba chromium-efl/packaging/chromium-efl.spec | sed -n '1055,1061p'
+  1055	install -d "%{buildroot}"%{_libdir}/pkgconfig
+  1056	install -m 0644 "%{OUTPUT_FOLDER}"/pkgconfig/chromium-efl.pc "%{buildroot}"%{_libdir}/pkgconfig/
+  1057
+  1058	install -d "%{buildroot}"%{_includedir}/chromium-ewk
+  1059	install -m 0644 tizen_src/ewk/efl_integration/public/*.h "%{buildroot}"%{_includedir}/chromium-ewk/
+  1060
+  1061	install -d "%{buildroot}"%{_includedir}/v8
+
+$ find chromium-efl/tizen_src/ewk/efl_integration/public -maxdepth 1 -type f -name '*.h' | wc -l
+82
+
+$ rg -n --with-filename -g '*.h' -e 'std::' -e '^[[:space:]]*#[[:space:]]*include[[:space:]]*<(string|vector|map|memory)>' chromium-efl/tizen_src/ewk/efl_integration/public | wc -l
+6
+
+$ rg -l -g '*.h' -e 'std::' -e '^[[:space:]]*#[[:space:]]*include[[:space:]]*<(string|vector|map|memory)>' chromium-efl/tizen_src/ewk/efl_integration/public | wc -l
+1
+
+$ rg -n --with-filename -g '*.h' -e 'std::' -e '^[[:space:]]*#[[:space:]]*include[[:space:]]*<(string|vector|map|memory)>' chromium-efl/tizen_src/ewk/efl_integration/public
+chromium-efl/tizen_src/ewk/efl_integration/public/ewk_cookie_parser.h:23:#include <string>
+chromium-efl/tizen_src/ewk/efl_integration/public/ewk_cookie_parser.h:40:  std::string domain;
+chromium-efl/tizen_src/ewk/efl_integration/public/ewk_cookie_parser.h:41:  std::string name;
+chromium-efl/tizen_src/ewk/efl_integration/public/ewk_cookie_parser.h:42:  std::string path;
+chromium-efl/tizen_src/ewk/efl_integration/public/ewk_cookie_parser.h:43:  std::string value;
+chromium-efl/tizen_src/ewk/efl_integration/public/ewk_cookie_parser.h:70:EXPORT_API Eina_Bool ewk_parse_cookie(const std::string& cookie_str,
+
+Scan result: 82 installed public headers, 6 matching lines in 1 header. Because the RPM install glob includes every immediate `public/*.h`, `ewk_cookie_parser.h` is part of the installed public API surface. The expected zero-hit condition is not met.
+

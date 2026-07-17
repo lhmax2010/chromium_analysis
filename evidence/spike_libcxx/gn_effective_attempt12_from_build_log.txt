@@ -1,0 +1,121 @@
+[   42s] ++ echo -Os -fstack-protector -Wno-unused-command-line-argument -Wno-error=unused-but-set-variable -Wno-error=unused-command-line-argument -g2 -gdwarf-4 -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -Wformat -Wformat-security -fmessage-length=0 -frecord-gcc-switches -march=armv7-a -mtune=cortex-a8 -mlittle-endian -mfpu=neon -mfloat-abi=softfp -mthumb -Wp,-D__SOFTFP__ -D_FILE_OFFSET_BITS=64 -g -finline-limit=64 -foptimize-sibling-calls -fno-unwind-tables -fno-exceptions -Os
+[   42s] ++ sed -E s/-O2/-Os/g
+[   42s] + CXXFLAGS='-Os -fstack-protector -Wno-unused-command-line-argument -Wno-error=unused-but-set-variable -Wno-error=unused-command-line-argument -g2 -gdwarf-4 -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -Wformat -Wformat-security -fmessage-length=0 -frecord-gcc-switches -march=armv7-a -mtune=cortex-a8 -mlittle-endian -mfpu=neon -mfloat-abi=softfp -mthumb -Wp,-D__SOFTFP__ -D_FILE_OFFSET_BITS=64 -g -finline-limit=64 -foptimize-sibling-calls -fno-unwind-tables -fno-exceptions -Os'
+[   42s] ++ cd third_party/node/tizen
+[   42s] ++ pwd
+[   42s] + PATH=/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/third_party/node/tizen
+[   42s] + export PYTHONIOENCODING=utf-8
+[   42s] + PYTHONIOENCODING=utf-8
+[   42s] + ccache_gn_arg=
+[   42s] + type ccache
+[   42s] + ./tizen_src/build/gn_chromiumefl.sh is_tizen=true 'lib_ro_root_dir="/usr/share/chromium-efl"' 'app_ro_root_dir="/usr/apps/org.tizen.chromium-efl"' 'app_rw_root_dir="/opt/usr/globalapps/org.tizen.chromium-efl"' 'package_id="org.tizen.chromium-efl"' tizen_version=110 tizen_version_major=11 tizen_version_minor=0 tizen_version_patch=0 exclude_unwind_tables=false enable_mlgo=false use_wayland=true is_clang=true use_custom_libcxx=true use_custom_libcxx_for_host=true use_system_icu=false tizen_release_build=false build_chrome=true tizen_video_assistant=true enable_rust=false enable_ewk_interface=true ozone_auto_platforms=false enable_wrt_js=true enable_process_group=false tizen_atmos_decoder_enable=false 'xwalk_extension_path="/usr/lib/tizen-extensions-crosswalk"' 'xwalk_extension_service_path="/usr/lib/tizen-extensions-crosswalk-service"' enable_platform_api_wrapper=false disable_node_v8_component=false enable_toolkit_views=false
+[   42s] arm
+[   42s] /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/out.chrome.tz_v11.0.standard.armv7l
+[   42s] ** use system lib : replace **
+[   44s] ** use system brotli library **
+[   44s]   From /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/build/linux/unbundle/brotli.gn
+[   44s]   To /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/third_party/brotli/BUILD.gn
+[   44s] ** use system freetype library **
+[   44s]   From /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/build/linux/unbundle/freetype.gn
+[   44s]   To /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/build/config/freetype/freetype.gni
+[   44s] ** use system libpng library **
+[   44s]   From /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/build/linux/unbundle/libpng.gn
+[   44s]   To /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/third_party/libpng/BUILD.gn
+[   44s] ** use system libvpx library **
+[   44s]   From /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/build/linux/unbundle/libvpx.gn
+[   44s]   To /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/third_party/libvpx/BUILD.gn
+[   44s] ** use system libwebp library **
+[   44s]   From /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/build/linux/unbundle/libwebp.gn
+[   44s]   To /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/third_party/libwebp/BUILD.gn
+[   44s] ** use system libxml library **
+[   44s]   From /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/build/linux/unbundle/libxml.gn
+[   44s]   To /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/third_party/libxml/BUILD.gn
+[   44s] ** use system libxslt library **
+[   44s]   From /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/build/linux/unbundle/libxslt.gn
+[   44s]   To /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/third_party/libxslt/BUILD.gn
+[   44s] ** use system opus library **
+[   44s]   From /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/build/linux/unbundle/opus.gn
+[   44s]   To /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/third_party/opus/BUILD.gn
+[   44s] ** use system zlib library **
+[   44s]   From /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/build/linux/unbundle/zlib.gn
+[   44s]   To /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/third_party/zlib/BUILD.gn
+[   44s] GN_ARGUMENTS:
+[   44s]     * gen
+[   44s]     * /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/out.chrome.tz_v11.0.standard.armv7l
+[   44s]     * --root=/home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144
+[   44s]     * --dotfile=/home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/.gn
+[   44s]     * --args=
+[   44s]     * use_libjpeg_turbo=true
+[   44s]     * rtc_enable_sctp=true
+[   44s]     * use_alsa=false
+[   44s]     * use_aura=true
+[   44s]     * use_kerberos=false
+[   44s]     * use_ozone=true
+[   44s]     * ozone_auto_platforms=false
+[   44s]     * toolkit_views=true
+[   44s]     * use_pango=false
+[   44s]     * use_cairo=false
+[   44s]     * enable_plugins=true
+[   44s]     * enable_extensions=true
+[   44s]     * enable_print_preview=false
+[   44s]     * enable_oop_printing=false
+[   44s]     * use_cups=false
+[   44s]     * depth="/home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144"
+[   44s]     * use_libpci=false
+[   44s]     * is_tizen=true
+[   44s]     * gcc_ver="14.2.0"
+[   44s]     * enable_plugins=true
+[   44s]     * python_ver="3.14"
+[   44s]     * is_official_build=true
+[   44s]     * use_xkbcommon=true
+[   44s]     * target_os="tizen"
+[   44s]     * target_sysroot="/"
+[   44s]     * current_cpu="arm"
+[   44s]     * host_cpu="arm"
+[   44s]     * target_cpu="arm"
+[   44s]     * use_real_dbus_clients=false
+[   44s]     * use_nss_certs=true
+[   44s]     * use_system_libwayland=true
+[   44s]     * v8_use_external_startup_data=true
+[   44s]     * ozone_auto_platforms=false
+[   44s]     * host_toolchain="//tizen_src/build/toolchain/tizen:tizen_clang_arm"
+[   44s]     * v8_snapshot_toolchain="//tizen_src/build/toolchain/tizen:tizen_clang_arm"
+[   44s]     * use_lld=true
+[   44s]     * use_thin_lto=true
+[   44s]     * icu_use_data_file=true
+[   44s]     * tizen_multimedia=true
+[   44s]     * proprietary_codecs=true
+[   44s]     * tizen_audio_io=true
+[   44s]     * tizen_web_speech_recognition=true
+[   44s]     * tizen_tbm_support=true
+[   44s]     * ffmpeg_branding="Chrome"
+[   44s]     * arm_use_neon=true
+[   44s]     * lto_level="z"
+[   44s]     * symbol_level=1
+[   44s]     * target_cpu="arm"
+[   44s]     * is_tizen=true
+[   44s]     * lib_ro_root_dir="/usr/share/chromium-efl"
+[   44s]     * app_ro_root_dir="/usr/apps/org.tizen.chromium-efl"
+[   44s]     * app_rw_root_dir="/opt/usr/globalapps/org.tizen.chromium-efl"
+[   44s]     * package_id="org.tizen.chromium-efl"
+[   44s]     * tizen_version=110
+[   44s]     * tizen_version_major=11
+[   44s]     * tizen_version_minor=0
+[   44s]     * tizen_version_patch=0
+[   44s]     * exclude_unwind_tables=false
+[   44s]     * enable_mlgo=false
+[   44s]     * use_wayland=true
+[   44s]     * is_clang=true
+[   44s]     * use_custom_libcxx=true
+[   44s]     * use_custom_libcxx_for_host=true
+[   44s]     * use_system_icu=false
+[   44s]     * tizen_release_build=false
+[   44s]     * build_chrome=true
+[   44s]     * tizen_video_assistant=true
+[   44s]     * enable_rust=false
+[   44s]     * enable_ewk_interface=true
+[   44s]     * ozone_auto_platforms=false
+[   44s]     * enable_wrt_js=true
+[   44s]     * enable_process_group=false
+[   44s]     * tizen_atmos_decoder_enable=false
+[   44s]     * xwalk_extension_path="/usr/lib/tizen-extensions-crosswalk"

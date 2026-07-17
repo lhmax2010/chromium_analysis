@@ -1,0 +1,12 @@
+so_payload_count=20
+elf_payload_count=18
+G1_export_std_namespace_hits=5
+G2_und_std_namespace_hits=0
+G3_needed_libcxx_hits=0
+bridge_payload=chromium-efl-1.1.144-1.armv7l/usr/share/chromium-efl/lib/libwrt-c++wrapper.so
+bridge_whitelist_count=92
+bridge_actual_export_count=92
+bridge_unexpected_export_count=0
+bridge_missing_export_count=0
+bridge_ZNSt_export_count=0
+bridge_NEEDED_libstdcxx_count=1

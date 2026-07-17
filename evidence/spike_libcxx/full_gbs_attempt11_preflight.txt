@@ -1,0 +1,13 @@
+[tracked workcopy changes before attempt11]
+ M packaging/chromium-efl.spec
+ M tizen_src/build/gn_chromiumefl.sh
+ M tizen_src/ewk/chromium-ewk.filter
+ M wrt/BUILD.gn
+ M wrt/cxx_wrapper/BUILD.gn
+[untracked bridge inputs before attempt11]
+wrt/cxx_wrapper/build.sh
+wrt/cxx_wrapper/wrt-c++wrapper.map
+[diff check]
+[bridge input metadata]
+-rwxrwxr-x 1175 wrt/cxx_wrapper/build.sh
+-rw-rw-r-- 72 wrt/cxx_wrapper/wrt-c++wrapper.map

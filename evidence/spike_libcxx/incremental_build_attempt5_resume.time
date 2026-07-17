@@ -1,0 +1,24 @@
+Command exited with non-zero status 1
+	Command being timed: "sudo chroot /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0 su - abuild -c cd /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144 && ninja -j10 -C out.chrome.tz_v11.0.standard.armv7l wrt wrt-service wrt-service-launcher node-runtime ewk-interface chrome_tizen chrome_tizen efl_webprocess chromium-ewk efl_webview_app mini_browser ubrowser"
+	User time (seconds): 6521.83
+	System time (seconds): 468.19
+	Percent of CPU this job got: 716%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 16:15.20
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 4061236
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 4904
+	Minor (reclaiming a frame) page faults: 209681488
+	Voluntary context switches: 2935843
+	Involuntary context switches: 1117564
+	Swaps: 0
+	File system inputs: 4854520
+	File system outputs: 2703544
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 1

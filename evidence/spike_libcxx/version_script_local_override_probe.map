@@ -1,0 +1,10 @@
+{
+  global:
+    ewk_*;
+    extern "C++" {
+      std::*;
+    };
+  local:
+    _ZNSt4__Cr22__libcpp_verbose_abortEPKcz;
+    *;
+};

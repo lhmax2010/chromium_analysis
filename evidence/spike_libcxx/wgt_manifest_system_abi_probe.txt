@@ -1,0 +1,98 @@
+## /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/usr/lib/libmanifest-parser.so
+/home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/usr/lib/libmanifest-parser.so: symbolic link to libmanifest-parser.so.1
+error: cannot open Packages database in /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/home/linhao/.rpmdb
+error: cannot open Packages database in /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/home/linhao/.rpmdb
+error: file /usr/lib/libmanifest-parser.so: No such file or directory
+## /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/usr/lib/libmanifest-parser.so.1
+/home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/usr/lib/libmanifest-parser.so.1: symbolic link to libmanifest-parser.so.1.9.0
+error: cannot open Packages database in /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/home/linhao/.rpmdb
+error: cannot open Packages database in /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/home/linhao/.rpmdb
+error: file /usr/lib/libmanifest-parser.so.1: No such file or directory
+## /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/usr/lib/libmanifest-parser.so.1.9.0
+/home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/usr/lib/libmanifest-parser.so.1.9.0: ELF 32-bit LSB shared object, ARM, EABI5 version 1 (SYSV), dynamically linked, stripped
+error: cannot open Packages database in /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/home/linhao/.rpmdb
+error: cannot open Packages database in /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/home/linhao/.rpmdb
+error: file /usr/lib/libmanifest-parser.so.1.9.0: No such file or directory
+## /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/usr/lib/libwgt-manifest-handlers.so
+/home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/usr/lib/libwgt-manifest-handlers.so: symbolic link to libwgt-manifest-handlers.so.1
+error: cannot open Packages database in /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/home/linhao/.rpmdb
+error: cannot open Packages database in /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/home/linhao/.rpmdb
+error: file /usr/lib/libwgt-manifest-handlers.so: No such file or directory
+   437: 0005a20d   580 FUNC    GLOBAL DEFAULT   10 wgt::parse::WidgetConfigParser::ParseManifest(std::filesystem::__cxx11::path const&)
+   641: 00066b2d    44 FUNC    GLOBAL DEFAULT   10 wgt::parse::AddonInfo::Key[abi:cxx11]()
+  1055: 00059c09     6 FUNC    GLOBAL DEFAULT   10 wgt::parse::WidgetConfigParser::GetManifestData(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const
+  1143: 00060d85    32 FUNC    GLOBAL DEFAULT   10 wgt::parse::WidgetInfo::Key[abi:cxx11]()
+  1440: 0005a451   468 FUNC    GLOBAL DEFAULT   10 wgt::parse::WidgetConfigParser::ParseManifestFromBuffer(char const*, int)
+## /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/usr/lib/libwgt-manifest-handlers.so.1
+/home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/usr/lib/libwgt-manifest-handlers.so.1: symbolic link to libwgt-manifest-handlers.so.1.11.1
+error: cannot open Packages database in /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/home/linhao/.rpmdb
+error: cannot open Packages database in /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/home/linhao/.rpmdb
+error: file /usr/lib/libwgt-manifest-handlers.so.1: No such file or directory
+   437: 0005a20d   580 FUNC    GLOBAL DEFAULT   10 wgt::parse::WidgetConfigParser::ParseManifest(std::filesystem::__cxx11::path const&)
+   641: 00066b2d    44 FUNC    GLOBAL DEFAULT   10 wgt::parse::AddonInfo::Key[abi:cxx11]()
+  1055: 00059c09     6 FUNC    GLOBAL DEFAULT   10 wgt::parse::WidgetConfigParser::GetManifestData(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const
+  1143: 00060d85    32 FUNC    GLOBAL DEFAULT   10 wgt::parse::WidgetInfo::Key[abi:cxx11]()
+  1440: 0005a451   468 FUNC    GLOBAL DEFAULT   10 wgt::parse::WidgetConfigParser::ParseManifestFromBuffer(char const*, int)
+## /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/usr/lib/libwgt-manifest-handlers.so.1.11.1
+/home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/usr/lib/libwgt-manifest-handlers.so.1.11.1: ELF 32-bit LSB shared object, ARM, EABI5 version 1 (SYSV), dynamically linked, stripped
+error: cannot open Packages database in /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/home/linhao/.rpmdb
+error: cannot open Packages database in /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/home/linhao/.rpmdb
+error: file /usr/lib/libwgt-manifest-handlers.so.1.11.1: No such file or directory
+   437: 0005a20d   580 FUNC    GLOBAL DEFAULT   10 wgt::parse::WidgetConfigParser::ParseManifest(std::filesystem::__cxx11::path const&)
+   641: 00066b2d    44 FUNC    GLOBAL DEFAULT   10 wgt::parse::AddonInfo::Key[abi:cxx11]()
+  1055: 00059c09     6 FUNC    GLOBAL DEFAULT   10 wgt::parse::WidgetConfigParser::GetManifestData(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const
+  1143: 00060d85    32 FUNC    GLOBAL DEFAULT   10 wgt::parse::WidgetInfo::Key[abi:cxx11]()
+  1440: 0005a451   468 FUNC    GLOBAL DEFAULT   10 wgt::parse::WidgetConfigParser::ParseManifestFromBuffer(char const*, int)
+## /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/lib/libmanifest-parser.so
+/home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/lib/libmanifest-parser.so: symbolic link to libmanifest-parser.so.1
+error: cannot open Packages database in /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/home/linhao/.rpmdb
+error: cannot open Packages database in /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/home/linhao/.rpmdb
+error: file /lib/libmanifest-parser.so: No such file or directory
+## /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/lib/libmanifest-parser.so.1
+/home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/lib/libmanifest-parser.so.1: symbolic link to libmanifest-parser.so.1.9.0
+error: cannot open Packages database in /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/home/linhao/.rpmdb
+error: cannot open Packages database in /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/home/linhao/.rpmdb
+error: file /lib/libmanifest-parser.so.1: No such file or directory
+## /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/lib/libmanifest-parser.so.1.9.0
+/home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/lib/libmanifest-parser.so.1.9.0: ELF 32-bit LSB shared object, ARM, EABI5 version 1 (SYSV), dynamically linked, stripped
+error: cannot open Packages database in /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/home/linhao/.rpmdb
+error: cannot open Packages database in /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/home/linhao/.rpmdb
+error: file /lib/libmanifest-parser.so.1.9.0: No such file or directory
+## /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/lib/libwgt-manifest-handlers.so
+/home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/lib/libwgt-manifest-handlers.so: symbolic link to libwgt-manifest-handlers.so.1
+error: cannot open Packages database in /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/home/linhao/.rpmdb
+error: cannot open Packages database in /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/home/linhao/.rpmdb
+error: file /lib/libwgt-manifest-handlers.so: No such file or directory
+   437: 0005a20d   580 FUNC    GLOBAL DEFAULT   10 wgt::parse::WidgetConfigParser::ParseManifest(std::filesystem::__cxx11::path const&)
+   641: 00066b2d    44 FUNC    GLOBAL DEFAULT   10 wgt::parse::AddonInfo::Key[abi:cxx11]()
+  1055: 00059c09     6 FUNC    GLOBAL DEFAULT   10 wgt::parse::WidgetConfigParser::GetManifestData(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const
+  1143: 00060d85    32 FUNC    GLOBAL DEFAULT   10 wgt::parse::WidgetInfo::Key[abi:cxx11]()
+  1440: 0005a451   468 FUNC    GLOBAL DEFAULT   10 wgt::parse::WidgetConfigParser::ParseManifestFromBuffer(char const*, int)
+## /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/lib/libwgt-manifest-handlers.so.1
+/home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/lib/libwgt-manifest-handlers.so.1: symbolic link to libwgt-manifest-handlers.so.1.11.1
+error: cannot open Packages database in /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/home/linhao/.rpmdb
+error: cannot open Packages database in /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/home/linhao/.rpmdb
+error: file /lib/libwgt-manifest-handlers.so.1: No such file or directory
+   437: 0005a20d   580 FUNC    GLOBAL DEFAULT   10 wgt::parse::WidgetConfigParser::ParseManifest(std::filesystem::__cxx11::path const&)
+   641: 00066b2d    44 FUNC    GLOBAL DEFAULT   10 wgt::parse::AddonInfo::Key[abi:cxx11]()
+  1055: 00059c09     6 FUNC    GLOBAL DEFAULT   10 wgt::parse::WidgetConfigParser::GetManifestData(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const
+  1143: 00060d85    32 FUNC    GLOBAL DEFAULT   10 wgt::parse::WidgetInfo::Key[abi:cxx11]()
+  1440: 0005a451   468 FUNC    GLOBAL DEFAULT   10 wgt::parse::WidgetConfigParser::ParseManifestFromBuffer(char const*, int)
+## /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/lib/libwgt-manifest-handlers.so.1.11.1
+/home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/lib/libwgt-manifest-handlers.so.1.11.1: ELF 32-bit LSB shared object, ARM, EABI5 version 1 (SYSV), dynamically linked, stripped
+error: cannot open Packages database in /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/home/linhao/.rpmdb
+error: cannot open Packages database in /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/home/linhao/.rpmdb
+error: file /lib/libwgt-manifest-handlers.so.1.11.1: No such file or directory
+   437: 0005a20d   580 FUNC    GLOBAL DEFAULT   10 wgt::parse::WidgetConfigParser::ParseManifest(std::filesystem::__cxx11::path const&)
+   641: 00066b2d    44 FUNC    GLOBAL DEFAULT   10 wgt::parse::AddonInfo::Key[abi:cxx11]()
+  1055: 00059c09     6 FUNC    GLOBAL DEFAULT   10 wgt::parse::WidgetConfigParser::GetManifestData(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const
+  1143: 00060d85    32 FUNC    GLOBAL DEFAULT   10 wgt::parse::WidgetInfo::Key[abi:cxx11]()
+  1440: 0005a451   468 FUNC    GLOBAL DEFAULT   10 wgt::parse::WidgetConfigParser::ParseManifestFromBuffer(char const*, int)
+Name        : wgt-manifest-handlers
+Version     : 1.11.1
+Release     : 1
+Source RPM  : wgt-manifest-handlers-1.11.1-1.src.rpm
+Name        : manifest-parser
+Version     : 1.9.0
+Release     : 1
+Source RPM  : manifest-parser-1.9.0-1.src.rpm

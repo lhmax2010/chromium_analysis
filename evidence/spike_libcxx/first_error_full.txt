@@ -1,0 +1,54 @@
+[ 3309s] FAILED: [code=1] mksnapshot 
+[ 3309s] "python3" "../build/toolchain/gcc_link_wrapper.py" --output="./mksnapshot" -- ../tizen_src/buildtools/llvm-22/bin/clang++ -fuse-ld=lld -Wl,--build-id=sha1 -fPIC -latomic -Wl,-z,noexecstack -Wl,-z,relro -Wl,-z,now -Wl,--icf=all -Wl,--color-diagnostics -Wl,--thinlto-cache-dir=thinlto-cache -Wl,--thinlto-cache-policy=cache_size=10\%:cache_size_bytes=40g:cache_size_files=100000 -flto=thin -Wl,--thinlto-jobs=all -Wl,-mllvm,-import-instr-limit=30 -Wl,-mllvm,-inlinehint-threshold=360 -march=armv7-a -Wl,--undefined-version -Wl,--no-call-graph-profile-sort -no-canonical-prefixes --target=armv7l-tizen-linux-gnueabi -nostdlib++ --sysroot=../../../../../../ -Wl,--lto-O0 -Wl,-O2 -Wl,--gc-sections -Wl,--icf=none -o "./mksnapshot" -Wl,--start-group @"./mksnapshot.rsp" -Wl,--end-group   -ldl -lpthread -lrt -ldlog -licui18n -licuuc -ljsoncpp -lz -Wl,--start-group  -Wl,--end-group 
+[ 3309s] ld.lld: error: undefined symbol: Json::Value::getMemberNames() const
+[ 3309s] >>> referenced by export_json.cc:629 (../third_party/perfetto/src/trace_processor/export_json.cc:629)
+[ 3309s] >>>               obj/third_party/perfetto/src/trace_processor/export_json/mksnapshot.lto.export_json.o:(perfetto::trace_processor::json::ExportJson(perfetto::trace_processor::TraceStorage const*, perfetto::trace_processor::json::OutputWriter*, std::__Cr::function<bool (char const*, char const*, std::__Cr::function<bool (char const*)>*)>, std::__Cr::function<bool (char const*)>, std::__Cr::function<bool (char const*)>))
+[ 3309s] >>> referenced by export_json.cc:432 (../third_party/perfetto/src/trace_processor/export_json.cc:432)
+[ 3309s] >>>               obj/third_party/perfetto/src/trace_processor/export_json/mksnapshot.lto.export_json.o:(perfetto::trace_processor::json::ExportJson(perfetto::trace_processor::TraceStorage const*, perfetto::trace_processor::json::OutputWriter*, std::__Cr::function<bool (char const*, char const*, std::__Cr::function<bool (char const*)>*)>, std::__Cr::function<bool (char const*)>, std::__Cr::function<bool (char const*)>))
+[ 3309s] >>> referenced by export_json.cc:362 (../third_party/perfetto/src/trace_processor/export_json.cc:362)
+[ 3309s] >>>               obj/third_party/perfetto/src/trace_processor/export_json/mksnapshot.lto.export_json.o:(perfetto::trace_processor::json::(anonymous namespace)::JsonExporter::Export())
+[ 3309s] >>> referenced 2 more times
+[ 3309s] 
+[ 3309s] ld.lld: error: undefined symbol: Json::Value::operator[](std::__Cr::basic_string<char, std::__Cr::char_traits<char>, std::__Cr::allocator<char>> const&)
+[ 3309s] >>> referenced by export_json.cc:630 (../third_party/perfetto/src/trace_processor/export_json.cc:630)
+[ 3309s] >>>               obj/third_party/perfetto/src/trace_processor/export_json/mksnapshot.lto.export_json.o:(perfetto::trace_processor::json::ExportJson(perfetto::trace_processor::TraceStorage const*, perfetto::trace_processor::json::OutputWriter*, std::__Cr::function<bool (char const*, char const*, std::__Cr::function<bool (char const*)>*)>, std::__Cr::function<bool (char const*)>, std::__Cr::function<bool (char const*)>))
+[ 3309s] >>> referenced by export_json.cc:630 (../third_party/perfetto/src/trace_processor/export_json.cc:630)
+[ 3309s] >>>               obj/third_party/perfetto/src/trace_processor/export_json/mksnapshot.lto.export_json.o:(perfetto::trace_processor::json::ExportJson(perfetto::trace_processor::TraceStorage const*, perfetto::trace_processor::json::OutputWriter*, std::__Cr::function<bool (char const*, char const*, std::__Cr::function<bool (char const*)>*)>, std::__Cr::function<bool (char const*)>, std::__Cr::function<bool (char const*)>))
+[ 3309s] >>> referenced by export_json.cc:434 (../third_party/perfetto/src/trace_processor/export_json.cc:434)
+[ 3309s] >>>               obj/third_party/perfetto/src/trace_processor/export_json/mksnapshot.lto.export_json.o:(perfetto::trace_processor::json::ExportJson(perfetto::trace_processor::TraceStorage const*, perfetto::trace_processor::json::OutputWriter*, std::__Cr::function<bool (char const*, char const*, std::__Cr::function<bool (char const*)>*)>, std::__Cr::function<bool (char const*)>, std::__Cr::function<bool (char const*)>))
+[ 3309s] >>> referenced 5 more times
+[ 3309s] 
+[ 3309s] ld.lld: error: undefined symbol: Json::Value::Value(std::__Cr::basic_string<char, std::__Cr::char_traits<char>, std::__Cr::allocator<char>> const&)
+[ 3309s] >>> referenced by export_json.cc:466 (../third_party/perfetto/src/trace_processor/export_json.cc:466)
+[ 3309s] >>>               obj/third_party/perfetto/src/trace_processor/export_json/mksnapshot.lto.export_json.o:(perfetto::trace_processor::json::ExportJson(perfetto::trace_processor::TraceStorage const*, perfetto::trace_processor::json::OutputWriter*, std::__Cr::function<bool (char const*, char const*, std::__Cr::function<bool (char const*)>*)>, std::__Cr::function<bool (char const*)>, std::__Cr::function<bool (char const*)>))
+[ 3309s] >>> referenced by export_json.cc:962 (../third_party/perfetto/src/trace_processor/export_json.cc:962)
+[ 3309s] >>>               obj/third_party/perfetto/src/trace_processor/export_json/mksnapshot.lto.export_json.o:(perfetto::trace_processor::json::(anonymous namespace)::JsonExporter::Export())
+[ 3309s] >>> referenced by export_json.cc:945 (../third_party/perfetto/src/trace_processor/export_json.cc:945)
+[ 3309s] >>>               obj/third_party/perfetto/src/trace_processor/export_json/mksnapshot.lto.export_json.o:(perfetto::trace_processor::json::(anonymous namespace)::JsonExporter::Export())
+[ 3309s] >>> referenced 25 more times
+[ 3309s] 
+[ 3309s] ld.lld: error: undefined symbol: Json::Value::asString() const
+[ 3309s] >>> referenced by export_json.cc:817 (../third_party/perfetto/src/trace_processor/export_json.cc:817)
+[ 3309s] >>>               obj/third_party/perfetto/src/trace_processor/export_json/mksnapshot.lto.export_json.o:(perfetto::trace_processor::json::(anonymous namespace)::JsonExporter::Export())
+[ 3309s] >>> referenced by export_json.cc:844 (../third_party/perfetto/src/trace_processor/export_json.cc:844)
+[ 3309s] >>>               obj/third_party/perfetto/src/trace_processor/export_json/mksnapshot.lto.export_json.o:(perfetto::trace_processor::json::(anonymous namespace)::JsonExporter::Export())
+[ 3309s] >>> referenced by export_json.cc:943 (../third_party/perfetto/src/trace_processor/export_json.cc:943)
+[ 3309s] >>>               obj/third_party/perfetto/src/trace_processor/export_json/mksnapshot.lto.export_json.o:(perfetto::trace_processor::json::(anonymous namespace)::JsonExporter::Export())
+[ 3309s] >>> referenced 6 more times
+[ 3309s] 
+[ 3309s] ld.lld: error: undefined symbol: Json::Value::operator[](std::__Cr::basic_string<char, std::__Cr::char_traits<char>, std::__Cr::allocator<char>> const&) const
+[ 3309s] >>> referenced by export_json.cc:363 (../third_party/perfetto/src/trace_processor/export_json.cc:363)
+[ 3309s] >>>               obj/third_party/perfetto/src/trace_processor/export_json/mksnapshot.lto.export_json.o:(perfetto::trace_processor::json::(anonymous namespace)::JsonExporter::Export())
+[ 3309s] >>> referenced by export_json.cc:1498 (../third_party/perfetto/src/trace_processor/export_json.cc:1498)
+[ 3309s] >>>               obj/third_party/perfetto/src/trace_processor/export_json/mksnapshot.lto.export_json.o:(perfetto::trace_processor::json::(anonymous namespace)::JsonExporter::Export())
+[ 3309s] >>> referenced by export_json.cc:1505 (../third_party/perfetto/src/trace_processor/export_json.cc:1505)
+[ 3309s] >>>               obj/third_party/perfetto/src/trace_processor/export_json/mksnapshot.lto.export_json.o:(perfetto::trace_processor::json::(anonymous namespace)::JsonExporter::Export())
+[ 3309s] 
+[ 3309s] ld.lld: error: undefined symbol: icu::UnicodeString::doAppend(std::__Cr::basic_string_view<char16_t, std::__Cr::char_traits<char16_t>>)
+[ 3309s] >>> referenced by unistr.h:3340 (../../../../../../usr/include/unicode/unistr.h:3340)
+[ 3309s] >>>               obj/v8/v8_base_without_compiler/mksnapshot.lto.js-number-format.o:(v8::internal::JSNumberFormat::RoundingIncrement(v8::internal::Isolate*, icu::UnicodeString const&))
+[ 3309s] 
+[ 3309s] ld.lld: error: undefined symbol: icu::UnicodeString::doReplace(int, int, std::__Cr::basic_string_view<char16_t, std::__Cr::char_traits<char16_t>>)
+[ 3309s] >>> referenced by unistr.h:2024 (../../../../../../usr/include/unicode/unistr.h:2024)
+[ 3309s] >>>               obj/v8/v8_base_without_compiler/mksnapshot.lto.js-date-time-format.o:(v8::internal::JSDateTimeFormat::TimeZoneId(v8::internal::Isolate*, icu::TimeZone const&))
+[ 3309s] clang++: error: linker command failed with exit code 1 (use -v to see invocation)

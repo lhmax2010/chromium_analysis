@@ -1,0 +1,29 @@
++ cd /tmp/exclude_libs_probe
++ clang=/home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/tizen_src/buildtools/llvm-22/bin/clang++
++ ar=/home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/tizen_src/buildtools/llvm-22/bin/llvm-ar
++ /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/tizen_src/buildtools/llvm-22/bin/clang++ --target=armv7l-tizen-linux-gnueabi -march=armv7-a -c -fPIC -flto=thin -fvisibility=hidden libcxx_member.cc -o libcxx_member.o
++ /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/tizen_src/buildtools/llvm-22/bin/clang++ --target=armv7l-tizen-linux-gnueabi -march=armv7-a -c -fPIC -flto=thin -fvisibility=hidden consumer.cc -o consumer.o
++ /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/tizen_src/buildtools/llvm-22/bin/llvm-ar rcs libc++.a libcxx_member.o
++ /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/tizen_src/buildtools/llvm-22/bin/clang++ --target=armv7l-tizen-linux-gnueabi -march=armv7-a -shared -fuse-ld=lld -nostdlib -flto=thin consumer.o libc++.a -o before.so
+Can't read /proc/cpuinfo: No such file or directory
++ /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/tizen_src/buildtools/llvm-22/bin/clang++ --target=armv7l-tizen-linux-gnueabi -march=armv7-a -shared -fuse-ld=lld -nostdlib -flto=thin -Wl,--exclude-libs=libc++.a consumer.o libc++.a -o after.so
+Can't read /proc/cpuinfo: No such file or directory
++ echo '[before dynsym]'
+[before dynsym]
++ readelf --dyn-syms -W before.so
+
+Symbol table '.dynsym' contains 4 entries:
+   Num:    Value  Size Type    Bind   Vis      Ndx Name
+     0: 00000000     0 NOTYPE  LOCAL  DEFAULT  UND 
+     1: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND __aeabi_unwind_cpp_pr0
+     2: 00010224    28 FUNC    GLOBAL DEFAULT    7 probe_anchor
+     3: 00010240    20 FUNC    WEAK   DEFAULT    7 _ZNSt4__Cr22__libcpp_verbose_abortEPKcz
++ echo '[after dynsym]'
+[after dynsym]
++ readelf --dyn-syms -W after.so
+
+Symbol table '.dynsym' contains 3 entries:
+   Num:    Value  Size Type    Bind   Vis      Ndx Name
+     0: 00000000     0 NOTYPE  LOCAL  DEFAULT  UND 
+     1: 00000000     0 NOTYPE  GLOBAL DEFAULT  UND __aeabi_unwind_cpp_pr0
+     2: 000101c0    28 FUNC    GLOBAL DEFAULT    6 probe_anchor

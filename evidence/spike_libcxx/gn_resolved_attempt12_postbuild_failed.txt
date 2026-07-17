@@ -1,0 +1,16 @@
+BUILD_ROOT=/home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0
+BUILD_DIR=/home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144
+OUT_DIR=/home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/out.chrome.tz_v11.0.standard.armv7l
+
+[raw args.gn]
+cat: /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/out.chrome.tz_v11.0.standard.armv7l/args.gn: No such file or directory
+
+[command]
+chroot /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0 su - abuild -c 'cd /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144 && tizen_src/buildtools/gn args out.chrome.tz_v11.0.standard.armv7l --list --short'
+
+[resolved args]
+ERROR Not a build directory.
+This command requires an existing build directory. I interpreted your input
+"out.chrome.tz_v11.0.standard.armv7l" as:
+  /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/out.chrome.tz_v11.0.standard.armv7l/
+which doesn't seem to contain a previously-generated build.

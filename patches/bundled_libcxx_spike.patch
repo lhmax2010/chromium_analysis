@@ -1,0 +1,212 @@
+diff --git a/build/config/c++/BUILD.gn b/build/config/c++/BUILD.gn
+index 013d2e5e1bc1..c864ea145f3a 100644
+--- a/build/config/c++/BUILD.gn
++++ b/build/config/c++/BUILD.gn
+@@ -29,6 +29,19 @@ config("runtime_library") {
+     if (!export_libcxxabi_from_executables && !is_win) {
+       defines += [ "_LIBCXXABI_DISABLE_VISIBILITY_ANNOTATIONS" ]
+     }
++
++    # libc++ 21 uses _LIBCPP_OVERRIDABLE_FUNC_VIS for verbose_abort in
++    # addition to allocator entry points. The static libc++ target keeps that
++    # macro default-visible so Chromium's allocator can override new/delete,
++    # which otherwise leaks verbose_abort from every shared library that pulls
++    # it from the archive. Keep archive-provided runtime symbols local while
++    # leaving Chromium-provided allocator symbols unaffected.
++    if (is_tizen && !is_win) {
++      ldflags += [
++        "-Wl,--exclude-libs=libc++.a",
++        "-Wl,--exclude-libs=libc++abi.a",
++      ]
++    }
+   }
+ 
+   # TODO(https://crbug.com/440260716): This can be removed if
+diff --git a/packaging/chromium-efl.spec b/packaging/chromium-efl.spec
+index 0fab5304a2ff..c7bf25ac99ad 100644
+--- a/packaging/chromium-efl.spec
++++ b/packaging/chromium-efl.spec
+@@ -122,12 +122,14 @@ Source4: org.tizen.next-browser.spec.in
+ %define _tizen_atmos_decoder_enable 1
+ %endif
+ 
++%define __use_bundled_libcxx 1
++
+ %define __use_system_icu 0
+-%if (%{tizen_version} >= 100  || "%{_use_system_icu}" == "1") && "%{?_with_emulator}" != "1"
++%if !0%{?__use_bundled_libcxx} && (%{tizen_version} >= 100  || "%{_use_system_icu}" == "1") && "%{?_with_emulator}" != "1"
+ %define __use_system_icu 1
+ %endif
+ 
+-%if !0%{?__disable_node_v8_component} && !0%{?__use_system_icu}
++%if !0%{?__disable_node_v8_component} && !0%{?__use_system_icu} && !0%{?__use_bundled_libcxx}
+ %error "use_system_icu should be enabled when disable_node_v8_component is false"
+ %endif
+ 
+@@ -632,6 +634,12 @@ export BUILD_ARCH=%{ARCHITECTURE}
+ ./tizen_src/platform_api_wrapper/build.sh %{?tizen_profile_name}
+ %endif
+ 
++%if 0%{?__use_bundled_libcxx}
++# Keep the WRT manifest bridge on the platform GCC/libstdc++ ABI side.
++./wrt/cxx_wrapper/build.sh "%{?tizen_profile_name}" "$GN_GENERATOR_OUTPUT" \
++  %{tizen_version_major} %{tizen_version_minor} %{tizen_version_patch}
++%endif
++
+ %if %{__use_clang} == 0
+   ulimit -n 16384
+ %else
+@@ -716,6 +724,8 @@ fi
+ %else
+   "is_clang=false" \
+ %endif
++  "use_custom_libcxx=%{macro_to_bool __use_bundled_libcxx}" \
++  "use_custom_libcxx_for_host=%{macro_to_bool __use_bundled_libcxx}" \
+ %if "%{?__use_system_icu}" == "1"
+   "use_system_icu=true" \
+ %else
+@@ -1236,7 +1246,7 @@ tar -cj -f "%{buildroot}"%{TIZEN_V8_UT_DIR}/v8-test-data.tar.bz2 v8/tools/ v8/te
+   install -m 0755 %{OUTPUT_FOLDER}/libnode-runtime.so             %{buildroot}%{__xwalk_extension_path}
+   install -m 0755 wrt/src/service/node/node-runtime.js            %{buildroot}%{__xwalk_extension_path}
+ %endif
+-%if 0%{?__enable_platform_api_wrapper}
++%if 0%{?__use_bundled_libcxx}
+   install -m 0644 %{OUTPUT_FOLDER}/libwrt-c++wrapper.so           %{buildroot}%{CHROMIUM_LIB_DIR}/lib/
+ %endif
+ 
+@@ -1510,7 +1520,7 @@ rm -f /usr/bin/vpython3
+ %endif
+   %{_bindir}/wrt-client
+   %{_sysconfdir}/profile.d/wrt_env.sh
+-%if 0%{?__enable_platform_api_wrapper}
++%if 0%{?__use_bundled_libcxx}
+   %{CHROMIUM_LIB_DIR}/lib/libwrt-c++wrapper.so
+ %endif
+   %{CHROMIUM_LIB_DIR}/bin/wrt_resources.pak
+diff --git a/tizen_src/build/gn_chromiumefl.sh b/tizen_src/build/gn_chromiumefl.sh
+index 54872cd3cbb6..114ecb14ce55 100755
+--- a/tizen_src/build/gn_chromiumefl.sh
++++ b/tizen_src/build/gn_chromiumefl.sh
+@@ -81,6 +81,9 @@ while [[ $# > 0 ]]; do
+     use_system_icu=false)
+       system_deps=("${system_deps[@]/icu/}")
+       ;;
++    use_custom_libcxx=true)
++      system_deps=("${system_deps[@]/jsoncpp/}")
++      ;;
+     is_clang=true)
+       is_clang=true
+       ;;
+diff --git a/tizen_src/ewk/chromium-ewk.filter b/tizen_src/ewk/chromium-ewk.filter
+index 863bdf56baab..4b904f6434d9 100644
+--- a/tizen_src/ewk/chromium-ewk.filter
++++ b/tizen_src/ewk/chromium-ewk.filter
+@@ -53,5 +53,7 @@
+     SystemLowMemoryHandler;
+     ChromeMainTizen;
+ 
+-  local: *;
++  local:
++    _ZNSt4__Cr22__libcpp_verbose_abortEPKcz;
++    *;
+ };
+diff --git a/wrt/BUILD.gn b/wrt/BUILD.gn
+index fc1976ca6a98..ced90452319f 100644
+--- a/wrt/BUILD.gn
++++ b/wrt/BUILD.gn
+@@ -342,7 +342,7 @@ static_library("wrt_lib") {
+     ":electron_version_header",
+     ":mojo_bindings",
+     ":wrt_packed_resources",
+-    "cxx_wrapper:cxx_wrapper_static_library",
++    "cxx_wrapper",
+     "resources",
+     "//base",
+     "//chrome/browser:lcp_critical_path_predictor_proto",
+diff --git a/wrt/cxx_wrapper/BUILD.gn b/wrt/cxx_wrapper/BUILD.gn
+index 211faef9f4cb..eb845878d56e 100644
+--- a/wrt/cxx_wrapper/BUILD.gn
++++ b/wrt/cxx_wrapper/BUILD.gn
+@@ -1,19 +1,8 @@
+-import("//tizen_src/build/config/tizen_features.gni")
+-
+ config("config") {
+   libs = [ "wrt-c++wrapper" ]
+   lib_dirs = [ root_out_dir ]
+ }
+ 
+-static_library("cxx_wrapper_static_library") {
+-  sources = [ "wgt_manifest_handlers.cc", "wgt_manifest_handlers.h" ]
+-  configs += [ "//tizen_src/build/config:wgt-manifest-handlers" ]
+-
+-  if (tizen_product_tv) {
+-    sources += [ "tv/settings_api.cc", "tv/settings_api.h" ]
+-    configs += [
+-      "//tizen_src/build/config:dlog",
+-      "//tizen_src/build/config:settings-api",
+-    ]
+-  }
++group("cxx_wrapper") {
++  public_configs = [ ":config" ]
+ }
+diff --git a/wrt/cxx_wrapper/build.sh b/wrt/cxx_wrapper/build.sh
+new file mode 100755
+index 000000000000..1bbd4831391d
+--- /dev/null
++++ b/wrt/cxx_wrapper/build.sh
+@@ -0,0 +1,42 @@
++#!/usr/bin/env bash
++set -euo pipefail
++
++profile=${1:-}
++output_dir=${2:?output directory is required}
++version_major=${3:?Tizen major version is required}
++version_minor=${4:?Tizen minor version is required}
++version_patch=${5:?Tizen patch version is required}
++source_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
++
++mkdir -p "$output_dir"
++
++packages=(wgt-manifest-handlers)
++sources=("$source_dir/wgt_manifest_handlers.cc")
++tv_define=
++
++if [[ "$profile" == "tv" ]]; then
++  packages+=(dlog settings-api)
++  sources+=("$source_dir/tv/settings_api.cc")
++  tv_define=-DOS_TIZEN_TV_PRODUCT
++fi
++
++read -r -a package_cflags <<< "$(pkg-config --cflags "${packages[@]}")"
++read -r -a package_libs <<< "$(pkg-config --libs "${packages[@]}")"
++
++gcc \
++  -shared \
++  -std=c++17 \
++  -O2 \
++  -fPIC \
++  -Wl,--no-undefined \
++  -Wl,-soname,libwrt-c++wrapper.so \
++  -Wl,--version-script,"$source_dir/wrt-c++wrapper.map" \
++  -DTIZEN_VERSION_MAJOR="$version_major" \
++  -DTIZEN_VERSION_MINOR="$version_minor" \
++  -DTIZEN_VERSION_PATCH="$version_patch" \
++  ${tv_define:+$tv_define} \
++  "${package_cflags[@]}" \
++  "${sources[@]}" \
++  "${package_libs[@]}" \
++  -lstdc++ \
++  -o "$output_dir/libwrt-c++wrapper.so"
+diff --git a/wrt/cxx_wrapper/wrt-c++wrapper.map b/wrt/cxx_wrapper/wrt-c++wrapper.map
+new file mode 100644
+index 000000000000..11b467b34e80
+--- /dev/null
++++ b/wrt/cxx_wrapper/wrt-c++wrapper.map
+@@ -0,0 +1,7 @@
++{
++  global:
++    widget_config_*;
++    settings_api_*;
++  local:
++    *;
++};

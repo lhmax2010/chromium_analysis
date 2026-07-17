@@ -1,0 +1,7 @@
+## command
+ls: cannot access /usr/bin/node*: No such file or directory
+## rpm
+## spec
+chroot: failed to run command ‘zypper’: No such file or directory
+/home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/third_party/node/tizen/node
+v24.11.1

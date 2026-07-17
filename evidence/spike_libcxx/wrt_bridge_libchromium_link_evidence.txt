@@ -1,0 +1,7 @@
+[live libchromium-impl link command]
+../tizen_src/buildtools/llvm-22/bin/clang++ -shared -Wl,-soname=libchromium-impl.so -Wl,--as-needed -Wl,--no-undefined -Wl,--version-script=/home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/tizen_src/ewk/chromium-ewk.filter -Wl,-rpath=$ORIGIN/ -fuse-ld=lld -Wl,--build-id=sha1 -fPIC -latomic -Wl,-z,noexecstack -Wl,-z,relro -Wl,-z,now -Wl,--icf=all -Wl,--color-diagnostics -Wl,--thinlto-cache-dir=thinlto-cache -Wl,--thinlto-cache-policy=cache_size=10%:cache_size_bytes=40g:cache_size_files=100000 -flto=thin -Wl,--thinlto-jobs=all -Wl,-mllvm,-import-instr-limit=30 -Wl,-mllvm,-inlinehint-threshold=360 -march=armv7-a -Wl,--undefined-version -Wl,--no-call-graph-profile-sort -no-canonical-prefixes --target=armv7l-tizen-linux-gnueabi -Wl,--gc-sections -Wl,-O1 -nostdlib++ --sysroot=../../../../../../ -Wl,--lto-O0 -L/usr/lib/hal -L/usr/usr/lib -L. -o ./libchromium-impl.so @./libchromium-impl.so.rsp 
+[bridge/system WGT libraries in response file]
+Command: rg -o -- '-l(wrt-c\+\+wrapper|wgt-manifest-handlers|manifest-parser)' libchromium-impl.so.rsp
+-lwrt-c++wrapper
+[WRT bridge object absence]
+Command: rg -n 'wgt_manifest_handlers\.o' libchromium-impl.so.rsp

@@ -1,0 +1,9 @@
+[probe source symbols]
+0000000000000010 T std::__Cr::keep_probe()
+0000000000000000 T std::__Cr::__libcpp_verbose_abort(char const*, ...)
+0000000000000020 T ewk_probe
+[probe dynamic exports with exact local override]
+     5: 0000000000001630     6 FUNC    GLOBAL DEFAULT   10 _ZNSt4__Cr10keep_probeEv
+     6: 0000000000001640     6 FUNC    GLOBAL DEFAULT   10 ewk_probe
+[raw namespace-prefix hits]
+     5: 0000000000001630     6 FUNC    GLOBAL DEFAULT   10 _ZNSt4__Cr10keep_probeEv

@@ -1,0 +1,30 @@
+	Command being timed: "taskset -c 0,1 sudo -n chroot /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0 su - abuild -c 
+    set -eux
+    export PATH=/home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/third_party/node/tizen:$PATH
+    cd /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144
+    ./wrt/cxx_wrapper/build.sh '' "$PWD/out.chrome.tz_v11.0.standard.armv7l" 11 0 0
+    tizen_src/buildtools/gn gen out.chrome.tz_v11.0.standard.armv7l --root=/home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144 --dotfile=/home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/.gn
+    tizen_src/buildtools/gn args out.chrome.tz_v11.0.standard.armv7l --list --short
+  "
+	User time (seconds): 37.03
+	System time (seconds): 7.86
+	Percent of CPU this job got: 36%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 2:01.75
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 3188240
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 36
+	Minor (reclaiming a frame) page faults: 2359232
+	Voluntary context switches: 160419
+	Involuntary context switches: 53473
+	Swaps: 0
+	File system inputs: 2270048
+	File system outputs: 172504
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

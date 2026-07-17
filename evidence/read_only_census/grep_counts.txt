@@ -1,0 +1,9 @@
+pattern	matching_lines
+is_clang	17
+use_custom_libcxx	0
+clang_base_path	3
+clang_use_chrome_plugins	0
+use_lld	2
+stdlib	36
+libc\+\+	11
+TOTAL_UNION	69

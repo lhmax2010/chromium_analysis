@@ -1,0 +1,19 @@
+[attempt9 isolated service limits]
+Slice=chromium-libcxx.slice
+CPUWeight=20
+CPUQuotaPerSecUSec=2s
+IOWeight=20
+MemoryMax=12884901888
+MemorySwapMax=0
+Nice=10
+ActiveState=active
+SubState=running
+[host memory snapshot at build start/current]
+               total        used        free      shared  buff/cache   available
+Mem:     33072955392 18916253696   557969408   798777344 14877483008 14156701696
+Swap:     4294963200  4294410240      552960
+[service runtime snapshot]
+MemoryCurrent=1439842304
+MemoryPeak=1576390656
+CPUUsageNSec=36712923000
+TasksCurrent=6

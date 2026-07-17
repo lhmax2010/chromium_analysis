@@ -1,0 +1,32 @@
+# Never commit build products or extracted RPM trees.
+runs/**/rpm_extract/
+runs/**/*_rpm_extract/
+runs/**/*.rpm
+runs/**/*.src.rpm
+runs/**/*.so
+runs/**/*.so.*
+runs/**/*.a
+runs/**/*.o
+runs/**/*.tar
+runs/**/*.tar.*
+runs/**/*.zip
+
+# Binary probes/artifacts are never part of the portable evidence history.
+*.rpm
+*.src.rpm
+*.so
+*.so.*
+*.a
+*.o
+*.tar
+*.tar.*
+*.zip
+
+# Local Chromium/GBS work areas are intentionally outside this repository.
+chromium-efl*/
+GBS-ROOT*/
+
+# Editor and transient files.
+*~
+*.swp
+.DS_Store

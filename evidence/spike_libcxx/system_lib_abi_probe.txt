@@ -1,0 +1,56 @@
+[commands]
+readelf --dyn-syms -W /usr/lib/libjsoncpp.so | c++filt | grep Json::Value
+readelf --dyn-syms -W /usr/lib/libicui18n.so | c++filt | grep UnicodeString::doAppend/doReplace
+
+[jsoncpp relevant defined symbols]
+    84: 00017123    80 FUNC    GLOBAL DEFAULT   10 Json::Value::Value(Json::Value&&)
+    86: 0001700b    22 FUNC    GLOBAL DEFAULT   10 Json::Value::Value(bool)
+    88: 00016de1    24 FUNC    GLOBAL DEFAULT   10 Json::Value::Value(double)
+    91: 00016d7f    26 FUNC    GLOBAL DEFAULT   10 Json::Value::Value(int)
+    93: 00016d99    24 FUNC    GLOBAL DEFAULT   10 Json::Value::Value(unsigned int)
+    98: 00016db1    24 FUNC    GLOBAL DEFAULT   10 Json::Value::Value(long long)
+    99: 00016dc9    24 FUNC    GLOBAL DEFAULT   10 Json::Value::Value(unsigned long long)
+   112: 00018d31   136 FUNC    GLOBAL DEFAULT   10 Json::Value::operator[](int) const
+   113: 00018bc5   364 FUNC    GLOBAL DEFAULT   10 Json::Value::operator[](unsigned int) const
+   125: 00017021    52 FUNC    GLOBAL DEFAULT   10 Json::Value::Value(Json::Value const&)
+   128: 000194d9   120 FUNC    GLOBAL DEFAULT   10 Json::Value::operator[](char const*) const
+   132: 00016cad   128 FUNC    GLOBAL DEFAULT   10 Json::Value::Value(Json::ValueType)
+   147: 0001700b    22 FUNC    GLOBAL DEFAULT   10 Json::Value::Value(bool)
+   149: 00016de1    24 FUNC    GLOBAL DEFAULT   10 Json::Value::Value(double)
+   152: 00016d7f    26 FUNC    GLOBAL DEFAULT   10 Json::Value::Value(int)
+   154: 00016d99    24 FUNC    GLOBAL DEFAULT   10 Json::Value::Value(unsigned int)
+   162: 00016db1    24 FUNC    GLOBAL DEFAULT   10 Json::Value::Value(long long)
+   163: 00016dc9    24 FUNC    GLOBAL DEFAULT   10 Json::Value::Value(unsigned long long)
+   248: 00016ff3    24 FUNC    GLOBAL DEFAULT   10 Json::Value::Value(Json::StaticString const&)
+   250: 000177c9   420 FUNC    GLOBAL DEFAULT   10 Json::Value::asString[abi:cxx11]() const
+   263: 000195e1     6 FUNC    GLOBAL DEFAULT   10 Json::Value::operator[](Json::StaticString const&)
+   317: 00016fbb    56 FUNC    GLOBAL DEFAULT   10 Json::Value::Value(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+   355: 00016f81    58 FUNC    GLOBAL DEFAULT   10 Json::Value::Value(char const*, char const*)
+   376: 00016fbb    56 FUNC    GLOBAL DEFAULT   10 Json::Value::Value(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+   377: 00016df9   192 FUNC    GLOBAL DEFAULT   10 Json::Value::Value(char const*)
+   404: 000195d7    10 FUNC    GLOBAL DEFAULT   10 Json::Value::operator[](std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+   411: 00016ff3    24 FUNC    GLOBAL DEFAULT   10 Json::Value::Value(Json::StaticString const&)
+   418: 00019551   108 FUNC    GLOBAL DEFAULT   10 Json::Value::operator[](std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const
+   425: 00016f81    58 FUNC    GLOBAL DEFAULT   10 Json::Value::Value(char const*, char const*)
+   441: 000195bd    26 FUNC    GLOBAL DEFAULT   10 Json::Value::operator[](char const*)
+   464: 00018b3d   136 FUNC    GLOBAL DEFAULT   10 Json::Value::operator[](int)
+   465: 0001891d   544 FUNC    GLOBAL DEFAULT   10 Json::Value::operator[](unsigned int)
+   468: 00017021    52 FUNC    GLOBAL DEFAULT   10 Json::Value::Value(Json::Value const&)
+   486: 00016df9   192 FUNC    GLOBAL DEFAULT   10 Json::Value::Value(char const*)
+   502: 00017123    80 FUNC    GLOBAL DEFAULT   10 Json::Value::Value(Json::Value&&)
+   529: 00016cad   128 FUNC    GLOBAL DEFAULT   10 Json::Value::Value(Json::ValueType)
+   544: 00019cb5   444 FUNC    GLOBAL DEFAULT   10 Json::Value::getMemberNames[abi:cxx11]() const
+
+[ICU relevant defined symbols]
+   981: 000bbad9    46 FUNC    GLOBAL DEFAULT   10 icu::UnicodeString::doAppend(std::basic_string_view<char16_t, std::char_traits<char16_t> >)
+  1226: 000bb72d   732 FUNC    GLOBAL DEFAULT   10 icu::UnicodeString::doReplace(int, int, char16_t const*, int, int)
+  2533: 000bba57    54 FUNC    GLOBAL DEFAULT   10 icu::UnicodeString::doReplace(int, int, std::basic_string_view<char16_t, std::char_traits<char16_t> >)
+  3299: 000b9b95   476 FUNC    GLOBAL DEFAULT   10 icu::UnicodeString::doAppend(char16_t const*, int, int)
+  3622: 000bba09    78 FUNC    GLOBAL DEFAULT   10 icu::UnicodeString::doReplace(int, int, icu::UnicodeString const&, int, int)
+  3743: 000bba8d    76 FUNC    GLOBAL DEFAULT   10 icu::UnicodeString::doAppend(icu::UnicodeString const&, int, int)
+    16: 00000000     0 FUNC    GLOBAL DEFAULT  UND icu::UnicodeString::doReplace(int, int, icu::UnicodeString const&, int, int)
+    77: 00000000     0 FUNC    GLOBAL DEFAULT  UND icu::UnicodeString::doReplace(int, int, char16_t const*, int, int)
+   134: 00000000     0 FUNC    GLOBAL DEFAULT  UND icu::UnicodeString::doAppend(std::basic_string_view<char16_t, std::char_traits<char16_t> >)
+   321: 00000000     0 FUNC    GLOBAL DEFAULT  UND icu::UnicodeString::doAppend(char16_t const*, int, int)
+   536: 00000000     0 FUNC    GLOBAL DEFAULT  UND icu::UnicodeString::doAppend(icu::UnicodeString const&, int, int)
+   687: 00000000     0 FUNC    GLOBAL DEFAULT  UND icu::UnicodeString::doReplace(int, int, std::basic_string_view<char16_t, std::char_traits<char16_t> >)

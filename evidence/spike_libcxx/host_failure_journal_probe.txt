@@ -1,0 +1,73 @@
+Jul 14 23:36:43 linhao-linux sudo[625754]:   linhao : PWD=/home/linhao/Toolchain/development/MLGO/llvm_optimize_docs/codex-verification-r4-results-20260714/worktrees/llvm-r4-gbs-package ; USER=root ; COMMAND=/bin/echo -n
+Jul 14 23:36:43 linhao-linux sudo[625754]: pam_unix(sudo:session): session opened for user root(uid=0) by linhao(uid=1000)
+Jul 14 23:36:43 linhao-linux sudo[625754]: pam_unix(sudo:session): session closed for user root
+Jul 14 23:39:43 linhao-linux sudo[630892]:   linhao : PWD=/home/linhao/Toolchain/development/MLGO/llvm_optimize_docs/codex-verification-r4-results-20260714/worktrees/llvm-r4-gbs-package ; USER=root ; COMMAND=/bin/echo -n
+Jul 14 23:39:43 linhao-linux sudo[630892]: pam_unix(sudo:session): session opened for user root(uid=0) by linhao(uid=1000)
+Jul 14 23:39:43 linhao-linux sudo[630892]: pam_unix(sudo:session): session closed for user root
+Jul 14 23:42:46 linhao-linux sudo[636447]:   linhao : PWD=/home/linhao/Toolchain/development/MLGO/llvm_optimize_docs/codex-verification-r4-results-20260714/worktrees/llvm-r4-gbs-package ; USER=root ; COMMAND=/bin/echo -n
+Jul 14 23:42:46 linhao-linux sudo[636447]: pam_unix(sudo:session): session opened for user root(uid=0) by linhao(uid=1000)
+Jul 14 23:42:46 linhao-linux sudo[636447]: pam_unix(sudo:session): session closed for user root
+Jul 14 23:46:42 linhao-linux sudo[636481]:   linhao : PWD=/home/linhao/Toolchain/development/MLGO/llvm_optimize_docs/codex-verification-r4-results-20260714/worktrees/llvm-r4-gbs-package ; USER=root ; COMMAND=/bin/echo -n
+Jul 14 23:46:43 linhao-linux sudo[636481]: pam_unix(sudo:session): session opened for user root(uid=0) by linhao(uid=1000)
+Jul 14 23:46:44 linhao-linux sudo[636481]: pam_unix(sudo:session): session closed for user root
+Jul 14 23:50:43 linhao-linux sudo[636515]:   linhao : PWD=/home/linhao/Toolchain/development/MLGO/llvm_optimize_docs/codex-verification-r4-results-20260714/worktrees/llvm-r4-gbs-package ; USER=root ; COMMAND=/bin/echo -n
+Jul 14 23:50:47 linhao-linux sudo[636515]: pam_unix(sudo:session): session opened for user root(uid=0) by linhao(uid=1000)
+Jul 14 23:50:48 linhao-linux sudo[636515]: pam_unix(sudo:session): session closed for user root
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: systemd-oomd killed 81 process(es) in this unit.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Failed to kill control group /user.slice/user-1000.slice/user@1000.service/app.slice/snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope, ignoring: Operation not permitted
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Killing process 217612 (code) with signal SIGKILL.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Killing process 217617 (code) with signal SIGKILL.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Killing process 218022 (code) with signal SIGKILL.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Killing process 218057 (code) with signal SIGKILL.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Killing process 218073 (code) with signal SIGKILL.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Killing process 282681 (code) with signal SIGKILL.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Killing process 282703 (code) with signal SIGKILL.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Killing process 282728 (code) with signal SIGKILL.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Killing process 286875 (cloudcode_cli) with signal SIGKILL.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Killing process 289102 (code) with signal SIGKILL.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Killing process 289142 (codex) with signal SIGKILL.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Killing process 289146 (code) with signal SIGKILL.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Killing process 289801 (cloudcode_cli) with signal SIGKILL.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Killing process 294171 (code) with signal SIGKILL.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Killing process 294231 (claude) with signal SIGKILL.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Killing process 294347 (claude) with signal SIGKILL.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Killing process 294485 (code) with signal SIGKILL.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Killing process 410232 (code) with signal SIGKILL.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Killing process 434050 (qemu-arm) with signal SIGKILL.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Killing process 532004 (gbs) with signal SIGKILL.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Killing process 532224 (depanneur) with signal SIGKILL.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Killing process 538668 (perl) with signal SIGKILL.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Killing process 593429 (ninja) with signal SIGKILL.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Killing process 630857 (gbs) with signal SIGKILL.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Killing process 630922 (depanneur) with signal SIGKILL.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Killing process 630926 (gbs) with signal SIGKILL.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Killing process 634118 (clang++) with signal SIGKILL.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Killing process 634124 (clang++) with signal SIGKILL.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Killing process 634126 (clang++) with signal SIGKILL.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Killing process 634132 (clang++) with signal SIGKILL.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Killing process 634137 (clang++) with signal SIGKILL.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Killing process 634139 (clang++) with signal SIGKILL.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Killing process 634163 (clang++) with signal SIGKILL.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Killing process 634169 (clang++) with signal SIGKILL.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Killing process 634319 (clang++) with signal SIGKILL.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Killing process 635846 (clang++) with signal SIGKILL.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Killing process 635999 (git) with signal SIGKILL.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Killing process 636313 (x86_64-tizen-li) with signal SIGKILL.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Killing process 636331 (code) with signal SIGKILL.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Killing process 636332 (code) with signal SIGKILL.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Killing process 636461 (rg) with signal SIGKILL.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Killing process 283042 (cloudcode_cli) with signal SIGKILL.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Killing process 286110 (code) with signal SIGKILL.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Killing process 286132 (code) with signal SIGKILL.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Killing process 289079 (code) with signal SIGKILL.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Killing process 301196 (codex-code-mode) with signal SIGKILL.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Killing process 218152 (code) with signal SIGKILL.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Killing process 291174 (code) with signal SIGKILL.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Killing process 373570 (codex-code-mode) with signal SIGKILL.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Killing process 218531 (code) with signal SIGKILL.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Killing process 217667 (chrome_crashpad) with signal SIGKILL.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Killing process 282725 (codex) with signal SIGKILL.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Killing process 286171 (codex) with signal SIGKILL.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Failed to kill control group /user.slice/user-1000.slice/user@1000.service/app.slice/snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope, ignoring: Operation not permitted
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Failed with result 'oom-kill'.
+Jul 14 23:51:30 linhao-linux systemd[2504]: snap.code.code-5f351303-5b92-45ac-a395-52ae768b0976.scope: Consumed 1d 14h 28min 43.043s CPU time, 23.7G memory peak, 2.0G memory swap peak.

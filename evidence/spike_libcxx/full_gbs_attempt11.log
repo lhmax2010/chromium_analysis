@@ -1,0 +1,1069 @@
+info: generate repositories ...
+warning: No local package repository for arch armv7l
+info: build conf has been downloaded at:
+      /var/tmp/linhao-gbs/tizen_unified_standard.conf
+[32minfo: [0mstart building packages from: /home/linhao/Toolchain/plan_evaluation/chromium-efl-spike-libcxx-wt (git)
+2026-07-15 20:18 +0800
+gbs 2.0.6
+[32minfo: [0mprepare sources...
+[32minfo: [0mstart export source from: /home/linhao/Toolchain/plan_evaluation/chromium-efl-spike-libcxx-wt ...
+info: the following untracked files would be included:
+   wrt/cxx_wrapper/build.sh
+   wrt/cxx_wrapper/wrt-c++wrapper.map
+info: the following uncommitted changes would be included:
+   packaging/chromium-efl.spec
+   tizen_src/build/gn_chromiumefl.sh
+   tizen_src/ewk/chromium-ewk.filter
+   wrt/BUILD.gn
+   wrt/cxx_wrapper/BUILD.gn
+info: Creating (native) source archive chromium-efl-1.1.144.tar.gz from '3edd3ccfc2e710cb6aa38201c78b8774ad1fbc8c'
+info: package files have been exported to:
+     /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/sources/tizen_unified_standard/chromium-efl-1.1.144-1
+[32minfo: [0mcleaning up local repo: /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/repos/tizen_unified_standard/armv7l/RPMS ...
+[32minfo: [0mupdating local repo ...
+[32minfo: [0mretrieving repo metadata...
+[32minfo: [0mparsing package data...
+[32minfo: [0mbuilding repo metadata ...
+[32minfo: [0mresolving skipped packages ...
+[32minfo: [0mpackage dependency resolving ...
+[32minfo: [0mthere is no circle in 1 packages
+[32minfo: [0m*** [1/1] building chromium-efl-1.1.144-1 armv7l tizen_unified_standard (worker: 0) ***
+logging output to /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/.build.log...
+[    0s] on X86_64, no limit mem size
+[    0s] Using BUILD_ROOT=/home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0
+[    0s] Using BUILD_ARCH=armv7l:armv7el:armv6l:armv5tejl:armv5tel:armv5l:armv4tl:armv4l:armv3l:noarch
+[    0s] 
+[    0s] 
+[    0s] linhao-linux started "build chromium-efl.spec" at Wed Jul 15 12:32:17 UTC 2026.
+[    0s] 
+[    0s] 
+[    0s] processing recipe /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/sources/tizen_unified_standard/chromium-efl-1.1.144-1/chromium-efl.spec ...
+[    0s] init_buildsystem --configdir /usr/lib/build/configs --cachedir /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/cache --define _costomized_smp_mflags -j2 --repository /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/repos/tizen_unified_standard/armv7l/RPMS --repository https://download.tizen.org/snapshots/TIZEN/Tizen/Tizen-Base-Toolchain/reference/repos/standard/packages/ --repository https://download.tizen.org/snapshots/TIZEN/Tizen/Tizen-Unified-Toolchain/reference/repos/standard/packages/ /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/sources/tizen_unified_standard/chromium-efl-1.1.144-1/chromium-efl.spec ...
+[    1s] initializing /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/.srcfiles.cache ...
+[    1s] /usr/lib/build/createdirdeps --oldfile /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/.srcfiles.cache /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/repos/tizen_unified_standard/armv7l/RPMS
+[    2s] /usr/lib/build/createrepomddeps --cachedir=/home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/cache https://download.tizen.org/snapshots/TIZEN/Tizen/Tizen-Base-Toolchain/reference/repos/standard/packages/
+[    3s] /usr/lib/build/createrepomddeps --cachedir=/home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/cache https://download.tizen.org/snapshots/TIZEN/Tizen/Tizen-Unified-Toolchain/reference/repos/standard/packages/
+[    4s] expanding package dependencies...
+[    5s] Warning: spec file parser line 567: can't expand %(...)
+[    5s] Warning: spec file parser line 692: can't expand %(...)
+[    5s] Warning: spec file parser line 693: can't expand %(...)
+[    5s] Warning: spec file parser line 728: can't expand %(...)
+[    5s] Warning: spec file parser line 729: can't expand %(...)
+[    5s] Warning: spec file parser line 735: can't expand %(...)
+[    5s] Warning: spec file parser line 742: can't expand %(...)
+[    5s] Warning: spec file parser line 753: can't expand %(...)
+[    5s] Warning: spec file parser line 754: can't expand %(...)
+[    5s] Warning: spec file parser line 755: can't expand %(...)
+[    5s] Warning: spec file parser line 772: can't expand %(...)
+[    5s] Warning: spec file parser line 773: can't expand %(...)
+[    5s] Warning: spec file parser line 774: can't expand %(...)
+[    5s] copying qemu
+[    5s] 
+[    5s] registering binfmt handlers for cross build
+[    5s] calculating packages to download...
+[   25s] reordering...cycle: gio-branding-upstream -> libgio
+[   25s]   breaking dependency libgio -> gio-branding-upstream
+[   25s] cycle: girepository -> libgirepository
+[   25s]   breaking dependency libgirepository -> girepository
+[   25s] cycle: pkgmgr-info -> pkgmgr-info-parser
+[   25s]   breaking dependency pkgmgr-info -> pkgmgr-info-parser
+[   25s] cycle: ecore-core -> efl
+[   25s]   breaking dependency efl -> ecore-core
+[   25s] cycle: efl -> ecore-con
+[   25s]   breaking dependency ecore-con -> efl
+[   25s] cycle: ecore-core -> efl -> ecore-con
+[   25s]   breaking dependency ecore-con -> ecore-core
+[   25s] cycle: efl -> ecore-con -> eet
+[   25s]   breaking dependency ecore-con -> eet
+[   25s] cycle: efl -> ecore-con -> eina
+[   25s]   breaking dependency efl -> ecore-con
+[   25s] cycle: efl -> eina
+[   25s]   breaking dependency efl -> eina
+[   25s] cycle: efl -> eo
+[   25s]   breaking dependency eo -> efl
+[   25s] cycle: efl -> eo -> eina
+[   25s]   breaking dependency eo -> eina
+[   25s] cycle: ecore-evas -> ecore-input-evas -> evas
+[   25s]   breaking dependency ecore-evas -> ecore-input-evas
+[   25s] cycle: ecore-evas -> evas
+[   25s]   breaking dependency evas -> ecore-evas
+[   25s] cycle: libkey-manager-client -> key-manager
+[   25s]   breaking dependency key-manager -> libkey-manager-client
+[   25s] cycle: libsecurity-manager-client -> security-manager
+[   25s]   breaking dependency security-manager -> libsecurity-manager-client
+[   25s] cycle: security-manager -> security-manager-policy
+[   25s]   breaking dependency security-manager -> security-manager-policy
+[   25s] cycle: glibc-devel -> libxcrypt-devel
+[   25s]   breaking dependency libxcrypt-devel -> glibc-devel
+[   25s] cycle: libalarm -> alarm-server
+[   25s]   breaking dependency alarm-server -> libalarm
+[   25s] cycle: xmlsec1-openssl -> xmlsec1
+[   25s]   breaking dependency xmlsec1-openssl -> xmlsec1
+[   25s] cycle: ecore-devel -> ecore-audio-devel
+[   25s]   breaking dependency ecore-devel -> ecore-audio-devel
+[   25s] cycle: ecore-devel -> ecore-buffer-devel
+[   25s]   breaking dependency ecore-devel -> ecore-buffer-devel
+[   25s] cycle: ecore-devel -> ecore-con-devel
+[   25s]   breaking dependency ecore-devel -> ecore-con-devel
+[   25s] cycle: ecore-devel -> ecore-core-devel
+[   25s]   breaking dependency ecore-devel -> ecore-core-devel
+[   25s] cycle: ecore-devel -> ecore-evas-devel
+[   25s]   breaking dependency ecore-devel -> ecore-evas-devel
+[   25s] cycle: ecore-devel -> ecore-file-devel
+[   25s]   breaking dependency ecore-devel -> ecore-file-devel
+[   25s] cycle: ecore-devel -> ecore-imf-devel
+[   25s]   breaking dependency ecore-devel -> ecore-imf-devel
+[   25s] cycle: ecore-devel -> ecore-imf-evas-devel
+[   25s]   breaking dependency ecore-imf-evas-devel -> ecore-devel
+[   25s] cycle: ecore-devel -> ecore-imf-evas-devel -> ecore-imf-devel
+[   25s]   breaking dependency ecore-devel -> ecore-imf-evas-devel
+[   25s] cycle: ecore-devel -> ecore-input-devel
+[   25s]   breaking dependency ecore-devel -> ecore-input-devel
+[   25s] cycle: ecore-devel -> ecore-input-evas-devel
+[   25s]   breaking dependency ecore-input-evas-devel -> ecore-devel
+[   25s] cycle: ecore-devel -> ecore-input-evas-devel -> ecore-input-devel
+[   25s]   breaking dependency ecore-input-evas-devel -> ecore-input-devel
+[   25s] cycle: ecore-devel -> ecore-input-evas-devel -> ector-devel -> eet-devel -> efl-devel
+[   25s]   breaking dependency efl-devel -> ecore-devel
+[   25s] cycle: ecore-devel -> ecore-input-evas-devel -> ector-devel -> eet-devel -> efl-devel -> ecore-con-devel
+[   25s]   breaking dependency efl-devel -> ecore-con-devel
+[   25s] cycle: ecore-devel -> ecore-input-evas-devel -> ector-devel -> eet-devel -> efl-devel -> ecore-evas-devel
+[   25s]   breaking dependency efl-devel -> ecore-evas-devel
+[   25s] cycle: ecore-devel -> ecore-input-evas-devel -> ector-devel -> eet-devel -> efl-devel -> ecore-file-devel
+[   25s]   breaking dependency efl-devel -> ecore-file-devel
+[   25s] cycle: ecore-devel -> ecore-input-evas-devel -> ector-devel -> eet-devel -> efl-devel -> ecore-input-devel
+[   25s]   breaking dependency efl-devel -> ecore-input-devel
+[   25s] cycle: ecore-devel -> ecore-input-evas-devel -> ector-devel -> eet-devel -> efl-devel -> ecore-wl2-devel
+[   25s]   breaking dependency ecore-wl2-devel -> ecore-devel
+[   25s] cycle: ecore-devel -> ecore-input-evas-devel -> ector-devel -> eet-devel -> efl-devel -> ecore-wl2-devel -> ecore-file-devel
+[   25s]   breaking dependency ecore-wl2-devel -> ecore-file-devel
+[   25s] cycle: ecore-devel -> ecore-input-evas-devel -> ector-devel -> eet-devel -> efl-devel -> ecore-wl2-devel -> ecore-input-devel
+[   25s]   breaking dependency ecore-wl2-devel -> ecore-input-devel
+[   25s] cycle: eet-devel -> efl-devel -> ecore-wl2-devel
+[   25s]   breaking dependency efl-devel -> ecore-wl2-devel
+[   25s] cycle: ector-devel -> eet-devel -> efl-devel
+[   25s]   breaking dependency efl-devel -> ector-devel
+[   25s] cycle: elementary-devel -> ecore-devel -> ecore-input-evas-devel -> ector-devel -> eet-devel -> efl-devel
+[   25s]   breaking dependency elementary-devel -> ecore-devel
+[   25s] cycle: elementary-devel -> ecore-con-devel -> ecore-devel -> ecore-input-evas-devel -> ector-devel -> eet-devel -> efl-devel
+[   25s]   breaking dependency elementary-devel -> ecore-con-devel
+[   25s] cycle: elementary-devel -> ecore-evas-devel -> ecore-devel -> ecore-input-evas-devel -> ector-devel -> eet-devel -> efl-devel
+[   25s]   breaking dependency elementary-devel -> ecore-evas-devel
+[   25s] cycle: elementary-devel -> ecore-file-devel -> ecore-devel -> ecore-input-evas-devel -> ector-devel -> eet-devel -> efl-devel
+[   25s]   breaking dependency elementary-devel -> ecore-file-devel
+[   25s] cycle: elementary-devel -> ecore-imf-devel -> ecore-devel -> ecore-input-evas-devel -> ector-devel -> eet-devel -> efl-devel
+[   25s]   breaking dependency elementary-devel -> ecore-imf-devel
+[   25s] cycle: elementary-devel -> ecore-input-devel -> ecore-devel -> ecore-input-evas-devel -> ector-devel -> eet-devel -> efl-devel
+[   25s]   breaking dependency elementary-devel -> ecore-input-devel
+[   25s] cycle: elementary-devel -> ecore-wl2-devel -> eet-devel -> efl-devel
+[   25s]   breaking dependency elementary-devel -> ecore-wl2-devel
+[   25s] cycle: elementary-devel -> ector-devel -> eet-devel -> efl-devel
+[   25s]   breaking dependency elementary-devel -> ector-devel
+[   25s] cycle: elementary-devel -> edje-devel -> ecore-devel -> ecore-input-evas-devel -> ector-devel -> eet-devel -> efl-devel
+[   25s]   breaking dependency edje-devel -> ecore-devel
+[   25s] cycle: elementary-devel -> edje-devel -> ecore-audio-devel -> ecore-devel -> ecore-input-evas-devel -> ector-devel -> eet-devel -> efl-devel
+[   25s]   breaking dependency edje-devel -> ecore-audio-devel
+[   25s] cycle: elementary-devel -> edje-devel -> ecore-evas-devel -> ecore-devel -> ecore-input-evas-devel -> ector-devel -> eet-devel -> efl-devel
+[   25s]   breaking dependency edje-devel -> ecore-evas-devel
+[   25s] cycle: elementary-devel -> edje-devel -> ecore-file-devel -> ecore-devel -> ecore-input-evas-devel -> ector-devel -> eet-devel -> efl-devel
+[   25s]   breaking dependency edje-devel -> ecore-file-devel
+[   25s] cycle: elementary-devel -> edje-devel -> ecore-imf-devel -> ecore-devel -> ecore-input-evas-devel -> ector-devel -> eet-devel -> efl-devel
+[   25s]   breaking dependency edje-devel -> ecore-imf-devel
+[   25s] cycle: elementary-devel -> edje-devel -> ecore-imf-evas-devel -> ecore-imf-devel -> ecore-devel -> ecore-input-evas-devel -> ector-devel -> eet-devel -> efl-devel
+[   25s]   breaking dependency edje-devel -> ecore-imf-evas-devel
+[   25s] cycle: elementary-devel -> edje-devel -> ecore-input-devel -> ecore-devel -> ecore-input-evas-devel -> ector-devel -> eet-devel -> efl-devel
+[   25s]   breaking dependency elementary-devel -> edje-devel
+[   25s] cycle: elementary-devel -> eet-devel -> efl-devel
+[   25s]   breaking dependency elementary-devel -> eet-devel
+[   25s] cycle: elementary-devel -> efl-devel
+[   25s]   breaking dependency elementary-devel -> efl-devel
+[   25s] cycle: elementary-devel -> efreet-devel -> ecore-devel -> ecore-input-evas-devel -> ector-devel -> eet-devel -> efl-devel
+[   25s]   breaking dependency elementary-devel -> efreet-devel
+[   25s] cycle: elementary-devel -> eio-devel -> ecore-devel -> ecore-input-evas-devel -> ector-devel -> eet-devel -> efl-devel
+[   25s]   breaking dependency elementary-devel -> eio-devel
+[   25s] cycle: elementary-devel -> eldbus-devel -> ecore-devel -> ecore-input-evas-devel -> ector-devel -> eet-devel -> efl-devel
+[   25s]   breaking dependency elementary-devel -> eldbus-devel
+[   25s] cycle: elementary-devel -> emile-devel -> efl-devel
+[   25s]   breaking dependency elementary-devel -> emile-devel
+[   25s] cycle: elementary-devel -> emotion-devel -> ecore-devel -> ecore-input-evas-devel -> ector-devel -> eet-devel -> efl-devel
+[   25s]   breaking dependency emotion-devel -> ecore-devel
+[   25s] cycle: elementary-devel -> emotion-devel -> ecore-file-devel -> ecore-devel -> ecore-input-evas-devel -> ector-devel -> eet-devel -> efl-devel
+[   25s]   breaking dependency emotion-devel -> ecore-file-devel
+[   25s] cycle: elementary-devel -> emotion-devel -> ector-devel -> eet-devel -> efl-devel
+[   25s]   breaking dependency emotion-devel -> ector-devel
+[   25s] cycle: elementary-devel -> emotion-devel -> eet-devel -> efl-devel
+[   25s]   breaking dependency emotion-devel -> eet-devel
+[   25s] cycle: elementary-devel -> emotion-devel -> eeze-devel -> ecore-devel -> ecore-input-evas-devel -> ector-devel -> eet-devel -> efl-devel
+[   25s]   breaking dependency emotion-devel -> eeze-devel
+[   25s] cycle: elementary-devel -> emotion-devel -> efl-devel
+[   25s]   breaking dependency emotion-devel -> efl-devel
+[   25s] cycle: elementary-devel -> emotion-devel -> eio-devel -> ecore-devel -> ecore-input-evas-devel -> ector-devel -> eet-devel -> efl-devel
+[   25s]   breaking dependency eio-devel -> ecore-devel
+[   25s] cycle: elementary-devel -> emotion-devel -> eio-devel -> ecore-file-devel -> ecore-devel -> ecore-input-evas-devel -> ector-devel -> eet-devel -> efl-devel
+[   25s]   breaking dependency eio-devel -> ecore-file-devel
+[   25s] cycle: elementary-devel -> emotion-devel -> eio-devel -> eet-devel -> efl-devel
+[   25s]   breaking dependency eio-devel -> eet-devel
+[   25s] cycle: elementary-devel -> emotion-devel -> eio-devel -> efl-devel
+[   25s]   breaking dependency emotion-devel -> eio-devel
+[   25s] cycle: elementary-devel -> emotion-devel -> emile-devel -> efl-devel
+[   25s]   breaking dependency elementary-devel -> emotion-devel
+[   25s] cycle: elementary-devel -> ethumb-devel -> ecore-devel -> ecore-input-evas-devel -> ector-devel -> eet-devel -> efl-devel
+[   25s]   breaking dependency ethumb-devel -> ecore-devel
+[   25s] cycle: elementary-devel -> ethumb-devel -> ecore-evas-devel -> ecore-devel -> ecore-input-evas-devel -> ector-devel -> eet-devel -> efl-devel
+[   25s]   breaking dependency ethumb-devel -> ecore-evas-devel
+[   25s] cycle: elementary-devel -> ethumb-devel -> ecore-file-devel -> ecore-devel -> ecore-input-evas-devel -> ector-devel -> eet-devel -> efl-devel
+[   25s]   breaking dependency ethumb-devel -> ecore-file-devel
+[   25s] cycle: elementary-devel -> ethumb-devel -> ecore-imf-devel -> ecore-devel -> ecore-input-evas-devel -> ector-devel -> eet-devel -> efl-devel
+[   25s]   breaking dependency ethumb-devel -> ecore-imf-devel
+[   25s] cycle: elementary-devel -> ethumb-devel -> ecore-input-devel -> ecore-devel -> ecore-input-evas-devel -> ector-devel -> eet-devel -> efl-devel
+[   25s]   breaking dependency ethumb-devel -> ecore-input-devel
+[   25s] cycle: elementary-devel -> ethumb-devel -> ector-devel -> eet-devel -> efl-devel
+[   25s]   breaking dependency ethumb-devel -> ector-devel
+[   25s] cycle: elementary-devel -> ethumb-devel -> edje-devel -> ecore-input-devel -> ecore-devel -> ecore-input-evas-devel -> ector-devel -> eet-devel -> efl-devel
+[   25s]   breaking dependency edje-devel -> ecore-input-devel
+[   25s] cycle: elementary-devel -> ethumb-devel -> edje-devel -> ector-devel -> eet-devel -> efl-devel
+[   25s]   breaking dependency edje-devel -> ector-devel
+[   25s] cycle: elementary-devel -> ethumb-devel -> edje-devel -> eet-devel -> efl-devel
+[   25s]   breaking dependency edje-devel -> eet-devel
+[   25s] cycle: elementary-devel -> ethumb-devel -> edje-devel -> efl-devel
+[   25s]   breaking dependency edje-devel -> efl-devel
+[   25s] cycle: elementary-devel -> ethumb-devel -> edje-devel -> efreet-devel -> ecore-devel -> ecore-input-evas-devel -> ector-devel -> eet-devel -> efl-devel
+[   25s]   breaking dependency efreet-devel -> ecore-devel
+[   25s] cycle: elementary-devel -> ethumb-devel -> edje-devel -> efreet-devel -> ecore-con-devel -> ecore-devel -> ecore-input-evas-devel -> ector-devel -> eet-devel -> efl-devel
+[   25s]   breaking dependency ethumb-devel -> edje-devel
+[   25s] cycle: elementary-devel -> ethumb-devel -> eet-devel -> efl-devel
+[   25s]   breaking dependency ethumb-devel -> eet-devel
+[   25s] cycle: elementary-devel -> ethumb-devel -> efl-devel
+[   25s]   breaking dependency ethumb-devel -> efl-devel
+[   25s] cycle: elementary-devel -> ethumb-devel -> eldbus-devel -> ecore-devel -> ecore-input-evas-devel -> ector-devel -> eet-devel -> efl-devel
+[   25s]   breaking dependency ecore-devel -> ecore-input-evas-devel
+[   25s] cycle: ecore-devel -> ecore-ipc-devel
+[   25s]   breaking dependency ecore-devel -> ecore-ipc-devel
+[   25s] cycle: ecore-devel -> ecore-wayland-devel
+[   25s]   breaking dependency ecore-wayland-devel -> ecore-devel
+[   25s] cycle: ecore-devel -> ecore-wayland-devel -> ecore-input-devel
+[   25s]   breaking dependency ecore-wayland-devel -> ecore-input-devel
+[   25s] cycle: elementary-devel -> ethumb-devel -> eldbus-devel -> ecore-devel -> ecore-wayland-devel -> efl-devel
+[   25s]   breaking dependency ethumb-devel -> eldbus-devel
+[   25s] cycle: elementary-devel -> ethumb-devel -> emile-devel -> efl-devel
+[   25s]   breaking dependency efl-devel -> elementary-devel
+[   25s] cycle: emile-devel -> efl-devel
+[   25s]   breaking dependency emile-devel -> efl-devel
+[   25s] cycle: evas-devel -> ecore-devel -> ecore-wayland-devel -> efl-devel
+[   25s]   breaking dependency evas-devel -> ecore-devel
+[   25s] cycle: evas-devel -> ecore-input-devel -> ecore-devel -> ecore-wayland-devel -> efl-devel
+[   25s]   breaking dependency evas-devel -> ecore-input-devel
+[   25s] cycle: evas-devel -> ector-devel -> eet-devel -> efl-devel
+[   25s]   breaking dependency evas-devel -> ector-devel
+[   25s] cycle: evas-devel -> eet-devel -> efl-devel
+[   25s]   breaking dependency evas-devel -> eet-devel
+[   25s] cycle: evas-devel -> efl-devel
+[   25s]   breaking dependency evas-devel -> efl-devel
+[   25s] cycle: libsoftokn3 -> nss
+[   25s]   breaking dependency nss -> libsoftokn3
+[   25s] cycle: llvm -> clang
+[   25s]   breaking dependency llvm -> clang
+[   25s] cycle: llvm -> lldb -> clang
+[   25s]   breaking dependency llvm -> lldb
+[   25s] cycle: ecore-devel -> ecore-wl2-devel -> eio-devel -> efreet-devel -> ecore-con-devel
+[   25s]   breaking dependency efreet-devel -> ecore-con-devel
+[   25s] cycle: ecore-devel -> ecore-wl2-devel -> eio-devel -> efreet-devel -> ecore-file-devel
+[   25s]   breaking dependency efreet-devel -> ecore-file-devel
+[   25s] cycle: ecore-devel -> ecore-wl2-devel -> eio-devel -> efreet-devel -> ecore-ipc-devel
+[   25s]   breaking dependency ecore-wl2-devel -> eio-devel
+[   25s] reordering done
+[   32s] [1/593] keeping boost-license-1.83.0-1.1
+[   32s] [2/593] keeping ca-certificates-tizen-1.1.5-0
+[   32s] [3/593] keeping capi-system-device-isu-0.1.0-0
+[   32s] [4/593] keeping capi-system-resource-isu-1.0.0-0
+[   32s] [5/593] keeping capi-system-sensor-isu-0.2.5-1
+[   32s] [6/593] keeping default-ac-domains-0.2-1.1
+[   32s] [7/593] keeping dlog-config-persistent-logs-9.0.2-1
+[   32s] [8/593] keeping libfeedback-isu-0.2.0-1
+[   32s] [9/593] keeping libmagic-data-5.46-1.5
+[   32s] [10/593] keeping pcre2-syntax-10.47-1.1
+[   32s] [11/593] keeping python3-pyparsing-3.3.1-1.2
+[   32s] [12/593] keeping python3-six-1.17.0-1.1
+[   32s] [13/593] keeping setup-0.9-1.1
+[   32s] [14/593] keeping svi-data-profile_common-0.2.0-1
+[   32s] [15/593] keeping typelib-1_0-Atspi-2_0-2.44.1-1
+[   32s] [16/593] keeping filesystem-3.1-1.1
+[   32s] [17/593] keeping python3-packaging-25.0-1.3
+[   32s] [18/593] keeping glibc-2.40-1.6
+[   32s] [19/593] keeping capi-base-common-0.4.82-1
+[   32s] [20/593] keeping giflib-5.2.2-1.1
+[   32s] [21/593] keeping libatomic-14.2.0-1.6
+[   32s] [22/593] keeping libbrotlicommon-1.1.0-0
+[   32s] [23/593] keeping libgcc-14.2.0-1.6
+[   32s] [24/593] keeping bash-3.2.57-1.1
+[   32s] [25/593] keeping cpio-2.8-1.1
+[   32s] [26/593] keeping diffutils-3.10-1.1
+[   32s] [27/593] keeping findutils-4.3.8-1.7
+[   32s] [28/593] keeping fribidi-1.0.10-1.1
+[   32s] [29/593] keeping gdbm-1.8.3-1.7
+[   32s] [30/593] keeping hostname-3.23-1.1
+[   32s] [31/593] keeping iniparser-4.2.6-1.1
+[   32s] [32/593] keeping libasound-1.2.12-1.1
+[   32s] [33/593] keeping libattr-2.5.1-1.7
+[   32s] [34/593] keeping libblkid-2.41.2-1.5
+[   32s] [35/593] keeping libbrotlidec-1.1.0-0
+[   32s] [36/593] keeping libbrotlienc-1.1.0-0
+[   32s] [37/593] keeping libbz2-1.0.8-1.7
+[   32s] [38/593] keeping libcap-2.73-1.5
+[   32s] [39/593] keeping libcares-1.21.0-1.1
+[   32s] [40/593] keeping libdrm-2.4.131-1.1
+[   32s] [41/593] keeping libexif-0.6.22-0
+[   32s] [42/593] keeping libexpat-2.7.3-1.6
+[   32s] [43/593] keeping libffi-3.4.7-1.7
+[   32s] [44/593] keeping libfreebl3-3.109-1.1
+[   32s] [45/593] keeping libgfortran-14.2.0-1.6
+[   32s] [46/593] keeping libgomp-14.2.0-1.6
+[   32s] [47/593] keeping libgpg-error-1.51-1.1
+[   32s] [48/593] keeping libhyphen-2.8.8-1
+[   32s] [49/593] keeping libiri-1.1-1
+[   32s] [50/593] keeping libitm-14.2.0-1.6
+[   32s] [51/593] keeping libjpeg-8.2.2-1.1
+[   32s] [52/593] keeping libjson-0.18-0
+[   32s] [53/593] keeping libltdl-2.5.4-1.6
+[   32s] [54/593] keeping liblua-5.1.5-1.6
+[   32s] [55/593] keeping liblzma-5.8.1-1.7
+[   32s] [56/593] keeping libogg-1.3.2-1.1
+[   32s] [57/593] keeping libopenssl11-1.1.1w-1.7
+[   32s] [58/593] keeping libopenssl3-3.0.18-1.6
+[   32s] [59/593] keeping libpcre-8.45-1.5
+[   32s] [60/593] keeping libpopt-1.16-1.5
+[   32s] [61/593] keeping libpython3_141_0-3.14.2-1.7
+[   32s] [62/593] keeping libsmack-1.3.1-1.5
+[   32s] [63/593] keeping libsmartcols-2.41.2-1.5
+[   32s] [64/593] keeping libspeexdsp-1.2.1-10
+[   32s] [65/593] keeping libsqlite-3.51.0-1.7
+[   32s] [66/593] keeping libstdc++-14.2.0-1.6
+[   32s] [67/593] keeping libunwind-1.6.2-1.1
+[   32s] [68/593] keeping libuuid-2.41.2-1.5
+[   32s] [69/593] keeping libvpx-1.12.0-2
+[   32s] [70/593] keeping libwayland-egl-1.23.1-0
+[   32s] [71/593] keeping libwebp-1.4.0-1.1
+[   32s] [72/593] keeping libxcrypt-4.4.36-1.7
+[   32s] [73/593] keeping libxkbcommon-1.8.1-0
+[   32s] [74/593] keeping libxml2-2.15.1-1.6
+[   32s] [75/593] keeping libzstd1-1.5.7-1.6
+[   32s] [76/593] keeping lz4-1.9.3-1
+[   32s] [77/593] keeping lzo-2.10-0
+[   32s] [78/593] keeping m4-1.4.20-1.1
+[   32s] [79/593] keeping net-tools-2.0_20121208git-1.6
+[   32s] [80/593] keeping nspr-4.36-1.1
+[   32s] [81/593] keeping opus-1.3.1-2.1
+[   32s] [82/593] keeping patch-2.8-1.5
+[   32s] [83/593] keeping pixman-0.38.4-0
+[   32s] [84/593] keeping pkg-config-0.29.2-1.7
+[   32s] [85/593] keeping rnnoise-0-0.4
+[   32s] [86/593] keeping sed-4.1c-1.6
+[   32s] [87/593] keeping update-alternatives-1.22.21-1.1
+[   32s] [88/593] keeping which-2.17-1.1
+[   32s] [89/593] keeping xdgmime-0.0.19-1.1
+[   32s] [90/593] keeping zip-3.0-1.1
+[   32s] [91/593] keeping zlib-1.3.1-1.7
+[   32s] [92/593] keeping pcre2-10.47-1.1
+[   32s] [93/593] keeping pcre2-utf16-10.47-1.1
+[   32s] [94/593] keeping pcre2-utf32-10.47-1.1
+[   32s] [95/593] keeping app-rootstrap-checker-1.0.0-1.1
+[   32s] [96/593] keeping build-compare-2023.06.18-1.1
+[   32s] [97/593] keeping clang-accel-x86_64-armv7l-0.4-1.1
+[   32s] [98/593] keeping hal-rootstrap-checker-1.0.0-1.1
+[   32s] [99/593] keeping libstdc++-devel-14.2.0-1.6
+[   32s] [100/593] keeping python-accel-x86_64-armv7l-0.4-1.1
+[   32s] [101/593] keeping qemu-linux-user-x86_64-cross-9.2.3.1-3.1
+[   32s] [102/593] keeping tizen-release-profile_common-11.0.0-0
+[   32s] [103/593] keeping vconf-internal-keys-devel-0.0.199-0
+[   32s] [104/593] keeping capi-base-common-devel-0.4.82-1
+[   32s] [105/593] keeping cpp-14.2.0-1.6
+[   32s] [106/593] keeping fribidi-devel-1.0.10-1.1
+[   32s] [107/593] keeping gcc-c++-14.2.0-1.6
+[   32s] [108/593] keeping libblkid-devel-2.41.2-1.5
+[   32s] [109/593] keeping libexif-devel-0.6.22-0
+[   32s] [110/593] keeping libexpat-devel-2.7.3-1.6
+[   32s] [111/593] keeping libffi-devel-3.4.7-1.7
+[   32s] [112/593] keeping libjpeg-devel-8.2.2-1.1
+[   32s] [113/593] keeping libscl-common-0.11.1-1
+[   32s] [114/593] keeping libuuid-devel-2.41.2-1.5
+[   32s] [115/593] keeping libvpx-devel-1.12.0-2
+[   32s] [116/593] keeping libwebp-devel-1.4.0-1.1
+[   32s] [117/593] keeping libxkbcommon-devel-1.8.1-0
+[   32s] [118/593] keeping unzip-610c25-1.1
+[   32s] [119/593] keeping xdgmime-devel-0.0.19-1.1
+[   32s] [120/593] keeping xz-devel-5.8.1-1.7
+[   32s] [121/593] keeping binutils-gold-2.43-1.6
+[   32s] [122/593] keeping binutils-libs-2.43-1.6
+[   32s] [123/593] keeping boost-nowide-1.83.0-1.1
+[   32s] [124/593] keeping context-sensor-recorder-dummy-4.0.1-1
+[   32s] [125/593] keeping coreutils-6.9-14.1
+[   32s] [126/593] keeping flex-2.6.4-1.6
+[   32s] [127/593] keeping gawk-3.1.5-1.1
+[   32s] [128/593] keeping gperf-3.0.4-1
+[   32s] [129/593] keeping grep-2.5.2-1.6
+[   32s] [130/593] keeping jsoncpp-1.9.6-1.8
+[   32s] [131/593] keeping libacl-2.3.2-1.6
+[   32s] [132/593] keeping libcap-tools-2.73-1.5
+[   32s] [133/593] keeping libcc1-14.2.0-1.6
+[   32s] [134/593] keeping libelf-0.189-1.7
+[   32s] [135/593] keeping libgcrypt-1.11.0-1.1
+[   32s] [136/593] keeping libglib-2.80.5-0
+[   32s] [137/593] keeping liblastlog2-2.41.2-1.5
+[   32s] [138/593] keeping libmount-2.41.2-1.5
+[   32s] [139/593] keeping libnss-security-manager-2.2.4-0
+[   32s] [140/593] keeping libpng-1.6.44-0
+[   32s] [141/593] keeping libtheora-1.1.1-14
+[   32s] [142/593] keeping libvorbis-1.3.7-1.1
+[   32s] [143/593] keeping libxml2-tools-2.15.1-1.6
+[   32s] [144/593] keeping libxslt-1.1.43-1.1
+[   32s] [145/593] keeping make-4.4.1-1.6
+[   32s] [146/593] keeping minizip-1.3.1-1.7
+[   32s] [147/593] keeping ninja-1.13.1-1.7
+[   32s] [148/593] keeping noise-suppression-1.2-2
+[   32s] [149/593] keeping nspr-devel-4.36-1.1
+[   32s] [150/593] keeping nss-certs-3.109-1.1
+[   32s] [151/593] keeping smack-1.3.1-1.5
+[   32s] [152/593] keeping sqlite-3.51.0-1.7
+[   32s] [153/593] keeping webrtc-audio-processing-0.3.1-2
+[   32s] [154/593] keeping bison-3.0.5-1.6
+[   32s] [155/593] keeping boost-atomic-1.83.0-1.1
+[   32s] [156/593] keeping boost-chrono-1.83.0-1.1
+[   32s] [157/593] keeping boost-container-1.83.0-1.1
+[   32s] [158/593] keeping boost-context-1.83.0-1.1
+[   32s] [159/593] keeping boost-contract-1.83.0-1.1
+[   32s] [160/593] keeping boost-date-time-1.83.0-1.1
+[   32s] [161/593] keeping boost-math-1.83.0-1.1
+[   32s] [162/593] keeping boost-program-options-1.83.0-1.1
+[   32s] [163/593] keeping boost-python3-1.83.0-1.1
+[   32s] [164/593] keeping boost-random-1.83.0-1.1
+[   32s] [165/593] keeping boost-serialization-1.83.0-1.1
+[   32s] [166/593] keeping boost-system-1.83.0-1.1
+[   32s] [167/593] keeping boost-test-1.83.0-1.1
+[   32s] [168/593] keeping boost-thread-1.83.0-1.1
+[   32s] [169/593] keeping boost-timer-1.83.0-1.1
+[   32s] [170/593] keeping boost-url-1.83.0-1.1
+[   32s] [171/593] keeping boost_stacktrace-1.83.0-1.1
+[   32s] [172/593] keeping brotli-1.1.0-0
+[   32s] [173/593] keeping bzip2-1.0.8-1.7
+[   32s] [174/593] keeping gettext-runtime-0.21.1-2.6
+[   32s] [175/593] keeping libbrotli-devel-1.1.0-0
+[   32s] [176/593] keeping libfdisk-2.41.2-1.5
+[   32s] [177/593] keeping libicu-78.1-1.1
+[   32s] [178/593] keeping libiri-devel-1.1-1
+[   32s] [179/593] keeping libmagic-5.46-1.5
+[   32s] [180/593] keeping libpcrecpp-8.45-1.5
+[   32s] [181/593] keeping libsqlcipher-4.6.1-0
+[   32s] [182/593] keeping nghttp2-1.51.0-1.1
+[   32s] [183/593] keeping shadow-utils-4.1.4.2-7.1
+[   32s] [184/593] keeping xz-5.8.1-1.7
+[   32s] [185/593] keeping dlog-9.0.2-1
+[   32s] [186/593] keeping libkmod-34.2-1.1
+[   32s] [187/593] keeping libllvm-21.1.1-1.6
+[   32s] [188/593] keeping pcre2-devel-10.47-1.1
+[   32s] [189/593] keeping perl-5.42.0-1.6
+[   32s] [190/593] keeping boost-iostreams-1.83.0-1.1
+[   32s] [191/593] keeping cynara-db-migration-0.25.0-1
+[   32s] [192/593] keeping libtiff-4.7.0-1.1
+[   32s] [193/593] keeping squashfs-4.4-0
+[   32s] [194/593] keeping ttrace-1.1.0-1
+[   32s] [195/593] keeping build-mkbaselibs-20120927-1.1
+[   32s] [196/593] keeping linux-glibc-devel-6.6-1.7
+[   32s] [197/593] keeping tizen-release-11.0.0-0
+[   32s] [198/593] keeping dlog-logger-9.0.2-1
+[   32s] [199/593] keeping jsoncpp-devel-1.9.6-1.8
+[   32s] [200/593] keeping libicu-devel-78.1-1.1
+[   32s] [201/593] keeping libscl-common-devel-0.11.1-1
+[   32s] [202/593] keeping minizip-devel-1.3.1-1.7
+[   32s] [203/593] keeping terminfo-base-full-6.6-1.6
+[   32s] [204/593] keeping acl-2.3.2-1.6
+[   32s] [205/593] keeping autoconf-2.71-1.7
+[   32s] [206/593] keeping glibc-locale-2.40-1.6
+[   32s] [207/593] keeping libgmodule-2.80.5-0
+[   32s] [208/593] keeping libgthread-2.80.5-0
+[   32s] [209/593] keeping libmount-devel-2.41.2-1.5
+[   32s] [210/593] keeping libpsl-0.21.0-1.1
+[   32s] [211/593] keeping libvorbisenc-1.3.7-1.1
+[   32s] [212/593] keeping tar-1.17-1.1
+[   32s] [213/593] keeping tizen-platform-config-5.0-1
+[   32s] [214/593] keeping binutils-2.43-1.6
+[   32s] [215/593] keeping boost-json-1.83.0-1.1
+[   32s] [216/593] keeping file-5.46-1.5
+[   32s] [217/593] keeping gzip-1.3.12-1.6
+[   32s] [218/593] keeping libfreetype-2.13.2-1
+[   32s] [219/593] keeping libgobject-2.80.5-0
+[   32s] [220/593] keeping libvorbisfile-1.3.7-1.1
+[   32s] [221/593] keeping libxslt-tools-1.1.43-1.1
+[   32s] [222/593] keeping openssl3-3.0.18-1.6
+[   32s] [223/593] keeping xmlstarlet-1.6.1-1.1
+[   32s] [224/593] keeping boost-coroutine-1.83.0-1.1
+[   32s] [225/593] keeping boost-filesystem-1.83.0-1.1
+[   32s] [226/593] keeping boost-regex-1.83.0-1.1
+[   32s] [227/593] keeping gettext-tools-0.21.1-2.6
+[   32s] [228/593] keeping pam-1.1.6-1.6
+[   32s] [229/593] keeping thorvg-1.0.0-1
+[   32s] [230/593] keeping tzdata-2025b-1.1
+[   32s] [231/593] keeping boost_type_erasure-1.83.0-1.1
+[   32s] [232/593] keeping libdw-0.189-1.7
+[   32s] [233/593] keeping boost-locale-1.83.0-1.1
+[   32s] [234/593] keeping gcc-14.2.0-1.6
+[   32s] [235/593] keeping libarchive-3.8.1-1.6
+[   32s] [236/593] keeping shared-mime-info-1.7-0
+[   32s] [237/593] keeping qemu-accel-x86_64-armv7l-0.4-1.1
+[   32s] [238/593] keeping automake-1.16.5-1.6
+[   32s] [239/593] keeping libdrm-devel-2.4.131-1.1
+[   32s] [240/593] keeping libtzplatform-config-5.0-1
+[   32s] [241/593] keeping libasm-0.189-1.7
+[   32s] [242/593] keeping libncurses5-6.6-1.6
+[   32s] [243/593] keeping libncurses6-6.6-1.6
+[   32s] [244/593] keeping build-20120927-1.1
+[   32s] [245/593] keeping libsystemd-244-0
+[   32s] [246/593] keeping xkb-tizen-data-0.0.7-0
+[   32s] [247/593] keeping boost-fiber-1.83.0-1.1
+[   32s] [248/593] keeping boost-graph-1.83.0-1.1
+[   32s] [249/593] keeping libdlog-9.0.2-1
+[   32s] [250/593] keeping libgirepository2-2.80.5-0
+[   32s] [251/593] keeping libharfbuzz-8.2.2-0
+[   32s] [252/593] keeping libsndfile-1.2.2-1.1
+[   32s] [253/593] keeping boost-wave-1.83.0-1.1
+[   32s] [254/593] keeping libcurl-8.11.0-1.1
+[   32s] [255/593] keeping boost-log-1.83.0-1.1
+[   32s] [256/593] keeping rpm-4.14.1.1-1.7
+[   32s] [257/593] keeping libncurses-6.6-1.6
+[   32s] [258/593] keeping libtzplatform-config-devel-5.0-1
+[   32s] [259/593] keeping dbus-libs-1.12.20-3
+[   32s] [260/593] keeping less-685-1.1
+[   32s] [261/593] keeping libcurl-devel-8.11.0-1.1
+[   32s] [262/593] keeping libdlog-devel-9.0.2-1
+[   32s] [263/593] keeping libreadline-5.2-1.7
+[   32s] [264/593] keeping libtracker-1.0.1-1
+[   32s] [265/593] keeping libwayland-egl-tizen-1.1.1-0
+[   32s] [266/593] keeping tizen-platform-config-tools-5.0-1
+[   32s] [267/593] keeping capi-system-resource-1.0.0-0
+[   32s] [268/593] keeping libmm-common-0.2.129-0
+[   32s] [269/593] keeping libmm-display-interface-0.0.14-0
+[   32s] [270/593] keeping libwayland-client-1.23.1-0
+[   32s] [271/593] keeping libwayland-server-1.23.1-0
+[   32s] [272/593] keeping lottie-player-0.2.5-1
+[   32s] [273/593] keeping argos_watchdog-0.0.3-0
+[   32s] [274/593] keeping libtool-2.5.4-1.6
+[   32s] [275/593] keeping libkey-manager-common-0.1.86-1
+[   32s] [276/593] keeping ncurses-devel-6.6-1.6
+[   32s] [277/593] keeping parcel-0.18.14-0
+[   32s] [278/593] keeping elfutils-0.189-1.7
+[   32s] [279/593] keeping manifest-parser-1.9.0-1
+[   32s] [280/593] keeping libcynara-commons-0.25.0-1
+[   32s] [281/593] keeping xkeyboard-config-2.13-0
+[   32s] [282/593] keeping libaudio-effect-0.0.26-0
+[   32s] [283/593] keeping systemd-244-0
+[   32s] [284/593] keeping boost-devel-1.83.0-1.1
+[   32s] [285/593] keeping dbus-devel-1.12.20-3
+[   32s] [286/593] keeping libaudio-effect-devel-0.0.26-0
+[   32s] [287/593] keeping libcynara-uid-0.25.0-1
+[   32s] [288/593] keeping libwayland-extension-client-1.3.77-0
+[   32s] [289/593] keeping readline-devel-5.2-1.7
+[   32s] [290/593] keeping capi-system-resource-devel-1.0.0-0
+[   32s] [291/593] keeping libcynara-session-0.25.0-1
+[   32s] [292/593] keeping libwayland-cursor-1.23.1-0
+[   32s] [293/593] keeping libwayland-egl-tizen-devel-1.1.1-0
+[   32s] [294/593] keeping lua-5.1.5-1.6
+[   32s] [295/593] keeping parcel-devel-0.18.14-0
+[   32s] [296/593] keeping systemd-devel-244-0
+[   32s] [297/593] keeping ttrace-devel-1.1.0-1
+[   32s] [298/593] keeping libcynara-agent-0.25.0-1
+[   32s] [299/593] keeping libcynara-creds-commons-0.25.0-1
+[   32s] [300/593] keeping libcynara-monitor-0.25.0-1
+[   32s] [301/593] keeping libusb-1.0.25-0
+[   32s] [302/593] keeping libatspi0-2.44.1-1
+[   32s] [303/593] keeping libcynara-client-0.25.0-1
+[   32s] [304/593] keeping lottie-player-devel-0.2.5-1
+[   32s] [305/593] keeping libcynara-admin-0.25.0-1
+[   32s] [306/593] keeping tizen-core-0.4.2-0
+[   32s] [307/593] keeping cynara-0.25.0-1
+[   32s] [308/593] keeping python3-base-3.14.2-1.7
+[   32s] [309/593] keeping util-linux-2.41.2-1.5
+[   32s] [310/593] keeping python3-3.14.2-1.6
+[   32s] [311/593] keeping lua-devel-5.1.5-1.6
+[   32s] [312/593] keeping util-linux-su-2.41.2-1.5
+[   32s] [313/593] keeping cyad-0.25.0-1
+[   32s] [314/593] keeping libcynara-uid-creds-0.25.0-1
+[   32s] [315/593] keeping libpulse-15.0-41
+[   32s] [316/593] keeping security-config-1.0-1
+[   32s] [317/593] keeping security-license-manager-2.2.4-0
+[   32s] [318/593] keeping wayland-devel-1.23.1-0
+[   32s] [319/593] keeping python3-setuptools-80.9.0-1.1
+[   32s] [320/593] keeping wayland-extension-client-devel-1.3.77-0
+[   32s] [321/593] keeping ca-certificates-0.0.4-0
+[   32s] [322/593] keeping libcynara-creds-self-0.25.0-1
+[   32s] [323/593] keeping libcynara-creds-pid-0.25.0-1
+[   32s] [324/593] keeping libcynara-creds-socket-0.25.0-1
+[   32s] [325/593] keeping capi-system-info-0.5.2-1
+[   32s] [326/593] keeping fontconfig-2.14.2-1
+[   32s] [327/593] keeping capi-system-info-devel-0.5.2-1
+[   32s] [328/593] keeping pkgmgr-0.23.0-0
+[   32s] [329/593] keeping wgt-manifest-handlers-1.11.1-1
+[   32s] [330/593] keeping resource-information-0.1-3
+[   32s] [331/593] keeping cynara-devel-0.25.0-1
+[   32s] [332/593] keeping dbus-1.12.20-3
+[   32s] [333/593] keeping libxcrypt-devel-4.4.36-1.7
+[   32s] [334/593] keeping eo-1.25.1-0
+[   32s] [335/593] keeping xmlsec1-openssl-1.3.9-1.1
+[   32s] [336/593] keeping nss-3.109-1.1
+[   32s] [337/593] keeping libgirepository-1.80-0
+[   32s] [338/593] keeping libgio-2.80.5-0
+[   32s] [339/593] keeping llvm-21.1.1-1.6
+[   32s] [340/593] keeping gio-branding-upstream-2.80.5-0
+[   32s] [341/593] keeping girepository-1.80-0
+[   32s] [342/593] keeping glibc-devel-2.40-1.6
+[   32s] [343/593] keeping libjson-glib-1.8.0-0
+[   32s] [344/593] keeping libsessiond-10.6.21-1
+[   32s] [345/593] keeping xmlsec1-1.3.9-1.1
+[   32s] [346/593] keeping libsoftokn3-3.109-1.1
+[   32s] [347/593] keeping llvm-devel-21.1.1-1.6
+[   32s] [348/593] keeping clang-21.1.1-1.6
+[   32s] [349/593] keeping gstreamer-1.24.11-37
+[   32s] [350/593] keeping context-common-4.0.3-1
+[   32s] [351/593] keeping efl-1.25.1-0
+[   32s] [352/593] keeping libsyscommon-5.0.0-0
+[   32s] [353/593] keeping glib2-tools-2.80.5-0
+[   32s] [354/593] keeping klay-0.0.2-0
+[   32s] [355/593] keeping typelib-Json-1.8.0-0
+[   32s] [356/593] keeping libcap-devel-2.73-1.5
+[   32s] [357/593] keeping libogg-devel-1.3.2-1.1
+[   32s] [358/593] keeping libusb-devel-1.0.25-0
+[   32s] [359/593] keeping zlib-devel-1.3.1-1.7
+[   32s] [360/593] keeping eina-1.25.1-0
+[   32s] [361/593] keeping sqlite-devel-3.51.0-1.7
+[   32s] [362/593] keeping libatk-2.36.0-0
+[   32s] [363/593] keeping libgpg-error-devel-1.51-1.1
+[   32s] [364/593] keeping nss-devel-3.109-1.1
+[   32s] [365/593] keeping trust-anchor-2.1.2-0
+[   32s] [366/593] keeping hash-signer-1.1.0-0
+[   33s] [367/593] keeping bundle-0.18.14-0
+[   33s] [368/593] keeping lldb-21.1.1-1.6
+[   33s] [369/593] keeping rpm-build-4.14.1.1-1.7
+[   33s] [370/593] keeping buxton2-1.9.12-0
+[   33s] [371/593] keeping bundle-devel-0.18.14-0
+[   33s] [372/593] keeping opus-devel-1.3.1-2.1
+[   33s] [373/593] keeping eina-devel-1.25.1-0
+[   33s] [374/593] keeping embryo-1.25.1-0
+[   33s] [375/593] keeping libpng-devel-1.6.44-0
+[   33s] [376/593] keeping ector-1.25.1-0
+[   33s] [377/593] keeping trust-anchor-runtime-2.1.2-0
+[   33s] [378/593] keeping ecore-core-1.25.1-0
+[   33s] [379/593] keeping libvorbis-devel-1.3.7-1.1
+[   33s] [380/593] keeping emile-1.25.1-0
+[   33s] [381/593] keeping libxml2-devel-2.15.1-1.6
+[   33s] [382/593] keeping vconf-compat-1.9.12-0
+[   33s] [383/593] keeping libatk-bridge-2_0-0-2.38.0-0
+[   33s] [384/593] keeping libgcrypt-devel-1.11.0-1.1
+[   33s] [385/593] keeping glib2-devel-2.80.5-0
+[   33s] [386/593] keeping atk-devel-2.36.0-0
+[   33s] [387/593] keeping trust-anchor-devel-2.1.2-0
+[   33s] [388/593] keeping eo-devel-1.25.1-0
+[   33s] [389/593] keeping libmm-common-devel-0.2.129-0
+[   33s] [390/593] keeping thorvg-devel-1.0.0-1
+[   33s] [391/593] keeping vconf-compat-devel-1.9.12-0
+[   33s] [392/593] keeping ecore-imf-1.25.1-0
+[   33s] [393/593] keeping freetype2-devel-2.13.2-1
+[   33s] [394/593] keeping manifest-parser-devel-1.9.0-1
+[   33s] [395/593] keeping tizen-core-imf-0.2.16-0
+[   33s] [396/593] keeping ecore-audio-1.25.1-0
+[   33s] [397/593] keeping eet-1.25.1-0
+[   33s] [398/593] keeping eldbus-1.25.1-0
+[   33s] [399/593] keeping libsndfile-devel-1.2.2-1.1
+[   33s] [400/593] keeping libxslt-devel-1.1.43-1.1
+[   33s] [401/593] keeping ecore-con-1.25.1-0
+[   33s] [402/593] keeping json-glib-devel-1.8.0-0
+[   33s] [403/593] keeping libmm-sound-0.14.7-0
+[   33s] [404/593] keeping libstorage-1.0.0-0
+[   33s] [405/593] keeping pkgmgr-info-0.37.0-1
+[   33s] [406/593] keeping wgt-manifest-handlers-devel-1.11.1-1
+[   33s] [407/593] keeping fontconfig-devel-2.14.2-1
+[   33s] [408/593] keeping pkgmgr-info-devel-0.37.0-1
+[   33s] [409/593] keeping harfbuzz-devel-8.2.2-0
+[   33s] [410/593] keeping pkgmgr-info-parser-0.37.0-1
+[   33s] [411/593] keeping ecore-file-1.25.1-0
+[   33s] [412/593] keeping ecore-ipc-1.25.1-0
+[   33s] [413/593] keeping emile-devel-1.25.1-0
+[   33s] [414/593] keeping capi-media-sound-manager-0.7.19-0
+[   33s] [415/593] keeping security-privilege-manager-1.3.1-0
+[   33s] [416/593] keeping aul-0.84.4-1
+[   33s] [417/593] keeping app-svc-0.1.57-0
+[   33s] [418/593] keeping capi-media-sound-manager-devel-0.7.19-0
+[   33s] [419/593] keeping capi-media-wav-player-0.3.15-0
+[   33s] [420/593] keeping aul-devel-0.84.4-1
+[   33s] [421/593] keeping eeze-1.25.1-0
+[   33s] [422/593] keeping capi-media-audio-io-0.6.3-0
+[   33s] [423/593] keeping efreet-1.25.1-0
+[   33s] [424/593] keeping aul-rsc-mgr-0.84.4-1
+[   33s] [425/593] keeping message-port-1.4.32-0
+[   33s] [426/593] keeping united-service-1.3.1-0
+[   33s] [427/593] keeping rscmgr-service-0.1-13
+[   33s] [428/593] keeping rpc-port-1.21.15-0
+[   33s] [429/593] keeping security-manager-2.2.4-0
+[   33s] [430/593] keeping rpc-port-devel-1.21.15-0
+[   33s] [431/593] keeping app-svc-devel-0.1.57-0
+[   33s] [432/593] keeping message-port-devel-1.4.32-0
+[   33s] [433/593] keeping capi-media-audio-io-devel-0.6.3-0
+[   33s] [434/593] keeping libscreen_connector_input-1.9.10-1
+[   33s] [435/593] keeping ecore-input-1.25.1-0
+[   33s] [436/593] keeping libsecurity-manager-client-2.2.4-0
+[   33s] [437/593] keeping security-manager-policy-2.2.4-0
+[   33s] [438/593] keeping eio-1.25.1-0
+[   33s] [439/593] keeping hal-api-common-2.0.0-2
+[   33s] [440/593] keeping resource-manager-0.1-7
+[   33s] [441/593] keeping pkgmgr-installer-0.23.0-0
+[   33s] [442/593] keeping libfeedback-0.2.0-1
+[   33s] [443/593] keeping pkgmgr-client-0.23.0-0
+[   33s] [444/593] keeping libfeedback-devel-0.2.0-1
+[   33s] [445/593] keeping libsecurity-manager-client-devel-2.2.4-0
+[   33s] [446/593] keeping hal-api-security-1.0.0-0
+[   33s] [447/593] keeping hal-api-tbm-1.1-1
+[   33s] [448/593] keeping hal-api-sensor-0.0.1-1
+[   33s] [449/593] keeping capi-appfw-app-manager-0.18.0-1
+[   33s] [450/593] keeping resource-center-api-0.1-1
+[   33s] [451/593] keeping ecore-wayland-1.25.1-0
+[   33s] [452/593] keeping eventsystem-0.1.55-1
+[   33s] [453/593] keeping capi-appfw-package-manager-0.15.2-1
+[   33s] [454/593] keeping stt-1.100.8-1
+[   33s] [455/593] keeping launchpad-0.50.10-1
+[   33s] [456/593] keeping hal-api-sensor-devel-0.0.1-1
+[   33s] [457/593] keeping capi-appfw-app-manager-devel-0.18.0-1
+[   33s] [458/593] keeping capi-appfw-package-manager-devel-0.15.2-1
+[   33s] [459/593] keeping stt-devel-1.100.8-1
+[   33s] [460/593] keeping libtbm-4.8.6-1
+[   33s] [461/593] keeping liblaunchpad-0.50.10-1
+[   33s] [462/593] keeping sensord-10.0.0-1
+[   33s] [463/593] keeping key-manager-0.1.86-1
+[   33s] [464/593] keeping libtbm-devel-4.8.6-1
+[   33s] [465/593] keeping libwayland-tbm-client-0.9.0-0
+[   33s] [466/593] keeping capi-media-tool-1.2.3-0
+[   33s] [467/593] keeping hal-api-tdm-1.0-1
+[   33s] [468/593] keeping libwayland-tbm-server-0.9.0-0
+[   33s] [469/593] keeping sensord-devel-10.0.0-1
+[   33s] [470/593] keeping capi-system-sensor-0.2.5-1
+[   33s] [471/593] keeping ecore-buffer-1.25.1-0
+[   33s] [472/593] keeping libkey-manager-client-0.1.86-1
+[   33s] [473/593] keeping launchpad-devel-0.50.10-1
+[   33s] [474/593] keeping app-core-common-1.27.11-0
+[   33s] [475/593] keeping gst-plugins-base-1.24.11-37
+[   33s] [476/593] keeping capi-media-tool-devel-1.2.3-0
+[   33s] [477/593] keeping libwayland-tbm-devel-0.9.0-0
+[   33s] [478/593] keeping libwebappenc-0.1.1-1
+[   33s] [479/593] keeping capi-appfw-app-common-0.16.3-0
+[   33s] [480/593] keeping capi-appfw-app-control-0.26.2-0
+[   33s] [481/593] keeping capi-appfw-preference-0.6.24-0
+[   33s] [482/593] keeping libtdm-3.4.0-0
+[   33s] [483/593] keeping liblbs-location-1.4.8-1
+[   33s] [484/593] keeping tizen-core-wl-0.1.33-0
+[   33s] [485/593] keeping cert-svc-2.2.2-0
+[   33s] [486/593] keeping libmm-player-1.1.7-0
+[   33s] [487/593] keeping ecore-wl2-1.25.1-0
+[   33s] [488/593] keeping tts-1.100.10-1
+[   33s] [489/593] keeping libwebappenc-devel-0.1.1-1
+[   33s] [490/593] keeping capi-appfw-app-control-devel-0.26.2-0
+[   33s] [491/593] keeping libtdm-devel-3.4.0-0
+[   33s] [492/593] keeping libmm-player-devel-1.1.7-0
+[   33s] [493/593] keeping tts-devel-1.100.10-1
+[   33s] [494/593] keeping libtdm-client-3.4.0-0
+[   33s] [495/593] keeping capi-location-manager-0.8.4-1
+[   33s] [496/593] keeping hal-api-device-1.0.0-0
+[   33s] [497/593] keeping appcore-agent-1.7.6-1
+[   33s] [498/593] keeping libscreen_connector_provider-1.9.10-1
+[   33s] [499/593] keeping app-core-ui-1.27.11-0
+[   33s] [500/593] keeping at-spi2-core-2.44.1-1
+[   33s] [501/593] keeping notification-ex-0.12.3-1
+[   33s] [502/593] keeping capi-location-manager-devel-0.8.4-1
+[   33s] [503/593] keeping libtdm-client-devel-3.4.0-0
+[   33s] [504/593] keeping at-spi2-core-devel-2.44.1-1
+[   33s] [505/593] keeping capi-system-runtime-info-0.5.2-1
+[   33s] [506/593] keeping capi-system-device-0.1.0-0
+[   33s] [507/593] keeping org.tizen.autofilld-1.11.2-1
+[   33s] [508/593] keeping libtpl-egl-1.13.1-0
+[   33s] [509/593] keeping notification-0.12.3-1
+[   33s] [510/593] keeping capi-system-device-devel-0.1.0-0
+[   33s] [511/593] keeping coregl-0.4.0-0
+[   33s] [512/593] keeping at-spi2-atk-devel-2.38.0-0
+[   33s] [513/593] keeping notification-devel-0.12.3-1
+[   33s] [514/593] keeping capi-ui-autofill-0.11.1-1
+[   33s] [515/593] keeping mused-0.5.1-0
+[   33s] [516/593] keeping alarm-server-0.14.12-1
+[   33s] [517/593] keeping coregl-devel-0.4.0-0
+[   33s] [518/593] keeping capi-ui-autofill-common-devel-0.11.1-1
+[   33s] [519/593] keeping capi-media-camera-1.3.5-0
+[   33s] [520/593] keeping capi-media-player-1.0.6-0
+[   33s] [521/593] keeping libalarm-0.14.12-1
+[   33s] [522/593] keeping evas-1.25.1-0
+[   33s] [523/593] keeping capi-media-camera-devel-1.3.5-0
+[   33s] [524/593] keeping ecore-imf-evas-1.25.1-0
+[   33s] [525/593] keeping capi-media-player-devel-1.0.6-0
+[   33s] [526/593] keeping capi-ui-autofill-devel-0.11.1-1
+[   33s] [527/593] keeping capi-ui-autofill-service-devel-0.11.1-1
+[   33s] [528/593] keeping ecore-input-evas-1.25.1-0
+[   33s] [529/593] keeping libalarm-devel-0.14.12-1
+[   33s] [530/593] keeping capi-system-system-settings-0.0.5-0
+[   33s] [531/593] keeping ecore-evas-1.25.1-0
+[   33s] [532/593] keeping appcore-watch-base-1.7.25-1
+[   33s] [533/593] keeping evas-devel-1.25.1-0
+[   33s] [534/593] keeping capi-system-system-settings-devel-0.0.5-0
+[   33s] [535/593] keeping context-common-devel-4.0.3-1
+[   33s] [536/593] keeping edje-1.25.1-0
+[   33s] [537/593] keeping efl-devel-1.25.1-0
+[   33s] [538/593] keeping libtrackrenderer-0.1.11-0
+[   33s] [539/593] keeping context-sensor-recorder-devel-4.0.1-1
+[   33s] [540/593] keeping eet-devel-1.25.1-0
+[   33s] [541/593] keeping esplusplayer-1.4.1-0
+[   33s] [542/593] keeping emotion-1.25.1-0
+[   33s] [543/593] keeping ecore-wayland-devel-1.25.1-0
+[   33s] [544/593] keeping edje-tools-1.25.1-0
+[   33s] [545/593] keeping esplusplayer-devel-1.4.1-0
+[   33s] [546/593] keeping capi-system-sensor-devel-0.2.5-1
+[   33s] [547/593] keeping ector-devel-1.25.1-0
+[   33s] [548/593] keeping ethumb-1.25.1-0
+[   33s] [549/593] keeping emotion-devel-1.25.1-0
+[   33s] [550/593] keeping ecore-wl2-devel-1.25.1-0
+[   33s] [551/593] keeping ecore-input-evas-devel-1.25.1-0
+[   33s] [552/593] keeping ethumb-devel-1.25.1-0
+[   33s] [553/593] keeping ecore-devel-1.25.1-0
+[   33s] [554/593] keeping elementary-1.25.1-0
+[   33s] [555/593] keeping ecore-core-devel-1.25.1-0
+[   33s] [556/593] keeping embryo-devel-1.25.1-0
+[   33s] [557/593] keeping ecore-audio-devel-1.25.1-0
+[   33s] [558/593] keeping ecore-buffer-devel-1.25.1-0
+[   33s] [559/593] keeping eldbus-devel-1.25.1-0
+[   33s] [560/593] keeping appcore-watch-1.7.25-1
+[   33s] [561/593] keeping efl-extension-0.1.8-1
+[   33s] [562/593] keeping app-core-efl-1.27.11-0
+[   33s] [563/593] keeping elementary-devel-1.25.1-0
+[   33s] [564/593] keeping efl-extension-devel-0.1.8-1
+[   33s] [565/593] keeping appcore-watch-base-devel-1.7.25-1
+[   33s] [566/593] keeping app-core-common-devel-1.27.11-0
+[   33s] [567/593] keeping capi-appfw-application-0.10.2-0
+[   33s] [568/593] keeping ecore-con-devel-1.25.1-0
+[   33s] [569/593] keeping ui-gadget-1-0.2.12-1
+[   33s] [570/593] keeping isf-11.1.21-1
+[   33s] [571/593] keeping isf-devel-11.1.21-1
+[   33s] [572/593] keeping capi-appfw-app-common-devel-0.16.3-0
+[   33s] [573/593] keeping appcore-watch-devel-1.7.25-1
+[   33s] [574/593] keeping ecore-file-devel-1.25.1-0
+[   33s] [575/593] keeping ecore-ipc-devel-1.25.1-0
+[   33s] [576/593] keeping libscl-core-0.11.2-1
+[   33s] [577/593] keeping libscl-core-pure-devel-0.11.2-1
+[   33s] [578/593] keeping appcore-agent-devel-1.7.6-1
+[   33s] [579/593] keeping capi-appfw-application-devel-0.10.2-0
+[   33s] [580/593] keeping capi-appfw-watch-application-devel-1.7.25-1
+[   33s] [581/593] keeping eeze-devel-1.25.1-0
+[   33s] [582/593] keeping capi-ui-inputmethod-0.11.4-1
+[   33s] [583/593] keeping efreet-devel-1.25.1-0
+[   33s] [584/593] keeping libscl-core-devel-0.11.2-1
+[   33s] [585/593] keeping ui-gadget-1-devel-0.2.12-1
+[   33s] [586/593] keeping capi-appfw-service-application-devel-1.7.6-1
+[   33s] [587/593] keeping ecore-input-devel-1.25.1-0
+[   33s] [588/593] keeping eio-devel-1.25.1-0
+[   33s] [589/593] keeping ecore-imf-devel-1.25.1-0
+[   33s] [590/593] keeping ecore-evas-devel-1.25.1-0
+[   33s] [591/593] keeping edje-devel-1.25.1-0
+[   33s] [592/593] keeping capi-ui-inputmethod-devel-0.11.4-1
+[   33s] [593/593] keeping ecore-imf-evas-devel-1.25.1-0
+[   33s] removing nis flags from /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.0/etc/nsswitch.conf...
+[   33s] now finalizing build dir...
+[  381s] Warning: spec file parser line 567: can't expand %(...)
+[  381s] Warning: spec file parser line 692: can't expand %(...)
+[  381s] Warning: spec file parser line 693: can't expand %(...)
+[  381s] Warning: spec file parser line 728: can't expand %(...)
+[  381s] Warning: spec file parser line 729: can't expand %(...)
+[  381s] Warning: spec file parser line 735: can't expand %(...)
+[  381s] Warning: spec file parser line 742: can't expand %(...)
+[  381s] Warning: spec file parser line 753: can't expand %(...)
+[  381s] Warning: spec file parser line 754: can't expand %(...)
+[  381s] Warning: spec file parser line 755: can't expand %(...)
+[  381s] Warning: spec file parser line 772: can't expand %(...)
+[  381s] Warning: spec file parser line 773: can't expand %(...)
+[  381s] Warning: spec file parser line 774: can't expand %(...)
+[  381s] Warning: spec file parser line 778: can't expand %(...)
+[  381s] -----------------------------------------------------------------
+[  381s] I have the following modifications for chromium-efl.spec:
+[  381s] 151c151
+[  381s] < BuildRequires: at-spi2-atk-devel, bison, edje-tools, expat-devel, flex, gettext, gperf, libatk-bridge-2_0-0, libcap-devel, libcurl
+[  381s] ---
+[  381s] > BuildRequires: at-spi2-atk-devel bison edje-tools expat-devel flex gperf libatk-bridge-2_0-0 libcap-devel libcurl gettext-tools
+[  381s] 185c185
+[  381s] < BuildRequires: pkgconfig(gles20)
+[  381s] ---
+[  381s] > BuildRequires: pkgconfig(egl) pkgconfig(glesv2)
+[  381s] 255c255
+[  381s] < BuildRequires: python-accel-armv7l-cross-arm
+[  381s] ---
+[  381s] > BuildRequires: python-accel-x86_64-armv7l
+[  381s] -----------------------------------------------------------------
+[  381s] ----- building chromium-efl.spec (user abuild)
+[  381s] -----------------------------------------------------------------
+[  381s] -----------------------------------------------------------------
+[  385s] + exec rpmbuild --define '_costomized_smp_mflags -j2' --define '_srcdefattr (-,root,root)' --nosignature --target=armv7l-tizen-linux --define '_build_create_debug 1' -ba /home/abuild/rpmbuild/SOURCES/chromium-efl.spec
+[  392s] Building target platforms: armv7l-tizen-linux
+[  392s] Building for target armv7l-tizen-linux
+[  392s] Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.XJA6Zd
+[  392s] + umask 022
+[  392s] + cd /home/abuild/rpmbuild/BUILD
+[  392s] + cd /home/abuild/rpmbuild/BUILD
+[  392s] + rm -rf chromium-efl-1.1.144
+[  392s] + /bin/gzip -dc /home/abuild/rpmbuild/SOURCES/chromium-efl-1.1.144.tar.gz
+[  392s] + /bin/tar -xof -
+[  595s] + STATUS=0
+[  595s] + '[' 0 -ne 0 ']'
+[  595s] + cd chromium-efl-1.1.144
+[  595s] + /bin/chmod -Rf a+rX,u+w,g-w,o-w .
+[  613s] + exit 0
+[  613s] Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.UR1VVJ
+[  614s] + umask 022
+[  614s] + cd /home/abuild/rpmbuild/BUILD
+[  614s] + CFLAGS='-Os -fstack-protector -Wno-unused-command-line-argument -Wno-error=unused-but-set-variable -Wno-error=unused-command-line-argument  -g2 -gdwarf-4 -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -Wformat -Wformat-security -fmessage-length=0 -frecord-gcc-switches -march=armv7-a -mtune=cortex-a8 -mlittle-endian -mfpu=neon -mfloat-abi=softfp -mthumb -Wp,-D__SOFTFP__ -D_FILE_OFFSET_BITS=64 -g'
+[  614s] + export CFLAGS
+[  614s] + CXXFLAGS='-Os -fstack-protector -Wno-unused-command-line-argument -Wno-error=unused-but-set-variable -Wno-error=unused-command-line-argument  -g2 -gdwarf-4 -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -Wformat -Wformat-security -fmessage-length=0 -frecord-gcc-switches -march=armv7-a -mtune=cortex-a8 -mlittle-endian -mfpu=neon -mfloat-abi=softfp -mthumb -Wp,-D__SOFTFP__ -D_FILE_OFFSET_BITS=64 -g'
+[  614s] + export CXXFLAGS
+[  614s] + LDFLAGS=-Wl,-z,relro,--as-needed,-O1,--hash-style=gnu
+[  614s] + export LDFLAGS
+[  614s] + cd chromium-efl-1.1.144
+[  614s] + ref=/usr/lib/rpm
+[  614s] + mints=0
+[  614s] + case $(uname -m) in
+[  614s] ++ uname -m
+[  614s] + for s in guess sub
+[  614s] ++ find -maxdepth 8 -name config.guess
+[  614s] + for c in '$(find -maxdepth 8 -name "config.$s")'
+[  614s] + grep -q config-patches@ ./third_party/icu/source/config.guess
+[  614s] ++ tr -d $'\r'
+[  614s] ++ sed -n '/^timestamp=/{s///;s/[-'\''"]//g;p;q;}' ./third_party/icu/source/config.guess
+[  614s] + timestamp=20240727
+[  614s] + test -n 20240727
+[  614s] + test 20240727 -ge 0
+[  614s] + for c in '$(find -maxdepth 8 -name "config.$s")'
+[  614s] + grep -q config-patches@ ./third_party/nasm/autoconf/helpers/config.guess
+[  614s] ++ sed -n '/^timestamp=/{s///;s/[-'\''"]//g;p;q;}' ./third_party/nasm/autoconf/helpers/config.guess
+[  614s] ++ tr -d $'\r'
+[  614s] + timestamp=20220525
+[  614s] + test -n 20220525
+[  614s] + test 20220525 -ge 0
+[  614s] + for c in '$(find -maxdepth 8 -name "config.$s")'
+[  614s] + grep -q config-patches@ ./third_party/dawn/third_party/dxc/autoconf/config.guess
+[  614s] ++ tr -d $'\r'
+[  614s] ++ sed -n '/^timestamp=/{s///;s/[-'\''"]//g;p;q;}' ./third_party/dawn/third_party/dxc/autoconf/config.guess
+[  614s] + timestamp=20210603
+[  614s] + test -n 20210603
+[  614s] + test 20210603 -ge 0
+[  614s] + for c in '$(find -maxdepth 8 -name "config.$s")'
+[  614s] + grep -q config-patches@ ./third_party/farmhash/src/config.guess
+[  614s] ++ tr -d $'\r'
+[  614s] ++ sed -n '/^timestamp=/{s///;s/[-'\''"]//g;p;q;}' ./third_party/farmhash/src/config.guess
+[  614s] + timestamp=20160926
+[  614s] + test -n 20160926
+[  614s] + test 20160926 -ge 0
+[  614s] + for c in '$(find -maxdepth 8 -name "config.$s")'
+[  614s] + grep -q config-patches@ ./third_party/breakpad/breakpad/autotools/config.guess
+[  614s] ++ tr -d $'\r'
+[  614s] ++ sed -n '/^timestamp=/{s///;s/[-'\''"]//g;p;q;}' ./third_party/breakpad/breakpad/autotools/config.guess
+[  614s] + timestamp=20210101
+[  614s] + test -n 20210101
+[  614s] + test 20210101 -ge 0
+[  614s] + for c in '$(find -maxdepth 8 -name "config.$s")'
+[  614s] + grep -q config-patches@ ./third_party/electron_node/deps/cares/config/config.guess
+[  614s] ++ tr -d $'\r'
+[  614s] ++ sed -n '/^timestamp=/{s///;s/[-'\''"]//g;p;q;}' ./third_party/electron_node/deps/cares/config/config.guess
+[  614s] + timestamp=20220109
+[  614s] + test -n 20220109
+[  614s] + test 20220109 -ge 0
+[  614s] + for s in guess sub
+[  614s] ++ find -maxdepth 8 -name config.sub
+[  615s] + for c in '$(find -maxdepth 8 -name "config.$s")'
+[  615s] + grep -q config-patches@ ./third_party/icu/source/config.sub
+[  615s] ++ tr -d $'\r'
+[  615s] ++ sed -n '/^timestamp=/{s///;s/[-'\''"]//g;p;q;}' ./third_party/icu/source/config.sub
+[  615s] + timestamp=20240527
+[  615s] + test -n 20240527
+[  615s] + test 20240527 -ge 0
+[  615s] + for c in '$(find -maxdepth 8 -name "config.$s")'
+[  615s] + grep -q config-patches@ ./third_party/nasm/autoconf/helpers/config.sub
+[  615s] ++ sed -n '/^timestamp=/{s///;s/[-'\''"]//g;p;q;}' ./third_party/nasm/autoconf/helpers/config.sub
+[  615s] ++ tr -d $'\r'
+[  615s] + timestamp=20220103
+[  615s] + test -n 20220103
+[  615s] + test 20220103 -ge 0
+[  615s] + for c in '$(find -maxdepth 8 -name "config.$s")'
+[  615s] + grep -q config-patches@ ./third_party/farmhash/src/config.sub
+[  615s] ++ sed -n '/^timestamp=/{s///;s/[-'\''"]//g;p;q;}' ./third_party/farmhash/src/config.sub
+[  615s] ++ tr -d $'\r'
+[  615s] + timestamp=20161014
+[  615s] + test -n 20161014
+[  615s] + test 20161014 -ge 0
+[  615s] + for c in '$(find -maxdepth 8 -name "config.$s")'
+[  615s] + grep -q config-patches@ ./third_party/breakpad/breakpad/autotools/config.sub
+[  615s] ++ sed -n '/^timestamp=/{s///;s/[-'\''"]//g;p;q;}' ./third_party/breakpad/breakpad/autotools/config.sub
+[  615s] ++ tr -d $'\r'
+[  615s] + timestamp=20210107
+[  615s] + test -n 20210107
+[  615s] + test 20210107 -ge 0
+[  615s] + for c in '$(find -maxdepth 8 -name "config.$s")'
+[  615s] + grep -q config-patches@ ./third_party/electron_node/deps/cares/config/config.sub
+[  615s] ++ tr -d $'\r'
+[  615s] ++ sed -n '/^timestamp=/{s///;s/[-'\''"]//g;p;q;}' ./third_party/electron_node/deps/cares/config/config.sub
+[  615s] + timestamp=20220103
+[  615s] + test -n 20220103
+[  615s] + test 20220103 -ge 0
+[  615s] + export AR=llvm-ar RANLIB=llvm-ranlib
+[  615s] + AR=llvm-ar
+[  615s] + RANLIB=llvm-ranlib
+[  615s] + export CC=armv7l-tizen-linux-gnueabi-clang CXX=armv7l-tizen-linux-gnueabi-clang++
+[  615s] + CC=armv7l-tizen-linux-gnueabi-clang
+[  615s] + CXX=armv7l-tizen-linux-gnueabi-clang++
+[  615s] + export 'MAKEFLAGS+= -k'
+[  615s] + MAKEFLAGS+=' -k'
+[  615s] + export GN_GENERATOR_OUTPUT=/home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/out.chrome.tz_v11.0.standard.armv7l
+[  615s] + GN_GENERATOR_OUTPUT=/home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/out.chrome.tz_v11.0.standard.armv7l
+[  615s] + export BUILD_ARCH=armv7l
+[  615s] + BUILD_ARCH=armv7l
+[  615s] + export 'ADDITION_OPTION= -finline-limit=64 -foptimize-sibling-calls -fno-unwind-tables -fno-exceptions -Os '
+[  615s] + ADDITION_OPTION=' -finline-limit=64 -foptimize-sibling-calls -fno-unwind-tables -fno-exceptions -Os '
+[  615s] + export 'CFLAGS=-Os -fstack-protector -Wno-unused-command-line-argument -Wno-error=unused-but-set-variable -Wno-error=unused-command-line-argument  -g2 -gdwarf-4 -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -Wformat -Wformat-security -fmessage-length=0 -frecord-gcc-switches -march=armv7-a -mtune=cortex-a8 -mlittle-endian -mfpu=neon -mfloat-abi=softfp -mthumb -Wp,-D__SOFTFP__ -D_FILE_OFFSET_BITS=64 -g  -finline-limit=64 -foptimize-sibling-calls -fno-unwind-tables -fno-exceptions -Os '
+[  615s] + CFLAGS='-Os -fstack-protector -Wno-unused-command-line-argument -Wno-error=unused-but-set-variable -Wno-error=unused-command-line-argument  -g2 -gdwarf-4 -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -Wformat -Wformat-security -fmessage-length=0 -frecord-gcc-switches -march=armv7-a -mtune=cortex-a8 -mlittle-endian -mfpu=neon -mfloat-abi=softfp -mthumb -Wp,-D__SOFTFP__ -D_FILE_OFFSET_BITS=64 -g  -finline-limit=64 -foptimize-sibling-calls -fno-unwind-tables -fno-exceptions -Os '
+[  615s] + export 'CXXFLAGS=-Os -fstack-protector -Wno-unused-command-line-argument -Wno-error=unused-but-set-variable -Wno-error=unused-command-line-argument  -g2 -gdwarf-4 -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -Wformat -Wformat-security -fmessage-length=0 -frecord-gcc-switches -march=armv7-a -mtune=cortex-a8 -mlittle-endian -mfpu=neon -mfloat-abi=softfp -mthumb -Wp,-D__SOFTFP__ -D_FILE_OFFSET_BITS=64 -g  -finline-limit=64 -foptimize-sibling-calls -fno-unwind-tables -fno-exceptions -Os '
+[  615s] + CXXFLAGS='-Os -fstack-protector -Wno-unused-command-line-argument -Wno-error=unused-but-set-variable -Wno-error=unused-command-line-argument  -g2 -gdwarf-4 -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -Wformat -Wformat-security -fmessage-length=0 -frecord-gcc-switches -march=armv7-a -mtune=cortex-a8 -mlittle-endian -mfpu=neon -mfloat-abi=softfp -mthumb -Wp,-D__SOFTFP__ -D_FILE_OFFSET_BITS=64 -g  -finline-limit=64 -foptimize-sibling-calls -fno-unwind-tables -fno-exceptions -Os '
+[  615s] + export 'FFLAGS=  -finline-limit=64 -foptimize-sibling-calls -fno-unwind-tables -fno-exceptions -Os '
+[  615s] + FFLAGS='  -finline-limit=64 -foptimize-sibling-calls -fno-unwind-tables -fno-exceptions -Os '
+[  615s] ++ sed 's/-mfpu=[a-zA-Z0-9-]*/-mfpu=neon/g'
+[  615s] ++ echo -Os -fstack-protector -Wno-unused-command-line-argument -Wno-error=unused-but-set-variable -Wno-error=unused-command-line-argument -g2 -gdwarf-4 -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -Wformat -Wformat-security -fmessage-length=0 -frecord-gcc-switches -march=armv7-a -mtune=cortex-a8 -mlittle-endian -mfpu=neon -mfloat-abi=softfp -mthumb -Wp,-D__SOFTFP__ -D_FILE_OFFSET_BITS=64 -g -finline-limit=64 -foptimize-sibling-calls -fno-unwind-tables -fno-exceptions -Os
+[  615s] + export 'CFLAGS=-Os -fstack-protector -Wno-unused-command-line-argument -Wno-error=unused-but-set-variable -Wno-error=unused-command-line-argument -g2 -gdwarf-4 -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -Wformat -Wformat-security -fmessage-length=0 -frecord-gcc-switches -march=armv7-a -mtune=cortex-a8 -mlittle-endian -mfpu=neon -mfloat-abi=softfp -mthumb -Wp,-D__SOFTFP__ -D_FILE_OFFSET_BITS=64 -g -finline-limit=64 -foptimize-sibling-calls -fno-unwind-tables -fno-exceptions -Os'
+[  615s] + CFLAGS='-Os -fstack-protector -Wno-unused-command-line-argument -Wno-error=unused-but-set-variable -Wno-error=unused-command-line-argument -g2 -gdwarf-4 -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -Wformat -Wformat-security -fmessage-length=0 -frecord-gcc-switches -march=armv7-a -mtune=cortex-a8 -mlittle-endian -mfpu=neon -mfloat-abi=softfp -mthumb -Wp,-D__SOFTFP__ -D_FILE_OFFSET_BITS=64 -g -finline-limit=64 -foptimize-sibling-calls -fno-unwind-tables -fno-exceptions -Os'
+[  615s] ++ sed 's/-mfpu=[a-zA-Z0-9-]*/-mfpu=neon/g'
+[  615s] ++ echo -Os -fstack-protector -Wno-unused-command-line-argument -Wno-error=unused-but-set-variable -Wno-error=unused-command-line-argument -g2 -gdwarf-4 -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -Wformat -Wformat-security -fmessage-length=0 -frecord-gcc-switches -march=armv7-a -mtune=cortex-a8 -mlittle-endian -mfpu=neon -mfloat-abi=softfp -mthumb -Wp,-D__SOFTFP__ -D_FILE_OFFSET_BITS=64 -g -finline-limit=64 -foptimize-sibling-calls -fno-unwind-tables -fno-exceptions -Os
+[  615s] + export 'CXXFLAGS=-Os -fstack-protector -Wno-unused-command-line-argument -Wno-error=unused-but-set-variable -Wno-error=unused-command-line-argument -g2 -gdwarf-4 -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -Wformat -Wformat-security -fmessage-length=0 -frecord-gcc-switches -march=armv7-a -mtune=cortex-a8 -mlittle-endian -mfpu=neon -mfloat-abi=softfp -mthumb -Wp,-D__SOFTFP__ -D_FILE_OFFSET_BITS=64 -g -finline-limit=64 -foptimize-sibling-calls -fno-unwind-tables -fno-exceptions -Os'
+[  615s] + CXXFLAGS='-Os -fstack-protector -Wno-unused-command-line-argument -Wno-error=unused-but-set-variable -Wno-error=unused-command-line-argument -g2 -gdwarf-4 -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -Wformat -Wformat-security -fmessage-length=0 -frecord-gcc-switches -march=armv7-a -mtune=cortex-a8 -mlittle-endian -mfpu=neon -mfloat-abi=softfp -mthumb -Wp,-D__SOFTFP__ -D_FILE_OFFSET_BITS=64 -g -finline-limit=64 -foptimize-sibling-calls -fno-unwind-tables -fno-exceptions -Os'
+[  615s] ++ echo -finline-limit=64 -foptimize-sibling-calls -fno-unwind-tables -fno-exceptions -Os
+[  615s] ++ sed 's/-mfpu=[a-zA-Z0-9-]*/-mfpu=neon/g'
+[  615s] + export 'FFLAGS=-finline-limit=64 -foptimize-sibling-calls -fno-unwind-tables -fno-exceptions -Os'
+[  615s] + FFLAGS='-finline-limit=64 -foptimize-sibling-calls -fno-unwind-tables -fno-exceptions -Os'
+[  615s] + ./wrt/cxx_wrapper/build.sh /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/out.chrome.tz_v11.0.standard.armv7l 11 0 0
+[  615s] ./wrt/cxx_wrapper/build.sh: line 8: 5: Tizen patch version is required
+[  615s] error: Bad exit status from /var/tmp/rpm-tmp.UR1VVJ (%build)
+[  615s] 
+[  615s] 
+[  615s] RPM build errors:
+[  615s]     Bad exit status from /var/tmp/rpm-tmp.UR1VVJ (%build)
+[  616s] 
+[  616s] linhao-linux failed "build chromium-efl.spec" at Wed Jul 15 12:42:33 UTC 2026.
+[  616s] 
+[33mwarning: [0mbuild failed, Leaving the logs in /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/repos/tizen_unified_standard/armv7l/logs/fail/chromium-efl-1.1.144-1/log.txt
+[32minfo: [0m*** Build Status Summary ***
+=== the following packages failed to build due to rpmbuild issue (1) ===
+chromium-efl: /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/repos/tizen_unified_standard/armv7l/logs/fail/chromium-efl-1.1.144-1/log.txt
+=== Total succeeded built packages: (0) ===
+[32minfo: [0mgenerated html format report:
+     /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/repos/tizen_unified_standard/armv7l/index.html
+[32minfo: [0mgenerated RPM packages can be found from local repo:
+     /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/repos/tizen_unified_standard/armv7l/RPMS
+[32minfo: [0mgenerated source RPM packages can be found from local repo:
+     /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/repos/tizen_unified_standard/armv7l/SRPMS
+[32minfo: [0mbuild logs can be found in:
+     /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/repos/tizen_unified_standard/armv7l/logs
+[32minfo: [0mbuild roots located in:
+     /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.armv7l.*
+error: <gbs>some packages failed to be built

@@ -1,0 +1,50 @@
+1-info: generate repositories ...
+2-warning: No local package repository for arch armv7l
+3-info: build conf has been downloaded at:
+4-      /var/tmp/linhao-gbs/tizen_unified_standard.conf
+5-[32minfo: [0mstart building packages from: /home/linhao/Toolchain/plan_evaluation/chromium-efl-spike-libcxx-wt (git)
+6-2026-07-15 20:18 +0800
+7-gbs 2.0.6
+8-[32minfo: [0mprepare sources...
+9-[32minfo: [0mstart export source from: /home/linhao/Toolchain/plan_evaluation/chromium-efl-spike-libcxx-wt ...
+10-info: the following untracked files would be included:
+11:   wrt/cxx_wrapper/build.sh
+12-   wrt/cxx_wrapper/wrt-c++wrapper.map
+13-info: the following uncommitted changes would be included:
+14-   packaging/chromium-efl.spec
+15-   tizen_src/build/gn_chromiumefl.sh
+16-   tizen_src/ewk/chromium-ewk.filter
+17-   wrt/BUILD.gn
+18-   wrt/cxx_wrapper/BUILD.gn
+19-info: Creating (native) source archive chromium-efl-1.1.144.tar.gz from '3edd3ccfc2e710cb6aa38201c78b8774ad1fbc8c'
+20-info: package files have been exported to:
+21-     /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/sources/tizen_unified_standard/chromium-efl-1.1.144-1
+22-[32minfo: [0mcleaning up local repo: /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/repos/tizen_unified_standard/armv7l/RPMS ...
+23-[32minfo: [0mupdating local repo ...
+--
+1032-[  615s] ++ sed 's/-mfpu=[a-zA-Z0-9-]*/-mfpu=neon/g'
+1033-[  615s] ++ echo -Os -fstack-protector -Wno-unused-command-line-argument -Wno-error=unused-but-set-variable -Wno-error=unused-command-line-argument -g2 -gdwarf-4 -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -Wformat -Wformat-security -fmessage-length=0 -frecord-gcc-switches -march=armv7-a -mtune=cortex-a8 -mlittle-endian -mfpu=neon -mfloat-abi=softfp -mthumb -Wp,-D__SOFTFP__ -D_FILE_OFFSET_BITS=64 -g -finline-limit=64 -foptimize-sibling-calls -fno-unwind-tables -fno-exceptions -Os
+1034-[  615s] + export 'CFLAGS=-Os -fstack-protector -Wno-unused-command-line-argument -Wno-error=unused-but-set-variable -Wno-error=unused-command-line-argument -g2 -gdwarf-4 -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -Wformat -Wformat-security -fmessage-length=0 -frecord-gcc-switches -march=armv7-a -mtune=cortex-a8 -mlittle-endian -mfpu=neon -mfloat-abi=softfp -mthumb -Wp,-D__SOFTFP__ -D_FILE_OFFSET_BITS=64 -g -finline-limit=64 -foptimize-sibling-calls -fno-unwind-tables -fno-exceptions -Os'
+1035-[  615s] + CFLAGS='-Os -fstack-protector -Wno-unused-command-line-argument -Wno-error=unused-but-set-variable -Wno-error=unused-command-line-argument -g2 -gdwarf-4 -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -Wformat -Wformat-security -fmessage-length=0 -frecord-gcc-switches -march=armv7-a -mtune=cortex-a8 -mlittle-endian -mfpu=neon -mfloat-abi=softfp -mthumb -Wp,-D__SOFTFP__ -D_FILE_OFFSET_BITS=64 -g -finline-limit=64 -foptimize-sibling-calls -fno-unwind-tables -fno-exceptions -Os'
+1036-[  615s] ++ sed 's/-mfpu=[a-zA-Z0-9-]*/-mfpu=neon/g'
+1037-[  615s] ++ echo -Os -fstack-protector -Wno-unused-command-line-argument -Wno-error=unused-but-set-variable -Wno-error=unused-command-line-argument -g2 -gdwarf-4 -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -Wformat -Wformat-security -fmessage-length=0 -frecord-gcc-switches -march=armv7-a -mtune=cortex-a8 -mlittle-endian -mfpu=neon -mfloat-abi=softfp -mthumb -Wp,-D__SOFTFP__ -D_FILE_OFFSET_BITS=64 -g -finline-limit=64 -foptimize-sibling-calls -fno-unwind-tables -fno-exceptions -Os
+1038-[  615s] + export 'CXXFLAGS=-Os -fstack-protector -Wno-unused-command-line-argument -Wno-error=unused-but-set-variable -Wno-error=unused-command-line-argument -g2 -gdwarf-4 -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -Wformat -Wformat-security -fmessage-length=0 -frecord-gcc-switches -march=armv7-a -mtune=cortex-a8 -mlittle-endian -mfpu=neon -mfloat-abi=softfp -mthumb -Wp,-D__SOFTFP__ -D_FILE_OFFSET_BITS=64 -g -finline-limit=64 -foptimize-sibling-calls -fno-unwind-tables -fno-exceptions -Os'
+1039-[  615s] + CXXFLAGS='-Os -fstack-protector -Wno-unused-command-line-argument -Wno-error=unused-but-set-variable -Wno-error=unused-command-line-argument -g2 -gdwarf-4 -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -Wformat -Wformat-security -fmessage-length=0 -frecord-gcc-switches -march=armv7-a -mtune=cortex-a8 -mlittle-endian -mfpu=neon -mfloat-abi=softfp -mthumb -Wp,-D__SOFTFP__ -D_FILE_OFFSET_BITS=64 -g -finline-limit=64 -foptimize-sibling-calls -fno-unwind-tables -fno-exceptions -Os'
+1040-[  615s] ++ echo -finline-limit=64 -foptimize-sibling-calls -fno-unwind-tables -fno-exceptions -Os
+1041-[  615s] ++ sed 's/-mfpu=[a-zA-Z0-9-]*/-mfpu=neon/g'
+1042-[  615s] + export 'FFLAGS=-finline-limit=64 -foptimize-sibling-calls -fno-unwind-tables -fno-exceptions -Os'
+1043-[  615s] + FFLAGS='-finline-limit=64 -foptimize-sibling-calls -fno-unwind-tables -fno-exceptions -Os'
+1044:[  615s] + ./wrt/cxx_wrapper/build.sh /home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/out.chrome.tz_v11.0.standard.armv7l 11 0 0
+1045:[  615s] ./wrt/cxx_wrapper/build.sh: line 8: 5: Tizen patch version is required
+1046-[  615s] error: Bad exit status from /var/tmp/rpm-tmp.UR1VVJ (%build)
+1047-[  615s] 
+1048-[  615s] 
+1049-[  615s] RPM build errors:
+1050-[  615s]     Bad exit status from /var/tmp/rpm-tmp.UR1VVJ (%build)
+1051-[  616s] 
+1052-[  616s] linhao-linux failed "build chromium-efl.spec" at Wed Jul 15 12:42:33 UTC 2026.
+1053-[  616s] 
+1054-[33mwarning: [0mbuild failed, Leaving the logs in /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/repos/tizen_unified_standard/armv7l/logs/fail/chromium-efl-1.1.144-1/log.txt
+1055-[32minfo: [0m*** Build Status Summary ***
+1056-=== the following packages failed to build due to rpmbuild issue (1) ===
+1057-chromium-efl: /home/linhao/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/repos/tizen_unified_standard/armv7l/logs/fail/chromium-efl-1.1.144-1/log.txt

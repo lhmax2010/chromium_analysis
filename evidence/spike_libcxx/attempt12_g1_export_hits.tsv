@@ -1,0 +1,6 @@
+payload_path	symbol
+chromium-efl-1.1.144-1.armv7l/usr/lib/tizen-extensions-crosswalk/libnode-runtime.so	_ZNSt4__Cr22__libcpp_verbose_abortEPKcz
+chromium-efl-1.1.144-1.armv7l/usr/lib/tizen-extensions-crosswalk/libsplash_screen_plugin.so	_ZNSt4__Cr22__libcpp_verbose_abortEPKcz
+chromium-efl-1.1.144-1.armv7l/usr/lib/tizen-extensions-crosswalk/libwidget_plugin.so	_ZNSt4__Cr22__libcpp_verbose_abortEPKcz
+chromium-efl-1.1.144-1.armv7l/usr/lib/tizen-extensions-crosswalk/libwrt-service-override.so	_ZNSt4__Cr22__libcpp_verbose_abortEPKcz
+chromium-efl-1.1.144-1.armv7l/usr/share/chromium-efl/lib/libv8.so	_ZNSt4__Cr22__libcpp_verbose_abortEPKcz

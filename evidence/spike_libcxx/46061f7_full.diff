@@ -1,0 +1,3812 @@
+commit 46061f7673c2224dc87777ae239247c30572027b
+Author:     v-saha <v.saha@samsung.com>
+AuthorDate: Tue Sep 30 10:10:18 2025 +0530
+Commit:     Bot Blink <blinkbot@samsung.com>
+CommitDate: Wed Oct 1 05:22:51 2025 +0000
+
+    [M138] Fix build errors for tizen standard profile
+    
+    Fix standard profile build errors with rust disabled.
+    
+    Change-Id: Ic7e70908f3ae9a5a9ee60670497c2998ff641e58
+    Signed-off-by: v-saha <v.saha@samsung.com>
+    Signed-off-by: Chandan Padhi <c.padhi@samsung.com>
+---
+ base/BUILD.gn                                      | 132 +++++++++++----------
+ base/containers/fixed_flat_map.h                   |   4 -
+ base/containers/to_value_list.h                    |   4 +
+ base/json/json_reader.cc                           |   8 +-
+ base/logging.cc                                    |   4 +-
+ base/test/BUILD.gn                                 |  21 ++--
+ build/config/c++/c++.gni                           |   4 +-
+ build/config/rust.gni                              |   4 +-
+ build/rust/rust_target.gni                         |  36 +++---
+ chrome/BUILD.gn                                    |   3 +-
+ chrome/browser/chooser_controller/BUILD.gn         |   2 +-
+ .../chrome_browser_interface_binders_webui.cc      |   4 +-
+ chrome/browser/chrome_content_browser_client.cc    |   2 +-
+ .../pki_metadata_component_installer.cc            |   2 +
+ chrome/browser/content_settings/BUILD.gn           |   2 +-
+ chrome/browser/devtools/devtools_window.cc         |   2 +-
+ chrome/browser/feedback/BUILD.gn                   |   2 +-
+ .../log_sources/chrome_root_store_log_source.cc    |   3 +
+ chrome/browser/hid/BUILD.gn                        |   2 +-
+ chrome/browser/importer/BUILD.gn                   |   2 +-
+ .../metrics/process_memory_metrics_emitter.cc      |   2 +-
+ chrome/browser/navigation_predictor/BUILD.gn       |   2 +-
+ chrome/browser/optimization_guide/BUILD.gn         |   2 +-
+ .../chrome_password_manager_client.cc              |   4 +-
+ chrome/browser/plus_addresses/BUILD.gn             |   2 +-
+ .../configuration_policy_handler_list_factory.cc   |   2 +
+ chrome/browser/prefs/BUILD.gn                      |   2 +-
+ chrome/browser/prefs/browser_prefs.cc              |   6 +
+ .../notice/desktop_view_manager_interface.h        |   2 +
+ chrome/browser/regional_capabilities/BUILD.gn      |   2 +-
+ chrome/browser/resources/BUILD.gn                  |   2 +-
+ .../on_device_translation_internals/BUILD.gn       |   2 +-
+ .../resources/signin/history_sync_optin/BUILD.gn   |   2 +-
+ chrome/browser/resources/tts_engine/BUILD.gn       |   2 +-
+ chrome/browser/sharing_hub/BUILD.gn                |   2 +-
+ chrome/browser/ui/BUILD.gn                         |   7 +-
+ chrome/browser/ui/bookmarks/BUILD.gn               |   2 +-
+ chrome/browser/ui/device_signals_consent/BUILD.gn  |   2 +-
+ chrome/browser/ui/dialogs/BUILD.gn                 |   2 +-
+ chrome/browser/ui/download/BUILD.gn                |   2 +-
+ chrome/browser/ui/global_error/BUILD.gn            |   2 +-
+ chrome/browser/ui/global_media_controls/BUILD.gn   |   2 +-
+ chrome/browser/ui/hats/BUILD.gn                    |   2 +-
+ chrome/browser/ui/hid/BUILD.gn                     |   2 +-
+ chrome/browser/ui/hung_renderer/BUILD.gn           |   2 +-
+ chrome/browser/ui/interventions/BUILD.gn           |   2 +-
+ chrome/browser/ui/javascript_dialogs/BUILD.gn      |   2 +-
+ chrome/browser/ui/login/BUILD.gn                   |   2 +-
+ chrome/browser/ui/media_router/BUILD.gn            |   2 +-
+ chrome/browser/ui/page_info/BUILD.gn               |   2 +-
+ .../ui/page_info/chrome_page_info_delegate.cc      |   3 +
+ chrome/browser/ui/prefs/BUILD.gn                   |   2 +-
+ chrome/browser/ui/privacy_sandbox/BUILD.gn         |   2 +-
+ chrome/browser/ui/qrcode_generator/BUILD.gn        |   2 +-
+ chrome/browser/ui/safety_hub/BUILD.gn              |   2 +-
+ chrome/browser/ui/search/BUILD.gn                  |   2 +-
+ chrome/browser/ui/send_tab_to_self/BUILD.gn        |   2 +-
+ chrome/browser/ui/shared_highlighting/BUILD.gn     |   2 +-
+ chrome/browser/ui/sharing_hub/BUILD.gn             |   2 +-
+ chrome/browser/ui/shortcuts/BUILD.gn               |   2 +-
+ chrome/browser/ui/tab_contents/BUILD.gn            |   6 +-
+ chrome/browser/ui/tabs/BUILD.gn                    |   6 +-
+ chrome/browser/ui/tabs/alert/BUILD.gn              |   2 +-
+ chrome/browser/ui/tabs/saved_tab_groups/BUILD.gn   |   2 +-
+ chrome/browser/ui/tabs/tab_strip_api/BUILD.gn      |   2 +-
+ chrome/browser/ui/toolbar/cast/BUILD.gn            |   2 +-
+ chrome/browser/ui/unowned_user_data/BUILD.gn       |   2 +-
+ chrome/browser/ui/user_education/BUILD.gn          |   2 +-
+ chrome/browser/ui/views/certificate_selector.cc    |   2 +
+ chrome/browser/ui/views/download/BUILD.gn          |   2 +-
+ .../webid/fedcm_account_selection_view_desktop.cc  |   2 +
+ chrome/browser/ui/webui/BUILD.gn                   |   2 +-
+ chrome/browser/ui/webui/about/BUILD.gn             |   2 +-
+ chrome/browser/ui/webui/accessibility/BUILD.gn     |   2 +-
+ chrome/browser/ui/webui/app_management/BUILD.gn    |   2 +-
+ chrome/browser/ui/webui/app_settings/BUILD.gn      |   2 +-
+ .../ui/webui/history/browsing_history_handler.cc   |   2 +-
+ chrome/browser/ui/webui/safe_browsing/BUILD.gn     |   2 +-
+ chrome/browser/ui/webui/settings/BUILD.gn          |   2 +-
+ chrome/browser/ui/webui/signin/BUILD.gn            |   4 +-
+ .../ui/webui/signin/history_sync_optin/BUILD.gn    |   2 +-
+ chrome/browser/ui/webui/whats_new/BUILD.gn         |   4 +-
+ chrome/browser/webauthn/BUILD.gn                   |   7 +-
+ chrome/common/features.gni                         |   2 +-
+ chrome/services/speech/buildflags/buildflags.gni   |   3 +-
+ chrome/test/data/webui/BUILD.gn                    |   2 +-
+ components/BUILD.gn                                |   2 +-
+ .../autofill_structured_address_component.cc       |   5 +
+ components/autofill_ai/core/browser/BUILD.gn       |   2 +-
+ components/compose/core/browser/config.cc          |   4 +-
+ components/compose/features.gni                    |   2 +-
+ components/dbus/BUILD.gn                           |   2 +-
+ components/device_signals/core/browser/BUILD.gn    |   4 +-
+ components/device_signals/core/common/BUILD.gn     |   2 +-
+ components/enterprise/buildflags/buildflags.gni    |   2 +-
+ .../core/browser/possible_username_data.h          |   5 -
+ components/policy/content/BUILD.gn                 |   2 +-
+ components/services/on_device_translation/BUILD.gn |   2 +-
+ .../on_device_translation/buildflags/features.gni  |   2 +-
+ content/browser/BUILD.gn                           |   2 +-
+ .../in_process_video_capture_device_launcher.cc    |   2 +-
+ .../in_process_video_capture_device_launcher.h     |   2 +-
+ .../renderer_host/media/media_stream_manager.cc    |   2 +-
+ .../browser/video_capture_device_launcher.cc       |   4 +-
+ content/public/common/features.gni                 |   2 +-
+ media/base/picture_in_picture_events_info.cc       |   3 +-
+ media/base/pipeline_impl.cc                        |   4 +-
+ media/base/video_frame.cc                          |   2 +-
+ media/gpu/BUILD.gn                                 |   4 +-
+ media/media_options.gni                            |   6 +-
+ media/mojo/mojom/BUILD.gn                          |   5 +-
+ media/mojo/mojom/video_frame_mojom_traits.cc       |   8 +-
+ media/mojo/mojom/video_frame_mojom_traits.h        |   2 +-
+ media/mojo/services/interface_factory_impl.cc      |   2 +-
+ net/cert/cert_database.cc                          |   5 +-
+ net/features.gni                                   |   5 +-
+ packaging/chromium-efl.spec                        |   6 +-
+ sandbox/policy/mojom/BUILD.gn                      |   3 +
+ sandbox/policy/mojom/sandbox.mojom                 |  10 +-
+ services/device/usb/BUILD.gn                       |   2 +-
+ .../resource_coordinator/public/mojom/BUILD.gn     |   3 +
+ .../memory_instrumentation.mojom                   |   8 +-
+ skia/BUILD.gn                                      |  44 +++----
+ skia/ext/font_utils.cc                             |   4 +
+ skia/skia.gni                                      |   2 +-
+ sql/sandboxed_vfs_file_impl.cc                     |   2 +
+ third_party/blink/common/BUILD.gn                  |   5 +-
+ third_party/blink/common/chrome_debug_urls.cc      |   4 +
+ .../renderer_preferences_mojom_traits.cc           |   2 +-
+ .../renderer_preferences_mojom_traits.h            |   2 +-
+ .../public/platform/web_media_player_client.h      |   3 +
+ .../renderer/core/html/media/html_media_element.cc |   4 +-
+ .../modules/accessibility/ax_node_object.cc        |   6 +-
+ .../renderer/modules/accessibility/ax_object.cc    |   4 +-
+ .../platform/fonts/shaping/harfbuzz_shaper.cc      |   3 +-
+ .../platform/fonts/skia/sktypeface_factory.cc      |   8 ++
+ .../platform/fonts/web_font_typeface_factory.cc    |  14 +--
+ .../renderer/platform/image-decoders/BUILD.gn      |   6 +-
+ .../platform/image-decoders/image_decoder.cc       |   6 +-
+ .../platform/media/web_media_player_impl.cc        |   3 +
+ third_party/breakpad/BUILD.gn                      |  16 +--
+ third_party/ffmpeg/ffmpeg_generated.gni            |   3 +-
+ third_party/ffmpeg/ffmpeg_options.gni              |   2 +-
+ third_party/pdfium/skia/BUILD.gn                   |   2 +-
+ third_party/pthreadpool/BUILD.gn                   |   4 +-
+ third_party/skia/src/core/SkTypeface.cpp           |   4 +
+ third_party/webrtc/webrtc.gni                      |   4 +-
+ tizen_src/build/config/BUILD.gn                    |   4 +
+ tizen_src/build/gn_chromiumefl.sh                  |   4 +-
+ .../chromium_impl/chrome/app/chrome_main_tizen.cc  |   2 +-
+ .../chromium_impl/content/browser/browser_efl.gni  |   6 +-
+ .../browser/input_picker/input_picker_base.h       |   4 +-
+ .../content/browser/media/tizen_renderer_impl.cc   |   9 ++
+ .../content/browser/media/tizen_renderer_impl.h    |   4 +-
+ ...n_process_video_capture_device_launcher_tizen.h |   2 +
+ .../renderer/media/cdm/render_cdm_factory.cc       |   6 +-
+ .../media/tizen/media_player_renderer_client.cc    |   1 +
+ .../media/audio/tizen/audio_manager_capi.cc        |   2 +-
+ .../media/audio/tizen/audio_manager_capi.h         |   2 +-
+ .../video/tizen/video_capture_device_tizen.cc      |   6 +-
+ .../video/tizen/video_capture_device_tizen.h       |   2 +
+ .../filters/media_player_bridge_capi_factory.cc    |   5 +
+ .../media/filters/media_player_registry.cc         |   5 +
+ .../accessibility/platform/ax_platform_node_efl.cc |  12 +-
+ tizen_src/chromium_impl/ui/gfx/tbm_buffer_handle.h |   4 +
+ .../ui/ozone/platform/efl/efl_window.cc            |   6 +-
+ .../ui/ozone/platform/efl/im_context_efl.cc        |   1 +
+ .../notification/notification_controller_efl.cc    |   3 +
+ .../ewk/efl_integration/eweb_accessibility_util.cc |   6 +
+ tizen_src/ewk/efl_integration/eweb_view.cc         |   5 +
+ tizen_src/ewk/efl_integration/public/ewk_view.cc   |   6 +-
+ ui/accessibility/BUILD.gn                          |   5 +-
+ ui/accessibility/platform/BUILD.gn                 |  10 +-
+ .../platform/ax_platform_node_auralinux.cc         |   7 +-
+ ui/base/BUILD.gn                                   |   2 +-
+ .../global_accelerator_listener/BUILD.gn           |   2 +-
+ .../global_accelerator_listener_ozone.cc           |   2 +-
+ ui/gfx/mojom/BUILD.gn                              |   3 +
+ ui/gfx/mojom/native_handle_types.mojom             |   4 +-
+ ui/menus/BUILD.gn                                  |   2 +-
+ .../accessibility/tree/browser_views_ax_manager.h  |   3 +
+ ui/views/views_delegate.cc                         |   2 +-
+ ui/webui/resources/BUILD.gn                        |   2 +-
+ .../cr_components/certificate_manager/BUILD.gn     |   4 +
+ .../certificate_manager_v2.mojom                   |   2 +-
+ v8/BUILD.gn                                        |   5 +-
+ v8/gni/v8.gni                                      |   3 +-
+ wrt/BUILD.gn                                       |   2 -
+ 188 files changed, 510 insertions(+), 347 deletions(-)
+
+diff --git a/base/BUILD.gn b/base/BUILD.gn
+index 91c27f98059a..cfe626ae5d86 100644
+--- a/base/BUILD.gn
++++ b/base/BUILD.gn
+@@ -1061,10 +1061,16 @@ component("base") {
+     deps += [ "//third_party/zlib" ]
+ 
+     # NaCl does not support Rust.
+-    deps += [
+-      ":rust_logger",
+-      "//third_party/rust/serde_json_lenient/v0_2/wrapper",
+-    ]
++    if (enable_rust) {
++      sources += [
++        "logging/rust_log_integration.cc",
++        "logging/rust_log_integration.h",
++      ]
++      deps += [
++        ":rust_logger",
++        "//third_party/rust/serde_json_lenient/v0_2/wrapper",
++      ]
++    }
+   }
+ 
+   # `raw_ptr` cannot be made a component due to CRT symbol issues.
+@@ -1108,7 +1114,9 @@ component("base") {
+ 
+     # Base provides conversions between CXX types and base types (e.g.
+     # std::string_view).
+-    public_deps += [ "//build/rust:cxx_cppdeps" ]
++    if (enable_rust_cxx) {
++      public_deps += [ "//build/rust:cxx_cppdeps" ]
++    }
+   }
+ 
+   # Needed for <atomic> if using newer C++ library than sysroot, except if
+@@ -1617,8 +1625,6 @@ component("base") {
+       "files/scoped_temp_file.h",
+       "json/json_file_value_serializer.cc",
+       "json/json_file_value_serializer.h",
+-      "logging/rust_log_integration.cc",
+-      "logging/rust_log_integration.h",
+       "memory/discardable_memory.cc",
+       "memory/discardable_memory.h",
+       "memory/discardable_memory_allocator.cc",
+@@ -1727,11 +1733,11 @@ component("base") {
+     if (is_posix && !is_ios) {
+       sources += [ "process/process_posix.cc" ]
+     }
+-    if (!is_win && !is_chromeos && !is_android && !is_linux) {
++    if (!is_win && !is_chromeos && !is_android && !is_linux && !is_tizen) {
+       sources += [ "synchronization/cancelable_event_default.cc" ]
+     }
+ 
+-    if (is_linux || is_chromeos || is_android) {
++    if (is_linux || is_chromeos || is_android || is_tizen) {
+       sources += [ "synchronization/cancelable_event_posix.cc" ]
+     }
+ 
+@@ -2561,61 +2567,63 @@ component("base") {
+   }
+ }
+ 
+-rust_bindgen("logging_log_severity_bindgen") {
+-  # TODO(danakj): Maybe combine all base bindgen targets, or all base/logging
+-  # ones even) into a single GN target? But the GN rule needs to handle multiple
+-  # headers then.
+-  header = "logging/log_severity.h"
+-  cpp = true
+-  visibility = [ ":*" ]
+-
+-  # Transitive generated header dependency.
+-  deps = [ ":debugging_buildflags" ]
+-}
+-
+-rust_static_library("rust_logger") {
+-  allow_unsafe = true  # Unsafe needed for FFI.
+-  deps = [
+-    ":logging_log_severity_bindgen",
+-    ":tracing_buildflags",
+-    "//build:chromeos_buildflags",
+-    "//third_party/rust/log/v0_4:lib",
++if (enable_rust_cxx) {
++  rust_bindgen("logging_log_severity_bindgen") {
++    # TODO(danakj): Maybe combine all base bindgen targets, or all base/logging
++    # ones even) into a single GN target? But the GN rule needs to handle multiple
++    # headers then.
++    header = "logging/log_severity.h"
++    cpp = true
++    visibility = [ ":*" ]
+ 
+-    # Needed because of circular dependency: base depends on this target and by
+-    # extension the cxx-generated C++ code, but the cxx-generated code includes
+-    # base headers and calls base code. This seems to generally not cause
+-    # issues, except for partition_alloc which applies configs when depended on.
+-    #
+-    # This allows the generated C++ code to transitively include partition alloc
+-    # headers without issue.
+-    #
+-    # TODO(collinbaker): determine how to handle these cxx bindings-induced
+-    # circular dependencies more robustly.
+-    "//base/allocator/partition_allocator:raw_ptr",
++    # Transitive generated header dependency.
++    deps = [ ":debugging_buildflags" ]
++  }
+ 
+-    # Needed because logging/rust_logger.rs contains:
+-    #   include!("base/logging/rust_log_integration.h");
+-    # rust_log_integration.h ends up transitively #including
+-    # debug/debugging_buildflags.h, which is a generated header that needs to
+-    # be written first.
+-    #
+-    # Technically it would be more correct to depend on :base, which is the
+-    # target for rust_log_integration.h, but that's not possible due to circular
+-    # dependencies.
+-    #
+-    # Note if this is removed the build may still work by accident because
+-    # debug/debugging_buildflags.h still ends up being generated through a
+-    # dependency chain via :logging_log_severity_bindgen. But we should not
+-    # rely on that.
+-    #
+-    # See also https://crbug.com/406267472.
+-    ":debugging_buildflags",
+-  ]
+-  visibility = [ ":base" ]
+-  sources = [ "logging/rust_logger.rs" ]
+-  crate_root = "logging/rust_logger.rs"
++  rust_static_library("rust_logger") {
++    allow_unsafe = true  # Unsafe needed for FFI.
++    deps = [
++      ":logging_log_severity_bindgen",
++      ":tracing_buildflags",
++      "//build:chromeos_buildflags",
++      "//third_party/rust/log/v0_4:lib",
++
++      # Needed because of circular dependency: base depends on this target and by
++      # extension the cxx-generated C++ code, but the cxx-generated code includes
++      # base headers and calls base code. This seems to generally not cause
++      # issues, except for partition_alloc which applies configs when depended on.
++      #
++      # This allows the generated C++ code to transitively include partition alloc
++      # headers without issue.
++      #
++      # TODO(collinbaker): determine how to handle these cxx bindings-induced
++      # circular dependencies more robustly.
++      "//base/allocator/partition_allocator:raw_ptr",
+ 
+-  cxx_bindings = [ "logging/rust_logger.rs" ]
++      # Needed because logging/rust_logger.rs contains:
++      #   include!("base/logging/rust_log_integration.h");
++      # rust_log_integration.h ends up transitively #including
++      # debug/debugging_buildflags.h, which is a generated header that needs to
++      # be written first.
++      #
++      # Technically it would be more correct to depend on :base, which is the
++      # target for rust_log_integration.h, but that's not possible due to circular
++      # dependencies.
++      #
++      # Note if this is removed the build may still work by accident because
++      # debug/debugging_buildflags.h still ends up being generated through a
++      # dependency chain via :logging_log_severity_bindgen. But we should not
++      # rely on that.
++      #
++      # See also https://crbug.com/406267472.
++      ":debugging_buildflags",
++    ]
++    visibility = [ ":base" ]
++    sources = [ "logging/rust_logger.rs" ]
++    crate_root = "logging/rust_logger.rs"
++
++    cxx_bindings = [ "logging/rust_logger.rs" ]
++  }
+ }
+ 
+ if (is_linux || is_chromeos || is_tizen) {
+@@ -3810,7 +3818,7 @@ test("base_unittests") {
+     deps += [ "allocator/partition_allocator/src/partition_alloc:unittests" ]
+   }
+ 
+-  if (!is_nacl) {
++  if (!is_nacl && enable_rust_cxx) {
+     deps += [ "//build/rust:cxx_cppdeps" ]
+   }
+ 
+diff --git a/base/containers/fixed_flat_map.h b/base/containers/fixed_flat_map.h
+index a861e71f2fd8..6c05d60a2f01 100644
+--- a/base/containers/fixed_flat_map.h
++++ b/base/containers/fixed_flat_map.h
+@@ -103,11 +103,7 @@ using fixed_flat_map = base::
+ //   constexpr auto kMap = base::MakeFixedFlatMap<std::string_view, int>(
+ //       {{"foo", 1}, {"bar", 2}, {"baz", 3}});
+ template <class Key, class Mapped, class Compare = std::less<>, size_t N>
+-#if BUILDFLAG(IS_EFL)
+-constexpr fixed_flat_map<Key, Mapped, N, Compare> MakeFixedFlatMap(
+-#else
+ consteval fixed_flat_map<Key, Mapped, N, Compare> MakeFixedFlatMap(
+-#endif
+     std::pair<Key, Mapped> (&&data)[N],
+     const Compare& comp = Compare()) {
+   using FixedFlatMap = fixed_flat_map<Key, Mapped, N, Compare>;
+diff --git a/base/containers/to_value_list.h b/base/containers/to_value_list.h
+index 643ccd015bfe..103aed7d1c27 100644
+--- a/base/containers/to_value_list.h
++++ b/base/containers/to_value_list.h
+@@ -13,6 +13,7 @@
+ #include <type_traits>
+ #include <utility>
+ 
++#include "base/logging.h"
+ #include "base/values.h"
+ 
+ namespace base {
+@@ -34,10 +35,13 @@ template <typename Range, typename Proj = std::identity>
+                std::indirect_result_t<Proj, std::ranges::iterator_t<Range>>>
+ Value::List ToValueList(Range&& range, Proj proj = {}) {
+   auto container = Value::List::with_capacity(std::ranges::size(range));
++LOG(ERROR) << " Please remove EWK_BRINGUP ";
++#if !defined(EWK_BRINGUP)  // FIXME: m138 bringup
+   std::ranges::for_each(
+       std::forward<Range>(range),
+       [&]<typename T>(T&& value) { container.Append(std::forward<T>(value)); },
+       std::move(proj));
++#endif
+   return container;
+ }
+ 
+diff --git a/base/json/json_reader.cc b/base/json/json_reader.cc
+index eb57cc99db32..3e45a35e26ee 100644
+--- a/base/json/json_reader.cc
++++ b/base/json/json_reader.cc
+@@ -13,7 +13,7 @@
+ #include "base/strings/string_number_conversions.h"
+ #include "build/build_config.h"
+ 
+-#if BUILDFLAG(IS_NACL)
++#if BUILDFLAG(IS_NACL) || !defined(ENABLE_RUST)
+ #include "base/json/json_parser.h"
+ #else
+ #include "base/strings/string_view_rust.h"
+@@ -23,7 +23,7 @@
+ 
+ // TODO(crbug.com/40811643): Move the C++ parser into components/nacl to just
+ // run in-process there. Don't compile base::JSONReader on NaCL at all.
+-#if !BUILDFLAG(IS_NACL)
++#if !BUILDFLAG(IS_NACL) && defined(ENABLE_RUST)
+ 
+ namespace {
+ const char kSecurityJsonParsingTime[] = "Security.JSONParser.ParsingTime";
+@@ -144,7 +144,7 @@ std::string JSONReader::Error::ToString() const {
+ std::optional<Value> JSONReader::Read(std::string_view json,
+                                       int options,
+                                       size_t max_depth) {
+-#if BUILDFLAG(IS_NACL)
++#if BUILDFLAG(IS_NACL) || !defined(ENABLE_RUST)
+   internal::JSONParser parser(options, max_depth);
+   return parser.Parse(json);
+ #else   // BUILDFLAG(IS_NACL)
+@@ -185,7 +185,7 @@ std::optional<Value::List> JSONReader::ReadList(std::string_view json,
+ JSONReader::Result JSONReader::ReadAndReturnValueWithError(
+     std::string_view json,
+     int options) {
+-#if BUILDFLAG(IS_NACL)
++#if BUILDFLAG(IS_NACL) || !defined(ENABLE_RUST)
+   internal::JSONParser parser(options);
+   auto value = parser.Parse(json);
+   if (!value) {
+diff --git a/base/logging.cc b/base/logging.cc
+index 7d239913a7a4..90d3931aeded 100644
+--- a/base/logging.cc
++++ b/base/logging.cc
+@@ -122,7 +122,7 @@ typedef FILE* FileHandle;
+ #include "base/fuchsia/scoped_fx_logger.h"
+ #endif
+ 
+-#if !BUILDFLAG(IS_NACL)
++#if !BUILDFLAG(IS_NACL) && defined(ENABLE_RUST)
+ #include "base/logging/rust_logger.rs.h"
+ #endif
+ 
+@@ -536,7 +536,7 @@ bool BaseInitLoggingImpl(const LoggingSettings& settings) {
+   }
+ #endif
+ 
+-#if !BUILDFLAG(IS_NACL)
++#if !BUILDFLAG(IS_NACL) && defined(ENABLE_RUST)
+   // Connects Rust logging with the //base logging functionality.
+   internal::init_rust_log_crate();
+ #endif
+diff --git a/base/test/BUILD.gn b/base/test/BUILD.gn
+index 76b63e468b2b..ef5e628845da 100644
+--- a/base/test/BUILD.gn
++++ b/base/test/BUILD.gn
+@@ -38,15 +38,17 @@ static_library("test_config") {
+   ]
+ }
+ 
+-rust_static_library("test_rust_logger_consumer") {
+-  allow_unsafe = true  # Unsafe needed for FFI
+-  testonly = true
+-  deps = [ "//third_party/rust/log/v0_4:lib" ]
+-  sources = [ "logging/test_rust_logger_consumer.rs" ]
++if (enable_rust) {
++  rust_static_library("test_rust_logger_consumer") {
++    allow_unsafe = true  # Unsafe needed for FFI
++    testonly = true
++    deps = [ "//third_party/rust/log/v0_4:lib" ]
++    sources = [ "logging/test_rust_logger_consumer.rs" ]
+ 
+-  crate_root = "logging/test_rust_logger_consumer.rs"
++    crate_root = "logging/test_rust_logger_consumer.rs"
+ 
+-  cxx_bindings = [ "logging/test_rust_logger_consumer.rs" ]
++    cxx_bindings = [ "logging/test_rust_logger_consumer.rs" ]
++  }
+ }
+ 
+ static_library("test_support") {
+@@ -192,7 +194,6 @@ static_library("test_support") {
+ 
+   public_deps = [
+     ":test_config",
+-    ":test_rust_logger_consumer",
+     "//base",
+     "//base:base_static",
+     "//base:i18n",
+@@ -201,6 +202,10 @@ static_library("test_support") {
+     "//testing/gtest",
+   ]
+ 
++  if (enable_rust) {
++    public_deps += [ ":test_rust_logger_consumer" ]
++  }
++
+   deps = [
+     ":proto_test_support",
+     "//testing/libfuzzer:fuzztest_init_support",
+diff --git a/build/config/c++/c++.gni b/build/config/c++/c++.gni
+index 3e7a300016ab..2bfb88c1a5b9 100644
+--- a/build/config/c++/c++.gni
++++ b/build/config/c++/c++.gni
+@@ -14,7 +14,7 @@ declare_args() {
+   #
+   # WARNING: Bringing your own C++ standard library is deprecated and will not
+   # be supported in the future. This flag will be removed.
+-  use_custom_libcxx = true
++  use_custom_libcxx = !is_tizen
+ 
+   # Use libc++ instead of stdlibc++ when using the host_cpu toolchain, even if
+   # use_custom_libcxx is false. This is useful for cross-compiles where a custom
+@@ -25,7 +25,7 @@ declare_args() {
+   #
+   # WARNING: Bringing your own C++ standard library is deprecated and will not
+   # be supported in the future. This flag will be removed.
+-  use_custom_libcxx_for_host = true
++  use_custom_libcxx_for_host = !is_tizen
+ 
+   # Builds libcxx Natvis into the symbols for type visualization.
+   # Set to false to workaround http://crbug.com/966676 and
+diff --git a/build/config/rust.gni b/build/config/rust.gni
+index bd18d1311905..3cd160b48304 100644
+--- a/build/config/rust.gni
++++ b/build/config/rust.gni
+@@ -31,7 +31,7 @@ declare_args() {
+   #   (which may be used outside of Chromium build)
+   # * `enable_rust` should *not* be consulted in other Chromium directories
+   #   (including `//base`, `//net`, etc.)
+-  enable_rust = build_with_chromium
++  enable_rust = build_with_chromium && !is_tizen
+ 
+   # The chromium prelude crate provides the `chromium::import!` macro which
+   # is needed to depend on first-party rust libraries. Third-party libraries
+@@ -45,7 +45,7 @@ declare_args() {
+   # Chromium, and is also discouraged for downstream projects when possible.
+   #
+   # We do not support disabling this flag in Chromium code.
+-  enable_chromium_prelude = build_with_chromium
++  enable_chromium_prelude = build_with_chromium && !is_tizen
+ 
+   # Chromium provides a Rust toolchain in //third_party/rust-toolchain.
+   #
+diff --git a/build/rust/rust_target.gni b/build/rust/rust_target.gni
+index f400a023cb13..462d5c4878b0 100644
+--- a/build/rust/rust_target.gni
++++ b/build/rust/rust_target.gni
+@@ -319,7 +319,9 @@ template("rust_target") {
+     _rust_deps = _deps
+     _rust_aliased_deps = _aliased_deps
+     _rust_public_deps = _public_deps
+-    _cxx_deps = _deps
++    if (enable_rust_cxx) {
++      _cxx_deps = _deps
++    }
+ 
+     # Include the `chromium` crate in all first-party code. Third-party code
+     # (and the `chromium` crate itself) opts out by setting
+@@ -479,23 +481,25 @@ template("rust_target") {
+       }
+     }
+ 
+-    if (_cxx_bindings != []) {
+-      rust_cxx("${_target_name}_cxx_generated") {
+-        testonly = _testonly
+-        visibility = [ ":${_target_name}" ]
+-        if (defined(_visibility)) {
+-          visibility += _visibility
++    if (enable_rust_cxx) {
++      if (_cxx_bindings != []) {
++        rust_cxx("${_target_name}_cxx_generated") {
++          testonly = _testonly
++          visibility = [ ":${_target_name}" ]
++          if (defined(_visibility)) {
++            visibility += _visibility
++          }
++          sources = _cxx_bindings
++          deps = _cxx_deps + _public_deps
++          configs = _configs
++
++          # In a component_build the cxx bindings may be linked into a shared
++          # library at any point up the dependency tree, so always export.
++          export_symbols = is_component_build
+         }
+-        sources = _cxx_bindings
+-        deps = _cxx_deps + _public_deps
+-        configs = _configs
+-
+-        # In a component_build the cxx bindings may be linked into a shared
+-        # library at any point up the dependency tree, so always export.
+-        export_symbols = is_component_build
++      } else {
++        not_needed([ "_cxx_deps" ])
+       }
+-    } else {
+-      not_needed([ "_cxx_deps" ])
+     }
+   }
+ }
+diff --git a/chrome/BUILD.gn b/chrome/BUILD.gn
+index 6e232c88c860..da3782e908c6 100644
+--- a/chrome/BUILD.gn
++++ b/chrome/BUILD.gn
+@@ -1481,8 +1481,7 @@ if (is_win) {
+ 
+     ldflags = []
+ 
+-    if ((is_linux || is_chromeos_lacros) && !is_component_build &&
+-        !using_sanitizer) {
++    if (is_linux && !is_component_build && !using_sanitizer) {
+       version_script = "//build/linux/chrome.map"
+       inputs = [ version_script ]
+       ldflags += [ "-Wl,--version-script=" +
+diff --git a/chrome/browser/chooser_controller/BUILD.gn b/chrome/browser/chooser_controller/BUILD.gn
+index b99bf55be646..7fe40d7a2f9b 100644
+--- a/chrome/browser/chooser_controller/BUILD.gn
++++ b/chrome/browser/chooser_controller/BUILD.gn
+@@ -4,7 +4,7 @@
+ 
+ import("//extensions/buildflags/buildflags.gni")
+ 
+-assert(is_win || is_mac || is_linux || is_chromeos || is_android)
++assert(is_win || is_mac || is_linux || is_chromeos || is_android || is_tizen)
+ 
+ source_set("chooser_controller") {
+   sources = [
+diff --git a/chrome/browser/chrome_browser_interface_binders_webui.cc b/chrome/browser/chrome_browser_interface_binders_webui.cc
+index f04b8ef683a6..9215a223adfe 100644
+--- a/chrome/browser/chrome_browser_interface_binders_webui.cc
++++ b/chrome/browser/chrome_browser_interface_binders_webui.cc
+@@ -459,7 +459,7 @@ void PopulateChromeWebUIFrameBinders(
+   }
+ #endif
+ 
+-#if BUILDFLAG(IS_WIN) || BUILDFLAG(IS_MAC) || BUILDFLAG(IS_LINUX) || \
++#if BUILDFLAG(IS_WIN) || BUILDFLAG(IS_MAC) || (BUILDFLAG(IS_LINUX) && !BUILDFLAG(IS_TIZEN)) || \
+     BUILDFLAG(IS_CHROMEOS)
+   RegisterWebUIControllerInterfaceBinder<
+       connectors_internals::mojom::PageHandler,
+@@ -1153,7 +1153,7 @@ void PopulateChromeWebUIFrameBinders(
+   }
+ #endif  // BUILDFLAG(IS_CHROMEOS)
+ 
+-#if BUILDFLAG(IS_WIN) || BUILDFLAG(IS_MAC) || BUILDFLAG(IS_LINUX) || \
++#if BUILDFLAG(IS_WIN) || BUILDFLAG(IS_MAC) || (BUILDFLAG(IS_LINUX) && !BUILDFLAG(IS_TIZEN)) || \
+     BUILDFLAG(IS_CHROMEOS) || BUILDFLAG(IS_DESKTOP_ANDROID)
+   RegisterWebUIControllerInterfaceBinder<discards::mojom::DetailsProvider,
+                                          DiscardsUI>(map);
+diff --git a/chrome/browser/chrome_content_browser_client.cc b/chrome/browser/chrome_content_browser_client.cc
+index c594ac6ca384..838acc349b62 100644
+--- a/chrome/browser/chrome_content_browser_client.cc
++++ b/chrome/browser/chrome_content_browser_client.cc
+@@ -4703,7 +4703,7 @@ bool ChromeContentBrowserClient::OverrideWebPreferencesAfterNavigation(
+   prefs_changed |= (web_prefs->autoplay_policy != autoplay_policy);
+   web_prefs->autoplay_policy = autoplay_policy;
+ 
+-#if !BUILDFLAG(IS_ANDROID)
++#if !BUILDFLAG(IS_ANDROID) && BUILDFLAG(ENABLE_SCREEN_CAPTURE)
+   const bool require_transient_activation_for_get_display_media =
+       capture_policy::IsTransientActivationRequiredForGetDisplayMedia(
+           web_contents);
+diff --git a/chrome/browser/component_updater/pki_metadata_component_installer.cc b/chrome/browser/component_updater/pki_metadata_component_installer.cc
+index f95b37c107bc..a23ce482f2ca 100644
+--- a/chrome/browser/component_updater/pki_metadata_component_installer.cc
++++ b/chrome/browser/component_updater/pki_metadata_component_installer.cc
+@@ -408,10 +408,12 @@ void PKIMetadataComponentInstallerService::UpdateNetworkServiceKPListOnUI(
+                                base::Nanoseconds(proto->timestamp().nanos());
+   // Do not update the pins list with the component data if it's older than the
+   // built in list.
++#if BUILDFLAG(INCLUDE_TRANSPORT_SECURITY_STATE_PRELOAD_LIST)
+   if (proto_timestamp <
+       net::TransportSecurityState::GetBuiltInPinsListTimestamp()) {
+     return;
+   }
++#endif
+ 
+   network::mojom::PinListPtr pinlist_ptr = network::mojom::PinList::New();
+ 
+diff --git a/chrome/browser/content_settings/BUILD.gn b/chrome/browser/content_settings/BUILD.gn
+index 1fe1ecf20ad9..9eefbaf0fa1b 100644
+--- a/chrome/browser/content_settings/BUILD.gn
++++ b/chrome/browser/content_settings/BUILD.gn
+@@ -6,7 +6,7 @@ import("//extensions/buildflags/buildflags.gni")
+ import("//pdf/features.gni")
+ import("//ppapi/buildflags/buildflags.gni")
+ 
+-assert(is_win || is_mac || is_linux || is_chromeos || is_android)
++assert(is_win || is_mac || is_linux || is_chromeos || is_android || is_tizen)
+ 
+ source_set("content_settings") {
+   sources = [
+diff --git a/chrome/browser/devtools/devtools_window.cc b/chrome/browser/devtools/devtools_window.cc
+index e8fda706fb34..aaa6cdccbe65 100644
+--- a/chrome/browser/devtools/devtools_window.cc
++++ b/chrome/browser/devtools/devtools_window.cc
+@@ -1819,7 +1819,7 @@ void DevToolsWindow::ShowCertificateViewer(const std::string& cert_chain) {
+   if (!inspected_contents) {
+     return;
+   }
+-#if BUILDFLAG(IS_ANDROID)
++#if BUILDFLAG(IS_ANDROID) || BUILDFLAG(IS_TIZEN)
+   NOTIMPLEMENTED();
+ #else
+   Browser* browser = chrome::FindBrowserWithTab(inspected_contents);
+diff --git a/chrome/browser/feedback/BUILD.gn b/chrome/browser/feedback/BUILD.gn
+index 7c825da238ce..e9ce24a97d39 100644
+--- a/chrome/browser/feedback/BUILD.gn
++++ b/chrome/browser/feedback/BUILD.gn
+@@ -149,7 +149,7 @@ source_set("feedback_impl") {
+   if (is_win || is_mac) {
+     deps += [ "//chrome/browser/updater:browser_updater_client" ]
+   }
+-  if (is_linux) {
++  if (is_linux || is_tizen) {
+     sources += [
+       "system_logs/log_sources/ozone_platform_state_dump_source.cc",
+       "system_logs/log_sources/ozone_platform_state_dump_source.h",
+diff --git a/chrome/browser/feedback/system_logs/log_sources/chrome_root_store_log_source.cc b/chrome/browser/feedback/system_logs/log_sources/chrome_root_store_log_source.cc
+index 148e17edafe8..1545d7e08f95 100644
+--- a/chrome/browser/feedback/system_logs/log_sources/chrome_root_store_log_source.cc
++++ b/chrome/browser/feedback/system_logs/log_sources/chrome_root_store_log_source.cc
+@@ -30,6 +30,8 @@ void PopulateChromeRootStoreLogsAsync(
+ 
+   std::string entry;
+   entry += "version: " + base::NumberToString(info->version) + "\n\n";
++LOG(ERROR) << " Please remove EWK_BRINGUP ";
++#if !defined(EWK_BRINGUP)  // FIXME: m138 bringup
+   for (auto const& cert_info : info->root_cert_info) {
+     x509_certificate_model::X509CertificateModel model(
+         net::x509_util::CreateCryptoBuffer(cert_info->cert), "");
+@@ -37,6 +39,7 @@ void PopulateChromeRootStoreLogsAsync(
+              "  name: " + model.GetTitle() + "\n";
+   }
+   response->emplace(kChromeRootStoreKey, std::move(entry));
++#endif
+   std::move(callback).Run(std::move(response));
+ }
+ 
+diff --git a/chrome/browser/hid/BUILD.gn b/chrome/browser/hid/BUILD.gn
+index 119aec4d0e28..4e52869f25af 100644
+--- a/chrome/browser/hid/BUILD.gn
++++ b/chrome/browser/hid/BUILD.gn
+@@ -2,7 +2,7 @@
+ # Use of this source code is governed by a BSD-style license that can be
+ # found in the LICENSE file.
+ 
+-assert(is_win || is_mac || is_linux || is_chromeos)
++assert(is_win || is_mac || is_linux || is_chromeos || is_tizen)
+ 
+ source_set("hid") {
+   sources = [
+diff --git a/chrome/browser/importer/BUILD.gn b/chrome/browser/importer/BUILD.gn
+index 0c048e2d1480..82e1338d2cd8 100644
+--- a/chrome/browser/importer/BUILD.gn
++++ b/chrome/browser/importer/BUILD.gn
+@@ -2,7 +2,7 @@
+ # Use of this source code is governed by a BSD-style license that can be
+ # found in the LICENSE file.
+ 
+-assert(is_win || is_mac || is_linux || is_chromeos)
++assert(is_win || is_mac || is_linux || is_chromeos || is_tizen)
+ 
+ source_set("importer") {
+   sources = [
+diff --git a/chrome/browser/metrics/process_memory_metrics_emitter.cc b/chrome/browser/metrics/process_memory_metrics_emitter.cc
+index c38b64d3a986..7adef4c3450a 100644
+--- a/chrome/browser/metrics/process_memory_metrics_emitter.cc
++++ b/chrome/browser/metrics/process_memory_metrics_emitter.cc
+@@ -1062,7 +1062,7 @@ void EmitProcessUmaAndUkm(const GlobalMemoryDump::ProcessDump& pmd,
+   MEMORY_METRICS_HISTOGRAM_MB(std::string(kMemoryHistogramPrefix) +
+                                   process_name + ".SharedMemoryFootprint",
+                               pmd.os_dump().shared_footprint_kb / kKiB);
+-#if BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_CHROMEOS) || BUILDFLAG(IS_ANDROID)
++#if (BUILDFLAG(IS_LINUX) && !BUILDFLAG(IS_TIZEN)) || BUILDFLAG(IS_CHROMEOS) || BUILDFLAG(IS_ANDROID)
+   MEMORY_METRICS_HISTOGRAM_MB(std::string(kMemoryHistogramPrefix) +
+                                   process_name + ".PrivateSwapFootprint",
+                               pmd.os_dump().private_footprint_swap_kb / kKiB);
+diff --git a/chrome/browser/navigation_predictor/BUILD.gn b/chrome/browser/navigation_predictor/BUILD.gn
+index 1ae414eb063b..9db8d939c19c 100644
+--- a/chrome/browser/navigation_predictor/BUILD.gn
++++ b/chrome/browser/navigation_predictor/BUILD.gn
+@@ -2,7 +2,7 @@
+ # Use of this source code is governed by a BSD-style license that can be
+ # found in the LICENSE file.
+ 
+-assert(is_win || is_mac || is_linux || is_chromeos || is_android)
++assert(is_win || is_mac || is_linux || is_chromeos || is_android || is_tizen)
+ 
+ source_set("navigation_predictor") {
+   sources = [
+diff --git a/chrome/browser/optimization_guide/BUILD.gn b/chrome/browser/optimization_guide/BUILD.gn
+index 1418b68a7e5b..bb30723625ea 100644
+--- a/chrome/browser/optimization_guide/BUILD.gn
++++ b/chrome/browser/optimization_guide/BUILD.gn
+@@ -4,7 +4,7 @@
+ 
+ import("//components/optimization_guide/features.gni")
+ 
+-assert(is_win || is_mac || is_linux || is_chromeos || is_android)
++assert(is_win || is_mac || is_linux || is_chromeos || is_android || is_tizen)
+ 
+ source_set("optimization_guide") {
+   sources = [
+diff --git a/chrome/browser/password_manager/chrome_password_manager_client.cc b/chrome/browser/password_manager/chrome_password_manager_client.cc
+index 360c129ca0df..27205664cc7d 100644
+--- a/chrome/browser/password_manager/chrome_password_manager_client.cc
++++ b/chrome/browser/password_manager/chrome_password_manager_client.cc
+@@ -2042,7 +2042,7 @@ void ChromePasswordManagerClient::HideFillingUI() {
+ 
+ bool ChromePasswordManagerClient::IsPasswordManagementEnabledForCurrentPage(
+     const GURL& url) const {
+-#if BUILDFLAG(IS_MAC) || BUILDFLAG(IS_WIN) || BUILDFLAG(IS_LINUX) || \
++#if BUILDFLAG(IS_MAC) || BUILDFLAG(IS_WIN) || (BUILDFLAG(IS_LINUX) && !BUILDFLAG(IS_TIZEN)) || \
+     BUILDFLAG(IS_CHROMEOS)
+   if (IsPasswordManagerForUrlDisallowedByPolicy(url)) {
+     return false;
+@@ -2081,7 +2081,7 @@ bool ChromePasswordManagerClient::IsPasswordManagementEnabledForCurrentPage(
+   return is_enabled;
+ }
+ 
+-#if BUILDFLAG(IS_MAC) || BUILDFLAG(IS_WIN) || BUILDFLAG(IS_LINUX) || \
++#if BUILDFLAG(IS_MAC) || BUILDFLAG(IS_WIN) || (BUILDFLAG(IS_LINUX) && !BUILDFLAG(IS_TIZEN)) || \
+     BUILDFLAG(IS_CHROMEOS)
+ bool ChromePasswordManagerClient::IsPasswordManagerForUrlDisallowedByPolicy(
+     const GURL& url) const {
+diff --git a/chrome/browser/plus_addresses/BUILD.gn b/chrome/browser/plus_addresses/BUILD.gn
+index fd7367c03628..d684aca6c68d 100644
+--- a/chrome/browser/plus_addresses/BUILD.gn
++++ b/chrome/browser/plus_addresses/BUILD.gn
+@@ -2,7 +2,7 @@
+ # Use of this source code is governed by a BSD-style license that can be
+ # found in the LICENSE file.
+ 
+-assert(is_win || is_mac || is_linux || is_chromeos || is_android)
++assert(is_win || is_mac || is_linux || is_chromeos || is_android || is_tizen)
+ 
+ source_set("plus_addresses") {
+   sources = [
+diff --git a/chrome/browser/policy/configuration_policy_handler_list_factory.cc b/chrome/browser/policy/configuration_policy_handler_list_factory.cc
+index 790100c2b174..d029005a3229 100644
+--- a/chrome/browser/policy/configuration_policy_handler_list_factory.cc
++++ b/chrome/browser/policy/configuration_policy_handler_list_factory.cc
+@@ -487,9 +487,11 @@ const PolicyToPreferenceMapEntry kSimplePolicyMap[] = {
+   { key::kAutoplayAllowlist,
+     prefs::kAutoplayAllowlist,
+     base::Value::Type::LIST },
++#if BUILDFLAG(ENABLE_SCREEN_CAPTURE)
+   { key::kScreenCaptureWithoutGestureAllowedForOrigins,
+     prefs::kScreenCaptureWithoutGestureAllowedForOrigins,
+     base::Value::Type::LIST },
++#endif
+   { key::kFileOrDirectoryPickerWithoutGestureAllowedForOrigins,
+     prefs::kFileOrDirectoryPickerWithoutGestureAllowedForOrigins,
+     base::Value::Type::LIST },
+diff --git a/chrome/browser/prefs/BUILD.gn b/chrome/browser/prefs/BUILD.gn
+index c7dd6977b7ea..e5192df8f458 100644
+--- a/chrome/browser/prefs/BUILD.gn
++++ b/chrome/browser/prefs/BUILD.gn
+@@ -9,7 +9,7 @@ import("//components/services/on_device_translation/buildflags/features.gni")
+ import("//extensions/buildflags/buildflags.gni")
+ import("//pdf/features.gni")
+ 
+-assert(is_win || is_mac || is_linux || is_chromeos || is_android)
++assert(is_win || is_mac || is_linux || is_chromeos || is_android || is_tizen)
+ 
+ source_set("prefs") {
+   sources = [
+diff --git a/chrome/browser/prefs/browser_prefs.cc b/chrome/browser/prefs/browser_prefs.cc
+index bab4996a003c..34f32b51fa44 100644
+--- a/chrome/browser/prefs/browser_prefs.cc
++++ b/chrome/browser/prefs/browser_prefs.cc
+@@ -9,6 +9,7 @@
+ #include <string>
+ #include <string_view>
+ 
++#include "base/logging.h"
+ #include "base/time/time.h"
+ #include "base/trace_event/trace_event.h"
+ #include "build/android_buildflags.h"
+@@ -304,7 +305,9 @@
+ #include "chrome/browser/ui/tabs/saved_tab_groups/saved_tab_group_pref_names.h"
+ #include "chrome/browser/ui/tabs/tab_strip_prefs.h"
+ #include "chrome/browser/ui/views/side_panel/side_panel_prefs.h"
++#if !defined(EWK_BRINGUP)  // FIXME: m138 bringup
+ #include "chrome/browser/ui/webui/certificate_manager/certificate_manager_handler.h"
++#endif
+ #include "chrome/browser/ui/webui/cr_components/theme_color_picker/theme_color_picker_handler.h"
+ #include "chrome/browser/ui/webui/history/foreign_session_handler.h"
+ #include "chrome/browser/ui/webui/new_tab_footer/new_tab_footer_ui.h"
+@@ -2283,7 +2286,10 @@ void RegisterProfilePrefs(user_prefs::PrefRegistrySyncable* registry,
+ 
+   tabs::RegisterProfilePrefs(registry);
+ 
++LOG(ERROR) << " Please remove EWK_BRINGUP ";
++#if !defined(EWK_BRINGUP)  // FIXME: m138 bringup
+   CertificateManagerPageHandler::RegisterProfilePrefs(registry);
++#endif
+ #endif  // !BUILDFLAG(IS_ANDROID)
+ 
+   registry->RegisterBooleanPref(webauthn::pref_names::kAllowWithBrokenCerts,
+diff --git a/chrome/browser/privacy_sandbox/notice/desktop_view_manager_interface.h b/chrome/browser/privacy_sandbox/notice/desktop_view_manager_interface.h
+index c6675af07456..19ca11c45b72 100644
+--- a/chrome/browser/privacy_sandbox/notice/desktop_view_manager_interface.h
++++ b/chrome/browser/privacy_sandbox/notice/desktop_view_manager_interface.h
+@@ -3,6 +3,8 @@
+ // found in the LICENSE file.
+ #ifndef CHROME_BROWSER_PRIVACY_SANDBOX_NOTICE_DESKTOP_VIEW_MANAGER_INTERFACE_H_
+ #define CHROME_BROWSER_PRIVACY_SANDBOX_NOTICE_DESKTOP_VIEW_MANAGER_INTERFACE_H_
++
++#include <optional>
+ #include <vector>
+ 
+ #include "base/memory/raw_ptr.h"
+diff --git a/chrome/browser/regional_capabilities/BUILD.gn b/chrome/browser/regional_capabilities/BUILD.gn
+index 6ab76a06c8d7..dd1edfe9dc20 100644
+--- a/chrome/browser/regional_capabilities/BUILD.gn
++++ b/chrome/browser/regional_capabilities/BUILD.gn
+@@ -4,7 +4,7 @@
+ 
+ import("//build/config/chrome_build.gni")
+ 
+-assert(is_win || is_mac || is_linux || is_chromeos || is_android)
++assert(is_win || is_mac || is_linux || is_chromeos || is_android || is_tizen)
+ 
+ source_set("regional_capabilities") {
+   sources = [
+diff --git a/chrome/browser/resources/BUILD.gn b/chrome/browser/resources/BUILD.gn
+index 6452924b1ceb..715381cf2a15 100644
+--- a/chrome/browser/resources/BUILD.gn
++++ b/chrome/browser/resources/BUILD.gn
+@@ -104,7 +104,7 @@ group("resources") {
+     ]
+   }
+ 
+-  if (is_win || is_mac || is_linux || is_chromeos) {
++  if (is_win || is_mac || is_linux || is_chromeos || is_tizen) {
+     public_deps += [ "connectors_internals:resources" ]
+   }
+ 
+diff --git a/chrome/browser/resources/on_device_translation_internals/BUILD.gn b/chrome/browser/resources/on_device_translation_internals/BUILD.gn
+index dc928d0ceabc..890f0af30832 100644
+--- a/chrome/browser/resources/on_device_translation_internals/BUILD.gn
++++ b/chrome/browser/resources/on_device_translation_internals/BUILD.gn
+@@ -4,7 +4,7 @@
+ 
+ import("//ui/webui/resources/tools/build_webui.gni")
+ 
+-assert(is_win || is_mac || is_linux)
++assert(is_win || is_mac || is_linux || is_tizen)
+ 
+ build_webui("build") {
+   grd_prefix = "on_device_translation_internals"
+diff --git a/chrome/browser/resources/signin/history_sync_optin/BUILD.gn b/chrome/browser/resources/signin/history_sync_optin/BUILD.gn
+index e90db73a981a..3dd2b8cbb5d6 100644
+--- a/chrome/browser/resources/signin/history_sync_optin/BUILD.gn
++++ b/chrome/browser/resources/signin/history_sync_optin/BUILD.gn
+@@ -4,7 +4,7 @@
+ 
+ import("//ui/webui/resources/tools/build_webui.gni")
+ 
+-assert(is_win || is_mac || is_linux)
++assert(is_win || is_mac || is_linux || is_tizen)
+ 
+ build_webui("build") {
+   grd_prefix = "signin_history_sync_optin"
+diff --git a/chrome/browser/resources/tts_engine/BUILD.gn b/chrome/browser/resources/tts_engine/BUILD.gn
+index 6684004a885f..cfb3574c6cd9 100644
+--- a/chrome/browser/resources/tts_engine/BUILD.gn
++++ b/chrome/browser/resources/tts_engine/BUILD.gn
+@@ -4,7 +4,7 @@
+ 
+ import("//ui/webui/resources/tools/build_webui.gni")
+ 
+-assert(is_win || is_mac || is_linux)
++assert(is_win || is_mac || is_linux || is_tizen)
+ 
+ generate_grd("build_bindings_grdp") {
+   grd_prefix = "tts_engine"
+diff --git a/chrome/browser/sharing_hub/BUILD.gn b/chrome/browser/sharing_hub/BUILD.gn
+index bfeb5bd3dc02..404387b72809 100644
+--- a/chrome/browser/sharing_hub/BUILD.gn
++++ b/chrome/browser/sharing_hub/BUILD.gn
+@@ -2,7 +2,7 @@
+ # Use of this source code is governed by a BSD-style license that can be
+ # found in the LICENSE file.
+ 
+-assert(is_win || is_mac || is_linux || is_chromeos)
++assert(is_win || is_mac || is_linux || is_chromeos || is_tizen)
+ 
+ source_set("sharing_hub") {
+   sources = [
+diff --git a/chrome/browser/ui/BUILD.gn b/chrome/browser/ui/BUILD.gn
+index b580eb64f2af..c5c29fb86307 100644
+--- a/chrome/browser/ui/BUILD.gn
++++ b/chrome/browser/ui/BUILD.gn
+@@ -2998,7 +2998,8 @@ static_library("ui") {
+     ]
+   }
+ 
+-  if (is_win || is_mac || is_linux || is_chromeos || is_desktop_android) {
++  if (is_win || is_mac || is_linux || is_chromeos || is_desktop_android ||
++      is_tizen) {
+     sources += [
+       "webui/discards/discards_ui.cc",
+       "webui/discards/discards_ui.h",
+@@ -3188,7 +3189,7 @@ static_library("ui") {
+     }
+   }
+ 
+-  if (is_win || is_mac || is_linux || is_chromeos) {
++  if (is_win || is_mac || is_linux || is_chromeos || is_tizen) {
+     sources += [
+       "passwords/password_cross_domain_confirmation_popup_view.h",
+       "webui/connectors_internals/connectors_internals_page_handler.cc",
+@@ -5276,7 +5277,7 @@ static_library("ui") {
+     deps += [ "//chrome/browser/extensions" ]
+     allow_circular_includes_from += [ "//chrome/browser/extensions" ]
+ 
+-    if (is_win || is_mac || is_linux || is_chromeos) {
++    if (is_win || is_mac || is_linux || is_chromeos || is_tizen) {
+       sources += [
+         "extensions/extension_install_ui_desktop.cc",
+         "extensions/extension_install_ui_desktop.h",
+diff --git a/chrome/browser/ui/bookmarks/BUILD.gn b/chrome/browser/ui/bookmarks/BUILD.gn
+index 6c6c619ee70b..0a6b7afa2042 100644
+--- a/chrome/browser/ui/bookmarks/BUILD.gn
++++ b/chrome/browser/ui/bookmarks/BUILD.gn
+@@ -2,7 +2,7 @@
+ # Use of this source code is governed by a BSD-style license that can be
+ # found in the LICENSE file.
+ 
+-assert(is_win || is_mac || is_linux || is_chromeos)
++assert(is_win || is_mac || is_linux || is_chromeos || is_tizen)
+ 
+ source_set("bookmarks") {
+   sources = [
+diff --git a/chrome/browser/ui/device_signals_consent/BUILD.gn b/chrome/browser/ui/device_signals_consent/BUILD.gn
+index f7625ee1764a..ac24bada0f42 100644
+--- a/chrome/browser/ui/device_signals_consent/BUILD.gn
++++ b/chrome/browser/ui/device_signals_consent/BUILD.gn
+@@ -2,7 +2,7 @@
+ # Use of this source code is governed by a BSD-style license that can be
+ # found in the LICENSE file.
+ 
+-assert(is_win || is_mac || is_linux || is_chromeos)
++assert(is_win || is_mac || is_linux || is_chromeos || is_tizen)
+ 
+ source_set("device_signals_consent") {
+   sources = [ "consent_requester.h" ]
+diff --git a/chrome/browser/ui/dialogs/BUILD.gn b/chrome/browser/ui/dialogs/BUILD.gn
+index 7f3dacb6b6a3..9a587ae06021 100644
+--- a/chrome/browser/ui/dialogs/BUILD.gn
++++ b/chrome/browser/ui/dialogs/BUILD.gn
+@@ -4,7 +4,7 @@
+ 
+ import("//build/config/ui.gni")
+ 
+-assert(is_win || is_mac || is_linux || is_chromeos)
++assert(is_win || is_mac || is_linux || is_chromeos || is_tizen)
+ assert(toolkit_views)
+ 
+ source_set("dialogs") {
+diff --git a/chrome/browser/ui/download/BUILD.gn b/chrome/browser/ui/download/BUILD.gn
+index 8f977bab2cff..a2389fd65884 100644
+--- a/chrome/browser/ui/download/BUILD.gn
++++ b/chrome/browser/ui/download/BUILD.gn
+@@ -2,7 +2,7 @@
+ # Use of this source code is governed by a BSD-style license that can be
+ # found in the LICENSE file.
+ 
+-assert(is_win || is_mac || is_linux || is_chromeos)
++assert(is_win || is_mac || is_linux || is_chromeos || is_tizen)
+ 
+ source_set("download") {
+   sources = [
+diff --git a/chrome/browser/ui/global_error/BUILD.gn b/chrome/browser/ui/global_error/BUILD.gn
+index cf8504a0688e..752826c73499 100644
+--- a/chrome/browser/ui/global_error/BUILD.gn
++++ b/chrome/browser/ui/global_error/BUILD.gn
+@@ -2,7 +2,7 @@
+ # Use of this source code is governed by a BSD-style license that can be
+ # found in the LICENSE file.
+ 
+-assert(is_win || is_mac || is_linux || is_chromeos)
++assert(is_win || is_mac || is_linux || is_chromeos || is_tizen)
+ 
+ source_set("global_error") {
+   sources = [
+diff --git a/chrome/browser/ui/global_media_controls/BUILD.gn b/chrome/browser/ui/global_media_controls/BUILD.gn
+index 682e1dabfe4a..713f0e1bf52f 100644
+--- a/chrome/browser/ui/global_media_controls/BUILD.gn
++++ b/chrome/browser/ui/global_media_controls/BUILD.gn
+@@ -2,7 +2,7 @@
+ # Use of this source code is governed by a BSD-style license that can be
+ # found in the LICENSE file.
+ 
+-assert(is_win || is_mac || is_linux || is_chromeos)
++assert(is_win || is_mac || is_linux || is_chromeos || is_tizen)
+ 
+ source_set("global_media_controls") {
+   sources = [
+diff --git a/chrome/browser/ui/hats/BUILD.gn b/chrome/browser/ui/hats/BUILD.gn
+index b11d94eb9879..20a72903cb22 100644
+--- a/chrome/browser/ui/hats/BUILD.gn
++++ b/chrome/browser/ui/hats/BUILD.gn
+@@ -2,7 +2,7 @@
+ # Use of this source code is governed by a BSD-style license that can be
+ # found in the LICENSE file.
+ 
+-assert(is_win || is_mac || is_linux || is_chromeos || is_android)
++assert(is_win || is_mac || is_linux || is_chromeos || is_android || is_tizen)
+ 
+ source_set("hats") {
+   sources = [
+diff --git a/chrome/browser/ui/hid/BUILD.gn b/chrome/browser/ui/hid/BUILD.gn
+index c1b7d6709724..db71c052c6c0 100644
+--- a/chrome/browser/ui/hid/BUILD.gn
++++ b/chrome/browser/ui/hid/BUILD.gn
+@@ -2,7 +2,7 @@
+ # Use of this source code is governed by a BSD-style license that can be
+ # found in the LICENSE file.
+ 
+-assert(is_win || is_mac || is_linux || is_chromeos)
++assert(is_win || is_mac || is_linux || is_chromeos || is_tizen)
+ 
+ source_set("hid") {
+   sources = [
+diff --git a/chrome/browser/ui/hung_renderer/BUILD.gn b/chrome/browser/ui/hung_renderer/BUILD.gn
+index 58dd8e3184a5..a12b68ef5613 100644
+--- a/chrome/browser/ui/hung_renderer/BUILD.gn
++++ b/chrome/browser/ui/hung_renderer/BUILD.gn
+@@ -4,7 +4,7 @@
+ 
+ import("//build/config/chromeos/args.gni")
+ 
+-assert(is_win || is_mac || is_linux || is_chromeos)
++assert(is_win || is_mac || is_linux || is_chromeos || is_tizen)
+ 
+ source_set("hung_renderer") {
+   sources = [
+diff --git a/chrome/browser/ui/interventions/BUILD.gn b/chrome/browser/ui/interventions/BUILD.gn
+index 379c4ef14828..2c08197934d4 100644
+--- a/chrome/browser/ui/interventions/BUILD.gn
++++ b/chrome/browser/ui/interventions/BUILD.gn
+@@ -2,7 +2,7 @@
+ # Use of this source code is governed by a BSD-style license that can be
+ # found in the LICENSE file.
+ 
+-assert(is_win || is_mac || is_linux || is_chromeos || is_android)
++assert(is_win || is_mac || is_linux || is_chromeos || is_android || is_tizen)
+ 
+ source_set("interventions") {
+   sources = [
+diff --git a/chrome/browser/ui/javascript_dialogs/BUILD.gn b/chrome/browser/ui/javascript_dialogs/BUILD.gn
+index ca37c54905bf..98acbbcf9432 100644
+--- a/chrome/browser/ui/javascript_dialogs/BUILD.gn
++++ b/chrome/browser/ui/javascript_dialogs/BUILD.gn
+@@ -2,7 +2,7 @@
+ # Use of this source code is governed by a BSD-style license that can be
+ # found in the LICENSE file.
+ 
+-assert(is_win || is_mac || is_linux || is_chromeos || is_android)
++assert(is_win || is_mac || is_linux || is_chromeos || is_android || is_tizen)
+ 
+ source_set("javascript_dialogs") {
+   sources = [
+diff --git a/chrome/browser/ui/login/BUILD.gn b/chrome/browser/ui/login/BUILD.gn
+index bdc7e72608b8..d50dff06c4bd 100644
+--- a/chrome/browser/ui/login/BUILD.gn
++++ b/chrome/browser/ui/login/BUILD.gn
+@@ -2,7 +2,7 @@
+ # Use of this source code is governed by a BSD-style license that can be
+ # found in the LICENSE file.
+ 
+-assert(is_win || is_mac || is_linux || is_chromeos || is_android)
++assert(is_win || is_mac || is_linux || is_chromeos || is_android || is_tizen)
+ 
+ source_set("login") {
+   sources = [
+diff --git a/chrome/browser/ui/media_router/BUILD.gn b/chrome/browser/ui/media_router/BUILD.gn
+index 5b3c1e6be7ae..e4acb8158c4d 100644
+--- a/chrome/browser/ui/media_router/BUILD.gn
++++ b/chrome/browser/ui/media_router/BUILD.gn
+@@ -2,7 +2,7 @@
+ # Use of this source code is governed by a BSD-style license that can be
+ # found in the LICENSE file.
+ 
+-assert(is_win || is_mac || is_linux || is_chromeos)
++assert(is_win || is_mac || is_linux || is_chromeos || is_tizen)
+ 
+ source_set("media_router") {
+   sources = [
+diff --git a/chrome/browser/ui/page_info/BUILD.gn b/chrome/browser/ui/page_info/BUILD.gn
+index 5ad86d73a515..73d1734562b8 100644
+--- a/chrome/browser/ui/page_info/BUILD.gn
++++ b/chrome/browser/ui/page_info/BUILD.gn
+@@ -2,7 +2,7 @@
+ # Use of this source code is governed by a BSD-style license that can be
+ # found in the LICENSE file.
+ 
+-assert(is_win || is_mac || is_linux || is_chromeos || is_android)
++assert(is_win || is_mac || is_linux || is_chromeos || is_android || is_tizen)
+ 
+ source_set("page_info") {
+   sources = [
+diff --git a/chrome/browser/ui/page_info/chrome_page_info_delegate.cc b/chrome/browser/ui/page_info/chrome_page_info_delegate.cc
+index d6806e8019f8..f38e9eb43278 100644
+--- a/chrome/browser/ui/page_info/chrome_page_info_delegate.cc
++++ b/chrome/browser/ui/page_info/chrome_page_info_delegate.cc
+@@ -296,7 +296,10 @@ void ChromePageInfoDelegate::OpenCertificateDialog(
+   DCHECK(top_window);
+ 
+   FocusWebContents();
++LOG(ERROR) << " Please remove EWK_BRINGUP ";
++#if !defined(EWK_BRINGUP)  // FIXME: m138 bringup
+   ShowCertificateViewer(web_contents_, top_window, certificate);
++#endif
+ }
+ 
+ void ChromePageInfoDelegate::OpenConnectionHelpCenterPage(
+diff --git a/chrome/browser/ui/prefs/BUILD.gn b/chrome/browser/ui/prefs/BUILD.gn
+index c208487b6176..7e4453471798 100644
+--- a/chrome/browser/ui/prefs/BUILD.gn
++++ b/chrome/browser/ui/prefs/BUILD.gn
+@@ -2,7 +2,7 @@
+ # Use of this source code is governed by a BSD-style license that can be
+ # found in the LICENSE file.
+ 
+-assert(is_win || is_mac || is_linux || is_chromeos || is_android)
++assert(is_win || is_mac || is_linux || is_chromeos || is_android || is_tizen)
+ 
+ source_set("prefs") {
+   sources = [
+diff --git a/chrome/browser/ui/privacy_sandbox/BUILD.gn b/chrome/browser/ui/privacy_sandbox/BUILD.gn
+index 1d7f9c3d0b36..d4928995a29f 100644
+--- a/chrome/browser/ui/privacy_sandbox/BUILD.gn
++++ b/chrome/browser/ui/privacy_sandbox/BUILD.gn
+@@ -2,7 +2,7 @@
+ # Use of this source code is governed by a BSD-style license that can be
+ # found in the LICENSE file.
+ 
+-assert(is_win || is_mac || is_linux || is_chromeos)
++assert(is_win || is_mac || is_linux || is_chromeos || is_tizen)
+ 
+ source_set("privacy_sandbox") {
+   sources = [
+diff --git a/chrome/browser/ui/qrcode_generator/BUILD.gn b/chrome/browser/ui/qrcode_generator/BUILD.gn
+index 36f97343c523..ac7d28899623 100644
+--- a/chrome/browser/ui/qrcode_generator/BUILD.gn
++++ b/chrome/browser/ui/qrcode_generator/BUILD.gn
+@@ -4,7 +4,7 @@
+ 
+ import("//build/config/ui.gni")
+ 
+-assert(is_win || is_mac || is_linux || is_chromeos)
++assert(is_win || is_mac || is_linux || is_chromeos || is_tizen)
+ assert(toolkit_views)
+ 
+ source_set("qrcode_generator") {
+diff --git a/chrome/browser/ui/safety_hub/BUILD.gn b/chrome/browser/ui/safety_hub/BUILD.gn
+index aadd02be3513..8ad4a3e27636 100644
+--- a/chrome/browser/ui/safety_hub/BUILD.gn
++++ b/chrome/browser/ui/safety_hub/BUILD.gn
+@@ -4,7 +4,7 @@
+ 
+ import("//extensions/buildflags/buildflags.gni")
+ 
+-assert(is_win || is_mac || is_linux || is_chromeos || is_android)
++assert(is_win || is_mac || is_linux || is_chromeos || is_tizen)
+ 
+ source_set("safety_hub") {
+   sources = [
+diff --git a/chrome/browser/ui/search/BUILD.gn b/chrome/browser/ui/search/BUILD.gn
+index 53abab173c9b..88bc958b992f 100644
+--- a/chrome/browser/ui/search/BUILD.gn
++++ b/chrome/browser/ui/search/BUILD.gn
+@@ -4,7 +4,7 @@
+ 
+ import("//build/config/chromeos/args.gni")
+ 
+-assert(is_win || is_mac || is_linux || is_chromeos)
++assert(is_win || is_mac || is_linux || is_chromeos || is_tizen)
+ 
+ source_set("search") {
+   sources = [
+diff --git a/chrome/browser/ui/send_tab_to_self/BUILD.gn b/chrome/browser/ui/send_tab_to_self/BUILD.gn
+index 41739eadf4bd..63ae9228e1fe 100644
+--- a/chrome/browser/ui/send_tab_to_self/BUILD.gn
++++ b/chrome/browser/ui/send_tab_to_self/BUILD.gn
+@@ -4,7 +4,7 @@
+ 
+ import("//build/config/ui.gni")
+ 
+-assert(is_win || is_mac || is_linux || is_chromeos)
++assert(is_win || is_mac || is_linux || is_chromeos || is_tizen)
+ assert(toolkit_views)
+ 
+ source_set("send_tab_to_self") {
+diff --git a/chrome/browser/ui/shared_highlighting/BUILD.gn b/chrome/browser/ui/shared_highlighting/BUILD.gn
+index e82971c2c749..5812603ba0d3 100644
+--- a/chrome/browser/ui/shared_highlighting/BUILD.gn
++++ b/chrome/browser/ui/shared_highlighting/BUILD.gn
+@@ -2,7 +2,7 @@
+ # Use of this source code is governed by a BSD-style license that can be
+ # found in the LICENSE file.
+ 
+-assert(is_win || is_mac || is_linux || is_chromeos)
++assert(is_win || is_mac || is_linux || is_chromeos || is_tizen)
+ 
+ source_set("shared_highlighting") {
+   sources = [
+diff --git a/chrome/browser/ui/sharing_hub/BUILD.gn b/chrome/browser/ui/sharing_hub/BUILD.gn
+index 2ef6bd82dc2a..39ea6fbed3b3 100644
+--- a/chrome/browser/ui/sharing_hub/BUILD.gn
++++ b/chrome/browser/ui/sharing_hub/BUILD.gn
+@@ -4,7 +4,7 @@
+ 
+ import("//build/config/ui.gni")
+ 
+-assert(is_win || is_mac || is_linux || is_chromeos)
++assert(is_win || is_mac || is_linux || is_chromeos || is_tizen)
+ assert(toolkit_views)
+ 
+ source_set("sharing_hub") {
+diff --git a/chrome/browser/ui/shortcuts/BUILD.gn b/chrome/browser/ui/shortcuts/BUILD.gn
+index f7d200ff4086..ad5423128b82 100644
+--- a/chrome/browser/ui/shortcuts/BUILD.gn
++++ b/chrome/browser/ui/shortcuts/BUILD.gn
+@@ -2,7 +2,7 @@
+ # Use of this source code is governed by a BSD-style license that can be
+ # found in the LICENSE file.
+ 
+-assert(is_win || is_mac || is_linux)
++assert(is_win || is_mac || is_linux || is_tizen)
+ 
+ source_set("shortcuts") {
+   sources = [
+diff --git a/chrome/browser/ui/tab_contents/BUILD.gn b/chrome/browser/ui/tab_contents/BUILD.gn
+index 3027f16dd5f9..964e10cf9180 100644
+--- a/chrome/browser/ui/tab_contents/BUILD.gn
++++ b/chrome/browser/ui/tab_contents/BUILD.gn
+@@ -5,7 +5,7 @@
+ import("//components/enterprise/buildflags/buildflags.gni")
+ import("//extensions/buildflags/buildflags.gni")
+ 
+-assert(is_win || is_mac || is_linux || is_chromeos || is_android)
++assert(is_win || is_mac || is_linux || is_chromeos || is_android || is_tizen)
+ 
+ source_set("tab_contents") {
+   sources = [
+@@ -17,7 +17,7 @@ source_set("tab_contents") {
+     sources += [ "tab_contents_iterator.h" ]
+   }
+ 
+-  if (is_win || is_mac || is_linux || is_chromeos) {
++  if (is_win || is_mac || is_linux || is_chromeos || is_tizen) {
+     sources += [
+       "chrome_web_contents_menu_helper.h",
+       "chrome_web_contents_view_handle_drop.h",
+@@ -48,7 +48,7 @@ source_set("impl") {
+     sources += [ "tab_contents_iterator.cc" ]
+   }
+ 
+-  if (is_win || is_mac || is_linux || is_chromeos) {
++  if (is_win || is_mac || is_linux || is_chromeos || is_tizen) {
+     sources += [
+       "chrome_web_contents_menu_helper.cc",
+       "chrome_web_contents_view_handle_drop.cc",
+diff --git a/chrome/browser/ui/tabs/BUILD.gn b/chrome/browser/ui/tabs/BUILD.gn
+index fd43655d18c7..a92baef49749 100644
+--- a/chrome/browser/ui/tabs/BUILD.gn
++++ b/chrome/browser/ui/tabs/BUILD.gn
+@@ -2,7 +2,7 @@
+ # Use of this source code is governed by a BSD-style license that can be
+ # found in the LICENSE file.
+ 
+-assert(is_win || is_mac || is_linux || is_chromeos || is_android)
++assert(is_win || is_mac || is_linux || is_chromeos || is_android || is_tizen)
+ 
+ import("//chrome/common/features.gni")
+ 
+@@ -258,7 +258,7 @@ if (!is_android) {
+       "tab_utils.h",
+     ]
+ 
+-    if (is_win || is_mac || is_linux || is_chromeos) {
++    if (is_win || is_mac || is_linux || is_chromeos || is_tizen) {
+       sources += [ "inactive_window_mouse_event_controller.h" ]
+     }
+ 
+@@ -310,7 +310,7 @@ if (!is_android) {
+       "tab_utils.cc",
+     ]
+ 
+-    if (is_win || is_mac || is_linux || is_chromeos) {
++    if (is_win || is_mac || is_linux || is_chromeos || is_tizen) {
+       sources += [ "inactive_window_mouse_event_controller.cc" ]
+     }
+ 
+diff --git a/chrome/browser/ui/tabs/alert/BUILD.gn b/chrome/browser/ui/tabs/alert/BUILD.gn
+index bfdf3c146716..fcbfd8214b1e 100644
+--- a/chrome/browser/ui/tabs/alert/BUILD.gn
++++ b/chrome/browser/ui/tabs/alert/BUILD.gn
+@@ -2,7 +2,7 @@
+ # Use of this source code is governed by a BSD-style license that can be
+ # found in the LICENSE file.
+ 
+-assert(is_win || is_mac || is_linux || is_chromeos || is_android)
++assert(is_win || is_mac || is_linux || is_chromeos || is_android || is_tizen)
+ 
+ import("//chrome/common/features.gni")
+ 
+diff --git a/chrome/browser/ui/tabs/saved_tab_groups/BUILD.gn b/chrome/browser/ui/tabs/saved_tab_groups/BUILD.gn
+index eee48688c7da..258ce8283a7e 100644
+--- a/chrome/browser/ui/tabs/saved_tab_groups/BUILD.gn
++++ b/chrome/browser/ui/tabs/saved_tab_groups/BUILD.gn
+@@ -2,7 +2,7 @@
+ # Use of this source code is governed by a BSD-style license that can be
+ # found in the LICENSE file.
+ 
+-assert(is_win || is_mac || is_linux || is_chromeos)
++assert(is_win || is_mac || is_linux || is_chromeos || is_tizen)
+ 
+ import("//chrome/common/features.gni")
+ 
+diff --git a/chrome/browser/ui/tabs/tab_strip_api/BUILD.gn b/chrome/browser/ui/tabs/tab_strip_api/BUILD.gn
+index 8fd291168cc5..fd90388661df 100644
+--- a/chrome/browser/ui/tabs/tab_strip_api/BUILD.gn
++++ b/chrome/browser/ui/tabs/tab_strip_api/BUILD.gn
+@@ -2,7 +2,7 @@
+ # Use of this source code is governed by a BSD-style license that can be
+ # found in the LICENSE file.
+ 
+-assert(is_win || is_mac || is_linux || is_chromeos)
++assert(is_win || is_mac || is_linux || is_chromeos || is_tizen)
+ 
+ import("//mojo/public/tools/bindings/mojom.gni")
+ 
+diff --git a/chrome/browser/ui/toolbar/cast/BUILD.gn b/chrome/browser/ui/toolbar/cast/BUILD.gn
+index 6ddffe866d6f..86ac94c94720 100644
+--- a/chrome/browser/ui/toolbar/cast/BUILD.gn
++++ b/chrome/browser/ui/toolbar/cast/BUILD.gn
+@@ -2,7 +2,7 @@
+ # Use of this source code is governed by a BSD-style license that can be
+ # found in the LICENSE file.
+ 
+-assert(is_win || is_mac || is_linux || is_chromeos)
++assert(is_win || is_mac || is_linux || is_chromeos || is_tizen)
+ 
+ source_set("cast") {
+   sources = [
+diff --git a/chrome/browser/ui/unowned_user_data/BUILD.gn b/chrome/browser/ui/unowned_user_data/BUILD.gn
+index fb6d66aac02d..d6dcc171bc15 100644
+--- a/chrome/browser/ui/unowned_user_data/BUILD.gn
++++ b/chrome/browser/ui/unowned_user_data/BUILD.gn
+@@ -4,7 +4,7 @@
+ 
+ # Technically, this could be supported on more platforms, but these are the only
+ # ones where it's needed today.
+-assert(is_win || is_mac || is_linux || is_chromeos || is_android)
++assert(is_win || is_mac || is_linux || is_chromeos || is_android || is_tizen)
+ 
+ source_set("unowned_user_data") {
+   public = [
+diff --git a/chrome/browser/ui/user_education/BUILD.gn b/chrome/browser/ui/user_education/BUILD.gn
+index 842fdb3125c0..fee6d3daaa08 100644
+--- a/chrome/browser/ui/user_education/BUILD.gn
++++ b/chrome/browser/ui/user_education/BUILD.gn
+@@ -2,7 +2,7 @@
+ # Use of this source code is governed by a BSD-style license that can be
+ # found in the LICENSE file.
+ 
+-assert(is_win || is_mac || is_linux || is_chromeos)
++assert(is_win || is_mac || is_linux || is_chromeos || is_tizen)
+ 
+ # This is the public interface for the user education service.
+ source_set("user_education") {
+diff --git a/chrome/browser/ui/views/certificate_selector.cc b/chrome/browser/ui/views/certificate_selector.cc
+index 2f8b1f1a1e32..d735e12e3fd5 100644
+--- a/chrome/browser/ui/views/certificate_selector.cc
++++ b/chrome/browser/ui/views/certificate_selector.cc
+@@ -345,9 +345,11 @@ void CertificateSelector::ViewCertButtonPressed() {
+   if (!cert) {
+     return;
+   }
++#if !defined(EWK_BRINGUP)  // FIXME: m138 bringup
+   ShowCertificateViewerForClientAuth(web_contents_,
+                                      web_contents_->GetTopLevelNativeWindow(),
+                                      cert->certificate());
++#endif
+ }
+ 
+ void CertificateSelector::OnSelectionChanged() {
+diff --git a/chrome/browser/ui/views/download/BUILD.gn b/chrome/browser/ui/views/download/BUILD.gn
+index a2457fa4ed09..108d4df489d9 100644
+--- a/chrome/browser/ui/views/download/BUILD.gn
++++ b/chrome/browser/ui/views/download/BUILD.gn
+@@ -2,7 +2,7 @@
+ # Use of this source code is governed by a BSD - style license that can be
+ # found in the LICENSE file.
+ 
+-assert(is_win || is_mac || is_linux || is_chromeos)
++assert(is_win || is_mac || is_linux || is_chromeos || is_tizen)
+ 
+ source_set("download") {
+   sources = [
+diff --git a/chrome/browser/ui/views/webid/fedcm_account_selection_view_desktop.cc b/chrome/browser/ui/views/webid/fedcm_account_selection_view_desktop.cc
+index cd68db4a6e9e..0861f6794c18 100644
+--- a/chrome/browser/ui/views/webid/fedcm_account_selection_view_desktop.cc
++++ b/chrome/browser/ui/views/webid/fedcm_account_selection_view_desktop.cc
+@@ -103,8 +103,10 @@ void FedCmAccountSelectionView::ShowDialogWidget() {
+         if (tabs::
+                 InactiveWindowMouseEventController* inactive_event_controller =
+                     features->inactive_window_mouse_event_controller()) {
++#if !defined(EWK_BRINGUP)  // FIXME: m138 bringup
+           tab_accept_mouse_events_ =
+               inactive_event_controller->AcceptMouseEventsWhileWindowInactive();
++#endif
+         }
+       }
+     }
+diff --git a/chrome/browser/ui/webui/BUILD.gn b/chrome/browser/ui/webui/BUILD.gn
+index b0cea16b095a..ce829fdc743d 100644
+--- a/chrome/browser/ui/webui/BUILD.gn
++++ b/chrome/browser/ui/webui/BUILD.gn
+@@ -70,7 +70,7 @@ source_set("configs") {
+     deps += [ "//chrome/browser/ui/webui/safe_browsing" ]
+   }
+ 
+-  if (is_win || is_mac || is_linux || is_chromeos) {
++  if (is_win || is_mac || is_linux || is_chromeos || is_tizen) {
+     deps += [
+       "//chrome/browser/ui/lens",
+       "//chrome/browser/ui/views/side_panel",
+diff --git a/chrome/browser/ui/webui/about/BUILD.gn b/chrome/browser/ui/webui/about/BUILD.gn
+index d0f87997fa0f..676c4ea0e46c 100644
+--- a/chrome/browser/ui/webui/about/BUILD.gn
++++ b/chrome/browser/ui/webui/about/BUILD.gn
+@@ -2,7 +2,7 @@
+ # Use of this source code is governed by a BSD-style license that can be
+ # found in the LICENSE file.
+ 
+-assert(is_win || is_mac || is_linux || is_chromeos || is_android)
++assert(is_win || is_mac || is_linux || is_chromeos || is_android || is_tizen)
+ 
+ source_set("about") {
+   sources = [ "about_ui.h" ]
+diff --git a/chrome/browser/ui/webui/accessibility/BUILD.gn b/chrome/browser/ui/webui/accessibility/BUILD.gn
+index 06ce29e212c5..345555b31526 100644
+--- a/chrome/browser/ui/webui/accessibility/BUILD.gn
++++ b/chrome/browser/ui/webui/accessibility/BUILD.gn
+@@ -2,7 +2,7 @@
+ # Use of this source code is governed by a BSD-style license that can be
+ # found in the LICENSE file.
+ 
+-assert(is_win || is_mac || is_linux || is_chromeos || is_android)
++assert(is_win || is_mac || is_linux || is_chromeos || is_android || is_tizen)
+ 
+ source_set("accessibility") {
+   sources = [ "accessibility_ui.h" ]
+diff --git a/chrome/browser/ui/webui/app_management/BUILD.gn b/chrome/browser/ui/webui/app_management/BUILD.gn
+index b21f22cd6b44..30b2820b5e07 100644
+--- a/chrome/browser/ui/webui/app_management/BUILD.gn
++++ b/chrome/browser/ui/webui/app_management/BUILD.gn
+@@ -2,7 +2,7 @@
+ # Use of this source code is governed by a BSD-style license that can be
+ # found in the LICENSE file.
+ 
+-assert(is_win || is_mac || is_linux || is_chromeos)
++assert(is_win || is_mac || is_linux || is_chromeos || is_tizen)
+ 
+ source_set("app_management") {
+   sources = [
+diff --git a/chrome/browser/ui/webui/app_settings/BUILD.gn b/chrome/browser/ui/webui/app_settings/BUILD.gn
+index 54f42ea5e5ba..43af6f036007 100644
+--- a/chrome/browser/ui/webui/app_settings/BUILD.gn
++++ b/chrome/browser/ui/webui/app_settings/BUILD.gn
+@@ -2,7 +2,7 @@
+ # Use of this source code is governed by a BSD-style license that can be
+ # found in the LICENSE file.
+ 
+-assert(is_win || is_mac || is_linux)
++assert(is_win || is_mac || is_linux || is_tizen)
+ 
+ source_set("app_settings") {
+   sources = [
+diff --git a/chrome/browser/ui/webui/history/browsing_history_handler.cc b/chrome/browser/ui/webui/history/browsing_history_handler.cc
+index 7eb2d91602fa..5a2af5f34ee8 100644
+--- a/chrome/browser/ui/webui/history/browsing_history_handler.cc
++++ b/chrome/browser/ui/webui/history/browsing_history_handler.cc
+@@ -145,7 +145,7 @@ std::pair<std::string, std::string> SetHistoryEntryUrlAndTitle(
+     title_to_set.resize(kShortTitleLength);
+   }
+ 
+-  return std::make_tuple(entry.url.spec(), base::UTF16ToUTF8(title_to_set));
++  return std::make_pair(entry.url.spec(), base::UTF16ToUTF8(title_to_set));
+ }
+ 
+ // Helper function to check if entry is present in local database (local-side
+diff --git a/chrome/browser/ui/webui/safe_browsing/BUILD.gn b/chrome/browser/ui/webui/safe_browsing/BUILD.gn
+index 6696dfd0e340..47d8249fe94f 100644
+--- a/chrome/browser/ui/webui/safe_browsing/BUILD.gn
++++ b/chrome/browser/ui/webui/safe_browsing/BUILD.gn
+@@ -2,7 +2,7 @@
+ # Use of this source code is governed by a BSD-style license that can be
+ # found in the LICENSE file.
+ 
+-assert(is_win || is_mac || is_linux || is_chromeos || is_android)
++assert(is_win || is_mac || is_linux || is_chromeos || is_android || is_tizen)
+ 
+ source_set("safe_browsing") {
+   sources = [
+diff --git a/chrome/browser/ui/webui/settings/BUILD.gn b/chrome/browser/ui/webui/settings/BUILD.gn
+index 789c027e76b5..1b3727dc2dc3 100644
+--- a/chrome/browser/ui/webui/settings/BUILD.gn
++++ b/chrome/browser/ui/webui/settings/BUILD.gn
+@@ -2,7 +2,7 @@
+ # Use of this source code is governed by a BSD-style license that can be
+ # found in the LICENSE file.
+ 
+-assert(is_win || is_mac || is_linux || is_chromeos)
++assert(is_win || is_mac || is_linux || is_chromeos || is_tizen)
+ 
+ # TODO(crbug.com/369369575): complete modularization of this component.
+ # At the moment, there are a lot of dependencies from headers to //c/b and
+diff --git a/chrome/browser/ui/webui/signin/BUILD.gn b/chrome/browser/ui/webui/signin/BUILD.gn
+index 08d8366312d8..d74e0732756e 100644
+--- a/chrome/browser/ui/webui/signin/BUILD.gn
++++ b/chrome/browser/ui/webui/signin/BUILD.gn
+@@ -123,7 +123,7 @@ source_set("signin") {
+     ]
+   }
+ 
+-  if (is_win || is_mac || is_linux) {
++  if (is_win || is_mac || is_linux || is_tizen) {
+     sources += [
+       "history_sync_optin/history_sync_optin_handler.h",
+       "history_sync_optin/history_sync_optin_ui.h",
+@@ -197,7 +197,7 @@ source_set("signin_impl") {
+     ]
+   }
+ 
+-  if (is_win || is_mac || is_linux) {
++  if (is_win || is_mac || is_linux || is_tizen) {
+     sources += [
+       "history_sync_optin/history_sync_optin_handler.cc",
+       "history_sync_optin/history_sync_optin_ui.cc",
+diff --git a/chrome/browser/ui/webui/signin/history_sync_optin/BUILD.gn b/chrome/browser/ui/webui/signin/history_sync_optin/BUILD.gn
+index 86cb680353af..c5f6fc3a8176 100644
+--- a/chrome/browser/ui/webui/signin/history_sync_optin/BUILD.gn
++++ b/chrome/browser/ui/webui/signin/history_sync_optin/BUILD.gn
+@@ -4,7 +4,7 @@
+ 
+ import("//mojo/public/tools/bindings/mojom.gni")
+ 
+-assert(is_win || is_mac || is_linux)
++assert(is_win || is_mac || is_linux || is_tizen)
+ 
+ mojom("mojo_bindings") {
+   sources = [ "history_sync_optin.mojom" ]
+diff --git a/chrome/browser/ui/webui/whats_new/BUILD.gn b/chrome/browser/ui/webui/whats_new/BUILD.gn
+index bba231326fda..8b92fb20a1f8 100644
+--- a/chrome/browser/ui/webui/whats_new/BUILD.gn
++++ b/chrome/browser/ui/webui/whats_new/BUILD.gn
+@@ -24,7 +24,7 @@ source_set("whats_new") {
+     "//url",
+   ]
+ 
+-  if (is_win || is_mac || is_linux) {
++  if (is_win || is_mac || is_linux || is_tizen) {
+     sources += [
+       "whats_new_fetcher.h",
+       "whats_new_handler.h",
+@@ -70,7 +70,7 @@ source_set("impl") {
+     deps += [ "//pdf:features" ]
+   }
+ 
+-  if (is_win || is_mac || is_linux) {
++  if (is_win || is_mac || is_linux || is_tizen) {
+     sources += [
+       "whats_new_fetcher.cc",
+       "whats_new_handler.cc",
+diff --git a/chrome/browser/webauthn/BUILD.gn b/chrome/browser/webauthn/BUILD.gn
+index 144ffa469512..2fe0d5fdd76b 100644
+--- a/chrome/browser/webauthn/BUILD.gn
++++ b/chrome/browser/webauthn/BUILD.gn
+@@ -2,6 +2,8 @@
+ # Use of this source code is governed by a BSD-style license that can be
+ # found in the LICENSE file.
+ 
++import("//build/config/rust.gni")
++
+ if (!is_android) {
+   static_library("test_support") {
+     testonly = true
+@@ -25,7 +27,8 @@ if (!is_android) {
+       "//net:net",
+       "//url",
+     ]
+-
+-    data_deps = [ "//third_party/cloud_authenticator/test/local_service:cloud_authenticator_test_service" ]
++    if (enable_rust) {
++      data_deps = [ "//third_party/cloud_authenticator/test/local_service:cloud_authenticator_test_service" ]
++    }
+   }
+ }
+diff --git a/chrome/common/features.gni b/chrome/common/features.gni
+index f1688c4bc559..d74fe3a548b6 100644
+--- a/chrome/common/features.gni
++++ b/chrome/common/features.gni
+@@ -62,7 +62,7 @@ declare_args() {
+   enable_session_service = !is_android
+ 
+   # Enables the webui certificate viewer dialog.
+-  enable_webui_certificate_viewer = toolkit_views
++  enable_webui_certificate_viewer = toolkit_views && !is_tizen
+ 
+   # optimize_webui was moved to ui/base/ui_features.gni
+ }
+diff --git a/chrome/services/speech/buildflags/buildflags.gni b/chrome/services/speech/buildflags/buildflags.gni
+index be7cbd496583..0c823379a2f1 100644
+--- a/chrome/services/speech/buildflags/buildflags.gni
++++ b/chrome/services/speech/buildflags/buildflags.gni
+@@ -9,7 +9,8 @@ declare_args() {
+   # Whether the browser provides a speech recognition service
+   # (//media/mojo/mojom/speech_recognition_service.mojom) to the renderer.
+   # TODO(crbug.com/40244098) Enable on Fuchsia.
+-  enable_speech_service = is_chromeos || is_linux || is_mac || is_win
++  enable_speech_service =
++      is_chromeos || is_linux || is_mac || is_win || is_tizen
+ }
+ 
+ declare_args() {
+diff --git a/chrome/test/data/webui/BUILD.gn b/chrome/test/data/webui/BUILD.gn
+index b5481d5f7c80..3da4c4a04f2b 100644
+--- a/chrome/test/data/webui/BUILD.gn
++++ b/chrome/test/data/webui/BUILD.gn
+@@ -588,7 +588,7 @@ generate_grd("build_grd") {
+     ]
+   }
+ 
+-  if (use_nss_certs || chrome_root_store_cert_management_ui) {
++  if (chrome_root_store_cert_management_ui) {
+     deps += [ "cr_components/certificate_manager:build_grdp" ]
+     grdp_files +=
+         [ "$target_gen_dir/cr_components/certificate_manager/resources.grdp" ]
+diff --git a/components/BUILD.gn b/components/BUILD.gn
+index a76242cd0c9d..6eb0b6024e0f 100644
+--- a/components/BUILD.gn
++++ b/components/BUILD.gn
+@@ -992,7 +992,7 @@ if (is_android) {
+   }
+ }
+ 
+-if (use_blink && !is_tizen) {
++if (use_blink) {
+   test("components_browsertests") {
+     use_xvfb = use_xvfb_in_this_config
+ 
+diff --git a/components/autofill/core/browser/data_model/addresses/autofill_structured_address_component.cc b/components/autofill/core/browser/data_model/addresses/autofill_structured_address_component.cc
+index c1625d2b9303..7e520e99d18d 100644
+--- a/components/autofill/core/browser/data_model/addresses/autofill_structured_address_component.cc
++++ b/components/autofill/core/browser/data_model/addresses/autofill_structured_address_component.cc
+@@ -29,8 +29,13 @@ namespace autofill {
+ namespace {
+ 
+ // The list of countries where the fallback parsing is not supported.
++#if !defined(EWK_BRINGUP)  // FIXME: m138 bringup
+ static constexpr auto countries_not_supporting_fallback_parsing =
+     base::MakeFixedFlatSet<AddressCountryCode>({AddressCountryCode("IN")});
++#else
++static const std::set<AddressCountryCode> countries_not_supporting_fallback_parsing = {
++    AddressCountryCode("IN")};
++#endif
+ 
+ }  // namespace
+ 
+diff --git a/components/autofill_ai/core/browser/BUILD.gn b/components/autofill_ai/core/browser/BUILD.gn
+index 248d378f8ad7..9acb50edb1b4 100644
+--- a/components/autofill_ai/core/browser/BUILD.gn
++++ b/components/autofill_ai/core/browser/BUILD.gn
+@@ -4,7 +4,7 @@
+ 
+ import("//mojo/public/tools/bindings/mojom.gni")
+ 
+-if (is_win || is_mac || is_linux || is_chromeos) {
++if (is_win || is_mac || is_linux || is_chromeos || is_tizen) {
+   static_library("browser") {
+     sources = [
+       "autofill_ai_client.cc",
+diff --git a/components/compose/core/browser/config.cc b/components/compose/core/browser/config.cc
+index 7a4d1907da2a..fc60d84a54a0 100644
+--- a/components/compose/core/browser/config.cc
++++ b/components/compose/core/browser/config.cc
+@@ -46,11 +46,11 @@ std::vector<std::string> GetFieldTrialParamAsSplitString(
+ }
+ 
+ constexpr auto DEFAULT_COMPOSE_ENABLED_COUNTRIES =
+-    base::MakeFixedFlatSet<std::string>({"bd", "ca", "gh", "in", "ke", "my",
++    base::MakeFixedFlatSet<std::string_view>({"bd", "ca", "gh", "in", "ke", "my",
+                                          "ng", "ph", "pk", "sg", "tz", "ug",
+                                          "us", "zm", "zw"});
+ constexpr auto DEFAULT_PROACTIVE_NUDGE_ENABLED_COUNTRIES =
+-    base::MakeFixedFlatSet<std::string>({"us"});
++    base::MakeFixedFlatSet<std::string_view>({"us"});
+ 
+ }  // namespace
+ 
+diff --git a/components/compose/features.gni b/components/compose/features.gni
+index a646cb40e644..e1600b2ce6f5 100644
+--- a/components/compose/features.gni
++++ b/components/compose/features.gni
+@@ -4,5 +4,5 @@
+ 
+ declare_args() {
+   # Whether Compose is enabled in the build.
+-  enable_compose = is_mac || is_win || is_linux || is_chromeos
++  enable_compose = is_mac || is_win || is_linux || is_chromeos || is_tizen
+ }
+diff --git a/components/dbus/BUILD.gn b/components/dbus/BUILD.gn
+index 4873abe93335..d5c651395f8a 100644
+--- a/components/dbus/BUILD.gn
++++ b/components/dbus/BUILD.gn
+@@ -7,7 +7,7 @@ component("dbus") {
+     "//components/dbus/properties",
+     "//components/dbus/utils",
+   ]
+-  if (is_linux) {
++  if (is_linux || is_tizen) {
+     public_deps += [
+       "//components/dbus/menu",
+       "//components/dbus/thread_linux",
+diff --git a/components/device_signals/core/browser/BUILD.gn b/components/device_signals/core/browser/BUILD.gn
+index adb169720009..610f37dae7d6 100644
+--- a/components/device_signals/core/browser/BUILD.gn
++++ b/components/device_signals/core/browser/BUILD.gn
+@@ -62,7 +62,7 @@ static_library("browser") {
+     ]
+   }
+ 
+-  if (is_win || is_mac || is_linux) {
++  if (is_win || is_mac || is_linux || is_tizen) {
+     public += [ "os_signals_collector.h" ]
+     sources += [ "os_signals_collector.cc" ]
+   }
+@@ -77,7 +77,7 @@ static_library("browser") {
+     sources += [ "mac/browser_utils_mac.cc" ]
+   }
+ 
+-  if (is_linux) {
++  if (is_linux || is_tizen) {
+     sources += [ "linux/browser_utils_linux.cc" ]
+   }
+ 
+diff --git a/components/device_signals/core/common/BUILD.gn b/components/device_signals/core/common/BUILD.gn
+index bc57c4d68ba0..7daea2da03e4 100644
+--- a/components/device_signals/core/common/BUILD.gn
++++ b/components/device_signals/core/common/BUILD.gn
+@@ -42,7 +42,7 @@ static_library("common") {
+     sources += [ "mac/platform_utils_mac.mm" ]
+   }
+ 
+-  if (is_linux) {
++  if (is_linux || is_tizen) {
+     if (use_glib) {
+       deps += [ "//ui/base/glib" ]
+     }
+diff --git a/components/enterprise/buildflags/buildflags.gni b/components/enterprise/buildflags/buildflags.gni
+index 4553631981ff..975d61870d3b 100644
+--- a/components/enterprise/buildflags/buildflags.gni
++++ b/components/enterprise/buildflags/buildflags.gni
+@@ -25,7 +25,7 @@ declare_args() {
+ 
+   # The watermark is currently implemented using the views framework.
+   enterprise_watermark =
+-      toolkit_views && (is_win || is_mac || is_linux || is_chromeos)
++      toolkit_views && (is_win || is_mac || is_linux || is_chromeos || is_tizen)
+ 
+   enterprise_screenshot_protection = is_win || is_mac
+ 
+diff --git a/components/password_manager/core/browser/possible_username_data.h b/components/password_manager/core/browser/possible_username_data.h
+index bce02f9aeb14..f00bc61fc065 100644
+--- a/components/password_manager/core/browser/possible_username_data.h
++++ b/components/password_manager/core/browser/possible_username_data.h
+@@ -31,11 +31,6 @@ struct PossibleUsernameFieldIdentifier {
+ 
+   // Id of the field within the frame.
+   autofill::FieldRendererId renderer_id;
+-
+-  PossibleUsernameFieldIdentifier(int driver_id, autofill::FieldRendererId renderer_id) {
+-    driver_id = driver_id;
+-    renderer_id = renderer_id;
+-  }
+ };
+ 
+ // Contains information that the user typed in a text field. It might be the
+diff --git a/components/policy/content/BUILD.gn b/components/policy/content/BUILD.gn
+index 257e9ff47bcc..5c85aa90b5ca 100644
+--- a/components/policy/content/BUILD.gn
++++ b/components/policy/content/BUILD.gn
+@@ -36,7 +36,7 @@ source_set("content") {
+     "policy_blocklist_service.cc",
+     "policy_blocklist_service.h",
+   ]
+-  if (is_win || is_mac || is_linux || is_chromeos) {
++  if (is_win || is_mac || is_linux || is_chromeos || is_tizen) {
+     sources += [
+       "password_manager_blocklist_policy.cc",
+       "password_manager_blocklist_policy.h",
+diff --git a/components/services/on_device_translation/BUILD.gn b/components/services/on_device_translation/BUILD.gn
+index a3261b387a99..8a41942fd04f 100644
+--- a/components/services/on_device_translation/BUILD.gn
++++ b/components/services/on_device_translation/BUILD.gn
+@@ -26,7 +26,7 @@ source_set("on_device_translation_service") {
+     "//mojo/public/cpp/bindings",
+   ]
+ 
+-  if (is_linux) {
++  if (is_linux || is_tizen) {
+     sources += [
+       "sandbox_hook.cc",
+       "sandbox_hook.h",
+diff --git a/components/services/on_device_translation/buildflags/features.gni b/components/services/on_device_translation/buildflags/features.gni
+index b09dd2909e5a..ab2e90388d6e 100644
+--- a/components/services/on_device_translation/buildflags/features.gni
++++ b/components/services/on_device_translation/buildflags/features.gni
+@@ -5,5 +5,5 @@
+ declare_args() {
+   # On Device Translation is still not supported on other platforms.
+   # TODO(crbug.com/364795294): Support other platforms.
+-  enable_on_device_translation = is_mac || is_win || is_linux
++  enable_on_device_translation = is_mac || is_win || is_linux || is_tizen
+ }
+diff --git a/content/browser/BUILD.gn b/content/browser/BUILD.gn
+index 8cde8c521e8d..be04a7106caf 100644
+--- a/content/browser/BUILD.gn
++++ b/content/browser/BUILD.gn
+@@ -2947,7 +2947,7 @@ source_set("browser") {
+     deps += [ "//sandbox" ]
+   }
+ 
+-  if (is_linux) {
++  if (is_linux || is_tizen) {
+     sources += [ "accessibility/browser_accessibility_state_impl_auralinux.cc" ]
+   }
+ 
+diff --git a/content/browser/renderer_host/media/in_process_video_capture_device_launcher.cc b/content/browser/renderer_host/media/in_process_video_capture_device_launcher.cc
+index 328b2dac8f9b..aa2eb6254f3f 100644
+--- a/content/browser/renderer_host/media/in_process_video_capture_device_launcher.cc
++++ b/content/browser/renderer_host/media/in_process_video_capture_device_launcher.cc
+@@ -266,7 +266,7 @@ void InProcessVideoCaptureDeviceLauncher::LaunchDeviceAsync(
+ 
+   switch (stream_type) {
+     case blink::mojom::MediaStreamType::DEVICE_VIDEO_CAPTURE:
+-#if BUILDFLAG(IS_TIZEN) && !BUILDFLAG(IS_TIZEN_TV)
++#if BUILDFLAG(IS_TIZEN) && defined(IS_TIZEN_MULTIMEDIA) && !BUILDFLAG(IS_TIZEN_TV)
+     {
+       // Clients who create an instance of |this| without providing a
+       // VideoCaptureSystem instance are expected to know that
+diff --git a/content/browser/renderer_host/media/in_process_video_capture_device_launcher.h b/content/browser/renderer_host/media/in_process_video_capture_device_launcher.h
+index 0679b09310b3..2e0d65b19520 100644
+--- a/content/browser/renderer_host/media/in_process_video_capture_device_launcher.h
++++ b/content/browser/renderer_host/media/in_process_video_capture_device_launcher.h
+@@ -64,7 +64,7 @@ class InProcessVideoCaptureDeviceLauncher : public VideoCaptureDeviceLauncher {
+   using ReceiveDeviceCallback = base::OnceCallback<void(
+       std::unique_ptr<media::VideoCaptureDevice> device)>;
+ 
+-#if BUILDFLAG(IS_TIZEN) && !BUILDFLAG(IS_TIZEN_TV)
++#if BUILDFLAG(IS_TIZEN) && defined(IS_TIZEN_MULTIMEDIA) && !BUILDFLAG(IS_TIZEN_TV)
+   virtual void DoStartDeviceCaptureOnDeviceThread(
+       const std::string& device_id,
+       const media::VideoCaptureParams& params,
+diff --git a/content/browser/renderer_host/media/media_stream_manager.cc b/content/browser/renderer_host/media/media_stream_manager.cc
+index 5ed2480168a3..b26f821fc25e 100644
+--- a/content/browser/renderer_host/media/media_stream_manager.cc
++++ b/content/browser/renderer_host/media/media_stream_manager.cc
+@@ -1613,7 +1613,7 @@ MediaStreamManager::MediaStreamManager(
+       media::CameraHalDispatcherImpl::GetInstance()->Start();
+     }
+ #endif
+-#if BUILDFLAG(IS_TIZEN) && !BUILDFLAG(IS_TIZEN_TV)
++#if BUILDFLAG(IS_TIZEN) && defined(IS_TIZEN_MULTIMEDIA) && !BUILDFLAG(IS_TIZEN_TV)
+     video_capture_provider = std::make_unique<InProcessVideoCaptureProviderTizen>(
+         std::make_unique<media::VideoCaptureSystemImpl>(
+             media::CreateVideoCaptureDeviceFactory(GetUIThreadTaskRunner({}))),
+diff --git a/content/public/browser/video_capture_device_launcher.cc b/content/public/browser/video_capture_device_launcher.cc
+index 8b3e271c432c..9d21d98153c3 100644
+--- a/content/public/browser/video_capture_device_launcher.cc
++++ b/content/public/browser/video_capture_device_launcher.cc
+@@ -7,7 +7,7 @@
+ #include "base/task/single_thread_task_runner.h"
+ #include "content/browser/renderer_host/media/in_process_video_capture_device_launcher.h"
+ 
+-#if BUILDFLAG(IS_TIZEN) && !BUILDFLAG(IS_TIZEN_TV)
++#if BUILDFLAG(IS_TIZEN) && defined(IS_TIZEN_MULTIMEDIA) && !BUILDFLAG(IS_TIZEN_TV)
+ #include "content/browser/renderer_host/media/in_process_video_capture_device_launcher_tizen.h"
+ #endif
+ 
+@@ -17,7 +17,7 @@ namespace content {
+ std::unique_ptr<VideoCaptureDeviceLauncher>
+ VideoCaptureDeviceLauncher::CreateInProcessVideoCaptureDeviceLauncher(
+     scoped_refptr<base::SingleThreadTaskRunner> device_task_runner) {
+-#if BUILDFLAG(IS_TIZEN) && !BUILDFLAG(IS_TIZEN_TV)
++#if BUILDFLAG(IS_TIZEN) && defined(IS_TIZEN_MULTIMEDIA) && !BUILDFLAG(IS_TIZEN_TV)
+   return std::make_unique<InProcessVideoCaptureDeviceLauncherTizen>(
+       device_task_runner, /*video_capture_system=*/nullptr);
+ #else
+diff --git a/content/public/common/features.gni b/content/public/common/features.gni
+index bde99c8030b6..f1aabdfb2085 100644
+--- a/content/public/common/features.gni
++++ b/content/public/common/features.gni
+@@ -8,4 +8,4 @@ import("//build/config/features.gni")
+ # is only enabled for desktop Android, but should be enabled on all Android
+ # at some point once the feature is stable. See crbug.com/40418135.
+ enable_screen_capture = is_linux || is_chromeos || (is_apple && use_blink) ||
+-                        is_win || is_desktop_android || is_fuchsia
++                        is_win || is_desktop_android || is_fuchsia || is_tizen
+diff --git a/media/base/picture_in_picture_events_info.cc b/media/base/picture_in_picture_events_info.cc
+index b159767b12b7..a3f1e517a459 100644
+--- a/media/base/picture_in_picture_events_info.cc
++++ b/media/base/picture_in_picture_events_info.cc
+@@ -5,6 +5,7 @@
+ #include "media/base/picture_in_picture_events_info.h"
+ 
+ #include <string>
++#include <string_view>
+ 
+ #include "base/notreached.h"
+ #include "base/strings/stringprintf.h"
+@@ -34,7 +35,7 @@ std::string PictureInPictureEventsInfo::AutoPipReasonToString(
+ // static
+ std::string PictureInPictureEventsInfo::AutoPipInfoToString(
+     AutoPipInfo auto_pip_info) {
+-  constexpr std::array<std::string, 2> bool_to_string{"false", "true"};
++  constexpr std::array<std::string_view, 2> bool_to_string{"false", "true"};
+   return base::StringPrintf(
+       "{reason: %s, has audio focus: %s, is_playing: %s, was recently audible: "
+       "%s, has safe url: %s, meets media engagement conditions: %s, blocked "
+diff --git a/media/base/pipeline_impl.cc b/media/base/pipeline_impl.cc
+index 5844b300d940..fde43e9aed21 100644
+--- a/media/base/pipeline_impl.cc
++++ b/media/base/pipeline_impl.cc
+@@ -459,7 +459,7 @@ void PipelineImpl::RendererWrapper::Seek(base::TimeDelta time) {
+   bound_fns.Push(base::BindOnce(&Demuxer::Seek, base::Unretained(demuxer_),
+                                 seek_timestamp));
+ 
+-#if defined(TIZEN_MULTIMEDIA)
++#if defined(TIZEN_MULTIMEDIA) && !defined(EWK_BRINGUP)  // FIXME: m138 bringup
+   // Calling seek is completely redundant, because upstream StartPlayingFrom()
+   // will do the same thing any moment now. Skip this call for EMSS && URL
+   // demuxer, to avoid unnecessary slowdown of the pipeline
+@@ -1407,7 +1407,7 @@ void PipelineImpl::RendererWrapper::InitializeRenderer(
+   std::string uma_name = "Media.InitializeRendererTimeout";
+   base::UmaHistogramEnumeration(uma_name, CallbackTimeoutStatus::kCreate);
+ 
+-#if BUILDFLAG(IS_TIZEN_TV)
++#if BUILDFLAG(IS_TIZEN_TV) && !defined(EWK_BRINGUP)  // FIXME: m138 bringup
+   if ((MediaResource::Type::kStream == demuxer_->GetType()) && (cdm_context_)) {
+     if (!decrypting_media_resource_.get()) {
+       LOG(ERROR) << "decrypting_media_resource is not created yet";
+diff --git a/media/base/video_frame.cc b/media/base/video_frame.cc
+index f7f8d0f8faff..56b410b0346d 100644
+--- a/media/base/video_frame.cc
++++ b/media/base/video_frame.cc
+@@ -1227,7 +1227,7 @@ scoped_refptr<VideoFrame> VideoFrame::CreateTransparentFrame(
+   return frame;
+ }
+ 
+-#if defined(TIZEN_VIDEO_HOLE)
++#if defined(TIZEN_VIDEO_HOLE) && !defined(EWK_BRINGUP)  // FIXME: m138 bringup
+ // This block and other blocks wrapped around #if defined(TIZEN_VIDEO_HOLE) is
+ // not maintained by the general compositor team. Please contact
+ // wonsik@chromium.org .
+diff --git a/media/gpu/BUILD.gn b/media/gpu/BUILD.gn
+index a244407c530b..a714737e894b 100644
+--- a/media/gpu/BUILD.gn
++++ b/media/gpu/BUILD.gn
+@@ -445,7 +445,7 @@ source_set("common") {
+   }
+ }
+ 
+-if (is_linux || is_chromeos) {
++if (is_linux || is_chromeos || is_tizen) {
+   # The buffer validation functionality is in its own component so that it can be
+   # depended on without pulling the entire //media/gpu target.
+   component("buffer_validation") {
+@@ -649,7 +649,7 @@ source_set("unit_tests") {
+   if (enable_hevc_parser_and_hw_decoder) {
+     sources += [ "h265_decoder_unittest.cc" ]
+   }
+-  if (is_linux || is_chromeos) {
++  if (is_linux || is_chromeos || is_tizen) {
+     sources += [ "buffer_validation_unittest.cc" ]
+ 
+     deps += [ ":buffer_validation" ]
+diff --git a/media/media_options.gni b/media/media_options.gni
+index 4ef58025ff1b..028da860baa4 100644
+--- a/media/media_options.gni
++++ b/media/media_options.gni
+@@ -75,8 +75,7 @@ declare_args() {
+   # Enables AC3/EAC3 audio handling in chromium. This includes demuxing,
+   # on-device decoding and bitstream passthrough as supported by device.
+   enable_platform_ac3_eac3_audio =
+-      proprietary_codecs &&
+-      (is_cast_media_device || tizen_product_tv)
++      proprietary_codecs && (is_cast_media_device || tizen_product_tv)
+ 
+   # Enables AC4 audio handling in chromium. This includes demuxing,
+   # on-device decoding and bitstream passthrough as supported by device.
+@@ -136,7 +135,8 @@ declare_args() {
+   # Determines if a GpuChannel is needed between media capture utility process
+   # and gpu process for a given platform.
+   enable_gpu_channel_media_capture =
+-      is_linux || is_win || is_chromeos || is_apple || is_android || is_fuchsia
++      is_linux || is_win || is_chromeos || is_apple || is_android ||
++      is_fuchsia || is_tizen
+ }
+ 
+ # Use another declare_args() to allow dependence on args defined above.
+diff --git a/media/mojo/mojom/BUILD.gn b/media/mojo/mojom/BUILD.gn
+index be790527890a..8e851efa8e23 100644
+--- a/media/mojo/mojom/BUILD.gn
++++ b/media/mojo/mojom/BUILD.gn
+@@ -115,6 +115,9 @@ mojom("mojom") {
+   }
+ 
+   enabled_features = []
++  if (is_tizen) {
++    enabled_features += [ "is_tizen" ]
++  }
+   if (allow_oop_video_decoder) {
+     enabled_features += [ "allow_oop_video_decoder" ]
+   }
+@@ -231,7 +234,7 @@ mojom("mojom") {
+   # different platforms. This sets a variable for the dependencies since
+   # |cpp_typemaps| is statically declared.
+   video_frame_mojom_traits_public_deps = [ "//ui/gfx/geometry/mojom" ]
+-  if (is_linux || is_chromeos) {
++  if (is_linux || is_chromeos || is_tizen) {
+     video_frame_mojom_traits_public_deps += [ "//media/gpu:buffer_validation" ]
+   }
+ 
+diff --git a/media/mojo/mojom/video_frame_mojom_traits.cc b/media/mojo/mojom/video_frame_mojom_traits.cc
+index ab90df6b31f0..f44eb2c6e7c1 100644
+--- a/media/mojo/mojom/video_frame_mojom_traits.cc
++++ b/media/mojo/mojom/video_frame_mojom_traits.cc
+@@ -22,7 +22,7 @@
+ #include "ui/gfx/mojom/color_space_mojom_traits.h"
+ #include "ui/gfx/mojom/hdr_metadata_mojom_traits.h"
+ 
+-#if BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_CHROMEOS)
++#if (BUILDFLAG(IS_LINUX) && !BUILDFLAG(IS_TIZEN)) || BUILDFLAG(IS_CHROMEOS)
+ #include "base/posix/eintr_wrapper.h"
+ #include "media/gpu/buffer_validation.h"
+ #endif  // BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_CHROMEOS)
+@@ -159,7 +159,7 @@ media::mojom::VideoFrameDataPtr MakeVideoFrameData(
+         media::mojom::OpaqueVideoFrameData::New());
+   }
+ 
+-#if BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_CHROMEOS)
++#if (BUILDFLAG(IS_LINUX) && !BUILDFLAG(IS_TIZEN)) || BUILDFLAG(IS_CHROMEOS)
+   if (input->storage_type() == media::VideoFrame::STORAGE_DMABUFS) {
+     // Duplicates the DMA buffer FDs to a new vector since this cannot take
+     // ownership of the FDs in |input| due to constness.
+@@ -190,7 +190,7 @@ media::mojom::VideoFrameDataPtr MakeVideoFrameData(
+ 
+ }  // namespace
+ 
+-#if BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_CHROMEOS)
++#if (BUILDFLAG(IS_LINUX) && !BUILDFLAG(IS_TIZEN)) || BUILDFLAG(IS_CHROMEOS)
+ // static
+ bool StructTraits<
+     media::mojom::ColorPlaneLayoutDataView,
+@@ -429,7 +429,7 @@ bool StructTraits<media::mojom::VideoFrameDataView,
+     frame = media::VideoFrame::WrapTrackingToken(
+         format, *metadata.tracking_token, coded_size, visible_rect,
+         natural_size, timestamp);
+-#if BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_CHROMEOS)
++#if (BUILDFLAG(IS_LINUX) && !BUILDFLAG(IS_TIZEN)) || BUILDFLAG(IS_CHROMEOS)
+   } else if (data.is_dmabuf_data()) {
+     media::mojom::DmabufVideoFrameDataDataView dmabuf_data;
+     data.GetDmabufDataDataView(&dmabuf_data);
+diff --git a/media/mojo/mojom/video_frame_mojom_traits.h b/media/mojo/mojom/video_frame_mojom_traits.h
+index c6f59c51133d..5afd5c89c692 100644
+--- a/media/mojo/mojom/video_frame_mojom_traits.h
++++ b/media/mojo/mojom/video_frame_mojom_traits.h
+@@ -21,7 +21,7 @@
+ 
+ namespace mojo {
+ 
+-#if BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_CHROMEOS)
++#if (BUILDFLAG(IS_LINUX) && !BUILDFLAG(IS_TIZEN)) || BUILDFLAG(IS_CHROMEOS)
+ template <>
+ struct StructTraits<media::mojom::ColorPlaneLayoutDataView,
+                     media::ColorPlaneLayout> {
+diff --git a/media/mojo/services/interface_factory_impl.cc b/media/mojo/services/interface_factory_impl.cc
+index 8ed3eaf342d2..1a253e9a7fd0 100644
+--- a/media/mojo/services/interface_factory_impl.cc
++++ b/media/mojo/services/interface_factory_impl.cc
+@@ -261,7 +261,7 @@ void InterfaceFactoryImpl::CreateMediaPlayerRenderer(
+     mojo::PendingReceiver<mojom::Renderer> receiver,
+     mojo::PendingReceiver<mojom::MediaPlayerRendererExtension>
+         renderer_extension_receiver) {
+-  NOTREACHED_IN_MIGRATION();
++  NOTREACHED();
+ }
+ #endif  // BUILDFLAG(IS_ANDROID) || defined(TIZEN_MULTIMEDIA)
+ 
+diff --git a/net/cert/cert_database.cc b/net/cert/cert_database.cc
+index aa57976c6535..be5c69cfa0fb 100644
+--- a/net/cert/cert_database.cc
++++ b/net/cert/cert_database.cc
+@@ -4,9 +4,7 @@
+ 
+ #include "net/cert/cert_database.h"
+ 
+-#if BUILDFLAG(IS_TIZEN_TV)
+ #include "base/logging.h"
+-#endif
+ #include "base/metrics/histogram_functions.h"
+ #include "base/observer_list_threadsafe.h"
+ #include "build/build_config.h"
+@@ -140,11 +138,14 @@ int CertDatabase::AddUserCert(CERTCertificate* cert_obj) {
+ 
+ bool CertDatabase::ImportPrivateKey(const std::string& key_buffer) {
+   std::vector<uint8> output;
++  LOG(ERROR) << " Please remove EWK_BRINGUP ";
++  #if !defined(EWK_BRINGUP)  // FIXME: m138 bringup
+   if (!crypto::ECPrivateKey::ConvertPEMtoDERFromPrivateKey(key_buffer,
+                                                            &output)) {
+     LOG(ERROR) << "Private Key Convert fail";
+     return false;
+   }
++  #endif
+ 
+   SECItem der_private_key_info;
+   SECStatus result_value;
+diff --git a/net/features.gni b/net/features.gni
+index 63d7c27d44c8..91721670b8b7 100644
+--- a/net/features.gni
++++ b/net/features.gni
+@@ -28,7 +28,8 @@ declare_args() {
+   disable_zstd_filter = false
+ 
+   # Multicast DNS.
+-  enable_mdns = is_win || is_linux || is_chromeos || is_fuchsia || is_apple || is_tizen
++  enable_mdns =
++      is_win || is_linux || is_chromeos || is_fuchsia || is_apple || is_tizen
+ 
+   # Reporting not used on iOS.
+   enable_reporting = !is_ios
+@@ -39,7 +40,7 @@ declare_args() {
+   # size footprint, this flag should not be disabled unless the embedder is
+   # willing to take the responsibility to make sure that all important
+   # connections use HTTPS.
+-  include_transport_security_state_preload_list = true
++  include_transport_security_state_preload_list = !is_tizen
+ 
+   # Platforms for which certificate verification can be performed either using
+   # the builtin cert verifier with the Chrome Root Store, or with the platform
+diff --git a/packaging/chromium-efl.spec b/packaging/chromium-efl.spec
+index 10a98c6ab8ff..51335bd92b35 100644
+--- a/packaging/chromium-efl.spec
++++ b/packaging/chromium-efl.spec
+@@ -2,9 +2,9 @@ Name: chromium-efl
+ Summary: Chromium EFL
+ # Version: {TPK_VERSION}.{INTERNAL_API_REVISION}.{CHROMIUM_MAJOR_VERSION}
+ # The {INTERNAL_API_REVISION} is used for compatibility check with wrtjs.
+-Version: 1.1.130
++Version: 1.1.138
+ # Set by ./tizen_src/scripts/update_chromium_version.sh
+-%define upstream_chromium_version 130.0.6723.116
++%define upstream_chromium_version 138.0.7204.183
+ Release: 1
+ # The 'Group' should be specified as one of the following valid group list.
+ # https://wiki.tizen.org/wiki/Packaging/Guidelines#Group_Tag
+@@ -269,7 +269,7 @@ BuildRequires: pkgconfig(capi-boost-tv)
+ %define __use_clang 0
+ %endif
+ 
+-%define __enable_wrt_js 1
++%define __enable_wrt_js 0
+ %if 0%{?_disable_wrt_js}
+ %define __enable_wrt_js 0
+ %endif
+diff --git a/sandbox/policy/mojom/BUILD.gn b/sandbox/policy/mojom/BUILD.gn
+index cdebf6c0b873..29413975040d 100644
+--- a/sandbox/policy/mojom/BUILD.gn
++++ b/sandbox/policy/mojom/BUILD.gn
+@@ -15,6 +15,9 @@ mojom("mojom") {
+   ]
+ 
+   enabled_features = []
++  if (is_tizen) {
++    enabled_features += [ "is_tizen" ]
++  }
+   if (enable_ppapi && !is_win) {
+     enabled_features += [ "enable_ppapi_sandbox" ]
+   }
+diff --git a/sandbox/policy/mojom/sandbox.mojom b/sandbox/policy/mojom/sandbox.mojom
+index 8d0c29b35996..11e3dbdb3e79 100644
+--- a/sandbox/policy/mojom/sandbox.mojom
++++ b/sandbox/policy/mojom/sandbox.mojom
+@@ -65,7 +65,7 @@ enum Sandbox {
+   kSpeechRecognition,
+ 
+   // Like kService but allows loading of the optimization guide library.
+-  [EnableIf=is_linux] kVideoEffects,
++  [EnableIf=is_linux|is_tizen] kVideoEffects,
+ 
+   // The PPAPI plugin process. (Unsandboxed on Windows.)
+   [EnableIf=enable_ppapi_sandbox] kPpapi,
+@@ -90,10 +90,10 @@ enum Sandbox {
+   [EnableIf=is_win] kPdfConversion,
+ 
+   // Interfaces with operating system print drivers.
+-  [EnableIf=is_chromeos|is_linux|is_mac|is_win] kPrintBackend,
++  [EnableIf=is_chromeos|is_linux|is_mac|is_win|is_tizen] kPrintBackend,
+ 
+   // Like kUtility but allows loading of screen AI library.
+-  [EnableIf=is_chromeos|is_linux|is_mac|is_win] kScreenAI,
++  [EnableIf=is_chromeos|is_linux|is_mac|is_win|is_tizen] kScreenAI,
+ 
+   // |kXrCompositing| hosts XR Device Service on Windows.
+   [EnableIf=is_win] kXrCompositing,
+@@ -141,7 +141,7 @@ enum Sandbox {
+ 
+   // Used to prime zygotes before they specialize. The process will receive a
+   // new sandbox later in its lifetime.
+-  [EnableIf=is_chromeos|is_linux] kZygoteIntermediateSandbox,
++  [EnableIf=is_chromeos|is_linux|is_tizen] kZygoteIntermediateSandbox,
+ 
+   // Hosts the shared Nearby library for both Nearby Connections and
+   // Nearby Presence.
+@@ -152,5 +152,5 @@ enum Sandbox {
+   // a dedicated sandbox type on macOS and Linux.
+   // On Windows the kService sandbox type is used.
+   // TODO(crbug.com/340778819): Implement sandboxing on other platforms.
+-  [EnableIf=is_linux|is_mac] kOnDeviceTranslation,
++  [EnableIf=is_linux|is_mac|is_tizen] kOnDeviceTranslation,
+ };
+diff --git a/services/device/usb/BUILD.gn b/services/device/usb/BUILD.gn
+index fd0a94da61e0..884b037d5505 100644
+--- a/services/device/usb/BUILD.gn
++++ b/services/device/usb/BUILD.gn
+@@ -141,7 +141,7 @@ static_library("usb") {
+     ]
+   }
+ 
+-  if (is_android || is_linux) {
++  if (is_android || is_linux || is_tizen) {
+     sources += [
+       "usb_interface_detach_allowlist.cc",
+       "usb_interface_detach_allowlist.h",
+diff --git a/services/resource_coordinator/public/mojom/BUILD.gn b/services/resource_coordinator/public/mojom/BUILD.gn
+index e6e7cb4db3ae..abd8f8b97633 100644
+--- a/services/resource_coordinator/public/mojom/BUILD.gn
++++ b/services/resource_coordinator/public/mojom/BUILD.gn
+@@ -19,6 +19,9 @@ mojom_component("mojom") {
+   ]
+ 
+   enabled_features = []
++  if (is_tizen) {
++    enabled_features += [ "is_tizen" ]
++  }
+   if (is_linux || is_chromeos || is_android || is_tizen) {
+     enabled_features += [ "private_swap_info" ]
+   }
+diff --git a/services/resource_coordinator/public/mojom/memory_instrumentation/memory_instrumentation.mojom b/services/resource_coordinator/public/mojom/memory_instrumentation/memory_instrumentation.mojom
+index 22466be9b81a..c88a341c9411 100644
+--- a/services/resource_coordinator/public/mojom/memory_instrumentation/memory_instrumentation.mojom
++++ b/services/resource_coordinator/public/mojom/memory_instrumentation/memory_instrumentation.mojom
+@@ -169,15 +169,15 @@ struct RawOSMemDump {
+ 
+   // How many memory mappings exist in the process. 0 is an invalid value, ie
+   // that collection failed.
+-  [EnableIf=is_android|is_chromeos|is_linux]
++  [EnableIf=is_android|is_chromeos|is_linux|is_tizen]
+   uint32 mappings_count = 0;
+ 
+   // PSS for the process. 0 indicates that collection failed.
+-  [EnableIf=is_android|is_chromeos|is_linux]
++  [EnableIf=is_android|is_chromeos|is_linux|is_tizen]
+   uint32 pss_kb = 0;
+ 
+   // Swap PSS for the process. 0 indicates that collection failed.
+-  [EnableIf=is_android|is_chromeos|is_linux]
++  [EnableIf=is_android|is_chromeos|is_linux|is_tizen]
+   uint32 swap_pss_kb = 0;
+ };
+ 
+@@ -204,7 +204,7 @@ struct OSMemDump {
+ 
+   // This is private swapped memory in kilobytes reported on Linux, ChromeOS and
+   // Android only.
+-  [EnableIf=is_android|is_chromeos|is_linux]
++  [EnableIf=is_android|is_chromeos|is_linux|is_tizen]
+   uint32 private_footprint_swap_kb = 0;
+ 
+   // How many memory mappings exist in the process. 0 is an invalid value
+diff --git a/skia/BUILD.gn b/skia/BUILD.gn
+index 36caf8d89bb3..016532f6b5fa 100644
+--- a/skia/BUILD.gn
++++ b/skia/BUILD.gn
+@@ -41,22 +41,24 @@ source_set("path_bridge") {
+   sources = skia_fontations_path_bridge_sources
+ }
+ 
+-rust_static_library("bridge_rust_side") {
+-  allow_unsafe = true
+-  crate_root = skia_fontations_bridge_root
+-  sources = skia_ports_fontations_bridge_rust_side_sources
+-  cxx_bindings = [ skia_fontations_bridge_root ]
+-  deps = [
+-    ":path_bridge",
+-    "//third_party/rust/font_types/v0_8:lib",
+-    "//third_party/rust/read_fonts/v0_27:lib",
+-    "//third_party/rust/skrifa/v0_29:lib",
+-  ]
+-  configs -= [ "//build/config/compiler:chromium_code" ]
+-  configs += [
+-    ":skia_config",
+-    "//build/config/compiler:no_chromium_code",
+-  ]
++if (enable_rust) {
++  rust_static_library("bridge_rust_side") {
++    allow_unsafe = true
++    crate_root = skia_fontations_bridge_root
++    sources = skia_ports_fontations_bridge_rust_side_sources
++    cxx_bindings = [ skia_fontations_bridge_root ]
++    deps = [
++      ":path_bridge",
++      "//third_party/rust/font_types/v0_8:lib",
++      "//third_party/rust/read_fonts/v0_27:lib",
++      "//third_party/rust/skrifa/v0_29:lib",
++    ]
++    configs -= [ "//build/config/compiler:chromium_code" ]
++    configs += [
++      ":skia_config",
++      "//build/config/compiler:no_chromium_code",
++    ]
++  }
+ }
+ 
+ # External-facing config for dependent code.
+@@ -428,12 +430,12 @@ component("skia") {
+       public += skia_ports_fontmgr_empty_public
+     }
+     sources += skia_ports_typeface_proxy_sources
+-    sources += skia_ports_fontmgr_fontations_sources
+ 
+     # Fontations Rust/C++ bridge interfaces.
+     deps += [ ":path_bridge" ]
+ 
+     if (enable_rust_cxx) {
++      sources += skia_ports_fontmgr_fontations_sources
+       sources += skia_ports_typeface_fontations_sources
+       deps += [ ":bridge_rust_side" ]
+     }
+@@ -737,10 +739,10 @@ skia_source_set("skia_core_and_effects") {
+   }
+   if (use_blink) {
+     # Fontations Rust/C++ bridge interfaces, needed by SkTypeface.
+-    deps += [
+-      ":bridge_rust_side",
+-      ":path_bridge",
+-    ]
++    deps += [ ":path_bridge" ]
++    if (enable_rust) {
++      deps += [ ":bridge_rust_side" ]
++    }
+   }
+   visibility = [ ":skia" ]
+ }
+diff --git a/skia/ext/font_utils.cc b/skia/ext/font_utils.cc
+index 782adb3422b6..eb3c4587ec62 100644
+--- a/skia/ext/font_utils.cc
++++ b/skia/ext/font_utils.cc
+@@ -69,6 +69,7 @@ static sk_sp<SkFontMgr> fontmgr_factory() {
+   return SkFontMgr_New_CoreText(nullptr);
+ #elif BUILDFLAG(IS_CHROMEOS) || BUILDFLAG(IS_LINUX)
+   sk_sp<SkFontConfigInterface> fci(SkFontConfigInterface::RefGlobal());
++#if defined(ENABLE_RUST)
+   if (base::FeatureList::IsEnabled(skia::kFontationsLinuxSystemFonts)) {
+     return fci ? SkFontMgr_New_FCI(std::move(fci),
+                                    SkFontScanner_Make_Fontations())
+@@ -76,6 +77,9 @@ static sk_sp<SkFontMgr> fontmgr_factory() {
+   } else {
+     return fci ? SkFontMgr_New_FCI(std::move(fci)) : nullptr;
+   }
++#else
++  return fci ? SkFontMgr_New_FCI(std::move(fci)) : nullptr;
++#endif
+ #elif BUILDFLAG(IS_FUCHSIA)
+   fuchsia::fonts::ProviderSyncPtr provider;
+   base::ComponentContextForProcess()->svc()->Connect(provider.NewRequest());
+diff --git a/skia/skia.gni b/skia/skia.gni
+index e9694dead74e..de0bbe4e2acf 100644
+--- a/skia/skia.gni
++++ b/skia/skia.gni
+@@ -9,5 +9,5 @@ declare_args() {
+   # TODO(https://crbug.com/360375227): Either: 1) remove (if/when
+   # shipped) or 2) change back to `false` before branchpoint (if not
+   # ready for Beta/Stable yet).
+-  enable_rust_png = true
++  enable_rust_png = !is_tizen
+ }
+diff --git a/sql/sandboxed_vfs_file_impl.cc b/sql/sandboxed_vfs_file_impl.cc
+index 885789109623..f595135009c5 100644
+--- a/sql/sandboxed_vfs_file_impl.cc
++++ b/sql/sandboxed_vfs_file_impl.cc
+@@ -7,6 +7,8 @@
+ #pragma allow_unsafe_buffers
+ #endif
+ 
++#include <cstring>
++
+ #include "sql/sandboxed_vfs_file_impl.h"
+ 
+ #include "base/notreached.h"
+diff --git a/third_party/blink/common/BUILD.gn b/third_party/blink/common/BUILD.gn
+index af6d59a3f57c..2df67c24e7f6 100644
+--- a/third_party/blink/common/BUILD.gn
++++ b/third_party/blink/common/BUILD.gn
+@@ -311,7 +311,6 @@ source_set("common") {
+     "//services/metrics/public/mojom:mojom",
+     "//services/network/public/cpp:cpp",
+     "//services/network/public/mojom:mojom_permissions_policy",
+-    "//third_party/blink/common/rust_crash",
+     "//third_party/blink/public/common:buildflags",
+     "//third_party/re2",
+     "//ui/base:base",
+@@ -324,6 +323,10 @@ source_set("common") {
+     "//ui/latency/mojom:shared_mojom_traits",
+   ]
+ 
++  if (enable_rust) {
++    deps += [ "//third_party/blink/common/rust_crash" ]
++  }
++
+   # If use_blink is used then it needs to depend on //media
+   if (use_blink) {
+     deps += [ "//media" ]
+diff --git a/third_party/blink/common/chrome_debug_urls.cc b/third_party/blink/common/chrome_debug_urls.cc
+index 876ecd5c06e4..67df40cb27ce 100644
+--- a/third_party/blink/common/chrome_debug_urls.cc
++++ b/third_party/blink/common/chrome_debug_urls.cc
+@@ -11,7 +11,9 @@
+ #include "base/threading/platform_thread.h"
+ #include "build/build_config.h"
+ #include "third_party/blink/common/crash_helpers.h"
++#if defined(ENABLE_RUST)
+ #include "third_party/blink/common/rust_crash/src/lib.rs.h"
++#endif
+ #include "url/gurl.h"
+ 
+ #if BUILDFLAG(IS_WIN)
+@@ -137,7 +139,9 @@ void HandleChromeDebugURL(const GURL& url) {
+   } else if (url == kChromeUICrashRustURL) {
+     // Cause a typical crash in Rust code, so we can test that call stack
+     // collection and symbol mangling work across the language boundary.
++#if defined(ENABLE_RUST)
+     crash_in_rust();
++#endif
+   } else if (url == kChromeUIDumpURL) {
+     // This URL will only correctly create a crash dump file if content is
+     // hosted in a process that has correctly called
+diff --git a/third_party/blink/common/renderer_preferences/renderer_preferences_mojom_traits.cc b/third_party/blink/common/renderer_preferences/renderer_preferences_mojom_traits.cc
+index c13dfd7f20e6..397e85a646d1 100644
+--- a/third_party/blink/common/renderer_preferences/renderer_preferences_mojom_traits.cc
++++ b/third_party/blink/common/renderer_preferences/renderer_preferences_mojom_traits.cc
+@@ -77,7 +77,7 @@ bool StructTraits<blink::mojom::RendererPreferencesDataView,
+ 
+   out->send_subresource_notification = data.send_subresource_notification();
+ 
+-#if BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_CHROMEOS)
++#if (BUILDFLAG(IS_LINUX) && !BUILDFLAG(IS_TIZEN)) || BUILDFLAG(IS_CHROMEOS)
+   if (!data.ReadSystemFontFamilyName(&out->system_font_family_name))
+     return false;
+ #endif
+diff --git a/third_party/blink/public/common/renderer_preferences/renderer_preferences_mojom_traits.h b/third_party/blink/public/common/renderer_preferences/renderer_preferences_mojom_traits.h
+index defe40d7091c..4c26f06edafd 100644
+--- a/third_party/blink/public/common/renderer_preferences/renderer_preferences_mojom_traits.h
++++ b/third_party/blink/public/common/renderer_preferences/renderer_preferences_mojom_traits.h
+@@ -180,7 +180,7 @@ struct BLINK_COMMON_EXPORT
+     return data.send_subresource_notification;
+   }
+ 
+-#if BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_CHROMEOS)
++#if (BUILDFLAG(IS_LINUX) && !BUILDFLAG(IS_TIZEN)) || BUILDFLAG(IS_CHROMEOS)
+   static const std::string& system_font_family_name(
+       const ::blink::RendererPreferences& data) {
+     return data.system_font_family_name;
+diff --git a/third_party/blink/public/platform/web_media_player_client.h b/third_party/blink/public/platform/web_media_player_client.h
+index 769e3be62d21..d291bae66453 100644
+--- a/third_party/blink/public/platform/web_media_player_client.h
++++ b/third_party/blink/public/platform/web_media_player_client.h
+@@ -33,6 +33,9 @@
+ 
+ #include "build/build_config.h"
+ #include "third_party/blink/public/platform/web_common.h"
++#if BUILDFLAG(IS_TIZEN_TV)
++#include "third_party/blink/public/platform/web_string.h"
++#endif
+ 
+ namespace media {
+ class RemotePlaybackClientWrapper;
+diff --git a/third_party/blink/renderer/core/html/media/html_media_element.cc b/third_party/blink/renderer/core/html/media/html_media_element.cc
+index f9e4028befc9..a3383bb037e8 100644
+--- a/third_party/blink/renderer/core/html/media/html_media_element.cc
++++ b/third_party/blink/renderer/core/html/media/html_media_element.cc
+@@ -4226,7 +4226,7 @@ WebString HTMLMediaElement::GetContentMIMEType() {
+           MimeTypeFromDataURL(current_src_.GetSourceIfVisible().GetString());
+     else {
+       String last_path_component =
+-          current_src_.GetSourceIfVisible().LastPathComponent();
++          current_src_.GetSourceIfVisible().LastPathComponent().ToString();
+       size_t pos = last_path_component.ReverseFind('.');
+       if (pos != kNotFound) {
+         String extension = last_path_component.Substring(pos + 1);
+@@ -4264,7 +4264,7 @@ void HTMLMediaElement::SetTranslatedURL(const String& url) {
+ }
+ 
+ void HTMLMediaElement::SetParentalRatingResult(bool is_pass) {
+-  LOG(INFO) << "setParentalRatingResult:" << BoolString(is_pass);
++  LOG(INFO) << "setParentalRatingResult:" << (is_pass ? "true" : "false");
+   if (!GetWebMediaPlayer()) {
+     LOG(ERROR) << "setParentalRatingResult: mediaplayer not created";
+     return;
+diff --git a/third_party/blink/renderer/modules/accessibility/ax_node_object.cc b/third_party/blink/renderer/modules/accessibility/ax_node_object.cc
+index 833abfcd8a52..7ca4c28bdea5 100644
+--- a/third_party/blink/renderer/modules/accessibility/ax_node_object.cc
++++ b/third_party/blink/renderer/modules/accessibility/ax_node_object.cc
+@@ -2396,10 +2396,10 @@ ax::mojom::blink::Role AXNodeObject::NativeRoleIgnoringAria() const {
+ #if defined(TIZEN_ATK_SUPPORT) && !defined(TIZEN_ATK_FEATURE_VD)
+       && IsMobileProfile() &&
+       // Skip empty div tag in mobile and wearable profile.
+-      (!ComputedName().empty() && HasAttribute(html_names::kRoleAttr) &&
+-       (!GetAttribute(html_names::kAriaValuetextAttr).GetString().empty() ||
++      (!ComputedName().empty() && HasAriaAttribute(html_names::kRoleAttr) &&
++       (!GetElement()->FastGetAttribute(html_names::kAriaValuetextAttr).GetString().empty() ||
+         !GetValueForControl().empty()) &&
+-       !GetAttribute(html_names::kAriaDescribedbyAttr).GetString().empty())
++       !GetElement()->FastGetAttribute(html_names::kAriaDescribedbyAttr).GetString().empty())
+ #endif
+   ) {
+     return RoleFromLayoutObjectOrNode();
+diff --git a/third_party/blink/renderer/modules/accessibility/ax_object.cc b/third_party/blink/renderer/modules/accessibility/ax_object.cc
+index d2bb77afbce6..44d68ff6a18c 100644
+--- a/third_party/blink/renderer/modules/accessibility/ax_object.cc
++++ b/third_party/blink/renderer/modules/accessibility/ax_object.cc
+@@ -8022,8 +8022,8 @@ bool AXObject::SupportsNameFromContents(bool recursive,
+   // From Tizen 3.0, use role="" for div to avoid speaking role name
+   // and at the same time get name from content
+   if (GetNode() && IsA<HTMLDivElement>(*GetNode()) &&
+-      HasAttribute(html_names::kRoleAttr) &&
+-      GetAttribute(html_names::kRoleAttr).empty()) {
++      HasAriaAttribute(html_names::kRoleAttr) &&
++      GetElement()->FastGetAttribute(html_names::kRoleAttr).empty()) {
+     return true;
+   }
+ #endif
+diff --git a/third_party/blink/renderer/platform/fonts/shaping/harfbuzz_shaper.cc b/third_party/blink/renderer/platform/fonts/shaping/harfbuzz_shaper.cc
+index a1bfac33c5f2..1602f46f1409 100644
+--- a/third_party/blink/renderer/platform/fonts/shaping/harfbuzz_shaper.cc
++++ b/third_party/blink/renderer/platform/fonts/shaping/harfbuzz_shaper.cc
+@@ -986,7 +986,8 @@ void HarfBuzzShaper::ShapeSegment(
+ 
+       current_font_data_for_range_set =
+           fallback_iterator.Next(fallback_chars_hint);
+-#if BUILDFLAG(IS_TIZEN)
++LOG(ERROR) << " Please remove EWK_BRINGUP ";
++#if BUILDFLAG(IS_TIZEN) && !defined(EWK_BRINGUP)  // FIXME: m138 bringup
+       if (!current_font_data_for_range_set) {
+         hb_buffer_reset(range_data->buffer);
+         break;
+diff --git a/third_party/blink/renderer/platform/fonts/skia/sktypeface_factory.cc b/third_party/blink/renderer/platform/fonts/skia/sktypeface_factory.cc
+index 20f1966108b4..13566ce7d300 100644
+--- a/third_party/blink/renderer/platform/fonts/skia/sktypeface_factory.cc
++++ b/third_party/blink/renderer/platform/fonts/skia/sktypeface_factory.cc
+@@ -29,11 +29,15 @@ sk_sp<SkTypeface> SkTypeface_Factory::FromFontConfigInterfaceIdAndTtcIndex(
+   font_identity.fID = config_id;
+   font_identity.fTTCIndex = ttc_index;
+ 
++#if defined(ENABLE_RUST)
+   if (base::FeatureList::IsEnabled(skia::kFontationsLinuxSystemFonts)) {
+     return fci->makeTypeface(font_identity, SkFontMgr_New_Fontations_Empty());
+   } else {
+     return fci->makeTypeface(font_identity, skia::DefaultFontMgr());
+   }
++#else
++  return fci->makeTypeface(font_identity, skia::DefaultFontMgr());
++#endif
+ #else
+   NOTREACHED();
+ #endif
+@@ -46,12 +50,16 @@ sk_sp<SkTypeface> SkTypeface_Factory::FromFilenameAndTtcIndex(
+ #if !BUILDFLAG(IS_WIN) && !BUILDFLAG(IS_ANDROID) && !BUILDFLAG(IS_FUCHSIA) && \
+     !BUILDFLAG(IS_APPLE)
+ 
++#if defined(ENABLE_RUST)
+   if (base::FeatureList::IsEnabled(skia::kFontationsLinuxSystemFonts)) {
+     return SkFontMgr_New_Fontations_Empty()->makeFromFile(filename.c_str(),
+                                                           ttc_index);
+   } else {
+     return skia::DefaultFontMgr()->makeFromFile(filename.c_str(), ttc_index);
+   }
++#else
++  return skia::DefaultFontMgr()->makeFromFile(filename.c_str(), ttc_index);
++#endif
+ #else
+   NOTREACHED();
+ #endif
+diff --git a/third_party/blink/renderer/platform/fonts/web_font_typeface_factory.cc b/third_party/blink/renderer/platform/fonts/web_font_typeface_factory.cc
+index c7a2b1fc365b..123e371d8027 100644
+--- a/third_party/blink/renderer/platform/fonts/web_font_typeface_factory.cc
++++ b/third_party/blink/renderer/platform/fonts/web_font_typeface_factory.cc
+@@ -38,7 +38,7 @@ bool IsWin() {
+ }
+ 
+ bool IsFreeTypeSystemRasterizer() {
+-#if !BUILDFLAG(IS_WIN) && !BUILDFLAG(IS_APPLE)
++#if !BUILDFLAG(IS_WIN) && !BUILDFLAG(IS_APPLE) && !BUILDFLAG(IS_TIZEN)
+   return true;
+ #else
+   return false;
+@@ -50,11 +50,11 @@ sk_sp<SkTypeface> MakeTypefaceDefaultFontMgr(sk_sp<SkData> data) {
+   return FontCache::Get().FontManager()->makeFromData(data, 0);
+ #endif
+ 
+-#if BUILDFLAG(IS_APPLE)
++#if BUILDFLAG(IS_APPLE) || BUILDFLAG(IS_TIZEN)
+   return skia::DefaultFontMgr()->makeFromData(data, 0);
+ #endif
+ 
+-#if !(BUILDFLAG(IS_WIN) || BUILDFLAG(IS_APPLE))
++#if !BUILDFLAG(IS_WIN) || BUILDFLAG(IS_APPLE) || BUILDFLAG(IS_TIZEN)
+   return SkTypeface_Make_Fontations(data, SkFontArguments());
+ #endif
+ }
+@@ -65,11 +65,13 @@ sk_sp<SkTypeface> MakeTypefaceFallback(sk_sp<SkData> data) {
+ }
+ #endif
+ 
+-#if !BUILDFLAG(IS_EFL)
+ sk_sp<SkTypeface> MakeTypefaceFontations(sk_sp<SkData> data) {
++#if !BUILDFLAG(IS_TIZEN)
+   return SkTypeface_Make_Fontations(data, SkFontArguments());
+-}
++#else
++  return skia::DefaultFontMgr()->makeFromData(data, 0);
+ #endif
++}
+ 
+ sk_sp<SkTypeface> MakeVariationsTypeface(
+     sk_sp<SkData> data,
+@@ -133,9 +135,7 @@ bool WebFontTypefaceFactory::CreateTypeface(sk_sp<SkData> data,
+   const FontFormatCheck format_check(data);
+   const FontInstantiator instantiator = {
+       MakeTypefaceDefaultFontMgr,
+-#if !BUILDFLAG(IS_EFL)
+       MakeTypefaceFontations,
+-#endif
+ #if BUILDFLAG(IS_WIN) || BUILDFLAG(IS_APPLE)
+       MakeTypefaceFallback,
+ #endif
+diff --git a/third_party/blink/renderer/platform/image-decoders/BUILD.gn b/third_party/blink/renderer/platform/image-decoders/BUILD.gn
+index 870c7e853724..150765532ed3 100644
+--- a/third_party/blink/renderer/platform/image-decoders/BUILD.gn
++++ b/third_party/blink/renderer/platform/image-decoders/BUILD.gn
+@@ -77,13 +77,15 @@ component("image_decoders") {
+     "//ui/gfx/geometry:geometry_skia",
+   ]
+ 
+-  if (enable_av1_decoder) {
++  if (enable_av1_decoder && enable_rust_cxx) {
+     sources += [
+       "avif/crabbyavif_image_decoder.cc",
+       "avif/crabbyavif_image_decoder.h",
+     ]
+ 
+-    deps += [ "//third_party/crabbyavif" ]
++    if (enable_rust) {
++      deps += [ "//third_party/crabbyavif" ]
++    }
+   }
+ 
+   if (enable_rust_png) {
+diff --git a/third_party/blink/renderer/platform/image-decoders/image_decoder.cc b/third_party/blink/renderer/platform/image-decoders/image_decoder.cc
+index 0cc5dfa27696..ba86c7aa075b 100644
+--- a/third_party/blink/renderer/platform/image-decoders/image_decoder.cc
++++ b/third_party/blink/renderer/platform/image-decoders/image_decoder.cc
+@@ -196,7 +196,8 @@ String SniffMimeTypeInternal(scoped_refptr<SegmentReader> reader) {
+   if (MatchesBMPSignature(contents)) {
+     return "image/bmp";
+   }
+-#if BUILDFLAG(ENABLE_AV1_DECODER)
++LOG(ERROR) << " Please remove EWK_BRINGUP ";
++#if BUILDFLAG(ENABLE_AV1_DECODER) && !defined(EWK_BRINGUP)  // FIXME: m138 bringup
+   if (CrabbyAVIFImageDecoder::MatchesAVIFSignature(fast_reader)) {
+     return "image/avif";
+   }
+@@ -305,7 +306,8 @@ std::unique_ptr<ImageDecoder> ImageDecoder::CreateByMimeType(
+   } else if (mime_type == "image/bmp" || mime_type == "image/x-xbitmap") {
+     decoder = std::make_unique<BMPImageDecoder>(alpha_option, color_behavior,
+                                                 max_decoded_bytes);
+-#if BUILDFLAG(ENABLE_AV1_DECODER)
++LOG(ERROR) << " Please remove EWK_BRINGUP ";
++#if BUILDFLAG(ENABLE_AV1_DECODER) && !defined(EWK_BRINGUP)  // FIXME: m138 bringup
+   } else if (mime_type == "image/avif") {
+     decoder = std::make_unique<CrabbyAVIFImageDecoder>(
+         alpha_option, high_bit_depth_decoding_option, color_behavior, aux_image,
+diff --git a/third_party/blink/renderer/platform/media/web_media_player_impl.cc b/third_party/blink/renderer/platform/media/web_media_player_impl.cc
+index a10c814ca36a..5e804f1c062c 100644
+--- a/third_party/blink/renderer/platform/media/web_media_player_impl.cc
++++ b/third_party/blink/renderer/platform/media/web_media_player_impl.cc
+@@ -4422,10 +4422,13 @@ void WebMediaPlayerImpl::CreateVideoHoleFrame() {
+   gfx::Size size(pipeline_metadata_.natural_size.width(),
+                  pipeline_metadata_.natural_size.height());
+ 
++LOG(ERROR) << " Please remove EWK_BRINGUP ";
++#if !defined(EWK_BRINGUP)  // FIXME: m138 bringup
+   scoped_refptr<media::VideoFrame> video_frame =
+       media::VideoFrame::CreateHoleFrame(size);
+   if (video_frame)
+     compositor_->PaintSingleFrame(video_frame);
++#endif
+ }
+ 
+ void WebMediaPlayerImpl::OnDrawableContentRectChanged(gfx::Rect rect,
+diff --git a/third_party/breakpad/BUILD.gn b/third_party/breakpad/BUILD.gn
+index e87a4e97bed8..8a7d47b1efbd 100644
+--- a/third_party/breakpad/BUILD.gn
++++ b/third_party/breakpad/BUILD.gn
+@@ -742,13 +742,15 @@ if (is_linux || is_chromeos || is_android || is_tizen) {
+ 
+       include_dirs = [ "breakpad/src" ]
+ 
+-      # Rust demangle support.
+-      deps = [ "//third_party/rust/rustc_demangle_capi/v0_1:lib" ]
+-      defines += [ "HAVE_RUSTC_DEMANGLE" ]
+-      include_dirs += [ "//third_party/rust/chromium_crates_io/vendor/rustc-demangle-capi-v0_1/include" ]
+-      sources += [ "//third_party/rust/chromium_crates_io/vendor/rustc-demangle-capi-v0_1/include/rustc_demangle.h" ]
+-
+-      libs = [ "z" ]
++      if (enable_rust) {
++        # Rust demangle support.
++        deps = [ "//third_party/rust/rustc_demangle_capi/v0_1:lib" ]
++        defines += [ "HAVE_RUSTC_DEMANGLE" ]
++        include_dirs += [ "//third_party/rust/chromium_crates_io/vendor/rustc-demangle-capi-v0_1/include" ]
++        sources += [ "//third_party/rust/chromium_crates_io/vendor/rustc-demangle-capi-v0_1/include/rustc_demangle.h" ]
++
++        libs = [ "z" ]
++      }
+     }
+   } else if (current_toolchain == default_toolchain) {
+     # The default toolchain builds the system-allocator binaries, which are
+diff --git a/third_party/ffmpeg/ffmpeg_generated.gni b/third_party/ffmpeg/ffmpeg_generated.gni
+index 62fb579781b0..bb6709288f7d 100644
+--- a/third_party/ffmpeg/ffmpeg_generated.gni
++++ b/third_party/ffmpeg/ffmpeg_generated.gni
+@@ -12,7 +12,8 @@ ffmpeg_c_sources = []
+ ffmpeg_gas_sources = []
+ ffmpeg_asm_sources = []
+ 
+-use_linux_config = is_linux || is_chromeos || is_fuchsia || tizen_multimedia
++use_linux_config =
++    is_linux || is_chromeos || is_fuchsia || tizen_multimedia || is_tizen
+ 
+ if (current_cpu == "arm64" || current_cpu == "arm64e" || current_cpu == "x64" ||
+     (is_android && current_cpu == "arm" && arm_use_neon) ||
+diff --git a/third_party/ffmpeg/ffmpeg_options.gni b/third_party/ffmpeg/ffmpeg_options.gni
+index 194bc54b730c..3a49036b7b6d 100644
+--- a/third_party/ffmpeg/ffmpeg_options.gni
++++ b/third_party/ffmpeg/ffmpeg_options.gni
+@@ -64,7 +64,7 @@ if (current_cpu == "x86") {
+ os_config = current_os
+ if ((is_linux || is_chromeos) && is_msan) {
+   os_config = "linux-noasm"
+-} else if (is_chromeos || is_fuchsia || tizen_multimedia) {
++} else if (is_chromeos || is_fuchsia || is_tizen) {
+   os_config = "linux"
+ } else if (is_win && !is_clang) {
+   os_config = "win-msvc"
+diff --git a/third_party/pdfium/skia/BUILD.gn b/third_party/pdfium/skia/BUILD.gn
+index 3d8942810374..13d29a4a2f94 100644
+--- a/third_party/pdfium/skia/BUILD.gn
++++ b/third_party/pdfium/skia/BUILD.gn
+@@ -111,7 +111,7 @@ config("skia_library_config") {
+   if (use_blink && !use_system_freetype) {
+     defines += [ "SK_FREETYPE_MINIMUM_RUNTIME_VERSION=(((FREETYPE_MAJOR) * 0x01000000) | ((FREETYPE_MINOR) * 0x00010000) | ((FREETYPE_PATCH) * 0x00000100))" ]
+   }
+-  if (use_blink) {
++  if (use_blink && !is_tizen) {
+     defines += [ "SK_TYPEFACE_FACTORY_FREETYPE" ]
+   }
+   if (is_win) {
+diff --git a/third_party/pthreadpool/BUILD.gn b/third_party/pthreadpool/BUILD.gn
+index ece88051a5f1..41c4dfc530a8 100644
+--- a/third_party/pthreadpool/BUILD.gn
++++ b/third_party/pthreadpool/BUILD.gn
+@@ -36,7 +36,9 @@ source_set("pthreadpool") {
+   ]
+ 
+   # Use Chromium Jobs API.
+-  sources += [ "chromium/jobs.cc" ]
++  if (!is_tizen) {
++    sources += [ "chromium/jobs.cc" ]
++  }
+ 
+   configs -= [ "//build/config/compiler:chromium_code" ]
+   configs += [ "//build/config/compiler:no_chromium_code" ]
+diff --git a/third_party/skia/src/core/SkTypeface.cpp b/third_party/skia/src/core/SkTypeface.cpp
+index f2edaae30a2d..afe6375958c7 100644
+--- a/third_party/skia/src/core/SkTypeface.cpp
++++ b/third_party/skia/src/core/SkTypeface.cpp
+@@ -44,8 +44,10 @@
+ 
+ // TODO(https://crbug.com/skia/14338): This needs to be set by Bazel rules.
+ #ifdef SK_TYPEFACE_FACTORY_FONTATIONS
++#if !defined(EWK_BRINGUP)  // FIXME: m138 bringup
+ #include "src/ports/SkTypeface_fontations_priv.h"
+ #endif
++#endif
+ 
+ #include <cstddef>
+ #include <cstring>
+@@ -178,7 +180,9 @@ namespace {
+             { SkTypeface_FreeType::FactoryId, SkTypeface_FreeType::MakeFromStream },
+ #endif
+ #ifdef SK_TYPEFACE_FACTORY_FONTATIONS
++#if !defined(EWK_BRINGUP)  // FIXME: m138 bringup
+             { SkTypeface_Fontations::FactoryId, SkTypeface_Fontations::MakeFromStream },
++#endif
+ #endif
+         }};
+         return decoders.get();
+diff --git a/third_party/webrtc/webrtc.gni b/third_party/webrtc/webrtc.gni
+index 0fd0a846fe14..697f5d1cd49e 100644
+--- a/third_party/webrtc/webrtc.gni
++++ b/third_party/webrtc/webrtc.gni
+@@ -340,7 +340,7 @@ declare_args() {
+   rtc_disable_metrics = false
+ 
+   # Enables an experimental rust version of base64 for building and testing.
+-  rtc_rusty_base64 = true
++  rtc_rusty_base64 = !is_tizen
+ }
+ 
+ declare_args() {
+@@ -981,7 +981,7 @@ template("rtc_executable") {
+     # Note that //third_party/abseil-cpp:absl_full build target includes flags,
+     # but //third_party/abseil-cpp:absl target - doesn't. That allows webrtc
+     # executables, but not libraries to use absl flags.
+-    if (build_with_chromium && defined(deps)) {
++    if (build_with_chromium && defined(deps) && !is_tizen) {
+       absl_dependencies =
+           filter_labels_include(deps, [ "//third_party/abseil-cpp/*" ])
+       if (absl_dependencies != []) {
+diff --git a/tizen_src/build/config/BUILD.gn b/tizen_src/build/config/BUILD.gn
+index ccca0c0da550..9c78fe0cd3f1 100644
+--- a/tizen_src/build/config/BUILD.gn
++++ b/tizen_src/build/config/BUILD.gn
+@@ -2,6 +2,7 @@
+ # Use of this source code is governed by a BSD-style license that can be
+ # found in the LICENSE file.
+ 
++import("//build/config/rust.gni")
+ import("//tizen_src/build/config/tizen_features.gni")
+ 
+ config("tizen_feature_flags") {
+@@ -26,6 +27,9 @@ config("tizen_feature_flags") {
+   if (use_wayland) {
+     defines += [ "USE_WAYLAND" ]
+   }
++  if (enable_rust) {
++    defines += [ "ENABLE_RUST" ]
++  }
+   if (is_tizen) {
+     defines += [
+       "OS_TIZEN",
+diff --git a/tizen_src/build/gn_chromiumefl.sh b/tizen_src/build/gn_chromiumefl.sh
+index 9e4059acbaf2..a82908480f7d 100755
+--- a/tizen_src/build/gn_chromiumefl.sh
++++ b/tizen_src/build/gn_chromiumefl.sh
+@@ -251,11 +251,11 @@ add_tizen_flags() {
+                                use_atk=false
+                               "
+   fi
+-  ADDITIONAL_GN_PARAMETERS+="tizen_multimedia=true
++  ADDITIONAL_GN_PARAMETERS+="tizen_multimedia=false
+                              proprietary_codecs=true
+                              tizen_audio_io=true
+                              tizen_web_speech_recognition=true
+-                             tizen_tbm_support=true
++                             tizen_tbm_support=false
+                              ffmpeg_branding=\"Chrome\"
+                             "
+ 
+diff --git a/tizen_src/chromium_impl/chrome/app/chrome_main_tizen.cc b/tizen_src/chromium_impl/chrome/app/chrome_main_tizen.cc
+index 0ab804ff8423..87de9106db22 100644
+--- a/tizen_src/chromium_impl/chrome/app/chrome_main_tizen.cc
++++ b/tizen_src/chromium_impl/chrome/app/chrome_main_tizen.cc
+@@ -17,7 +17,7 @@
+ extern "C" {
+ int ChromeMain(int argc, const char** argv);
+ 
+-__attribute__((visibility("default"))) int NO_STACK_PROTECTOR
++NO_STACK_PROTECTOR __attribute__((visibility("default"))) int
+ ChromeMainTizen(int argc, const char** argv);
+ }
+ 
+diff --git a/tizen_src/chromium_impl/content/browser/browser_efl.gni b/tizen_src/chromium_impl/content/browser/browser_efl.gni
+index 275756a72c3a..791d14736b2c 100644
+--- a/tizen_src/chromium_impl/content/browser/browser_efl.gni
++++ b/tizen_src/chromium_impl/content/browser/browser_efl.gni
+@@ -137,7 +137,7 @@ if (is_tizen) {
+     "tracing/tracing_ui.h",
+   ]
+ 
+-  if (!tizen_product_tv) {
++  if (tizen_multimedia && !tizen_product_tv) {
+     external_exclude_content_browser_efl_sources += [
+       "renderer_host/media/in_process_video_capture_provider.cc",
+       "renderer_host/media/in_process_video_capture_provider.h",
+@@ -171,10 +171,10 @@ if (tizen_multimedia) {
+ 
+   if (!tizen_product_tv) {
+     external_content_browser_efl_sources += [
+-      "//tizen_src/chromium_impl/content/browser/media/in_process_video_capture_provider_tizen.h",
+       "//tizen_src/chromium_impl/content/browser/media/in_process_video_capture_provider_tizen.cc",
+-      "//tizen_src/chromium_impl/content/browser/renderer_host/media/in_process_video_capture_device_launcher_tizen.h",
++      "//tizen_src/chromium_impl/content/browser/media/in_process_video_capture_provider_tizen.h",
+       "//tizen_src/chromium_impl/content/browser/renderer_host/media/in_process_video_capture_device_launcher_tizen.cc",
++      "//tizen_src/chromium_impl/content/browser/renderer_host/media/in_process_video_capture_device_launcher_tizen.h",
+     ]
+   }
+ }
+diff --git a/tizen_src/chromium_impl/content/browser/input_picker/input_picker_base.h b/tizen_src/chromium_impl/content/browser/input_picker/input_picker_base.h
+index bc8c84b038b6..3eee828f27eb 100644
+--- a/tizen_src/chromium_impl/content/browser/input_picker/input_picker_base.h
++++ b/tizen_src/chromium_impl/content/browser/input_picker/input_picker_base.h
+@@ -102,9 +102,7 @@ class InputPickerBase {
+     Evas_Object* color_rect_ = nullptr;
+     Evas_Object* date_picker_ = nullptr;
+     Evas_Object* time_picker_ = nullptr;
+-#if BUILDFLAG(IS_TIZEN) && !BUILDFLAG(IS_TIZEN_TV)
+-    Eext_Circle_Surface* circle_surface_ = nullptr;
+-#endif
++
+     ui::TextInputType input_type_ = ui::TEXT_INPUT_TYPE_NONE;
+     bool is_color_picker_ = false;
+     int red_ = 0;
+diff --git a/tizen_src/chromium_impl/content/browser/media/tizen_renderer_impl.cc b/tizen_src/chromium_impl/content/browser/media/tizen_renderer_impl.cc
+index 72bbaf3fa125..5db69f401ab9 100644
+--- a/tizen_src/chromium_impl/content/browser/media/tizen_renderer_impl.cc
++++ b/tizen_src/chromium_impl/content/browser/media/tizen_renderer_impl.cc
+@@ -167,6 +167,8 @@ void TizenRendererImpl::Initialize(media::MediaResource* media_resource,
+     return;
+   }
+ 
++LOG(ERROR) << " Please remove EWK_BRINGUP ";
++#if !defined(EWK_BRINGUP)  // FIXME: m138 bringup
+   if (media_resource_->GetType() != media::MediaResource::Type::KUrl) {
+     audio_stream_ =
+         media_resource_->GetFirstStream(media::DemuxerStream::AUDIO);
+@@ -179,6 +181,7 @@ void TizenRendererImpl::Initialize(media::MediaResource* media_resource,
+       media_player_->SetMediaType(media::DemuxerStream::VIDEO);
+     }
+   }
++#endif
+ 
+ #if defined(TIZEN_VIDEO_HOLE)
+   if (web_contents) {
+@@ -210,17 +213,23 @@ void TizenRendererImpl::Initialize(media::MediaResource* media_resource,
+   resource_conflicted_ = false;
+ 
+   // Initialize and Prepare early when resource type is URL.
++LOG(ERROR) << " Please remove EWK_BRINGUP ";
++#if !defined(EWK_BRINGUP)  // FIXME: m138 bringup
+   if (media_resource_->GetType() == media::MediaResource::Type::KUrl) {
+     SetPlayerInitialize();
+     SetPlayerPrepare();
+   }
++#endif
+ }
+ 
+ void TizenRendererImpl::SetStreamInfo() {
++LOG(ERROR) << " Please remove EWK_BRINGUP ";
++#if !defined(EWK_BRINGUP)  // FIXME: m138 bringup
+   if (media_resource_->GetType() == media::MediaResource::Type::KUrl) {
+     media_player_->SetStreamInfo(media::DemuxerStream::VIDEO, 0);
+     return;
+   }
++#endif
+ 
+   if (audio_stream_)
+     media_player_->SetStreamInfo(media::DemuxerStream::AUDIO, audio_stream_);
+diff --git a/tizen_src/chromium_impl/content/browser/media/tizen_renderer_impl.h b/tizen_src/chromium_impl/content/browser/media/tizen_renderer_impl.h
+index 95991b745e13..d9ac0e650774 100644
+--- a/tizen_src/chromium_impl/content/browser/media/tizen_renderer_impl.h
++++ b/tizen_src/chromium_impl/content/browser/media/tizen_renderer_impl.h
+@@ -82,10 +82,10 @@ class CONTENT_EXPORT TizenRendererImpl
+   media::RendererType GetRendererType() override;
+   void OnSelectedVideoTracksChanged(
+       const std::vector<media::DemuxerStream*>& enabled_tracks,
+-      base::OnceClosure change_completed_cb) override;
++      base::OnceClosure change_completed_cb);
+   void OnEnabledAudioTracksChanged(
+       const std::vector<media::DemuxerStream*>& enabled_tracks,
+-      base::OnceClosure change_completed_cb) override;
++      base::OnceClosure change_completed_cb);
+   void InitiateScopedSurfaceRequest(
+       InitiateScopedSurfaceRequestCallback callback) override;
+   void OnUpdateAudioMutingState(bool muted) {}
+diff --git a/tizen_src/chromium_impl/content/browser/renderer_host/media/in_process_video_capture_device_launcher_tizen.h b/tizen_src/chromium_impl/content/browser/renderer_host/media/in_process_video_capture_device_launcher_tizen.h
+index 5fb5a0b764f3..641a9bfbcfe6 100644
+--- a/tizen_src/chromium_impl/content/browser/renderer_host/media/in_process_video_capture_device_launcher_tizen.h
++++ b/tizen_src/chromium_impl/content/browser/renderer_host/media/in_process_video_capture_device_launcher_tizen.h
+@@ -30,11 +30,13 @@ class InProcessVideoCaptureDeviceLauncherTizen : public InProcessVideoCaptureDev
+   );
+   ~InProcessVideoCaptureDeviceLauncherTizen() override;
+ 
++#if defined(IS_TIZEN_MULTIMEDIA)
+   void DoStartDeviceCaptureOnDeviceThread(
+       const std::string& device_id,
+       const media::VideoCaptureParams& params,
+       std::unique_ptr<media::VideoCaptureDeviceClient> client,
+       ReceiveDeviceCallback result_callback) override;
++#endif
+ 
+  private:
+   const scoped_refptr<base::SingleThreadTaskRunner> device_task_runner_;
+diff --git a/tizen_src/chromium_impl/content/renderer/media/cdm/render_cdm_factory.cc b/tizen_src/chromium_impl/content/renderer/media/cdm/render_cdm_factory.cc
+index 69576b863417..0db86b3432c0 100644
+--- a/tizen_src/chromium_impl/content/renderer/media/cdm/render_cdm_factory.cc
++++ b/tizen_src/chromium_impl/content/renderer/media/cdm/render_cdm_factory.cc
+@@ -34,15 +34,15 @@ void RenderCdmFactory::Create(
+   // without privacy mode.
+   const bool use_privacy_mode = cdm_config.key_system == kWidevineKeySystem;
+ 
++LOG(ERROR) << " Please remove EWK_BRINGUP ";
++#if !defined(EWK_BRINGUP)  // FIXME: m130 bringup
+   // Tizen TV should use IEME for all key systems.
+   scoped_refptr<media::ContentDecryptionModule> cdm(media::CreateIEMEDrmBridge(
+       cdm_config.key_system, session_message_cb, session_closed_cb,
+       session_keys_change_cb, session_expiration_update_cb, use_privacy_mode));
+-  LOG(ERROR) << " Please Remove EWK_BRINGUP ";
+-  #if !defined(EWK_BRINGUP)  // FIXME: m130 bringup
+   base::SingleThreadTaskRunner::GetCurrentDefault()->PostTask(
+       FROM_HERE, base::BindOnce(std::move(cdm_created_cb), cdm, ""));
+-  #endif
++#endif
+ }
+ 
+ }  // namespace content
+\ No newline at end of file
+diff --git a/tizen_src/chromium_impl/content/renderer/media/tizen/media_player_renderer_client.cc b/tizen_src/chromium_impl/content/renderer/media/tizen/media_player_renderer_client.cc
+index 89c30f35e25b..138e1173d486 100644
+--- a/tizen_src/chromium_impl/content/renderer/media/tizen/media_player_renderer_client.cc
++++ b/tizen_src/chromium_impl/content/renderer/media/tizen/media_player_renderer_client.cc
+@@ -6,6 +6,7 @@
+ 
+ #include <utility>
+ 
++#include "base/logging.h"
+ #include "base/functional/bind.h"
+ #include "third_party/libyuv/include/libyuv/convert.h"
+ 
+diff --git a/tizen_src/chromium_impl/media/audio/tizen/audio_manager_capi.cc b/tizen_src/chromium_impl/media/audio/tizen/audio_manager_capi.cc
+index 08fd7c5582c2..48354acb8765 100644
+--- a/tizen_src/chromium_impl/media/audio/tizen/audio_manager_capi.cc
++++ b/tizen_src/chromium_impl/media/audio/tizen/audio_manager_capi.cc
+@@ -119,7 +119,7 @@ void AudioManagerCapi::ReleaseInputStream(AudioInputStream* stream) {
+   AudioManagerBase::ReleaseInputStream(stream);
+ }
+ 
+-const char* AudioManagerCapi::GetName() {
++const std::string_view AudioManagerCapi::GetName() {
+   return "Tizen";
+ }
+ 
+diff --git a/tizen_src/chromium_impl/media/audio/tizen/audio_manager_capi.h b/tizen_src/chromium_impl/media/audio/tizen/audio_manager_capi.h
+index dfe2513eff78..2c4d0de15a68 100644
+--- a/tizen_src/chromium_impl/media/audio/tizen/audio_manager_capi.h
++++ b/tizen_src/chromium_impl/media/audio/tizen/audio_manager_capi.h
+@@ -44,7 +44,7 @@ class MEDIA_EXPORT AudioManagerCapi : public AudioManagerBase {
+       const LogCallback& log_callback) override;
+   void ReleaseOutputStream(AudioOutputStream* stream) override;
+   void ReleaseInputStream(AudioInputStream* stream) override;
+-  const char* GetName() override;
++  const std::string_view GetName() override;
+   // Implementation of AudioManagerBase.
+   AudioOutputStream* MakeLinearOutputStream(
+       const AudioParameters& params,
+diff --git a/tizen_src/chromium_impl/media/capture/video/tizen/video_capture_device_tizen.cc b/tizen_src/chromium_impl/media/capture/video/tizen/video_capture_device_tizen.cc
+index addd22fb1bca..c01da220d145 100644
+--- a/tizen_src/chromium_impl/media/capture/video/tizen/video_capture_device_tizen.cc
++++ b/tizen_src/chromium_impl/media/capture/video/tizen/video_capture_device_tizen.cc
+@@ -476,7 +476,7 @@ void VideoCaptureDeviceTizen::PreviewCameraCaptured(ScopedMediaPacket pkt) {
+   }
+ 
+   client_->OnIncomingCapturedBuffer(std::move(buffer_), videocaptureformat, now,
+-                                    now - first_ref_time_, std::nullopt);
++                                    now - first_ref_time_, std::nullopt, std::nullopt);
+   ChangeCapturingState(false);
+ }
+ 
+@@ -626,7 +626,7 @@ void VideoCaptureDeviceTizen::OnCameraCaptured(camera_preview_data_s* frame,
+ 
+   self->client_->OnIncomingCapturedBuffer(
+       std::move(self->buffer_), videocaptureformat, now,
+-      now - self->first_ref_time_, std::nullopt);
++      now - self->first_ref_time_, std::nullopt, std::nullopt);
+ 
+   // statistics & log every seconds
+   ++(self->frame_total_);
+@@ -763,7 +763,7 @@ void VideoCaptureDeviceTizen::OnAllocateAndStart(
+   // so even the index is same, we still need reset handle
+   camera_instance_->ResetHandle(device_descriptor_);
+ 
+-  camera_instance_->SetClient(this);
++  camera_instance_->SetClient(static_cast<CameraHandleClient*>(this));
+   if (!camera_instance_->IsValid()) {
+     SetErrorState("Camera handle is invalid", FROM_HERE);
+     return;
+diff --git a/tizen_src/chromium_impl/media/capture/video/tizen/video_capture_device_tizen.h b/tizen_src/chromium_impl/media/capture/video/tizen/video_capture_device_tizen.h
+index 9c5d3da7ab6e..8ba1d1cdd072 100644
+--- a/tizen_src/chromium_impl/media/capture/video/tizen/video_capture_device_tizen.h
++++ b/tizen_src/chromium_impl/media/capture/video/tizen/video_capture_device_tizen.h
+@@ -8,6 +8,8 @@
+ #ifndef MEDIA_VIDEO_CAPTURE_TIZEN_VIDEO_CAPTURE_DEVICE_TIZEN_H_
+ #define MEDIA_VIDEO_CAPTURE_TIZEN_VIDEO_CAPTURE_DEVICE_TIZEN_H_
+ 
++#include <list>
++
+ #include "base/synchronization/lock.h"
+ #include "base/threading/thread.h"
+ #include "base/time/time.h"
+diff --git a/tizen_src/chromium_impl/media/filters/media_player_bridge_capi_factory.cc b/tizen_src/chromium_impl/media/filters/media_player_bridge_capi_factory.cc
+index 45b30442bd17..46ab2272da44 100644
+--- a/tizen_src/chromium_impl/media/filters/media_player_bridge_capi_factory.cc
++++ b/tizen_src/chromium_impl/media/filters/media_player_bridge_capi_factory.cc
+@@ -18,6 +18,8 @@ std::unique_ptr<MediaPlayerTizen> MediaPlayerBridgeCapiFactory::Create(
+     MediaResource* media_resource,
+     const std::string& user_agent,
+     double volume) {
++LOG(ERROR) << " Please remove EWK_BRINGUP ";
++#if !defined(EWK_BRINGUP)  // FIXME: m138 bringup
+ #if BUILDFLAG(IS_TIZEN_TV)
+   return std::make_unique<MediaPlayerBridgeCapiTV>(
+       media_resource->GetMediaUrlParams().media_url, user_agent, volume);
+@@ -25,6 +27,9 @@ std::unique_ptr<MediaPlayerTizen> MediaPlayerBridgeCapiFactory::Create(
+   return std::make_unique<MediaPlayerBridgeCapi>(
+       media_resource->GetMediaUrlParams().media_url, user_agent, volume);
+ #endif
++#else
++  return nullptr;
++#endif
+ }
+ 
+ }  // namespace media
+diff --git a/tizen_src/chromium_impl/media/filters/media_player_registry.cc b/tizen_src/chromium_impl/media/filters/media_player_registry.cc
+index e8f55b8d2903..0384e34c25ff 100644
+--- a/tizen_src/chromium_impl/media/filters/media_player_registry.cc
++++ b/tizen_src/chromium_impl/media/filters/media_player_registry.cc
+@@ -28,6 +28,8 @@ std::unique_ptr<MediaPlayerTizen> MediaPlayerRegistry::CreateMediaPlayer(
+     double volume,
+     int& player_id) {
+   LOG(INFO) << __func__;
++LOG(ERROR) << " Please remove EWK_BRINGUP ";
++#if !defined(EWK_BRINGUP)  // FIXME: m138 bringup
+   std::unique_ptr<MediaPlayerFactory> factory;
+   if (media_resource->GetType() == MediaResource::Type::kStream) {
+     factory = std::make_unique<MediaPlayerESPlusPlayerFactory>();
+@@ -38,6 +40,9 @@ std::unique_ptr<MediaPlayerTizen> MediaPlayerRegistry::CreateMediaPlayer(
+   auto player = factory->Create(media_resource, user_agent, volume);
+   player_id = RegisterMediaPlayer(player.get());
+   return player;
++#else
++  return nullptr;
++#endif
+ }
+ 
+ int MediaPlayerRegistry::RegisterMediaPlayer(MediaPlayerTizen* player) {
+diff --git a/tizen_src/chromium_impl/ui/accessibility/platform/ax_platform_node_efl.cc b/tizen_src/chromium_impl/ui/accessibility/platform/ax_platform_node_efl.cc
+index 5f784a720c4f..9fc2c8813d5b 100644
+--- a/tizen_src/chromium_impl/ui/accessibility/platform/ax_platform_node_efl.cc
++++ b/tizen_src/chromium_impl/ui/accessibility/platform/ax_platform_node_efl.cc
+@@ -18,10 +18,10 @@ namespace ui {
+ AXCoordinateSystem AXPlatformNodeEfl::preferred_ax_coordinate_system_ =
+     AXCoordinateSystem::kScreenPhysicalPixels;
+ 
+-AXPlatformNode* AXPlatformNode::Create(AXPlatformNodeDelegate* delegate) {
++AXPlatformNode::Pointer AXPlatformNode::Create(AXPlatformNodeDelegate& delegate) {
+   AXPlatformNodeEfl* node = new AXPlatformNodeEfl();
+   node->Init(delegate);
+-  return node;
++  return AXPlatformNode::Pointer(node);
+ }
+ 
+ AXPlatformNodeEfl* ToAXPlatformNodeEfl(AXPlatformNode* obj) {
+@@ -180,11 +180,14 @@ gchar* AXPlatformNodeEfl::GetObjectText() const {
+       GetData().GetStringAttribute(ax::mojom::StringAttribute::kValue);
+   if (!text.empty())
+     return g_strdup(text.c_str());
++LOG(ERROR) << " Please remove EWK_BRINGUP ";
++#if !defined(EWK_BRINGUP)  // FIXME: m138 bringup
+   if ((GetData().role == ax::mojom::Role::kTextField) &&
+-      GetData().GetHtmlAttribute("placeholder", &text)) {
++      !GetData().GetHtmlAttribute("placeholder").empty()) {
+     if (!text.empty())
+       return g_strdup(text.c_str());
+   }
++#endif
+   text = GetData().GetStringAttribute(ax::mojom::StringAttribute::kDescription);
+   if (!text.empty())
+     return g_strdup(text.c_str());
+@@ -353,11 +356,14 @@ std::string AXPlatformNodeEfl::GetSupplementaryText() const {
+   if (!text.empty())
+     return text;
+ 
++LOG(ERROR) << " Please remove EWK_BRINGUP ";
++#if !defined(EWK_BRINGUP)  // FIXME: m138 bringup
+   if ((GetData().role == ax::mojom::Role::kTextField) &&
+       GetData().GetHtmlAttribute("placeholder", &text)) {
+     if (!text.empty())
+       return text;
+   }
++#endif
+ 
+   if (HasOnlyTextChildren() ||
+       (IsFocusable() && HasOnlyTextAndImageChildren())) {
+diff --git a/tizen_src/chromium_impl/ui/gfx/tbm_buffer_handle.h b/tizen_src/chromium_impl/ui/gfx/tbm_buffer_handle.h
+index 03823cf3b72f..c354de4869ec 100644
+--- a/tizen_src/chromium_impl/ui/gfx/tbm_buffer_handle.h
++++ b/tizen_src/chromium_impl/ui/gfx/tbm_buffer_handle.h
+@@ -6,7 +6,9 @@
+ #define UI_GFX_TBM_BUFFER_HANDLE_H
+ 
+ #include <stddef.h>
++#if !defined(EWK_BRINGUP)  // FIXME: m138 bringup
+ #include "ui/gfx/gfx_export.h"
++#endif
+ 
+ #if defined(TIZEN_TBM_SUPPORT)
+ #include <tbm_bufmgr.h>
+@@ -27,6 +29,7 @@ enum TbmDestroyType {
+ };
+ #endif
+ 
++#if !defined(EWK_BRINGUP)  // FIXME: m138 bringup
+ struct GFX_EXPORT TbmBufferHandle {
+   TbmBufferHandle() {}
+ #if defined(TIZEN_TBM_SUPPORT)
+@@ -44,6 +47,7 @@ struct GFX_EXPORT TbmBufferHandle {
+   uint64_t duration = 0;
+ #endif
+ };
++#endif
+ 
+ }  // namespace gfx
+ 
+diff --git a/tizen_src/chromium_impl/ui/ozone/platform/efl/efl_window.cc b/tizen_src/chromium_impl/ui/ozone/platform/efl/efl_window.cc
+index 941377bd0c35..7c50698217b6 100644
+--- a/tizen_src/chromium_impl/ui/ozone/platform/efl/efl_window.cc
++++ b/tizen_src/chromium_impl/ui/ozone/platform/efl/efl_window.cc
+@@ -29,7 +29,7 @@
+ #include <cursor_module.h>
+ #endif
+ 
+-#if defined(TIZEN_VIDEO_HOLE)
++#if defined(TIZEN_VIDEO_HOLE) && !defined(EWK_BRINGUP)  // FIXME: m138 bringup
+ #include "tizen_src/chromium_impl/media/base/tizen/video_plane_controller.h"
+ #endif
+ 
+@@ -130,7 +130,7 @@ EflWindow::~EflWindow() {
+       evas_object_del(elm_win_);
+     }
+   }
+-#if defined(TIZEN_VIDEO_HOLE)
++#if defined(TIZEN_VIDEO_HOLE) && !defined(EWK_BRINGUP)  // FIXME: m138 bringup
+   media::VideoPlaneController::SetSharedVideoWindowHandle(
+       nullptr, media::VideoPlaneController::RenderingMode::ONSCREEN);
+ #endif
+@@ -461,7 +461,7 @@ void EflWindow::Initialize(const PlatformWindowInitProperties& properties) {
+     return;
+   }
+ 
+-#if defined(TIZEN_VIDEO_HOLE)
++#if defined(TIZEN_VIDEO_HOLE) && !defined(EWK_BRINGUP)  // FIXME: m138 bringup
+   // Hand a window handle to enable video hole in OnscreenRendering mode.
+   media::VideoPlaneController::SetSharedVideoWindowHandle(
+       wl_window_, media::VideoPlaneController::RenderingMode::ONSCREEN);
+diff --git a/tizen_src/chromium_impl/ui/ozone/platform/efl/im_context_efl.cc b/tizen_src/chromium_impl/ui/ozone/platform/efl/im_context_efl.cc
+index 6fa9059cdd0e..904d4db5cbc9 100644
+--- a/tizen_src/chromium_impl/ui/ozone/platform/efl/im_context_efl.cc
++++ b/tizen_src/chromium_impl/ui/ozone/platform/efl/im_context_efl.cc
+@@ -4,6 +4,7 @@
+ 
+ #include "ui/ozone/platform/efl/im_context_efl.h"
+ 
++#include <cstring>
+ #include <Ecore_Evas.h>
+ #include <Ecore_IMF_Evas.h>
+ #include <Evas.h>
+diff --git a/tizen_src/ewk/efl_integration/browser/notification/notification_controller_efl.cc b/tizen_src/ewk/efl_integration/browser/notification/notification_controller_efl.cc
+index 5a7d58314745..54ee6d73df8f 100644
+--- a/tizen_src/ewk/efl_integration/browser/notification/notification_controller_efl.cc
++++ b/tizen_src/ewk/efl_integration/browser/notification/notification_controller_efl.cc
+@@ -44,10 +44,13 @@ bool SetNotificationImage(notification_h noti,
+                           const SkBitmap& bitmap,
+                           const base::FilePath& path) {
+   std::vector<unsigned char> data;
++LOG(ERROR) << " Please remove EWK_BRINGUP ";
++#if !defined(EWK_BRINGUP)  // FIXME: m138 bringup
+   if (!gfx::PNGCodec::EncodeBGRASkBitmap(bitmap, false, &data)) {
+     LOG(ERROR) << "Bitmap color type " << bitmap.colorType();
+     return false;
+   }
++#endif
+ 
+   FILE* f = base::OpenFile(path, "wb");
+   if (!f)
+diff --git a/tizen_src/ewk/efl_integration/eweb_accessibility_util.cc b/tizen_src/ewk/efl_integration/eweb_accessibility_util.cc
+index b89ddce35332..ce5662f62fb2 100644
+--- a/tizen_src/ewk/efl_integration/eweb_accessibility_util.cc
++++ b/tizen_src/ewk/efl_integration/eweb_accessibility_util.cc
+@@ -311,12 +311,18 @@ void EWebAccessibilityUtil::ToggleBrowserAccessibility(bool mode) {
+ 
+   if (mode) {
+     InitAtkBridgeAdaptor();
++LOG(ERROR) << " Please remove EWK_BRINGUP ";
++#if !defined(EWK_BRINGUP)  // FIXME: m138 bringup
+     state->EnableAccessibility();
++#endif
+   }
+ 
+   NotifyAccessibilityStatus(mode);
+   if (!mode) {
++LOG(ERROR) << " Please remove EWK_BRINGUP ";
++#if !defined(EWK_BRINGUP)  // FIXME: m138 bringup
+     state->DisableAccessibility();
++#endif
+     CleanAtkBridgeAdaptor();
+   }
+ }
+diff --git a/tizen_src/ewk/efl_integration/eweb_view.cc b/tizen_src/ewk/efl_integration/eweb_view.cc
+index 120384799ef0..98db5c256f7d 100644
+--- a/tizen_src/ewk/efl_integration/eweb_view.cc
++++ b/tizen_src/ewk/efl_integration/eweb_view.cc
+@@ -3538,7 +3538,12 @@ bool EWebView::GetAtkStatus() {
+   auto state = content::BrowserAccessibilityStateImpl::GetInstance();
+   if (!state)
+     return false;
++LOG(ERROR) << " Please remove EWK_BRINGUP ";
++#if !defined(EWK_BRINGUP)  // FIXME: m138 bringup
+   return state->IsAccessibleBrowser();
++#else
++  return false;
++#endif
+ }
+ /* LCOV_EXCL_STOP */
+ #endif
+diff --git a/tizen_src/ewk/efl_integration/public/ewk_view.cc b/tizen_src/ewk/efl_integration/public/ewk_view.cc
+index 3e8f5c2ddf21..a13a64b36558 100644
+--- a/tizen_src/ewk/efl_integration/public/ewk_view.cc
++++ b/tizen_src/ewk/efl_integration/public/ewk_view.cc
+@@ -53,7 +53,7 @@
+ #if defined(TIZEN_WEB_SPEECH_RECOGNITION)
+ #include "content/browser/speech/tts_platform_impl_tizen.h"
+ #endif
+-#if defined(TIZEN_VIDEO_HOLE)
++#if defined(TIZEN_VIDEO_HOLE) && !defined(EWK_BRINGUP)  // FIXME: m138 bringup
+ #include "tizen_src/chromium_impl/media/base/tizen/video_plane_controller.h"
+ #endif
+ 
+@@ -1604,7 +1604,7 @@ Eina_Bool ewk_view_set_support_video_hole(Evas_Object* ewkView,
+                                           Eina_Bool enable,
+                                           Eina_Bool isVideoWindow) {
+   LOG_EWK_API_MOCKUP();
+-#if defined(TIZEN_VIDEO_HOLE)
++#if defined(TIZEN_VIDEO_HOLE) && !defined(EWK_BRINGUP)  // FIXME: m138 bringup
+   EWK_VIEW_IMPL_GET_OR_RETURN(ewkView, impl, EINA_FALSE);
+   LOG(INFO) << "view: " << ewkView << ", enable:" << (bool)enable;
+   // Video hole is set false by default. So further calls are not needed
+@@ -1670,7 +1670,7 @@ void ewk_view_offscreen_rendering_enabled_set(Evas_Object* o, Eina_Bool enabled)
+     elm_config_preferred_engine_set("wayland_shm");
+   }
+ 
+-#if defined(TIZEN_VIDEO_HOLE)
++#if defined(TIZEN_VIDEO_HOLE) && !defined(EWK_BRINGUP)  // FIXME: m138 bringup
+   media::VideoPlaneController::set_use_wayland_window(true);
+ #endif
+ #else
+diff --git a/ui/accessibility/BUILD.gn b/ui/accessibility/BUILD.gn
+index b10997aa6cc8..9007761c99e9 100644
+--- a/ui/accessibility/BUILD.gn
++++ b/ui/accessibility/BUILD.gn
+@@ -463,8 +463,9 @@ test("accessibility_unittests") {
+         "platform/browser_accessibility_auralinux_unittest.cc",
+         "platform/browser_accessibility_manager_auralinux_unittest.cc",
+       ]
+-
+-      deps += [ "//ui/base/glib" ]
++      if (!is_tizen) {
++        deps += [ "//ui/base/glib" ]
++      }
+ 
+       configs += [ "//build/config/linux/atk" ]
+     }
+diff --git a/ui/accessibility/platform/BUILD.gn b/ui/accessibility/platform/BUILD.gn
+index c77f52bb5f0b..d3d38a3dee0a 100644
+--- a/ui/accessibility/platform/BUILD.gn
++++ b/ui/accessibility/platform/BUILD.gn
+@@ -157,16 +157,18 @@ component("platform") {
+     ]
+     if (is_tizen) {
+       configs += [
+-      "//tizen_src/build:libeina",
+-      "//tizen_src/build:libecore" ,
+-      "//tizen_src/build:libecore-evas",
+-      "//tizen_src/build:libelementary"
++        "//tizen_src/build:libeina",
++        "//tizen_src/build:libecore",
++        "//tizen_src/build:libecore-evas",
++        "//tizen_src/build:libelementary",
+       ]
++      deps += [ "//components/language_detection/content/common" ]
+     }
+   }
+ 
+   if (tizen_atk_support) {
+     deps += [
++      "//components/language_detection/content/common",
+       "//components/services/quarantine/public/mojom",
+       "//components/services/storage/privileged/mojom",
+       "//content/services/auction_worklet/public/mojom",
+diff --git a/ui/accessibility/platform/ax_platform_node_auralinux.cc b/ui/accessibility/platform/ax_platform_node_auralinux.cc
+index 86ce724785d1..38f40da0d5e2 100644
+--- a/ui/accessibility/platform/ax_platform_node_auralinux.cc
++++ b/ui/accessibility/platform/ax_platform_node_auralinux.cc
+@@ -2326,7 +2326,8 @@ AtkRole GetRole(AtkObject* atk_object) {
+       AXPlatformNodeAuraLinux::FromAtkObject(atk_object);
+   if (!obj)
+     return ATK_ROLE_INVALID;
+-#if defined(TIZEN_ATK_SUPPORT)
++LOG(ERROR) << " Please remove EWK_BRINGUP ";
++#if defined(TIZEN_ATK_SUPPORT) && !defined(EWK_BRINGUP)  // FIXME: m138 bringup
+   std::string text;
+   if (obj->GetData().GetHtmlAttribute("role", &text) && text.empty() &&
+       obj->HasStringAttribute(ax::mojom::StringAttribute::kRole))
+@@ -4044,8 +4045,8 @@ void AXPlatformNodeAuraLinux::OnValueChanged() {
+   // The progress bar of youtube.com continuously update its value,
+   // that interrupt the output of other events; so only emit value
+   // changed event for focus node or its active descendant
+-  if (delegate_->GetFocus() != GetNativeViewAccessible() &&
+-      delegate_->GetActiveDescendant() != GetNativeViewAccessible())
++  if (GetDelegate()->GetFocus() != GetNativeViewAccessible() &&
++      GetDelegate()->GetActiveDescendant() != GetNativeViewAccessible())
+     return;
+ #endif
+ 
+diff --git a/ui/base/BUILD.gn b/ui/base/BUILD.gn
+index 7753263f8d5a..784cfb51bfdd 100644
+--- a/ui/base/BUILD.gn
++++ b/ui/base/BUILD.gn
+@@ -581,7 +581,7 @@ component("base") {
+     public_deps += [ "//ui/base/glib" ]
+   }
+ 
+-  if (is_chromeos || (use_aura && is_linux) || is_fuchsia) {
++  if (is_chromeos || (use_aura && is_linux) || is_fuchsia || is_tizen) {
+     sources += [
+       "dragdrop/os_exchange_data_provider_non_backed.cc",
+       "dragdrop/os_exchange_data_provider_non_backed.h",
+diff --git a/ui/base/accelerators/global_accelerator_listener/BUILD.gn b/ui/base/accelerators/global_accelerator_listener/BUILD.gn
+index b2ed504a2f03..4d00447fdfd7 100644
+--- a/ui/base/accelerators/global_accelerator_listener/BUILD.gn
++++ b/ui/base/accelerators/global_accelerator_listener/BUILD.gn
+@@ -49,7 +49,7 @@ source_set("global_accelerator_listener") {
+     ]
+   }
+ 
+-  if (is_linux) {
++  if (is_linux || is_tizen) {
+     if (use_dbus) {
+       sources += [
+         "global_accelerator_listener_linux.cc",
+diff --git a/ui/base/accelerators/global_accelerator_listener/global_accelerator_listener_ozone.cc b/ui/base/accelerators/global_accelerator_listener/global_accelerator_listener_ozone.cc
+index b6985bd63a34..200cdb018303 100644
+--- a/ui/base/accelerators/global_accelerator_listener/global_accelerator_listener_ozone.cc
++++ b/ui/base/accelerators/global_accelerator_listener/global_accelerator_listener_ozone.cc
+@@ -74,7 +74,7 @@ GlobalAcceleratorListener* GlobalAcceleratorListener::GetInstance() {
+     return instance->get();
+   }
+ 
+-#if BUILDFLAG(IS_LINUX) && BUILDFLAG(USE_DBUS)
++#if (BUILDFLAG(IS_LINUX) && !BUILDFLAG(IS_TIZEN)) && BUILDFLAG(USE_DBUS)
+   if (base::FeatureList::IsEnabled(kGlobalShortcutsPortal)) {
+     static GlobalAcceleratorListenerLinux* const linux_instance =
+         new GlobalAcceleratorListenerLinux(nullptr, GetSessionName());
+diff --git a/ui/gfx/mojom/BUILD.gn b/ui/gfx/mojom/BUILD.gn
+index 17bd0188856f..f48d1ceeff19 100644
+--- a/ui/gfx/mojom/BUILD.gn
++++ b/ui/gfx/mojom/BUILD.gn
+@@ -390,6 +390,9 @@ mojom("native_handle_types") {
+   if (is_linux || is_chromeos || use_ozone) {
+     enabled_features = [ "supports_native_pixmap" ]
+   }
++  if (is_tizen) {
++    enabled_features += [ "is_tizen" ]
++  }
+   public_deps = [ "//mojo/public/mojom/base" ]
+   generate_java = true
+ 
+diff --git a/ui/gfx/mojom/native_handle_types.mojom b/ui/gfx/mojom/native_handle_types.mojom
+index ad7d4e8d966c..4bf759dceb8e 100644
+--- a/ui/gfx/mojom/native_handle_types.mojom
++++ b/ui/gfx/mojom/native_handle_types.mojom
+@@ -23,10 +23,10 @@ struct NativePixmapPlane {
+ struct NativePixmapHandle {
+   array<NativePixmapPlane> planes;
+ 
+-  [EnableIf=is_chromeos|is_linux]
++  [EnableIf=is_chromeos|is_linux|is_tizen]
+   uint64 modifier;
+ 
+-  [EnableIf=is_chromeos|is_linux]
++  [EnableIf=is_chromeos|is_linux|is_tizen]
+   bool supports_zero_copy_webgpu_import;
+ 
+   [EnableIf=is_fuchsia]
+diff --git a/ui/menus/BUILD.gn b/ui/menus/BUILD.gn
+index d1aecc7272c9..8412963b0b28 100644
+--- a/ui/menus/BUILD.gn
++++ b/ui/menus/BUILD.gn
+@@ -4,7 +4,7 @@
+ 
+ import("//testing/test.gni")
+ assert(is_win || is_mac || is_linux || is_chromeos || is_android ||
+-       is_fuchsia || is_ios)
++       is_fuchsia || is_ios || is_tizen)
+ 
+ component("menus") {
+   sources = [
+diff --git a/ui/views/accessibility/tree/browser_views_ax_manager.h b/ui/views/accessibility/tree/browser_views_ax_manager.h
+index 2f1a3ad78054..530c788fcfa7 100644
+--- a/ui/views/accessibility/tree/browser_views_ax_manager.h
++++ b/ui/views/accessibility/tree/browser_views_ax_manager.h
+@@ -71,6 +71,9 @@ class VIEWS_EXPORT BrowserViewsAXManager
+   gfx::NativeViewAccessible AccessibilityGetNativeViewAccessible() override;
+   gfx::NativeViewAccessible AccessibilityGetNativeViewAccessibleForWindow()
+       override;
++#if defined(TIZEN_ATK_SUPPORT)
++  content::RenderWidgetHostView* AccessibilityGetView() override;
++#endif
+   gfx::NativeViewAccessible GetRootViewNativeViewAccessible();
+   void AccessibilityHitTest(
+       const gfx::Point& point_in_frame_pixels,
+diff --git a/ui/views/views_delegate.cc b/ui/views/views_delegate.cc
+index 7722b38073d6..8642048e4dbe 100644
+--- a/ui/views/views_delegate.cc
++++ b/ui/views/views_delegate.cc
+@@ -120,7 +120,7 @@ bool ViewsDelegate::WindowManagerProvidesTitleBar(bool maximized) {
+ }
+ 
+ void ViewsDelegate::InitializeViewsAXManager() {
+-#if BUILDFLAG(ENABLE_DESKTOP_AURA)
++#if BUILDFLAG(ENABLE_DESKTOP_AURA) && !BUILDFLAG(IS_TIZEN)
+   if (::features::IsAccessibilityTreeForViewsEnabled() &&
+       !browser_views_ax_manager_handle_) {
+     browser_views_ax_manager_handle_ = views::BrowserViewsAXManager::Create();
+diff --git a/ui/webui/resources/BUILD.gn b/ui/webui/resources/BUILD.gn
+index 0a77a8c84688..4cd99bfc5d09 100644
+--- a/ui/webui/resources/BUILD.gn
++++ b/ui/webui/resources/BUILD.gn
+@@ -85,7 +85,7 @@ generate_grd("build_grd") {
+       "$target_gen_dir/cr_components/most_visited/resources.grdp",
+     ]
+ 
+-    if (use_blink) {
++    if (use_blink && !is_tizen) {
+       if (use_nss_certs || chrome_root_store_cert_management_ui) {
+         public_deps += [ "cr_components/certificate_manager:build_grdp" ]
+         grdp_files += [
+diff --git a/ui/webui/resources/cr_components/certificate_manager/BUILD.gn b/ui/webui/resources/cr_components/certificate_manager/BUILD.gn
+index e9a697606da1..8fb72c32d50e 100644
+--- a/ui/webui/resources/cr_components/certificate_manager/BUILD.gn
++++ b/ui/webui/resources/cr_components/certificate_manager/BUILD.gn
+@@ -11,6 +11,10 @@ assert(chrome_root_store_cert_management_ui)
+ 
+ mojom("mojom") {
+   sources = [ "certificate_manager_v2.mojom" ]
++  enabled_features = []
++  if (is_tizen) {
++    enabled_features += [ "is_tizen" ]
++  }
+ 
+   public_deps = [ "//mojo/public/mojom/base" ]
+ 
+diff --git a/ui/webui/resources/cr_components/certificate_manager/certificate_manager_v2.mojom b/ui/webui/resources/cr_components/certificate_manager/certificate_manager_v2.mojom
+index 3bfdee395f78..b892ba2ad55e 100644
+--- a/ui/webui/resources/cr_components/certificate_manager/certificate_manager_v2.mojom
++++ b/ui/webui/resources/cr_components/certificate_manager/certificate_manager_v2.mojom
+@@ -59,7 +59,7 @@ enum CertificateSource {
+ 
+   // Enterprise provisioned client certificates. Only enabled on platforms
+   // where that feature is available.
+-  [EnableIf=is_linux|is_mac|is_win] kProvisionedClientCert,
++  [EnableIf=is_linux|is_mac|is_win|is_tizen] kProvisionedClientCert,
+ 
+   // Extension provided client certificates.
+   [EnableIf=is_chromeos] kExtensionsClientCert,
+diff --git a/v8/BUILD.gn b/v8/BUILD.gn
+index 11c43bb465d3..c76fbf32c4da 100644
+--- a/v8/BUILD.gn
++++ b/v8/BUILD.gn
+@@ -1082,7 +1082,7 @@ if (target_os == "android") {
+ } else if (target_os == "ios") {
+   enabled_external_v8_defines += [ "V8_HAVE_TARGET_OS" ]
+   enabled_external_v8_defines += [ "V8_TARGET_OS_IOS" ]
+-} else if (target_os == "linux") {
++} else if (target_os == "linux" || target_os == "tizen") {
+   enabled_external_v8_defines += [ "V8_HAVE_TARGET_OS" ]
+   enabled_external_v8_defines += [ "V8_TARGET_OS_LINUX" ]
+ } else if (target_os == "mac") {
+@@ -6170,7 +6170,8 @@ v8_source_set("v8_base_without_compiler") {
+     ]
+     if (v8_enable_webassembly) {
+       # Trap handling is enabled on arm64 and x64, on Linux, Mac and Windows.
+-      if ((current_cpu == "arm64" && (is_linux || is_chromeos || is_apple || is_tizen)) ||
++      if ((current_cpu == "arm64" &&
++           (is_linux || is_chromeos || is_apple || is_tizen)) ||
+           (current_cpu == "x64" &&
+            (is_linux || is_chromeos || is_mac || is_tizen))) {
+         sources += [
+diff --git a/v8/gni/v8.gni b/v8/gni/v8.gni
+index 866d972af2c2..f35c56a0a188 100644
+--- a/v8/gni/v8.gni
++++ b/v8/gni/v8.gni
+@@ -64,7 +64,8 @@ declare_args() {
+   # when doing host codegen.
+   v8_enable_temporal_support =
+       !(defined(build_with_node) && build_with_node) && target_os != "win" &&
+-      target_os != "fuchsia" && target_cpu != "ppc64" && target_cpu != "s390x"
++      target_os != "fuchsia" && target_cpu != "ppc64" &&
++      target_cpu != "s390x" && target_os != "tizen"
+ 
+   # Use static libraries instead of source_sets.
+   v8_static_library = false
+diff --git a/wrt/BUILD.gn b/wrt/BUILD.gn
+index 0f7bcf1d3277..852e0ccf3a22 100644
+--- a/wrt/BUILD.gn
++++ b/wrt/BUILD.gn
+@@ -331,7 +331,6 @@ static_library("wrt_lib") {
+     "//components/os_crypt/async/browser",
+     "//components/paint_preview/buildflags",
+     "//components/security_state/content",
+-    "//components/services/language_detection/public/mojom",
+     "//components/upload_list",
+     "//electron/shell/common:mojo",
+     "//electron/shell/common:plugin",
+@@ -344,7 +343,6 @@ static_library("wrt_lib") {
+ 
+   public_deps = [
+     "//chrome/common",
+-    "//components/embedder_support:browser_util",
+     "//components/proxy_config",
+     "//components/webrtc",
+   ]

@@ -1,0 +1,182 @@
+[configs tree]
+//build/config/compiler/pgo:default_pgo_flags
+//build/config/compiler:afdo
+//build/config/compiler:afdo_optimize_size
+//build/config/compiler:cet_shadow_stack
+//build/config/compiler:compiler
+  //build/config/compiler:clang_revision
+  //build/config/compiler:rustc_revision
+  //build/config/compiler:compiler_codegen
+  //build/config/compiler:compiler_deterministic
+  //build/config/compiler:clang_warning_suppression
+  //tizen_src/build/config/tizen:tizen_compiler_cpu_abi
+//build/config/compiler:compiler_arm_fpu
+//build/config/compiler:compiler_arm_thumb
+//build/config/compiler:default_include_dirs
+//build/config/compiler:default_init_stack_vars
+//build/config/compiler:default_optimization
+  //build/config/compiler:optimize
+//build/config/compiler:default_stack_frames
+//build/config/compiler:default_symbols
+  //build/config/compiler:minimal_symbols
+//build/config/compiler:disallow_unstable_features
+//build/config/compiler:no_unresolved_symbols
+//build/config/compiler:runtime_library
+  //build/config/c++:runtime_library
+  //build/config/clang:compiler_builtins
+  //build/config/posix:runtime_library
+//build/config/compiler:sanitize_c_array_bounds
+//build/config/compiler:thin_archive
+//build/config/compiler:thinlto_optimize_default
+//build/config/compiler:tot_warnings
+//build/config/sanitizers:default_sanitizer_flags
+  //build/config/sanitizers:common_sanitizer_flags
+  //build/config/sanitizers:coverage_flags
+  //build/config/sanitizers:default_sanitizer_ldflags
+  //build/config/sanitizers:asan_flags
+  //build/config/sanitizers:cfi_flags
+  //build/config/sanitizers:hwasan_flags
+  //build/config/sanitizers:lsan_flags
+  //build/config/sanitizers:msan_flags
+  //build/config/sanitizers:tsan_flags
+  //build/config/sanitizers:ubsan_flags
+  //build/config/sanitizers:ubsan_no_recover
+  //build/config/sanitizers:ubsan_security_flags
+  //build/config/sanitizers:ubsan_vptr_flags
+  //build/config/sanitizers:fuzzing_build_mode
+//build/config:feature_flags
+//tizen_src/build/config/tizen:tizen_feature_flags
+//tizen_src/build/config/tizen:tizen_default_include_dirs
+//build/config/gcc:symbol_visibility_hidden
+//build/config/clang:extra_warnings
+//build/config/clang:find_bad_constructs
+//build/config/clang:unsafe_buffers
+//build/config:release
+//buildtools/third_party/libc++:extra_flags
+//buildtools/third_party/libc++:stdver
+//build/config/compiler:no_chromium_code
+  //build/config/compiler:default_warnings
+  //build/config/compiler:no_exit_time_destructors
+//build/config/compiler:exceptions
+//build/config/compiler:rtti
+//build/config/compiler:no_exit_time_destructors
+//third_party/llvm-libc:config
+[defines]
+_LIBCPP_OVERRIDABLE_FUNC_VIS=__attribute__((__visibility__("default")))
+LIBCXX_BUILDING_LIBCXXABI
+_FILE_OFFSET_BITS=64
+_LARGEFILE_SOURCE
+_LARGEFILE64_SOURCE
+_GNU_SOURCE
+CR_CLANG_REVISION="llvmorg-22-init-14273-gea10026b-2"
+_LIBCPP_HARDENING_MODE=_LIBCPP_HARDENING_MODE_EXTENSIVE
+_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS
+_LIBCXXABI_DISABLE_VISIBILITY_ANNOTATIONS
+_LIBCPP_INSTRUMENTED_WITH_ASAN=0
+CR_LIBCXX_REVISION=07572e7b169225ef3a999584cba9d9004631ae66
+USE_UDEV
+USE_AURA=1
+USE_OZONE=1
+OFFICIAL_BUILD
+SKIA_DLL
+BUILDING_V8_SHARED
+V8_SHARED
+USE_EFL
+EFL_BETA_API_SUPPORT
+EWK_BRINGUP
+TIZEN_AUTOFILL
+USE_WAYLAND
+OS_TIZEN
+TIZEN_VERSION_MAJOR=11
+TIZEN_VERSION_MINOR=0
+TIZEN_VERSION_PATCH=0
+TIZEN_TBM_SUPPORT
+TIZEN_WEB_SPEECH_RECOGNITION
+TIZEN_VIDEO_HOLE
+WAYLAND_BRINGUP
+TIZEN_ATK_SUPPORT
+TIZEN_MULTIMEDIA_MJPEG_SUPPORT
+TIZEN_MULTIMEDIA
+TIZEN_MULTIMEDIA_USE_CAPI_AUDIO_IO
+USE_CLANG
+ENABLE_WRT_JS
+WRT_JS_BRINGUP
+BUILD_CHROME
+NDEBUG
+NVALGRIND
+DYNAMIC_ANNOTATIONS_ENABLED=0
+_LIBCPP_BUILDING_LIBRARY
+LIBC_NAMESPACE=__llvm_libc_cr
+[cflags]
+-fno-delete-null-pointer-checks
+-fno-strict-overflow
+-fno-ident
+-fno-math-errno
+-fno-strict-aliasing
+-fstack-protector
+-funwind-tables
+-fPIC
+-fcolor-diagnostics
+-fmerge-all-constants
+-flto=thin
+-fsplit-lto-unit
+-mllvm
+-inlinehint-threshold=360
+-fcomplete-member-pointers
+-no-canonical-prefixes
+--warning-suppression-mappings=../build/config/warning_suppression.txt
+-ffunction-sections
+-fno-short-enums
+--target=armv7l-tizen-linux-gnueabi
+-resource-dir=/home/abuild/rpmbuild/BUILD/chromium-efl-1.1.144/third_party/llvm-build/Release+Asserts/lib/clang/22
+-mfpu=neon
+-mthumb
+-ftrivial-auto-var-init=zero
+-Oz
+-fdata-sections
+-ffunction-sections
+-fno-unique-section-names
+-fomit-frame-pointer
+-gdwarf-4
+-g1
+-gdwarf-aranges
+-fsanitize=array-bounds
+-fsanitize-trap=array-bounds
+-isystem/usr/include/eina-1
+-isystem/usr/include/eina-1/eina
+-fvisibility=hidden
+-Wheader-hygiene
+-Wstring-conversion
+-Wtautological-overlap-compare
+-fstrict-aliasing
+-Wundef
+-fPIC
+-Wall
+-Wno-unused-variable
+-Wno-c++11-narrowing
+-Wno-unused-but-set-variable
+-Wno-missing-field-initializers
+-Wno-unused-parameter
+-Wno-psabi
+-Wloop-analysis
+-Wno-unneeded-internal-declaration
+-Wno-cast-function-type
+-Wno-thread-safety-reference-return
+-Wno-nontrivial-memcall
+-Wno-uninitialized-const-pointer
+-Wno-exit-time-destructors
+-Wno-exit-time-destructors
+[cflags_cc]
+-std=c++20
+-Wno-trigraphs
+-nostdinc++
+-isystem../third_party/libc++/src/include
+-isystem../third_party/libc++abi/src/include
+--sysroot=../../../../../../
+-fvisibility-inlines-hidden
+-std=c++23
+-Wno-invalid-offsetof
+-Wenum-compare-conditional
+-Wno-nullability-completeness
+-fexceptions
+-frtti

@@ -1,0 +1,16 @@
+BEGIN chromium-efl-1.1.144-1.armv7l.rpm
+END chromium-efl-1.1.144-1.armv7l.rpm rc=0
+BEGIN chromium-efl-browser-1.1.144-1.armv7l.rpm
+END chromium-efl-browser-1.1.144-1.armv7l.rpm rc=0
+BEGIN chromium-efl-browser-debuginfo-1.1.144-1.armv7l.rpm
+END chromium-efl-browser-debuginfo-1.1.144-1.armv7l.rpm rc=0
+BEGIN chromium-efl-debuginfo-1.1.144-1.armv7l.rpm
+END chromium-efl-debuginfo-1.1.144-1.armv7l.rpm rc=0
+BEGIN chromium-efl-debugsource-1.1.144-1.armv7l.rpm
+END chromium-efl-debugsource-1.1.144-1.armv7l.rpm rc=0
+BEGIN chromium-efl-devel-1.1.144-1.armv7l.rpm
+END chromium-efl-devel-1.1.144-1.armv7l.rpm rc=0
+BEGIN chromium-efl-squashfs-1.1.144-1.armv7l.rpm
+END chromium-efl-squashfs-1.1.144-1.armv7l.rpm rc=0
+BEGIN chromium-efl-tpk-1.1.144-1.armv7l.rpm
+END chromium-efl-tpk-1.1.144-1.armv7l.rpm rc=0

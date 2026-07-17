@@ -1,0 +1,69 @@
+chromium-efl/tizen_src/chromium_impl/base/base_paths_efl.cc:7:#include <cstdlib>
+chromium-efl/tizen_src/chromium_impl/v8/test/cctest/wasm/test-streaming-compilation-with-cache.cc:15:#include <cstdlib>
+chromium-efl/tizen_src/ewk/ubrowser/logger.cc:33:#include <stdlib.h>
+chromium-efl/tizen_src/chromium_impl/v8/src/wasm/wasm-module-object-cache.cc:15:#include <cstdlib>
+chromium-efl/tizen_src/chromium_impl/tizen/system_info.cc:8:#include <cstdlib>
+chromium-efl/tizen_src/buildtools/llvm/lib64/clang/18/include/__clang_hip_runtime_wrapper.h:112:#include <cstdlib>
+chromium-efl/tizen_src/buildtools/llvm/lib64/clang/18/include/__clang_hip_runtime_wrapper.h:113:#include <stdlib.h>
+chromium-efl/tizen_src/buildtools/llvm/lib64/clang/18/include/__clang_hip_runtime_wrapper.h:137:#include <__clang_hip_stdlib.h>
+chromium-efl/tizen_src/build/config/BUILD.gn:60:  if (is_clang) {
+chromium-efl/tizen_src/build/config/tizen_features.gni:35:    tizen_clang_base_path = "//third_party/llvm-build/Release+Asserts"
+chromium-efl/tizen_src/build/config/tizen_features.gni:37:    tizen_clang_base_path = "//tizen_src/buildtools/llvm-$clang_ver"
+chromium-efl/tizen_src/build/config/tizen/BUILD.gn:28:  if (is_clang) {
+chromium-efl/tizen_src/build/config/tizen/BUILD.gn:151:    if (is_clang) {
+chromium-efl/tizen_src/buildtools/llvm/lib64/clang/18/include/__clang_cuda_complex_builtins.h:15:// operations.  (These implementations come from libc++, and have been modified
+chromium-efl/tizen_src/build/gn_chromiumefl:83:  # On Mac we want to build in x64 mode. And we want to use libc++.
+chromium-efl/tizen_src/buildtools/llvm/lib64/clang/18/include/mm_malloc.h:13:#include <stdlib.h>
+chromium-efl/tizen_src/build/toolchain/tizen/BUILD.gn:16:    if (defined(toolchain_args.is_clang)) {
+chromium-efl/tizen_src/build/toolchain/tizen/BUILD.gn:17:      toolchain_uses_clang = toolchain_args.is_clang
+chromium-efl/tizen_src/build/toolchain/tizen/BUILD.gn:19:      toolchain_uses_clang = is_clang
+chromium-efl/tizen_src/build/toolchain/tizen/BUILD.gn:23:      _prefix = rebase_path("$tizen_clang_base_path/bin", root_build_dir)
+chromium-efl/tizen_src/build/toolchain/tizen/BUILD.gn:47:    toolchain_args.is_clang = false
+chromium-efl/tizen_src/build/toolchain/tizen/BUILD.gn:52:    toolchain_args.is_clang = true
+chromium-efl/tizen_src/build/gn_chromiumefl.sh:84:    is_clang=true)
+chromium-efl/tizen_src/build/gn_chromiumefl.sh:85:      is_clang=true
+chromium-efl/tizen_src/build/gn_chromiumefl.sh:129:  local is_clang=false
+chromium-efl/tizen_src/build/gn_chromiumefl.sh:131:    is_clang=true
+chromium-efl/tizen_src/build/gn_chromiumefl.sh:153:                             is_clang=${is_clang}
+chromium-efl/tizen_src/build/gn_chromiumefl.sh:164:                             use_lld=true
+chromium-efl/tizen_src/build/gn_chromiumefl.sh:219:  # toolchain clang in x64 build even is_clang is false.
+chromium-efl/tizen_src/build/gn_chromiumefl.sh:221:  # It needs to be set to the toolchain gcc under is_clang is false.
+chromium-efl/tizen_src/build/gn_chromiumefl.sh:227:  if [ "$is_clang" == "true" ]; then
+chromium-efl/tizen_src/build/gn_chromiumefl.sh:230:                               use_lld=true
+chromium-efl/tizen_src/build/gn_chromiumefl.sh:296:  if [ "$is_clang" == "true" ]; then
+chromium-efl/tizen_src/buildtools/llvm/lib64/clang/18/include/__clang_cuda_cmath.h:31:// namespace or in std, depending on the degree of conformance of the stdlib
+chromium-efl/tizen_src/buildtools/llvm/lib64/clang/18/include/__clang_cuda_cmath.h:433:// Well this is fun: We need to pull these symbols in for libc++, but we can't
+chromium-efl/tizen_src/downloadable/chromium_efl_install.cc:11:#include <stdlib.h>
+chromium-efl/tizen_src/buildtools/llvm/lib64/clang/18/include/__clang_hip_cmath.h:721:// Well this is fun: We need to pull these symbols in for libc++, but we can't
+chromium-efl/tizen_src/buildtools/llvm/lib64/clang/18/include/fuzzer/FuzzedDataProvider.h:357:  // That part is always implementation specific, but at least both libc++ and
+chromium-efl/tizen_src/buildtools/llvm/lib64/clang/18/include/module.modulemap:73:      export * // note: for <stdlib.h> dependency
+chromium-efl/tizen_src/ewk/efl_webview_app/mini_browser.c:18:#include <stdlib.h>
+chromium-efl/tizen_src/ewk/efl_webview_app/app.c:14:#include <stdlib.h>
+chromium-efl/tizen_src/buildtools/llvm/lib64/clang/18/include/llvm_libc_wrappers/stdlib.h:1://===-- Wrapper for C standard stdlib.h declarations on the GPU -----------===//
+chromium-efl/tizen_src/buildtools/llvm/lib64/clang/18/include/llvm_libc_wrappers/stdlib.h:16:#include_next <stdlib.h>
+chromium-efl/tizen_src/buildtools/llvm/lib64/clang/18/include/llvm_libc_wrappers/stdlib.h:18:#if __has_include(<llvm-libc-decls/stdlib.h>)
+chromium-efl/tizen_src/buildtools/llvm/lib64/clang/18/include/llvm_libc_wrappers/stdlib.h:37:#include <llvm-libc-decls/stdlib.h>
+chromium-efl/tizen_src/buildtools/llvm/lib64/clang/18/include/__clang_hip_stdlib.h:1:/*===---- __clang_hip_stdlib.h - Device-side HIP math support --------------===
+chromium-efl/tizen_src/buildtools/llvm/lib64/clang/18/include/ppc_wrappers/mm_malloc.h:16:#include <stdlib.h>
+chromium-efl/tizen_src/buildtools/llvm/lib64/clang/18/include/ppc_wrappers/mm_malloc.h:18:/* We can't depend on <stdlib.h> since the prototype of posix_memalign
+chromium-efl/tizen_src/buildtools/llvm/lib64/clang/18/include/cuda_wrappers/algorithm:34:// stdlib has constexpr std::min/max.  Thus we have to unconditionally define
+chromium-efl/tizen_src/buildtools/llvm/lib64/clang/18/include/cuda_wrappers/algorithm:41:// device overloads would come first, and so if we have a C++14 stdlib, its
+chromium-efl/tizen_src/buildtools/llvm/lib64/clang/18/include/cuda_wrappers/cmath:31:// libc++ will need long double variants of these functions, but CUDA does not
+chromium-efl/tizen_src/buildtools/llvm/lib64/clang/18/include/cuda_wrappers/cmath:70:// libc++ implementation uses __builtin_XXX which gets translated into a libcall
+chromium-efl/tizen_src/buildtools/llvm/lib64/clang/18/include/__clang_cuda_runtime_wrapper.h:42:#include <cstdlib>
+chromium-efl/tizen_src/buildtools/llvm/lib64/clang/18/include/__clang_cuda_runtime_wrapper.h:43:#include <stdlib.h>
+chromium-efl/tizen_src/buildtools/llvm/lib64/clang/18/include/__clang_cuda_runtime_wrapper.h:342:// We also need to undo another guard that checks for libc++ 3.8+
+chromium-efl/tizen_src/buildtools/llvm/lib64/clang/18/include/orc/c_api.h:19:#include <stdlib.h>
+chromium-efl/tizen_src/ewk/unittest/utc_blink_ewk_base.h:33:#include <stdlib.h>
+chromium-efl/tizen_src/buildtools/llvm/lib64/clang/18/include/openmp_wrappers/math.h:36:// We need stdlib.h because (for now) __clang_cuda_math.h below declares `abs`
+chromium-efl/tizen_src/buildtools/llvm/lib64/clang/18/include/openmp_wrappers/math.h:37:// which should live in stdlib.h.
+chromium-efl/tizen_src/buildtools/llvm/lib64/clang/18/include/openmp_wrappers/math.h:38:#include <stdlib.h>
+chromium-efl/tizen_src/buildtools/llvm/lib64/clang/18/include/openmp_wrappers/cmath:23:// We (might) need cstdlib because __clang_cuda_cmath.h below declares `abs`
+chromium-efl/tizen_src/buildtools/llvm/lib64/clang/18/include/openmp_wrappers/cmath:24:// which might live in cstdlib.
+chromium-efl/tizen_src/buildtools/llvm/lib64/clang/18/include/openmp_wrappers/cmath:25:#include <cstdlib>
+chromium-efl/tizen_src/ewk/efl_integration/devtools_delegate_efl.cc:9:#include <stdlib.h>
+chromium-efl/tizen_src/buildtools/llvm/lib64/clang/18/include/openmp_wrappers/__clang_openmp_device_functions.h:68:#include <cstdlib>
+chromium-efl/tizen_src/buildtools/llvm/lib64/clang/18/include/openmp_wrappers/new:18:#include <cstdlib>
+chromium-efl/tizen_src/buildtools/llvm/lib64/clang/18/include/openmp_wrappers/complex:37:// If we are compiling against libc++, the macro _LIBCPP_STD_VER should be set
+chromium-efl/tizen_src/buildtools/llvm/lib64/clang/18/include/openmp_wrappers/complex:39:// simplified version of the libc++, we don't need it in this case. If we
+chromium-efl/tizen_src/buildtools/llvm/lib64/clang/18/include/openmp_wrappers/complex:42:// got from libc++ which decomposes math functions, like `std::sin`, into
