@@ -74,41 +74,161 @@ mkdir -p "runs/$RUN_ID"
 export RESULT_DIR="$RUN_ROOT/analysis/runs/$RUN_ID"
 ```
 
-## 3. 准备两个完全独立的源码副本
+## 3. 验证用户提供的两个独立源码副本
 
-不要使用 `git worktree`。过去 linked-worktree 与 GBS export 有过实际故障。使用两个独立 `.git` 目录：
+由于源码体积和网络限制，本任务不 clone、fetch 或 pull Chromium。用户会在同一个父目录下提供：
 
-```bash
-cd "$RUN_ROOT"
-git clone git://review.tizen.org/git/platform/framework/web/chromium-efl source-seed
-git -C source-seed checkout --detach 394713cfd95e9597793255ec71496aef6ef84574
-git -C source-seed rev-parse HEAD
+- `chromium-efl`：system-libstdc++ 基线，禁止修改。
+- `chromium-efl_backup`：bundled libc++ 候选，只允许应用本任务 patch。
 
-git clone --no-hardlinks source-seed chromium-baseline
-git clone --no-hardlinks source-seed chromium-libcxx
+开始第 2 节前应已在该父目录执行 `export SOURCE_PARENT="$(pwd -P)"`。若变量未设置或目录名不符，停止询问用户；不要猜路径。
 
-git -C chromium-baseline checkout --detach 394713cfd95e9597793255ec71496aef6ef84574
-git -C chromium-libcxx checkout -b spike/libcxx-remote 394713cfd95e9597793255ec71496aef6ef84574
-```
-
-分别验证：
+执行下面的完整硬门禁。它检查 commit、tree、全部未跟踪文件、真实 `.git` 目录以及会被 patch 修改的文件是否共享 inode：
 
 ```bash
-git -C "$RUN_ROOT/chromium-baseline" status --short --branch
-git -C "$RUN_ROOT/chromium-libcxx" status --short --branch
+: "${SOURCE_PARENT:?STOP: SOURCE_PARENT 未设置，请询问用户}"
+
+export EXPECTED_COMMIT=394713cfd95e9597793255ec71496aef6ef84574
+export EXPECTED_TREE=2e121f0da947838cf7242be6a1d6adb9e4b76312
+export BASELINE_SRC="$(readlink -f "$SOURCE_PARENT/chromium-efl")"
+export CANDIDATE_SRC="$(readlink -f "$SOURCE_PARENT/chromium-efl_backup")"
+export SOURCE_VALIDATION="$RESULT_DIR/source_pair_validation.txt"
+
+validation_failed=0
+BASE_GIT_DIR=
+CAND_GIT_DIR=
+
+check_source_repo() {
+  local role=$1
+  local path=$2
+  local head tree status git_dir common_dir
+
+  echo "[$role] path=$path"
+  if [[ ! -d "$path" ]]; then
+    echo "FAIL: missing directory"
+    validation_failed=1
+    return
+  fi
+  if [[ ! -d "$path/.git" ]]; then
+    echo "FAIL: .git is missing or is a linked-worktree gitfile"
+    validation_failed=1
+    return
+  fi
+
+  head=$(git -C "$path" rev-parse HEAD 2>&1) || {
+    echo "FAIL: rev-parse HEAD: $head"
+    validation_failed=1
+    return
+  }
+  tree=$(git -C "$path" rev-parse 'HEAD^{tree}' 2>&1) || {
+    echo "FAIL: rev-parse tree: $tree"
+    validation_failed=1
+    return
+  }
+  status=$(git -C "$path" status --porcelain --untracked-files=all 2>&1) || {
+    echo "FAIL: git status: $status"
+    validation_failed=1
+    return
+  }
+  git_dir=$(readlink -f "$(git -C "$path" rev-parse --absolute-git-dir)")
+  common_dir=$(readlink -f "$(git -C "$path" rev-parse --path-format=absolute --git-common-dir)")
+
+  echo "HEAD=$head"
+  echo "TREE=$tree"
+  echo "GIT_DIR=$git_dir"
+  echo "COMMON_DIR=$common_dir"
+  echo "STATUS_LINES=$(printf '%s\n' "$status" | sed '/^$/d' | wc -l)"
+
+  [[ "$head" == "$EXPECTED_COMMIT" ]] || {
+    echo "FAIL: HEAD mismatch; expected $EXPECTED_COMMIT"
+    validation_failed=1
+  }
+  [[ "$tree" == "$EXPECTED_TREE" ]] || {
+    echo "FAIL: tree mismatch; expected $EXPECTED_TREE"
+    validation_failed=1
+  }
+  [[ -z "$status" ]] || {
+    echo "FAIL: worktree/index/untracked files are not clean"
+    printf '%s\n' "$status"
+    validation_failed=1
+  }
+
+  if [[ "$role" == baseline ]]; then
+    BASE_GIT_DIR=$git_dir
+  else
+    CAND_GIT_DIR=$git_dir
+  fi
+}
+
+{
+  check_source_repo baseline "$BASELINE_SRC"
+  check_source_repo candidate "$CANDIDATE_SRC"
+
+  [[ "$BASELINE_SRC" != "$CANDIDATE_SRC" ]] || {
+    echo "FAIL: baseline and candidate resolve to the same directory"
+    validation_failed=1
+  }
+  [[ -n "$BASE_GIT_DIR" && -n "$CAND_GIT_DIR" && "$BASE_GIT_DIR" != "$CAND_GIT_DIR" ]] || {
+    echo "FAIL: baseline and candidate do not have independent .git directories"
+    validation_failed=1
+  }
+
+  for rel in \
+    build/config/c++/BUILD.gn \
+    packaging/chromium-efl.spec \
+    tizen_src/build/gn_chromiumefl.sh \
+    tizen_src/ewk/chromium-ewk.filter \
+    wrt/BUILD.gn \
+    wrt/cxx_wrapper/BUILD.gn; do
+    base_inode=$(stat -c '%d:%i' "$BASELINE_SRC/$rel") || {
+      echo "FAIL: cannot stat baseline $rel"
+      validation_failed=1
+      continue
+    }
+    cand_inode=$(stat -c '%d:%i' "$CANDIDATE_SRC/$rel") || {
+      echo "FAIL: cannot stat candidate $rel"
+      validation_failed=1
+      continue
+    }
+    echo "INODE $rel baseline=$base_inode candidate=$cand_inode"
+    [[ "$base_inode" != "$cand_inode" ]] || {
+      echo "FAIL: source files are hardlinked: $rel"
+      validation_failed=1
+    }
+  done
+
+  if (( validation_failed == 0 )); then
+    echo "SOURCE_PAIR_STATUS=PASS"
+  else
+    echo "SOURCE_PAIR_STATUS=FAIL"
+  fi
+} > "$SOURCE_VALIDATION" 2>&1
+
+cat "$SOURCE_VALIDATION"
+if (( validation_failed != 0 )); then
+  echo "STOP: source validation failed. Ask the user; do not repair or continue." >&2
+  exit 3
+fi
 ```
 
-两边都必须没有文件修改。
+任何检查失败时，立即停止并询问用户。禁止执行 `git checkout`、`git reset`、`git clean`、`git restore`、重新复制、打 patch 或构建来尝试修复。
 
 只对候选副本应用补丁：
 
 ```bash
-cd "$RUN_ROOT/chromium-libcxx"
+cd "$CANDIDATE_SRC"
 git apply --check "$RUN_ROOT/analysis/patches/bundled_libcxx_spike.patch"
 git apply "$RUN_ROOT/analysis/patches/bundled_libcxx_spike.patch"
 git status --short | tee "$RESULT_DIR/candidate_git_status.txt"
 git diff --check | tee "$RESULT_DIR/candidate_diff_check.txt"
 git diff --stat | tee "$RESULT_DIR/candidate_diff_stat.txt"
+
+git -C "$BASELINE_SRC" status --porcelain --untracked-files=all \
+  | tee "$RESULT_DIR/baseline_status_after_candidate_patch.txt"
+test ! -s "$RESULT_DIR/baseline_status_after_candidate_patch.txt" || {
+  echo "STOP: candidate patch affected baseline; ask the user" >&2
+  exit 4
+}
 ```
 
 `candidate_git_status.txt` 应只有以下 8 项：
@@ -131,7 +251,7 @@ git diff --stat | tee "$RESULT_DIR/candidate_diff_stat.txt"
 在候选源码目录执行：
 
 ```bash
-cd "$RUN_ROOT/chromium-libcxx"
+cd "$CANDIDATE_SRC"
 {
   echo '$ rg -n C++/STL patterns in bridge headers'
   rg -n 'std::|#include[[:space:]]*<(string|vector|map|memory|list|deque|set|unordered_map|unordered_set|filesystem)>' \
@@ -191,7 +311,7 @@ systemd-run --user --unit="$BASE_UNIT" \
   --property=IOWeight=50 \
   --property=Nice=5 \
   -- /bin/bash "$RUN_ROOT/analysis/scripts/run_gbs_build.sh" \
-    "$RUN_ROOT/chromium-baseline" \
+    "$BASELINE_SRC" \
     "$RUN_ROOT/gbs_baseline.conf" \
     "$RESULT_DIR/baseline_build" \
     "$JOBS"
@@ -261,7 +381,7 @@ systemd-run --user --unit="$CAND_UNIT" \
   --property=IOWeight=50 \
   --property=Nice=5 \
   -- /bin/bash "$RUN_ROOT/analysis/scripts/run_gbs_build.sh" \
-    "$RUN_ROOT/chromium-libcxx" \
+    "$CANDIDATE_SRC" \
     "$RUN_ROOT/gbs_libcxx.conf" \
     "$RESULT_DIR/candidate_build" \
     "$JOBS"

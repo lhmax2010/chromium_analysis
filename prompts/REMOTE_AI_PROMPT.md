@@ -2,17 +2,38 @@
 
 你要在高性能 PC 上完成 `chromium-efl` bundled libc++ 的构建和 ABI 门禁。你执行能力有限，所以不要自行简化、改写或重新设计流程。
 
-第一步，克隆 `git@github.com:lhmax2010/chromium_analysis.git`。然后完整阅读：
+开始时，你所在目录的直属子目录中必须已经有两份由用户复制好的完整源码仓库：
+
+- `chromium-efl`：system-libstdc++ 基线，禁止修改、禁止打 patch。
+- `chromium-efl_backup`：bundled libc++ 候选，只允许应用本任务指定 patch。
+
+先在这个父目录执行 `export SOURCE_PARENT="$(pwd -P)"`。不要从
+`review.tizen.org` 或其他位置 clone、fetch、pull 任何 Chromium 源码，也不要再复制第三份源码。
+
+然后克隆 `git@github.com:lhmax2010/chromium_analysis.git`，完整阅读：
 
 `guides/REMOTE_EXECUTION_GUIDE.md`
 
-严格从第 1 节执行到第 10 节。该 guide 中的命令、停止条件、目录结构、期望值和报告字段都是任务要求。
+严格从第 1 节执行到第 10 节。第 3 节的“双源码硬门禁”必须完整执行并保存输出。该 guide 中的命令、停止条件、目录结构、期望值和报告字段都是任务要求。
+
+双源码硬门禁的期望值：
+
+```text
+chromium-efl HEAD        = 394713cfd95e9597793255ec71496aef6ef84574
+chromium-efl_backup HEAD = 394713cfd95e9597793255ec71496aef6ef84574
+两边 HEAD tree           = 2e121f0da947838cf7242be6a1d6adb9e4b76312
+两边 git status --porcelain = 空
+两边必须是不同的真实目录和不同的 .git 目录
+```
+
+任何一个值不一致或命令失败时，必须立即停止并询问用户。禁止为了“修好”前置条件而执行
+`git checkout`、`git reset`、`git clean`、`git restore`、`git fetch`、`git pull`、重新复制、打 patch 或开始构建。
 
 硬规则：
 
-1. 不使用 `git worktree`，必须使用两个独立源码 clone 和两个独立 GBS root。
+1. 不使用 `git worktree`，不 clone 源码；只使用用户提供的 `chromium-efl` 和 `chromium-efl_backup`，并使用两个独立 GBS root。
 2. Chromium 基线提交固定为 `394713cfd95e9597793255ec71496aef6ef84574`。
-3. 候选只应用 `patches/bundled_libcxx_spike.patch`；其 SHA-256 必须是 `388985d2f1feb6e2ed5852240557b675634e849546eca2fc6296aa97199b32f2`。
+3. 基线 `chromium-efl` 不应用任何 patch。候选 `chromium-efl_backup` 只应用 `patches/bundled_libcxx_spike.patch`；其 SHA-256 必须是 `388985d2f1feb6e2ed5852240557b675634e849546eca2fc6296aa97199b32f2`。
 4. 小修复配额已经 `5/5`。遇到新编译/链接错误，只保存完整诊断、按 A–E 分类、写报告并停止；不允许再改源码。
 5. 涉及 libc++、libc++abi、llvm-libc、unwind、C ABI bridge 或打包结构的新变化，必须先停下请求用户批准。
 6. 第一个错误必须保存完整翻译单元/链接动作诊断，包含 include 栈；不能只抄最后一行。
