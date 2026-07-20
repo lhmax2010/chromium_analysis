@@ -1,0 +1,8 @@
+negative_control_status=FAIL
+G1_total=493
+G1_allowlisted=34
+G1_unallowlisted=459
+G2_total=43
+G2_allowlisted=41
+G2_unallowlisted=2
+[NEGATIVE-CONTROL-OK] gate v2 allowlist partition still fails prior candidate

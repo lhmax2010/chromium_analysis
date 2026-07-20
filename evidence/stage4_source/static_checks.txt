@@ -1,0 +1,13 @@
+source_commit=111f88ff245928cc9db2a717185267054570300f
+source_base_commit=394713cfd95e9597793255ec71496aef6ef84574
+git_diff_check=PASS
+shell_syntax_check=PASS
+filter_regeneration=PASS
+internal_cr_allowlist_rows=34
+v8_allowlist_rows=27
+node_allowlist_rows=7
+input_sha256_files=21
+expected_hidden_cr_exports=454
+expected_added_export_upper_bound=166
+source_bundle_sha256=00b6f4d5c674c1b1f0d701d274b6c23040cf04e5239cee8922e2c4d072c443f3
+[STATIC-CHECKS-OK]

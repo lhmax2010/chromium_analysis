@@ -1,0 +1,4 @@
+command=rg -n 'std::|#[[:space:]]*include[[:space:]]*<(string|vector|map|memory|set|list|deque|array|unordered_map|unordered_set)>' wrt/cxx_wrapper -g '*.h' -g '*.hpp'
+source_commit=111f88ff245928cc9db2a717185267054570300f
+hits=0
+[BRIDGE-C-PURITY-OK]

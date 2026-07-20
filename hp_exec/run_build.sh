@@ -1,0 +1,165 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+export LC_ALL=C
+
+script_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+env_file=${STAGE4_ENV_FILE:-"$script_dir/generated/stage4.env"}
+
+if [[ ${1:-} == "--worker" ]]; then
+  # shellcheck disable=SC1090
+  source "$env_file"
+  cd "$SOURCE_REPO"
+  exec /usr/bin/time -v -o "$LOG_DIR/build_resource_time.txt" \
+    gbs -c "$GBS_CONF" build \
+      -A armv7l \
+      --include-all \
+      --overwrite \
+      --define "_costomized_smp_mflags -j${BUILD_JOBS}" \
+      .
+fi
+
+started=0
+failure_reported=0
+precheck_fail() {
+  failure_reported=1
+  echo "[PRECHECK-FAIL] run_build.sh: $*" >&2
+  exit 1
+}
+step_fail() {
+  failure_reported=1
+  echo "[STEP-2-FAIL] run_build.sh: $*" >&2
+  exit 1
+}
+trap 'rc=$?; if ((rc != 0 && failure_reported == 0)); then if ((started)); then echo "[STEP-2-FAIL] run_build.sh: line=${LINENO} rc=${rc}" >&2; else echo "[PRECHECK-FAIL] run_build.sh: line=${LINENO} rc=${rc}" >&2; fi; fi' EXIT
+
+[[ -f "$env_file" ]] || precheck_fail "missing generated/stage4.env"
+# shellcheck disable=SC1090
+source "$env_file"
+required_tools=(
+  awk bash basename cat cmp cp date df dirname find gbs git grep head mktemp
+  sha256sum sort stat systemctl systemd-run tee touch wc
+)
+for tool in "${required_tools[@]}"; do
+  command -v "$tool" >/dev/null 2>&1 || precheck_fail "missing tool: $tool"
+done
+[[ -x /usr/bin/time ]] || precheck_fail "missing /usr/bin/time"
+(cd "$INPUTS_DIR" && sha256sum -c SHA256SUMS) >"$LOG_DIR/step2_input_sha256.txt" 2>&1 ||
+  precheck_fail "input SHA256 verification failed"
+[[ -f "$GBS_CONF" ]] || precheck_fail "missing GBS config: $GBS_CONF"
+[[ $(git -C "$SOURCE_REPO" rev-parse HEAD) == "$SOURCE_COMMIT" ]] ||
+  precheck_fail "chromium-efl is not at fixed commit $SOURCE_COMMIT"
+[[ -z $(git -C "$SOURCE_REPO" status --porcelain=v1 --untracked-files=all) ]] ||
+  precheck_fail "chromium-efl is not clean before build"
+[[ $(git -C "$BACKUP_REPO" rev-parse HEAD) == "$SOURCE_BASE_COMMIT" ]] ||
+  precheck_fail "chromium-efl_backup is not at fixed baseline commit"
+mem_gib=$(awk '/^MemTotal:/ {print int($2/1024/1024)}' /proc/meminfo)
+disk_gib=$(df -Pk "$ANALYSIS_ROOT" | awk 'NR==2 {print int($4/1024/1024)}')
+((mem_gib >= 64)) || precheck_fail "RAM ${mem_gib}GiB is below 64GiB"
+((disk_gib >= 350)) || precheck_fail "free disk ${disk_gib}GiB is below 350GiB"
+[[ ! -e "$GENERATED_DIR/build_started.marker" ]] ||
+  precheck_fail "build marker already exists; do not rerun in this checkout"
+
+tmp_dir=$(mktemp -d "$GENERATED_DIR/filter-check.XXXXXX")
+"$SOURCE_REPO/tizen_src/build/abi/generate_libcxx_export_filters.sh" \
+  "$SOURCE_REPO/tizen_src/build/abi/internal_cr_allowlist.tsv" \
+  "$tmp_dir/v8.filter" "$tmp_dir/node.filter" >"$LOG_DIR/filter_regeneration.txt" 2>&1
+cmp -s "$tmp_dir/v8.filter" "$INPUTS_DIR/v8_tizen.filter" ||
+  precheck_fail "generated V8 filter differs from checked input"
+cmp -s "$tmp_dir/node.filter" "$INPUTS_DIR/node.filter" ||
+  precheck_fail "generated Node filter differs from checked input"
+
+bridge_scan="$LOG_DIR/bridge_header_c_purity_scan.txt"
+: >"$bridge_scan"
+grep -RInE --include='*.h' --include='*.hpp' \
+  'std::|#[[:space:]]*include[[:space:]]*<(string|vector|map|memory|set|list|deque|array|unordered_map|unordered_set)>' \
+  "$SOURCE_REPO/wrt/cxx_wrapper" >"$bridge_scan" || true
+bridge_scan_hits=$(wc -l <"$bridge_scan")
+echo "bridge_header_cpp_hits=$bridge_scan_hits" >>"$bridge_scan"
+((bridge_scan_hits == 0)) || precheck_fail "bridge header C purity scan is nonzero"
+
+started=1
+touch "$GENERATED_DIR/build_started.marker"
+unit="chromium-stage4-build-$(date +%Y%m%d%H%M%S)"
+{
+  echo "unit=$unit"
+  echo "command=gbs -c $GBS_CONF build -A armv7l --include-all --overwrite --define '_costomized_smp_mflags -j${BUILD_JOBS}' ."
+  echo "MemoryMax=$MEMORY_MAX"
+  echo "MemoryHigh=$MEMORY_HIGH"
+  echo "MemorySwapMax=0"
+  echo "CPUQuota=$CPU_QUOTA"
+  echo "Nice=5"
+  echo "started=$(date --iso-8601=seconds)"
+} >"$LOG_DIR/build_invocation.txt"
+
+set +e
+systemd-run --user --unit="$unit" --wait --pipe --quiet \
+  --property="MemoryMax=$MEMORY_MAX" \
+  --property="MemoryHigh=$MEMORY_HIGH" \
+  --property="MemorySwapMax=0" \
+  --property="CPUQuota=$CPU_QUOTA" \
+  --property="Nice=5" \
+  --setenv="STAGE4_ENV_FILE=$env_file" \
+  "$script_dir/run_build.sh" --worker 2>&1 | tee "$LOG_DIR/build_console.log"
+build_rc=${PIPESTATUS[0]}
+set -e
+echo "build_exit_code=$build_rc" >>"$LOG_DIR/build_invocation.txt"
+echo "finished=$(date --iso-8601=seconds)" >>"$LOG_DIR/build_invocation.txt"
+systemctl --user show "$unit" \
+  --property=Id,LoadState,ActiveState,SubState,Result,ExecMainCode,ExecMainStatus,CPUUsageNSec,MemoryPeak,MemoryMax,MemoryHigh,MemorySwapMax,CPUQuotaPerSecUSec \
+  >"$LOG_DIR/build_service_result.txt" 2>&1 || true
+((build_rc == 0)) || step_fail "GBS exited $build_rc; do not modify code or retry"
+
+mapfile -t rpm_paths < <(find "$GBS_ROOT/local/repos" -type f \
+  -name 'chromium-efl*.rpm' -newer "$GENERATED_DIR/build_started.marker" -print | LC_ALL=C sort)
+(( ${#rpm_paths[@]} == 8 )) ||
+  step_fail "expected 8 newly written chromium-efl RPMs, found ${#rpm_paths[@]}"
+printf '%s\n' "${rpm_paths[@]}" >"$GENERATED_DIR/candidate_rpm_paths.txt"
+{
+  echo -e 'rpm_path\tbytes\tsha256'
+  for rpm_path in "${rpm_paths[@]}"; do
+    printf '%s\t%s\t' "$rpm_path" "$(stat -c %s "$rpm_path")"
+    sha256sum "$rpm_path" | awk '{print $1}'
+  done
+} >"$LOG_DIR/candidate_rpm_inventory.tsv"
+
+mapfile -t args_candidates < <(find "$GBS_ROOT/local/BUILD-ROOTS" -type f \
+  -path '*/home/abuild/rpmbuild/BUILD/chromium-efl-*/out*/args.gn' \
+  -printf '%T@\t%p\n' | LC_ALL=C sort -n)
+(( ${#args_candidates[@]} >= 1 )) || step_fail "cannot locate generated args.gn"
+last_args_index=$((${#args_candidates[@]} - 1))
+args_gn=${args_candidates[$last_args_index]#*$'\t'}
+build_out=$(dirname "$args_gn")
+build_source=$(dirname "$build_out")
+printf '%s\n' "$args_gn" >"$GENERATED_DIR/args_gn_path.txt"
+printf '%s\n' "$build_out" >"$GENERATED_DIR/build_out_path.txt"
+printf '%s\n' "$build_source" >"$GENERATED_DIR/build_source_path.txt"
+cp "$args_gn" "$LOG_DIR/args.gn"
+"$SOURCE_REPO/buildtools/linux64/gn" args "$build_out" --list --short \
+  >"$LOG_DIR/gn_args_list_short.txt" 2>&1 || step_fail "gn args --list --short failed"
+{
+  cat "$LOG_DIR/args.gn"
+  echo
+  echo '----- gn args --list --short -----'
+  cat "$LOG_DIR/gn_args_list_short.txt"
+} >"$LOG_DIR/gn_resolved.txt"
+for expected in \
+  'is_clang = true' \
+  'use_custom_libcxx = true' \
+  'use_custom_libcxx_for_host = true' \
+  'use_lld = true' \
+  'use_thin_lto = true'; do
+  grep -Fxq "$expected" "$LOG_DIR/gn_args_list_short.txt" ||
+    step_fail "resolved GN arg missing: $expected"
+done
+
+: >"$GENERATED_DIR/unstripped_dso_paths.tsv"
+for dso in libchromium-impl.so libv8.so libnode.so; do
+  match=$(find "$build_out" -type f -name "$dso" -printf '%s\t%p\n' |
+    LC_ALL=C sort -nr | head -1)
+  [[ -n "$match" ]] || step_fail "unstripped output not found: $dso"
+  printf '%s\t%s\n' "$dso" "${match#*$'\t'}" >>"$GENERATED_DIR/unstripped_dso_paths.tsv"
+done
+
+touch "$GENERATED_DIR/build_success.marker"
+trap - EXIT
+echo "[STEP-2-OK] rpms=8 jobs=$BUILD_JOBS source_commit=$SOURCE_COMMIT"

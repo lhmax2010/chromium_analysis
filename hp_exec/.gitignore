@@ -1,0 +1,7 @@
+/generated/
+/logs/
+/return_stage4_*/
+/results_stage4.tar.gz
+/results_stage4.tar.gz.sha256
+/verify_results/
+/work/
