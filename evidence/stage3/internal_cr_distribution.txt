@@ -1,0 +1,26 @@
+[consumer DSO edge distribution]
+     32 chromium-efl-1.1.144-1.armv7l/usr/share/chromium-efl/lib/libchromium-impl.so
+      9 chromium-efl-1.1.144-1.armv7l/usr/share/chromium-efl/lib/libnode.so
+[provider DSO edge distribution]
+     34 chromium-efl-1.1.144-1.armv7l/usr/share/chromium-efl/lib/libv8.so
+      7 chromium-efl-1.1.144-1.armv7l/usr/share/chromium-efl/lib/libnode.so
+[consumer -> provider edge distribution]
+     25 chromium-efl-1.1.144-1.armv7l/usr/share/chromium-efl/lib/libchromium-impl.so -> chromium-efl-1.1.144-1.armv7l/usr/share/chromium-efl/lib/libv8.so
+      9 chromium-efl-1.1.144-1.armv7l/usr/share/chromium-efl/lib/libnode.so -> chromium-efl-1.1.144-1.armv7l/usr/share/chromium-efl/lib/libv8.so
+      7 chromium-efl-1.1.144-1.armv7l/usr/share/chromium-efl/lib/libchromium-impl.so -> chromium-efl-1.1.144-1.armv7l/usr/share/chromium-efl/lib/libnode.so
+[RPM roots]
+chromium-efl-1.1.144-1.armv7l
+[unique consumed symbols per provider]
+27 chromium-efl-1.1.144-1.armv7l/usr/share/chromium-efl/lib/libv8.so
+7 chromium-efl-1.1.144-1.armv7l/usr/share/chromium-efl/lib/libnode.so
+[unique symbols per consumer]
+32 chromium-efl-1.1.144-1.armv7l/usr/share/chromium-efl/lib/libchromium-impl.so
+9 chromium-efl-1.1.144-1.armv7l/usr/share/chromium-efl/lib/libnode.so
+[symbols consumed by both consumer DSOs]
+_ZN2v811ArrayBuffer3NewEPNS_7IsolateENSt4__Cr10shared_ptrINS_12BackingStoreEEE	v8::ArrayBuffer::New(v8::Isolate*, std::__Cr::shared_ptr<v8::BackingStore>)
+_ZN2v813WasmStreaming6FinishERKNSt4__Cr8functionIFvRNS0_22ModuleCachingInterfaceEEEE	v8::WasmStreaming::Finish(std::__Cr::function<void (v8::WasmStreaming::ModuleCachingInterface&)> const&)
+_ZN2v817SharedArrayBuffer3NewEPNS_7IsolateENSt4__Cr10shared_ptrINS_12BackingStoreEEE	v8::SharedArrayBuffer::New(v8::Isolate*, std::__Cr::shared_ptr<v8::BackingStore>)
+_ZN2v818DictionaryTemplate3NewEPNS_7IsolateENS_10MemorySpanIKNSt4__Cr17basic_string_viewIcNS4_11char_traitsIcEEEEEE	v8::DictionaryTemplate::New(v8::Isolate*, v8::MemorySpan<std::__Cr::basic_string_view<char, std::__Cr::char_traits<char> > const>)
+_ZN2v85Array3NewENS_5LocalINS_7ContextEEEjNSt4__Cr8functionIFNS_10MaybeLocalINS_5ValueEEEvEEE	v8::Array::New(v8::Local<v8::Context>, unsigned int, std::__Cr::function<v8::MaybeLocal<v8::Value> ()>)
+_ZN2v87Isolate13MeasureMemoryENSt4__Cr10unique_ptrINS_21MeasureMemoryDelegateENS1_14default_deleteIS3_EEEENS_22MeasureMemoryExecutionE	v8::Isolate::MeasureMemory(std::__Cr::unique_ptr<v8::MeasureMemoryDelegate, std::__Cr::default_delete<v8::MeasureMemoryDelegate> >, v8::MeasureMemoryExecution)
+_ZN5cppgc8internal22EnsureGCInfoIndexTrait17EnsureGCInfoIndexERNSt4__Cr6atomicItEEPFvPNS_7VisitorEPKvEPFvPvEPFNS0_14HeapObjectNameES9_NS0_30HeapObjectNameForUnnamedObjectEE	cppgc::internal::EnsureGCInfoIndexTrait::EnsureGCInfoIndex(std::__Cr::atomic<unsigned short>&, void (*)(cppgc::Visitor*, void const*), void (*)(void*), cppgc::internal::HeapObjectName (*)(void const*, cppgc::internal::HeapObjectNameForUnnamedObject))

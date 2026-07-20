@@ -1,0 +1,294 @@
+SOURCE: v8/gni/v8.gni:69-81
+    69	  # Use static libraries instead of source_sets.
+    70	  v8_static_library = false
+    71
+    72	  # Enable monolithic static library for embedders.
+    73	  v8_monolithic = false
+    74
+    75	  # Expose public symbols for native modules of Node.js and Electron. Default
+    76	  # is false.
+    77	  v8_expose_public_symbols = ""
+    78
+    79	  # Deprecated for v8_expose_public_symbols.
+    80	  v8_expose_symbols = false
+    81
+SOURCE: v8/BUILD.gn:837-897
+   837	if (v8_expose_public_symbols == "") {
+   838	  v8_expose_public_symbols = v8_expose_symbols
+   839	}
+   840
+   841	assert(
+   842	    !build_with_chromium || !v8_enable_partition_alloc,
+   843	    "V8 using partition_alloc from Chromium is not implemented at the moment")
+   844
+   845	v8_random_seed = "314159265"
+   846	v8_toolset_for_shell = "host"
+   847
+   848	is_DEBUG_defined = v8_enable_verification_features || v8_dcheck_always_on
+   849
+   850	###############################################################################
+   851	# Configurations
+   852	#
+   853
+   854	config("internal_config_base") {
+   855	  # Only targets in this file and its subdirs can depend on this.
+   856	  visibility = [ "./*" ]
+   857
+   858	  configs = [ ":v8_tracing_config" ]
+   859
+   860	  include_dirs = [
+   861	    ".",
+   862	    "include",
+   863	    "$target_gen_dir",
+   864	    "$target_gen_dir/include",
+   865	  ]
+   866
+   867	  if (tizen_tv_wasm_caching) {
+   868	    include_dirs += tizen_tv_v8_include_dirs
+   869	  }
+   870	}
+   871
+   872	config("internal_config") {
+   873	  defines = []
+   874
+   875	  # Only targets in this file and its subdirs can depend on this.
+   876	  visibility = [ "./*" ]
+   877
+   878	  if (is_tizen) {
+   879	    visibility += [ "//tizen_src/chromium_impl/v8/*" ]
+   880	  }
+   881
+   882	  configs = [
+   883	    "//build/config/compiler:wexit_time_destructors",
+   884	    ":internal_config_base",
+   885	    ":v8_header_features",
+   886	    ":cppgc_header_features",
+   887	  ]
+   888
+   889	  if (v8_enable_shared_library) {
+   890	    configs += [ "//tizen_src/build/config:dlog", ]
+   891	  }
+   892
+   893	  if (is_component_build || v8_enable_shared_library) {
+   894	    defines += [ "BUILDING_V8_SHARED_PRIVATE" ]
+   895	  } else if (v8_expose_public_symbols) {
+   896	    defines += [ "BUILDING_V8_SHARED" ]
+   897	  }
+SOURCE: v8/BUILD.gn:8053-8071
+  8053	} else {
+  8054	  template("v8_component_tizen") {
+  8055	    target(invoker._target_type, target_name) {
+  8056	      forward_variables_from(invoker, ["testonly","visibility",])
+  8057	      forward_variables_from(invoker, "*", ["testonly","visibility",])
+  8058	    }
+  8059	  }
+  8060	  v8_component_tizen("v8") {
+  8061	    _target_type = "static_library"
+  8062	    if (v8_enable_shared_library) {
+  8063	      _target_type = "shared_library"
+  8064	    }
+  8065	    public_deps = [
+  8066	      ":v8_base",
+  8067	      ":v8_snapshot",
+  8068	    ]
+  8069
+  8070	    public_configs = [ ":external_config" ]
+  8071	  }
+SOURCE: v8/include/v8config.h:822-858
+   822	// Exposing private symbols requires exposing public symbols too.
+   823	#ifdef BUILDING_V8_SHARED_PRIVATE
+   824	#ifndef BUILDING_V8_SHARED
+   825	#define BUILDING_V8_SHARED
+   826	#endif
+   827	#endif
+   828
+   829	#if defined(BUILDING_V8_SHARED) && defined(USING_V8_SHARED)
+   830	#error Inconsistent build configuration: To build the V8 shared library \
+   831	set BUILDING_V8_SHARED, to include its headers for linking against the \
+   832	V8 shared library set USING_V8_SHARED.
+   833	#endif
+   834
+   835	#ifdef V8_OS_WIN
+   836
+   837	// Setup for Windows DLL export/import. When building the V8 DLL the
+   838	// BUILDING_V8_SHARED needs to be defined. When building a program which uses
+   839	// the V8 DLL USING_V8_SHARED needs to be defined. When either building the V8
+   840	// static library or building a program which uses the V8 static library neither
+   841	// BUILDING_V8_SHARED nor USING_V8_SHARED should be defined.
+   842	#ifdef BUILDING_V8_SHARED
+   843	# define V8_EXPORT __declspec(dllexport)
+   844	#elif USING_V8_SHARED
+   845	# define V8_EXPORT __declspec(dllimport)
+   846	#else
+   847	# define V8_EXPORT
+   848	#endif  // BUILDING_V8_SHARED
+   849
+   850	#else  // V8_OS_WIN
+   851
+   852	// Setup for Linux shared library export.
+   853	#if (V8_HAS_ATTRIBUTE_VISIBILITY && \
+   854	     (defined(BUILDING_V8_SHARED) || USING_V8_SHARED))
+   855	# define V8_EXPORT __attribute__((visibility("default")))
+   856	#else
+   857	# define V8_EXPORT
+   858	# endif  // V8_HAS_ATTRIBUTE_VISIBILITY && ...
+SOURCE: v8/src/base/macros.h:452-474
+   452	#ifdef V8_OS_WIN
+   453
+   454	// Setup for Windows shared library export.
+   455	#define V8_EXPORT_ENUM
+   456	#ifdef BUILDING_V8_SHARED_PRIVATE
+   457	#define V8_EXPORT_PRIVATE __declspec(dllexport)
+   458	#elif USING_V8_SHARED_PRIVATE
+   459	#define V8_EXPORT_PRIVATE __declspec(dllimport)
+   460	#else
+   461	#define V8_EXPORT_PRIVATE
+   462	#endif  // BUILDING_V8_SHARED
+   463
+   464	#else  // V8_OS_WIN
+   465
+   466	// Setup for Linux shared library export.
+   467	#if V8_HAS_ATTRIBUTE_VISIBILITY && \
+   468	    (defined(BUILDING_V8_SHARED_PRIVATE) || USING_V8_SHARED_PRIVATE)
+   469	#define V8_EXPORT_PRIVATE __attribute__((visibility("default")))
+   470	#define V8_EXPORT_ENUM V8_EXPORT_PRIVATE
+   471	#else
+   472	#define V8_EXPORT_PRIVATE
+   473	#define V8_EXPORT_ENUM
+   474	#endif  // V8_HAS_ATTRIBUTE_VISIBILITY && ..
+SOURCE: third_party/electron_node/unofficial.gni:157-177,220-254
+   157	  node_component_tizen("libnode") {
+   158	    _target_type = "static_library"
+   159	    if (node_enable_shared_library ) {
+   160	      _target_type = "shared_library"
+   161	      output_name = "node"
+   162	    }
+   163	    configs += [
+   164	      ":node_internal_config",
+   165	      "//build/config/compiler:no_exit_time_destructors"
+   166	    ]
+   167	    public_configs = [
+   168	      ":node_external_config",
+   169	      "deps/googletest:googletest_config",
+   170	      ":zstd_include_config"
+   171	    ]
+   172	    public_deps = [
+   173	      "deps/ada",
+   174	      "deps/uv",
+   175	      "deps/simdjson",
+   176	      "$node_v8_path",
+   177	      "//wrt:electron_js2c", # enable_wrt_js
+   220	      use_libcxx_modules = false
+   221	    }
+   222	    if (is_posix) {
+   223	      configs -= [ "//build/config/gcc:symbol_visibility_hidden" ]
+   224	      configs += [ "//build/config/gcc:symbol_visibility_default" ]
+   225	    }
+   226	    if (use_system_llhttp) {
+   227	      libs += [ "llhttp" ]
+   228	    } else {
+   229	      deps += [ "deps/llhttp" ]
+   230	    }
+   231	    if (use_system_histogram) {
+   232	      libs += [ "hdr_histogram" ]
+   233	      include_dirs += [ "/usr/include/hdr" ]
+   234	    } else {
+   235	      deps += [ "deps/histogram" ]
+   236	    }
+   237	    if (v8_enable_i18n_support) {
+   238	      deps += [ "//third_party/icu" ]
+   239	    }
+   240	    if (node_use_openssl) {
+   241	      deps += [ "deps/ncrypto" ]
+   242	      public_deps += [ "//third_party/boringssl" ]
+   243	      sources += gypi_values.node_crypto_sources
+   244	    }
+   245	    if (node_use_sqlite) {
+   246	      deps += [ "deps/sqlite" ]
+   247	      sources += gypi_values.node_sqlite_sources
+   248	    }
+   249	    version_script = "//third_party/electron_node/node.filter"
+   250	    ldflags = [
+   251	      "-Wl,--as-needed",
+   252	      "-Wl,--no-undefined",
+   253	      "-Wl,--version-script=" + rebase_path(version_script)
+   254	    ]
+SOURCE: third_party/electron_node/node.filter:1-45
+     1
+     2	{
+     3	  global:
+     4	    extern "C++" {
+     5	      node::AllowWasmCodeGenerationCallback*;
+     6	      node::Assert*;
+     7	      node::AsyncHooks::*;
+     8	      node::AsyncWrap::EmitAfter*;
+     9	      node::binding*;
+    10	      node::Buffer::*;
+    11	      node::builtins::*;
+    12	      node::CallbackScope::*;
+    13	      node::CheckedUvLoopClose*;
+    14	      node::ContextEmbedderTag::*;
+    15	      node::CreateAgent*;
+    16	      node::CreateAgent;
+    17	      node::CreateEnvironment*;
+    18	      node::CreateIsolateData*;
+    19	      node::errors::*;
+    20	      node::FreeEnvironment*;
+    21	      node::FreeIsolateData*;
+    22	      node::GetNodeReport*;
+    23	      node::InitializeContext*;
+    24	      node::InitializeOncePerProcess*;
+    25	      node::LoadEnvironment*;
+    26	      node::MakeCallback*;
+    27	      node::MultiIsolatePlatform::Create*;
+    28	      node::NewContext*;
+    29	      node::NodeRuntimeEnvironment::*;
+    30	      node::per_process::*;
+    31	      node::ResetStdio*;
+    32	      node::SetIsolateUpForNode*;
+    33	      node::SetProcessExitHandler*;
+    34	      node::SpinEventLoop*;
+    35	      node::Stop*;
+    36	      node::tracing::*;
+    37	      node::wasm_web_api::*;
+    38	      node::ProcessEmitWarningGeneric*;
+    39	      node::DefaultProcessExitHandler*;
+    40	      node::PrincipalRealm::*;
+    41	    };
+    42	    node_module_register;
+    43	    uv_*;
+    44	  local: *;
+    45	};
+SOURCE: tizen_src/ewk/efl_integration/BUILD.gn:198-207 (in-tree version-script precedent)
+   198	  version_script = "//tizen_src/ewk/chromium-ewk.filter"
+   199	  inputs = [ version_script ]
+   200	  ldflags = [
+   201	    "-Wl,--as-needed",
+   202	    "-Wl,--no-undefined",
+   203	    "-Wl,--version-script=" + rebase_path(version_script),
+   204	  ]
+   205	  cflags = [
+   206	    # Symbol visibility controled by chromium-ewk.filter
+   207	    "-fvisibility=hidden",
+RESOLVED GN ARGS: evidence/spike_libcxx/gn_resolved.txt
+  1238	v8_enable_private_mapping_fork_optimization = false
+  1239	v8_enable_regexp_interpreter_threaded_dispatch = true
+  1240	v8_enable_runtime_call_stats = false
+  1241	v8_enable_sandbox = ""
+  1242	v8_enable_sandbox_hardware_support = false
+  1243	v8_enable_shared_library = true
+  1244	v8_enable_short_builtin_calls = ""
+  1245	v8_enable_single_generation = ""
+  1246	v8_enable_slow_dchecks = false
+  1247	v8_enable_slow_tracing = false
+  1275	v8_enable_wasm_deinterleaved_mem_ops = false
+  1276	v8_enable_wasm_gdb_remote_debugging = false
+  1277	v8_enable_wasm_simd256_revec = false
+  1278	v8_enable_webassembly = ""
+  1279	v8_etw_guid = ""
+  1280	v8_expose_public_symbols = ""
+  1281	v8_expose_symbols = false
+  1282	v8_force_optimize_speed = false
+  1283	v8_function_arguments_caller_are_own_props = false
+  1284	v8_fuzzilli = false
+  1285	v8_gcmole = false

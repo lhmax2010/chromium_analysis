@@ -1,0 +1,5 @@
+edge_rows	41
+unique_consumed_symbols	34
+consumer_dso_count	2
+provider_dso_count	2
+rpm_root_count	1

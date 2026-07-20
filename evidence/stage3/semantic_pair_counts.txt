@@ -1,0 +1,4 @@
+exact_normalized_pair_rows	542
+unique_old_symbols_paired	484
+unique_new_symbols_paired	484
+paired_ratio_removed_std	89.13%

@@ -1,0 +1,25 @@
+analysis_repo_head	afa192a17d5060b3b82855338166815d824381f0
+evidence_gerrit_ref	17d59f3a15e1fbe7e48c119b4f128bf2f228c88d
+source_worktree_head	394713cfd95e9597793255ec71496aef6ef84574
+source_worktree_status
+ M build/config/c++/BUILD.gn
+ M build/config/freetype/freetype.gni
+ M packaging/chromium-efl.spec
+ M third_party/brotli/BUILD.gn
+ M third_party/libpng/BUILD.gn
+ M third_party/libvpx/BUILD.gn
+ M third_party/libwebp/BUILD.gn
+ M third_party/libxml/BUILD.gn
+ M third_party/libxslt/BUILD.gn
+ M third_party/opus/BUILD.gn
+ M third_party/zlib/BUILD.gn
+ M tizen_src/build/gn_chromiumefl.sh
+ M tizen_src/ewk/chromium-ewk.filter
+ M wrt/BUILD.gn
+ M wrt/cxx_wrapper/BUILD.gn
+?? packaging/chromium-efl-1.1.144.tar.gz
+?? wrt/cxx_wrapper/build.sh
+?? wrt/cxx_wrapper/wrt-c++wrapper.map
+c++filt_version
+GNU c++filt (GNU Binutils for Ubuntu) 2.42
+Copyright (C) 2024 Free Software Foundation, Inc.

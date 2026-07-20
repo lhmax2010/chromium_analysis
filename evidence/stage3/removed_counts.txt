@@ -1,0 +1,10 @@
+baseline_v8node	19748
+candidate_v8node	19692
+removed_rows	584
+removed_unique_symbols	584
+removed_std_rows	543
+removed_std_unique	543
+demangle_unchanged	2
+added_rows	528
+net_candidate_minus_baseline	-56
+removed_resolved_elsewhere_in_candidate_rpm_set	0

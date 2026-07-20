@@ -1,0 +1,2 @@
+libnode.so	26
+libv8.so	558

@@ -1,0 +1,246 @@
+SOURCE: third_party/electron_node/src/node_binding.cc:413-432
+   413	using InitializerCallback = void (*)(Local<Object> exports,
+   414	                                     Local<Value> module,
+   415	                                     Local<Context> context);
+   416
+   417	inline InitializerCallback GetInitializerCallback(DLib* dlib) {
+   418	  const char* name = "node_register_module_v" STRINGIFY(NODE_MODULE_VERSION);
+   419	  return reinterpret_cast<InitializerCallback>(dlib->GetSymbolAddress(name));
+   420	}
+   421
+   422	inline napi_addon_register_func GetNapiInitializerCallback(DLib* dlib) {
+   423	  const char* name =
+   424	      STRINGIFY(NAPI_MODULE_INITIALIZER_BASE) STRINGIFY(NAPI_MODULE_VERSION);
+   425	  return reinterpret_cast<napi_addon_register_func>(
+   426	      dlib->GetSymbolAddress(name));
+   427	}
+   428
+   429	inline node_api_addon_get_api_version_func GetNapiAddonGetApiVersionCallback(
+   430	    DLib* dlib) {
+   431	  return reinterpret_cast<node_api_addon_get_api_version_func>(
+   432	      dlib->GetSymbolAddress(STRINGIFY(NODE_API_MODULE_GET_API_VERSION)));
+SOURCE: third_party/electron_node/src/node_binding.cc:496-560
+   496	    if (mp != nullptr) {
+   497	      if (mp->nm_context_register_func == nullptr) {
+   498	        if (env->force_context_aware()) {
+   499	          dlib->Close();
+   500	          THROW_ERR_NON_CONTEXT_AWARE_DISABLED(env);
+   501	          return false;
+   502	        }
+   503	      }
+   504	      mp->nm_dso_handle = dlib->handle_;
+   505	      dlib->SaveInGlobalHandleMap(mp);
+   506	    } else {
+   507	      if (auto callback = GetInitializerCallback(dlib)) {
+   508	        callback(exports, module, context);
+   509	        return true;
+   510	      } else if (auto napi_callback = GetNapiInitializerCallback(dlib)) {
+   511	        int32_t module_api_version = NODE_API_DEFAULT_MODULE_API_VERSION;
+   512	        if (auto get_version = GetNapiAddonGetApiVersionCallback(dlib)) {
+   513	          module_api_version = get_version();
+   514	        }
+   515	        napi_module_register_by_symbol(
+   516	            exports, module, context, napi_callback, module_api_version);
+   517	        return true;
+   518	      } else {
+   519	        mp = dlib->GetSavedModuleFromGlobalHandleMap();
+   520	        if (mp == nullptr || mp->nm_context_register_func == nullptr) {
+   521	          dlib->Close();
+   522	          THROW_ERR_DLOPEN_FAILED(
+   523	              env, "Module did not self-register: '%s'.", filename);
+   524	          return false;
+   525	        }
+   526	      }
+   527	    }
+   528
+   529	    // -1 is used for N-API modules
+   530	    if ((mp->nm_version != -1) && (mp->nm_version != NODE_MODULE_VERSION)) {
+   531	      // Even if the module did self-register, it may have done so with the
+   532	      // wrong version. We must only give up after having checked to see if it
+   533	      // has an appropriate initializer callback.
+   534	      if (auto callback = GetInitializerCallback(dlib)) {
+   535	        callback(exports, module, context);
+   536	        return true;
+   537	      }
+   538
+   539	      const int actual_nm_version = mp->nm_version;
+   540	      // NOTE: `mp` is allocated inside of the shared library's memory, calling
+   541	      // `dlclose` will deallocate it
+   542	      dlib->Close();
+   543	      THROW_ERR_DLOPEN_FAILED(
+   544	          env,
+   545	          "The module '%s'"
+   546	          "\nwas compiled against a different Node.js version using"
+   547	          "\nNODE_MODULE_VERSION %d. This version of Node.js requires"
+   548	          "\nNODE_MODULE_VERSION %d. Please try re-compiling or "
+   549	          "re-installing\nthe module (for instance, using `npm rebuild` "
+   550	          "or `npm install`).",
+   551	          *filename,
+   552	          actual_nm_version,
+   553	          NODE_MODULE_VERSION);
+   554	      return false;
+   555	    }
+   556	    CHECK_EQ(mp->nm_flags & NM_F_BUILTIN, 0);
+   557
+   558	    // Do not keep the lock while running userland addon loading code.
+   559	    Mutex::ScopedUnlock unlock(lock);
+   560	    if (mp->nm_context_register_func != nullptr) {
+SOURCE: third_party/electron_node/src/node_version.h:77-111
+    77	 *
+    78	 * Node.js will refuse to load modules with a non-matching ABI version. The
+    79	 * version number here should be changed whenever an ABI-incompatible API change
+    80	 * is made in the C++ side, including in V8 or other dependencies.
+    81	 *
+    82	 * Node.js will not change the module version during a Major release line
+    83	 * We will, at times update the version of V8 shipped in the release line
+    84	 * if it can be made ABI compatible with the previous version.
+    85	 *
+    86	 * Embedders building Node.js can define NODE_EMBEDDER_MODULE_VERSION to
+    87	 * override the default value of NODE_MODULE_VERSION.
+    88	 *
+    89	 * The registry of used NODE_MODULE_VERSION numbers is located at
+    90	 *   https://github.com/nodejs/node/blob/HEAD/doc/abi_version_registry.json
+    91	 * Extenders, embedders and other consumers of Node.js that require ABI
+    92	 * version matching should open a pull request to reserve a number in this
+    93	 * registry.
+    94	 */
+    95	#if defined(NODE_EMBEDDER_MODULE_VERSION)
+    96	#define NODE_MODULE_VERSION NODE_EMBEDDER_MODULE_VERSION
+    97	#else
+    98	#define NODE_MODULE_VERSION 137
+    99	#endif
+   100
+   101	// The NAPI_VERSION supported by the runtime. This is the inclusive range of
+   102	// versions which the Node.js binary being built supports.
+   103	#define NODE_API_SUPPORTED_VERSION_MAX 10
+   104	#define NODE_API_SUPPORTED_VERSION_MIN 1
+   105
+   106	// Node API modules use NAPI_VERSION 8 by default if it is not explicitly
+   107	// specified. It must be always 8.
+   108	#define NODE_API_DEFAULT_MODULE_API_VERSION 8
+   109
+   110	#endif  // SRC_NODE_VERSION_H_
+SOURCE: third_party/electron_node/src/node_api.cc:674-740
+   674	// This function must be augmented for each new Node API version.
+   675	// The key role of this function is to encode module_api_version in the function
+   676	// pointer. We are not going to have many Node API versions and having one
+   677	// function per version is relatively cheap. It avoids dynamic memory
+   678	// allocations or implementing more expensive changes to module registration.
+   679	// Currently AddLinkedBinding is the only user of this function.
+   680	node::addon_context_register_func get_node_api_context_register_func(
+   681	    node::Environment* node_env,
+   682	    const char* module_name,
+   683	    int32_t module_api_version) {
+   684	  static_assert(
+   685	      NODE_API_SUPPORTED_VERSION_MAX == 10,
+   686	      "New version of Node-API requires adding another else-if statement below "
+   687	      "for the new version and updating this assert condition.");
+   688	  if (module_api_version == 9) {
+   689	    return node_api_context_register_func<9>;
+   690	  } else if (module_api_version == 10) {
+   691	    return node_api_context_register_func<10>;
+   692	  } else if (module_api_version == NAPI_VERSION_EXPERIMENTAL) {
+   693	    return node_api_context_register_func<NAPI_VERSION_EXPERIMENTAL>;
+   694	  } else if (module_api_version >= NODE_API_SUPPORTED_VERSION_MIN &&
+   695	             module_api_version <= NODE_API_DEFAULT_MODULE_API_VERSION) {
+   696	    return node_api_context_register_func<NODE_API_DEFAULT_MODULE_API_VERSION>;
+   697	  } else {
+   698	    v8impl::ThrowNodeApiVersionError(node_env, module_name, module_api_version);
+   699	    return nullptr;
+   700	  }
+   701	}
+   702
+   703	void napi_module_register_by_symbol(v8::Local<v8::Object> exports,
+   704	                                    v8::Local<v8::Value> module,
+   705	                                    v8::Local<v8::Context> context,
+   706	                                    napi_addon_register_func init,
+   707	                                    int32_t module_api_version) {
+   708	  node::Environment* node_env = node::Environment::GetCurrent(context);
+   709	  CHECK_NOT_NULL(node_env);
+   710	  std::string module_filename = "";
+   711	  if (init == nullptr) {
+   712	    node_env->ThrowError("Module has no declared entry point.");
+   713	    return;
+   714	  }
+   715
+   716	  // We set `env->filename` from `module.filename` here, but we could just as
+   717	  // easily add a private property to `exports` in `process.dlopen`, which
+   718	  // receives the file name from JS, and retrieve *that* here. Thus, we are not
+   719	  // endorsing commonjs here by making use of `module.filename`.
+   720	  v8::Local<v8::Value> filename_js;
+   721	  v8::Local<v8::Object> modobj;
+   722	  if (module->ToObject(context).ToLocal(&modobj) &&
+   723	      modobj->Get(context, node_env->filename_string()).ToLocal(&filename_js) &&
+   724	      filename_js->IsString()) {
+   725	    node::Utf8Value filename(node_env->isolate(), filename_js);
+   726
+   727	    // Turn the absolute path into a URL. Currently the absolute path is always
+   728	    // a file system path.
+   729	    // TODO(gabrielschulhof): Pass the `filename` through unchanged if/when we
+   730	    // receive it as a URL already.
+   731	    module_filename = node::url::FromFilePath(filename.ToStringView());
+   732	  }
+   733
+   734	  // Create a new napi_env for this specific module.
+   735	  napi_env env =
+   736	      node_napi_env__::New(context, module_filename, module_api_version);
+   737
+   738	  napi_value _exports = nullptr;
+   739	  env->CallIntoModule([&](napi_env env) {
+   740	    _exports = init(env, v8impl::JsValueFromV8LocalValue(exports));
+SOURCE: third_party/electron_node/src/node_api.cc:753-774
+   753	namespace node {
+   754	node_module napi_module_to_node_module(const napi_module* mod) {
+   755	  return {
+   756	      -1,
+   757	      mod->nm_flags | NM_F_DELETEME,
+   758	      nullptr,
+   759	      mod->nm_filename,
+   760	      nullptr,
+   761	      napi_module_register_cb,
+   762	      mod->nm_modname,
+   763	      const_cast<napi_module*>(mod),  // priv
+   764	      nullptr,
+   765	  };
+   766	}
+   767	}  // namespace node
+   768
+   769	// Registers a NAPI module.
+   770	void NAPI_CDECL napi_module_register(napi_module* mod) {
+   771	  node::node_module* nm =
+   772	      new node::node_module(node::napi_module_to_node_module(mod));
+   773	  node::node_module_register(nm);
+   774	}
+SEARCH: NODE_EMBEDDER_MODULE_VERSION
+third_party/electron_node/src/node_version.h:86: * Embedders building Node.js can define NODE_EMBEDDER_MODULE_VERSION to
+third_party/electron_node/src/node_version.h:95:#if defined(NODE_EMBEDDER_MODULE_VERSION)
+third_party/electron_node/src/node_version.h:96:#define NODE_MODULE_VERSION NODE_EMBEDDER_MODULE_VERSION
+third_party/electron_node/unofficial.gni:72:      "NODE_EMBEDDER_MODULE_VERSION=$node_module_version",
+SOURCE: third_party/electron_node/node.gni:20-25
+    20	  # The location of inspector_protocol - use the one from node's deps by default.
+    21	  node_inspector_protocol_path = "//third_party/inspector_protocol"
+    22
+    23	  # The NODE_MODULE_VERSION defined in node_version.h.
+    24	  node_module_version = exec_script("$node_path/tools/getmoduleversion.py", [], "value")
+    25
+SOURCE: third_party/electron_node/unofficial.gni:64-77
+    64	  config("node_external_config") {
+    65	    include_dirs = [
+    66	      "//electron",  # enable_wrt_js
+    67	      target_gen_dir,
+    68	      "src",
+    69	    ]
+    70	    defines = [
+    71	      "NODE_WANT_INTERNALS=1",
+    72	      "NODE_EMBEDDER_MODULE_VERSION=$node_module_version",
+    73	    ]
+    74	    configs = [
+    75	      ":node_features",
+    76	      "$node_v8_path:external_config",
+    77	    ]
+RESOLVED GN ARG: evidence/spike_libcxx/gn_resolved.txt:752-756
+   752	node_enable_shared_library = true
+   753	node_inspector_protocol_path = "//third_party/inspector_protocol"
+   754	node_module_version = 137
+   755	node_openssl_path = "//third_party/boringssl"
+   756	node_openssl_system_ca_path = ""

@@ -1,0 +1,50 @@
+Stage 3 command evidence
+========================
+
+No build command was executed.  The set operations used the immutable Gerrit
+evidence commit 17d59f3a15e1fbe7e48c119b4f128bf2f228c88d.
+
+base=chromium-libcxx-20260717_143911/analysis/runs/20260717_143911
+ref=refs/remotes/sandbox/v3-17d59f3
+
+git -C chromium-efl show "$ref:$base/abi_analysis/baseline_exports.tsv" |
+  awk -F '\t' '$1 ~ /\/lib(v8|node)\.so$/ {print $1 "\t" $2}' |
+  LC_ALL=C sort -u > baseline_v8node_exports.tsv
+
+git -C chromium-efl show "$ref:$base/abi_analysis/candidate_exports.tsv" |
+  awk -F '\t' '$1 ~ /\/lib(v8|node)\.so$/ {print $1 "\t" $2}' |
+  LC_ALL=C sort -u > candidate_v8node_exports.tsv
+
+comm -23 baseline_v8node_exports.tsv candidate_v8node_exports.tsv > removed_all.tsv
+cut -f2 removed_all.tsv | c++filt > removed_all.demangled
+paste removed_all.tsv removed_all.demangled > removed_all_demangled.tsv
+awk -F '\t' 'index($3,"std::") {print $2 "\t" $3}' \
+  removed_all_demangled.tsv > removed_std_carrying.tsv
+
+# The two c++filt failures are retained rather than classified.
+awk -F '\t' '$2==$3 {print}' removed_all_demangled.tsv \
+  > removed_demangle_unknown.tsv
+
+# Prefix clusters use the callable/variable text before the first argument list.
+awk -F '\t' '{p=$2; sub(/\(.*/,"",p); \
+  if(index(p,"node::")) c="NODE"; \
+  else if(index(p,"v8::internal::")) c="V8_INTERNAL"; \
+  else if(index(p,"v8::")) c="V8_PUBLIC"; else c="OTHER"; n[c]++}' \
+  removed_std_carrying.tsv
+
+For semantic pairing, both full demangled signatures were normalized by replacing
+std::__cxx11::, std::__Cr::, and std::__1:: with std::, then exact-joined.  The
+complete join is semantic_pairs_all.tsv; semantic_pairs_sample10.tsv contains one
+row for each named sample in the report.
+
+As a relocation sanity check, all removed symbols were also joined against the
+complete candidate RPM export union.  removed_resolved_elsewhere.tsv has zero
+rows, so none of the 584 symbols merely moved to another candidate DSO.
+
+The internal-consumer evidence was copied without transformation from:
+git -C chromium-efl show \
+  "$ref:$base/postbuild_correction/candidate_expanded_edges.tsv"
+
+Source excerpts were collected with nl -ba and sed from the read-only source
+worktree at commit 394713cfd95e9597793255ec71496aef6ef84574.  The relevant files
+all match that commit (relevant_source_diff_exit=0).
