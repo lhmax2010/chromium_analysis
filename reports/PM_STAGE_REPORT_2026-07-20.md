@@ -2,6 +2,9 @@
 
 日期：2026-07-20
 
+最终证据版本：Tizen Gerrit `sandbox/lhmax2025/toolchain` commit
+`17d59f3a15e1fbe7e48c119b4f128bf2f228c88d`
+
 ## 一句话结论
 
 bundled libc++ 构建可行性已经证明：基线和候选均成功产出 RPM，未遇到新的
@@ -37,7 +40,7 @@ libc++ 编译或链接阻塞；构建后审计最终状态为
 外部使用，也可能形成对外 C++ ABI 暴露；由于本次没有完整 Tizen rootfs，不能
 排除平台外部消费者。
 
-## 已识别的报告修正
+## 已完成的报告修正
 
 - 原报告中的 bridge “2 个非白名单导出”是排序 locale 导致的假阳性。对 actual
   和 whitelist 同时执行 `LC_ALL=C sort -u` 后，92/92 完全一致，unexpected=0、
@@ -45,10 +48,11 @@ libc++ 编译或链接阻塞；构建后审计最终状态为
 - 候选约 41.5 GB link peak 缺少原始输出锚点。现存 GNU time 证据记录的候选最大
   进程 RSS 是 17,480,900 kB；两者口径不同，不能混用。
 - G4 原始 added 集合是 620 条：488 条 `LIBCXX_CR`、1 条 ICU、131 条 OTHER。
-  Gerrit commit `2f995770ab57` 的修正分类误漏原始第一行，因此报告中的
-  619/487/0/131 不是正确最终数字。
-- Gerrit 报告把 baseline RPM 总量少写了 100,000 bytes；正确总量及增量是
+  早期修正分类误漏原始第一行；V2 已恢复完整 620 条唯一记录。
+- 早期报告把 baseline RPM 总量少写了 100,000 bytes；V2 已修正为
   516,543,236、534,832,144、+18,288,908（约 +3.54%）。
+- V3 已删除 RPM 对比表中的伪记录。最终 TSV 为 1 行表头加 8 行数据，
+  `git diff --check` 实测退出码 0、输出为空。
 - “libc++abi 已静态进入 libchromium-impl.so”目前只有 archive 生成和无动态
   NEEDED 的间接证据，仍需要最终 link command、link map 或完整符号表。
 - 2 个包含 `std::__Cr` 的 Node 模板符号无法由现有 GNU `c++filt` 解码，已单列
@@ -60,18 +64,16 @@ libc++ 编译或链接阻塞；构建后审计最终状态为
 
 - 可以确认技术路线能够构建，不需要启动新的编译 spike。
 - 暂不建议宣告 libc++ ABI 隔离验收通过，也不建议直接进入量产切换。
-- 当前无需再做 Chromium 编译。Gerrit 报告尚需一次纯文档/统计修正；该修正不改变
-  技术状态。
+- 当前无需再做 Chromium 编译。Gerrit V3 证据包已完成统计修正和卫生检查，
+  构建后审计阶段正式收口。
 
 ## 后续工作
 
-1. 先按 `prompts/REMOTE_AI_POSTBUILD_REPORT_CORRECTION_V2_PROMPT.md` 修正 Gerrit
-   报告数字；无需重编译。
-2. 使用完整 Tizen rootfs/RPM 集合，对 454 个 unmatched exports 做平台范围的
+1. 使用完整 Tizen rootfs/RPM 集合，对 454 个 unmatched exports 做平台范围的
    provider/consumer ABI 图扫描。
-3. 如果正式门禁必须证明 libc++abi 静态归属，保留最终链接 rsp/link map 或未剥离
+2. 如果正式门禁必须证明 libc++abi 静态归属，保留最终链接 rsp/link map 或未剥离
    符号证据；现有 stripped RPM 无法完成该证明。
-4. 决定 Node/V8 的 `std::__Cr` 导出是需要隐藏、白名单豁免，还是要求所有消费者
+3. 决定 Node/V8 的 `std::__Cr` 导出是需要隐藏、白名单豁免，还是要求所有消费者
    同步进入同一 bundled libc++ ABI 域。
 
 对外表述建议统一为：
