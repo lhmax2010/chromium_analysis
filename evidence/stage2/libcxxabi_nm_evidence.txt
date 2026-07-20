@@ -1,0 +1,7 @@
+command=LC_ALL=C nice -n 15 ionice -c3 nm --defined-only /home/linhao/Toolchain/plan_evaluation/chromium-efl-spike-libcxx-wt/out.chrome.tz_v11.0.standard.armv7l/libchromium-impl.so | exact-symbol-filter
+/home/linhao/Toolchain/plan_evaluation/chromium-efl-spike-libcxx-wt/out.chrome.tz_v11.0.standard.armv7l/libchromium-impl.so: ELF 32-bit LSB shared object, ARM, EABI5 version 1 (SYSV), dynamically linked, BuildID[sha1]=58c066914d878ae5b1e9a89bf6db6060625461c7, with debug_info, not stripped
+size_bytes=1091251872 mtime=2026-07-16 16:41:18.443147180 +0800
+--- requested definitions ---
+06a313fb t __cxa_begin_catch
+06a3283d t __cxa_guard_acquire
+06a314b3 t __cxa_throw

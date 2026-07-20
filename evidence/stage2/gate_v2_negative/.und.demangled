@@ -1,0 +1,1414 @@
+v8_inspector::V8Inspector::create(v8::Isolate*, v8_inspector::V8InspectorClient*)
+v8_inspector::StringBuffer::create(v8_inspector::StringView)
+v8_inspector::V8ContextInfo::executionContextId(v8::Local<v8::Context>)
+v8_inspector::V8StackTraceId::ToString()
+v8_inspector::V8StackTraceId::V8StackTraceId(v8_inspector::StringView)
+v8_inspector::V8StackTraceId::V8StackTraceId(unsigned int, std::__Cr::pair<long long, long long>, bool)
+v8_inspector::V8StackTraceId::V8StackTraceId()
+v8_inspector::V8InspectorSession::canDispatchMethod(v8_inspector::StringView)
+v8_inspector::protocol::Debugger::API::Paused::ReasonEnum::CSPViolation
+v8_inspector::protocol::Debugger::API::Paused::ReasonEnum::EventListener
+v8_inspector::protocol::Debugger::API::Paused::ReasonEnum::DOM
+v8_inspector::protocol::Debugger::API::Paused::ReasonEnum::XHR
+v8::CpuProfile::Delete()
+v8::Int16Array::New(v8::Local<v8::ArrayBuffer>, unsigned int, unsigned int)
+v8::Int16Array::New(v8::Local<v8::SharedArrayBuffer>, unsigned int, unsigned int)
+v8::Int32Array::New(v8::Local<v8::ArrayBuffer>, unsigned int, unsigned int)
+v8::Int32Array::New(v8::Local<v8::SharedArrayBuffer>, unsigned int, unsigned int)
+v8::StackTrace::CurrentScriptId(v8::Isolate*)
+v8::StackTrace::CurrentStackTrace(v8::Isolate*, int, v8::StackTrace::StackTraceOptions)
+v8::StackTrace::CurrentScriptNameOrSourceURL(v8::Isolate*)
+v8::TypedArray::Length()
+v8::Uint8Array::New(v8::Local<v8::ArrayBuffer>, unsigned int, unsigned int)
+v8::Uint8Array::New(v8::Local<v8::SharedArrayBuffer>, unsigned int, unsigned int)
+v8::ArrayBuffer::SetDetachKey(v8::Local<v8::Value>)
+v8::ArrayBuffer::GetBackingStore()
+v8::ArrayBuffer::NewBackingStore(void*, unsigned int, void (*)(void*, unsigned int, void*), void*)
+v8::ArrayBuffer::NewResizableBackingStore(unsigned int, unsigned int)
+v8::ArrayBuffer::New(v8::Isolate*, std::__Cr::shared_ptr<v8::BackingStore>)
+v8::ArrayBuffer::New(v8::Isolate*, unsigned int, v8::BackingStoreInitializationMode)
+v8::ArrayBuffer::Detach(v8::Local<v8::Value>)
+v8::ArrayBuffer::MaybeNew(v8::Isolate*, unsigned int, v8::BackingStoreInitializationMode)
+v8::CpuProfiler::CollectSample(v8::Isolate*, std::__Cr::optional<unsigned long long>)
+v8::CpuProfiler::StopProfiling(v8::Local<v8::String>)
+v8::CpuProfiler::StartProfiling(v8::Local<v8::String>, v8::CpuProfilingOptions, std::__Cr::unique_ptr<v8::DiscardedSamplesDelegate, std::__Cr::default_delete<v8::DiscardedSamplesDelegate> >)
+v8::CpuProfiler::SetSamplingInterval(int)
+v8::CpuProfiler::New(v8::Isolate*, v8::CpuProfilingNamingMode, v8::CpuProfilingLoggingMode)
+v8::CpuProfiler::Dispose()
+v8::HandleScope::DeleteExtensions(v8::Isolate*)
+v8::HandleScope::Extend(v8::Isolate*)
+v8::Uint16Array::New(v8::Local<v8::ArrayBuffer>, unsigned int, unsigned int)
+v8::Uint16Array::New(v8::Local<v8::SharedArrayBuffer>, unsigned int, unsigned int)
+v8::Uint32Array::New(v8::Local<v8::ArrayBuffer>, unsigned int, unsigned int)
+v8::Uint32Array::New(v8::Local<v8::SharedArrayBuffer>, unsigned int, unsigned int)
+v8::BackingStore::EmptyDeleter(void*, unsigned int, void*)
+v8::BackingStore::~BackingStore()
+v8::Float16Array::New(v8::Local<v8::ArrayBuffer>, unsigned int, unsigned int)
+v8::Float16Array::New(v8::Local<v8::SharedArrayBuffer>, unsigned int, unsigned int)
+v8::Float32Array::New(v8::Local<v8::ArrayBuffer>, unsigned int, unsigned int)
+v8::Float32Array::New(v8::Local<v8::SharedArrayBuffer>, unsigned int, unsigned int)
+v8::Float64Array::New(v8::Local<v8::ArrayBuffer>, unsigned int, unsigned int)
+v8::Float64Array::New(v8::Local<v8::SharedArrayBuffer>, unsigned int, unsigned int)
+v8::HeapProfiler::IsTakingSnapshot()
+v8::HeapProfiler::TakeHeapSnapshot(v8::HeapProfiler::HeapSnapshotOptions const&)
+v8::HeapProfiler::CopyNameForHeapSnapshot(char const*)
+v8::HeapProfiler::SetGetDetachednessCallback(v8::EmbedderGraph::Node::Detachedness (*)(v8::Isolate*, v8::Local<v8::Value> const&, unsigned short, void*), void*)
+v8::HeapProfiler::GetDetachedJSWrapperObjects()
+v8::HeapSnapshot::Delete()
+v8::StringObject::New(v8::Isolate*, v8::Local<v8::String>)
+v8::api_internal::Eternalize(v8::Isolate*, v8::Value*)
+v8::api_internal::ToLocalEmpty()
+v8::api_internal::DisposeGlobal(unsigned int*)
+v8::api_internal::FromJustIsNothing()
+v8::api_internal::GlobalizeReference(v8::internal::Isolate*, unsigned int)
+v8::api_internal::MoveGlobalReference(unsigned int**, unsigned int**)
+v8::api_internal::AnnotateStrongRetainer(unsigned int*, char const*)
+v8::api_internal::GetFunctionTemplateData(v8::Isolate*, v8::Local<v8::Data>)
+v8::api_internal::MakeWeak(unsigned int**)
+v8::api_internal::MakeWeak(unsigned int*, void*, void (*)(v8::WeakCallbackInfo<void> const&), v8::WeakCallbackType)
+v8::api_internal::ClearWeak(unsigned int*)
+v8::BigInt64Array::New(v8::Local<v8::ArrayBuffer>, unsigned int, unsigned int)
+v8::BigInt64Array::New(v8::Local<v8::SharedArrayBuffer>, unsigned int, unsigned int)
+v8::CFunctionInfo::CFunctionInfo(v8::CTypeInfo const&, unsigned int, v8::CTypeInfo const*, v8::CFunctionInfo::Int64Representation)
+v8::RegisterState::RegisterState()
+v8::RegisterState::~RegisterState()
+v8::UnboundScript::GetScriptName()
+v8::UnboundScript::BindToCurrentContext()
+v8::WasmStreaming::OnBytesReceived(unsigned char const*, unsigned int)
+v8::WasmStreaming::SetHasCompiledModuleBytes()
+v8::WasmStreaming::SetMoreFunctionsCanBeSerializedCallback(std::__Cr::function<void (v8::CompiledWasmModule)>)
+v8::WasmStreaming::Abort(v8::MaybeLocal<v8::Value>)
+v8::WasmStreaming::Finish(std::__Cr::function<void (v8::WasmStreaming::ModuleCachingInterface&)> const&)
+v8::WasmStreaming::SetUrl(char const*, unsigned int)
+v8::WasmStreaming::Unpack(v8::Isolate*, v8::Local<v8::Value>)
+v8::BigUint64Array::New(v8::Local<v8::ArrayBuffer>, unsigned int, unsigned int)
+v8::BigUint64Array::New(v8::Local<v8::SharedArrayBuffer>, unsigned int, unsigned int)
+v8::HeapStatistics::HeapStatistics()
+v8::MicrotaskQueue::New(v8::Isolate*, v8::MicrotasksPolicy)
+v8::ObjectTemplate::SetHandler(v8::NamedPropertyHandlerConfiguration const&)
+v8::ObjectTemplate::SetHandler(v8::IndexedPropertyHandlerConfiguration const&)
+v8::ObjectTemplate::NewInstance(v8::Local<v8::Context>)
+v8::ObjectTemplate::SetCodeLike()
+v8::ObjectTemplate::SetImmutableProto()
+v8::ObjectTemplate::MarkAsUndetectable()
+v8::ObjectTemplate::SetInternalFieldCount(int)
+v8::ObjectTemplate::SetCallAsFunctionHandler(void (*)(v8::FunctionCallbackInfo<v8::Value> const&), v8::Local<v8::Value>)
+v8::ObjectTemplate::SetAccessCheckCallbackAndHandler(bool (*)(v8::Local<v8::Context>, v8::Local<v8::Object>, v8::Local<v8::Value>), v8::NamedPropertyHandlerConfiguration const&, v8::IndexedPropertyHandlerConfiguration const&, v8::Local<v8::Value>)
+v8::ObjectTemplate::New(v8::Isolate*, v8::Local<v8::FunctionTemplate>)
+v8::PrimitiveArray::Get(v8::Isolate*, int)
+v8::PrimitiveArray::New(v8::Isolate*, int)
+v8::PrimitiveArray::Set(v8::Isolate*, int, v8::Local<v8::Primitive>)
+v8::ScriptCompiler::CachedData::CachedData(unsigned char const*, int, v8::ScriptCompiler::CachedData::BufferPolicy)
+v8::ScriptCompiler::CachedData::~CachedData()
+v8::ScriptCompiler::CompileModule(v8::Local<v8::Context>, v8::ScriptCompiler::StreamedSource*, v8::Local<v8::String>, v8::ScriptOrigin const&)
+v8::ScriptCompiler::CompileModule(v8::Isolate*, v8::ScriptCompiler::Source*, v8::ScriptCompiler::CompileOptions, v8::ScriptCompiler::NoCacheReason)
+v8::ScriptCompiler::StartStreaming(v8::Isolate*, v8::ScriptCompiler::StreamedSource*, v8::ScriptType, v8::ScriptCompiler::CompileOptions, bool (*)(int, void*), void*)
+v8::ScriptCompiler::StreamedSource::StreamedSource(std::__Cr::unique_ptr<v8::ScriptCompiler::ExternalSourceStream, std::__Cr::default_delete<v8::ScriptCompiler::ExternalSourceStream> >, v8::ScriptCompiler::StreamedSource::Encoding)
+v8::ScriptCompiler::StreamedSource::~StreamedSource()
+v8::ScriptCompiler::CompileFunction(v8::Local<v8::Context>, v8::ScriptCompiler::Source*, unsigned int, v8::Local<v8::String>*, unsigned int, v8::Local<v8::Object>*, v8::ScriptCompiler::CompileOptions, v8::ScriptCompiler::NoCacheReason)
+v8::ScriptCompiler::CreateCodeCache(v8::Local<v8::UnboundScript>)
+v8::ScriptCompiler::CreateCodeCache(v8::Local<v8::UnboundModuleScript>)
+v8::ScriptCompiler::ScriptStreamingTask::Run()
+v8::ScriptCompiler::CachedDataVersionTag()
+v8::ScriptCompiler::CompileUnboundScript(v8::Isolate*, v8::ScriptCompiler::Source*, v8::ScriptCompiler::CompileOptions, v8::ScriptCompiler::NoCacheReason)
+v8::ScriptCompiler::ConsumeCodeCacheTask::SourceTextAvailable(v8::Isolate*, v8::Local<v8::String>, v8::ScriptOrigin const&)
+v8::ScriptCompiler::ConsumeCodeCacheTask::MergeWithExistingScript()
+v8::ScriptCompiler::ConsumeCodeCacheTask::Run()
+v8::ScriptCompiler::ConsumeCodeCacheTask::~ConsumeCodeCacheTask()
+v8::ScriptCompiler::StartConsumingCodeCache(v8::Isolate*, std::__Cr::unique_ptr<v8::ScriptCompiler::CachedData, std::__Cr::default_delete<v8::ScriptCompiler::CachedData> >)
+v8::ScriptCompiler::StartConsumingCodeCacheOnBackground(v8::Isolate*, std::__Cr::unique_ptr<v8::ScriptCompiler::CachedData, std::__Cr::default_delete<v8::ScriptCompiler::CachedData> >)
+v8::ScriptCompiler::Compile(v8::Local<v8::Context>, v8::ScriptCompiler::StreamedSource*, v8::Local<v8::String>, v8::ScriptOrigin const&)
+v8::ScriptCompiler::Compile(v8::Local<v8::Context>, v8::ScriptCompiler::Source*, v8::ScriptCompiler::CompileOptions, v8::ScriptCompiler::NoCacheReason)
+v8::ArrayBufferView::ByteLength()
+v8::ArrayBufferView::ByteOffset()
+v8::ArrayBufferView::GetContents(v8::MemorySpan<unsigned char>)
+v8::ArrayBufferView::CopyContents(void*, unsigned int)
+v8::ArrayBufferView::Buffer()
+v8::CppHeapExternal::NewImpl(v8::Isolate*, void*, v8::CppHeapPointerTag)
+v8::MicrotasksScope::GetCurrentDepth(v8::Isolate*)
+v8::MicrotasksScope::PerformCheckpoint(v8::Isolate*)
+v8::MicrotasksScope::IsRunningMicrotasks(v8::Isolate*)
+v8::MicrotasksScope::MicrotasksScope(v8::Local<v8::Context>, v8::MicrotasksScope::Type)
+v8::MicrotasksScope::MicrotasksScope(v8::Isolate*, v8::MicrotaskQueue*, v8::MicrotasksScope::Type)
+v8::MicrotasksScope::~MicrotasksScope()
+v8::SnapshotCreator::AddContext(v8::Local<v8::Context>, v8::SerializeInternalFieldsCallback, v8::SerializeContextDataCallback, v8::SerializeAPIWrapperCallback)
+v8::SnapshotCreator::CreateBlob(v8::SnapshotCreator::FunctionCodeHandling)
+v8::SnapshotCreator::GetIsolate()
+v8::SnapshotCreator::SetDefaultContext(v8::Local<v8::Context>, v8::SerializeInternalFieldsCallback, v8::SerializeContextDataCallback, v8::SerializeAPIWrapperCallback)
+v8::SnapshotCreator::AddData(unsigned int)
+v8::SnapshotCreator::SnapshotCreator(v8::Isolate*, v8::Isolate::CreateParams const&)
+v8::SnapshotCreator::~SnapshotCreator()
+v8::ValueSerializer::WriteValue(v8::Local<v8::Context>, v8::Local<v8::Value>)
+v8::ValueSerializer::WriteDouble(double)
+v8::ValueSerializer::WriteHeader()
+v8::ValueSerializer::WriteUint32(unsigned int)
+v8::ValueSerializer::WriteUint64(unsigned long long)
+v8::ValueSerializer::WriteRawBytes(void const*, unsigned int)
+v8::ValueSerializer::TransferArrayBuffer(unsigned int, v8::Local<v8::ArrayBuffer>)
+v8::ValueSerializer::Release()
+v8::ValueSerializer::Delegate::IsHostObject(v8::Isolate*, v8::Local<v8::Object>)
+v8::ValueSerializer::Delegate::WriteHostObject(v8::Isolate*, v8::Local<v8::Object>)
+v8::ValueSerializer::Delegate::FreeBufferMemory(void*)
+v8::ValueSerializer::Delegate::HasCustomHostObject(v8::Isolate*)
+v8::ValueSerializer::Delegate::GetSharedArrayBufferId(v8::Isolate*, v8::Local<v8::SharedArrayBuffer>)
+v8::ValueSerializer::Delegate::ReallocateBufferMemory(void*, unsigned int, unsigned int*)
+v8::ValueSerializer::Delegate::GetWasmModuleTransferId(v8::Isolate*, v8::Local<v8::WasmModuleObject>)
+v8::ValueSerializer::Delegate::AdoptSharedValueConveyor(v8::Isolate*, v8::SharedValueConveyor&&)
+v8::ValueSerializer::ValueSerializer(v8::Isolate*, v8::ValueSerializer::Delegate*)
+v8::ValueSerializer::~ValueSerializer()
+v8::FunctionTemplate::GetFunction(v8::Local<v8::Context>)
+v8::FunctionTemplate::HasInstance(v8::Local<v8::Value>)
+v8::FunctionTemplate::NewWithCache(v8::Isolate*, void (*)(v8::FunctionCallbackInfo<v8::Value> const&), v8::Local<v8::Private>, v8::Local<v8::Value>, v8::Local<v8::Signature>, int, v8::SideEffectType)
+v8::FunctionTemplate::SetClassName(v8::Local<v8::String>)
+v8::FunctionTemplate::SetCallHandler(void (*)(v8::FunctionCallbackInfo<v8::Value> const&), v8::Local<v8::Data>, v8::SideEffectType, v8::MemorySpan<v8::CFunction const> const&)
+v8::FunctionTemplate::RemovePrototype()
+v8::FunctionTemplate::InstanceTemplate()
+v8::FunctionTemplate::SetInterfaceName(v8::Local<v8::String>)
+v8::FunctionTemplate::NewRemoteInstance()
+v8::FunctionTemplate::PrototypeTemplate()
+v8::FunctionTemplate::ReadOnlyPrototype()
+v8::FunctionTemplate::SetExceptionContext(v8::ExceptionContext)
+v8::FunctionTemplate::SetAcceptAnyReceiver(bool)
+v8::FunctionTemplate::NewWithCFunctionOverloads(v8::Isolate*, void (*)(v8::FunctionCallbackInfo<v8::Value> const&), v8::Local<v8::Value>, v8::Local<v8::Signature>, int, v8::ConstructorBehavior, v8::SideEffectType, v8::MemorySpan<v8::CFunction const> const&)
+v8::FunctionTemplate::New(v8::Isolate*, void (*)(v8::FunctionCallbackInfo<v8::Value> const&), v8::Local<v8::Value>, v8::Local<v8::Signature>, int, v8::ConstructorBehavior, v8::SideEffectType, v8::CFunction const*, unsigned short, unsigned short, unsigned short)
+v8::FunctionTemplate::Inherit(v8::Local<v8::FunctionTemplate>)
+v8::FunctionTemplate::SetLength(int)
+v8::TypecheckWitness::Update(v8::Local<v8::Value>)
+v8::TypecheckWitness::TypecheckWitness(v8::Isolate*)
+v8::WasmModuleObject::GetCompiledModule()
+v8::WasmModuleObject::FromCompiledModule(v8::Isolate*, v8::CompiledWasmModule const&)
+v8::WasmModuleObject::Compile(v8::Isolate*, v8::MemorySpan<unsigned char const>)
+v8::RegisterExtension(std::__Cr::unique_ptr<v8::Extension, std::__Cr::default_delete<v8::Extension> >)
+v8::SharedArrayBuffer::GetBackingStore()
+v8::SharedArrayBuffer::NewBackingStore(void*, unsigned int, void (*)(void*, unsigned int, void*), void*)
+v8::SharedArrayBuffer::New(v8::Isolate*, std::__Cr::shared_ptr<v8::BackingStore>)
+v8::Uint8ClampedArray::New(v8::Local<v8::ArrayBuffer>, unsigned int, unsigned int)
+v8::Uint8ClampedArray::New(v8::Local<v8::SharedArrayBuffer>, unsigned int, unsigned int)
+v8::ValueDeserializer::ReadDouble(double*)
+v8::ValueDeserializer::ReadHeader(v8::Local<v8::Context>)
+v8::ValueDeserializer::ReadUint32(unsigned int*)
+v8::ValueDeserializer::ReadUint64(unsigned long long*)
+v8::ValueDeserializer::ReadRawBytes(unsigned int, void const**)
+v8::ValueDeserializer::TransferArrayBuffer(unsigned int, v8::Local<v8::ArrayBuffer>)
+v8::ValueDeserializer::TransferSharedArrayBuffer(unsigned int, v8::Local<v8::SharedArrayBuffer>)
+v8::ValueDeserializer::SetSupportsLegacyWireFormat(bool)
+v8::ValueDeserializer::Delegate::ReadHostObject(v8::Isolate*)
+v8::ValueDeserializer::Delegate::GetWasmModuleFromId(v8::Isolate*, unsigned int)
+v8::ValueDeserializer::Delegate::GetSharedValueConveyor(v8::Isolate*)
+v8::ValueDeserializer::Delegate::GetSharedArrayBufferFromId(v8::Isolate*, unsigned int)
+v8::ValueDeserializer::ReadValue(v8::Local<v8::Context>)
+v8::ValueDeserializer::ValueDeserializer(v8::Isolate*, unsigned char const*, unsigned int)
+v8::ValueDeserializer::ValueDeserializer(v8::Isolate*, unsigned char const*, unsigned int, v8::ValueDeserializer::Delegate*)
+v8::ValueDeserializer::~ValueDeserializer()
+v8::CompiledWasmModule::GetWireBytesRef()
+v8::CompiledWasmModule::Serialize()
+v8::DictionaryTemplate::NewInstance(v8::Local<v8::Context>, v8::MemorySpan<v8::MaybeLocal<v8::Value> >)
+v8::DictionaryTemplate::New(v8::Isolate*, v8::MemorySpan<std::__Cr::basic_string_view<char, std::__Cr::char_traits<char> > const>)
+v8::EmbedderStateScope::EmbedderStateScope(v8::Isolate*, v8::Local<v8::Context>, v8::EmbedderStateTag)
+v8::EmbedderStateScope::~EmbedderStateScope()
+v8::HeapCodeStatistics::HeapCodeStatistics()
+v8::PropertyDescriptor::set_enumerable(bool)
+v8::PropertyDescriptor::set_configurable(bool)
+v8::PropertyDescriptor::PropertyDescriptor(v8::Local<v8::Value>, v8::Local<v8::Value>)
+v8::PropertyDescriptor::PropertyDescriptor(v8::Local<v8::Value>, bool)
+v8::PropertyDescriptor::~PropertyDescriptor()
+v8::CpuProfilingOptions::CpuProfilingOptions(v8::CpuProfilingMode, unsigned int, int, v8::MaybeLocal<v8::Context>, v8::CpuProfileSource)
+v8::HeapSpaceStatistics::HeapSpaceStatistics()
+v8::ResourceConstraints::ConfigureDefaults(unsigned long long, unsigned long long)
+v8::SharedValueConveyor::SharedValueConveyor(v8::SharedValueConveyor&&)
+v8::SharedValueConveyor::~SharedValueConveyor()
+v8::HeapObjectStatistics::HeapObjectStatistics()
+v8::ToExternalPointerTag(unsigned short)
+v8::SharedMemoryStatistics::SharedMemoryStatistics()
+v8::ExternalMemoryAccounter::Update(v8::Isolate*, long long)
+v8::ExternalMemoryAccounter::Decrease(v8::Isolate*, unsigned int)
+v8::ExternalMemoryAccounter::Increase(v8::Isolate*, unsigned int)
+v8::ExternalMemoryAccounter::ExternalMemoryAccounter(v8::ExternalMemoryAccounter&&)
+v8::ExternalMemoryAccounter::~ExternalMemoryAccounter()
+v8::ExternalMemoryAccounter::operator=(v8::ExternalMemoryAccounter&&)
+v8::EscapableHandleScopeBase::EscapeSlot(unsigned int*)
+v8::EscapableHandleScopeBase::EscapableHandleScopeBase(v8::Isolate*)
+v8::GetTrackEventCategoryRegistry()
+v8::V8::Initialize(int)
+v8::V8::SetEntropySource(bool (*)(unsigned char*, unsigned int))
+v8::V8::InitializePlatform(v8::Platform*)
+v8::V8::SetFlagsFromString(char const*)
+v8::V8::SetFlagsFromString(char const*, unsigned int)
+v8::V8::SetSnapshotDataBlob(v8::StartupData*)
+v8::V8::GetSharedMemoryStatistics(v8::SharedMemoryStatistics*)
+v8::V8::SetFatalMemoryErrorCallback(void (*)(char const*, v8::OOMDetails const&))
+v8::V8::EnableWebAssemblyTrapHandler(bool)
+v8::V8::Dispose()
+bool v8::TryToCopyAndConvertArrayToCppBuffer<768u, int>(v8::Local<v8::Array>, int*, unsigned int)
+v8::Date::New(v8::Local<v8::Context>, double)
+v8::JSON::Parse(v8::Local<v8::Context>, v8::Local<v8::String>, std::__Cr::optional<v8::ScriptOrigin>)
+v8::JSON::Stringify(v8::Local<v8::Context>, v8::Local<v8::Value>, v8::Local<v8::String>)
+v8::Name::GetIdentityHash()
+v8::Array::New(v8::Local<v8::Context>, unsigned int, std::__Cr::function<v8::MaybeLocal<v8::Value> ()>)
+v8::Array::New(v8::Isolate*, v8::Local<v8::Value>*, unsigned int)
+v8::Array::New(v8::Isolate*, int)
+v8::Array::Iterate(v8::Local<v8::Context>, v8::Array::CallbackResult (*)(unsigned int, v8::Local<v8::Value>, void*), void*)
+v8::Proxy::New(v8::Local<v8::Context>, v8::Local<v8::Object>, v8::Local<v8::Object>)
+v8::BigInt::NewFromWords(v8::Local<v8::Context>, int, int, unsigned long long const*)
+v8::BigInt::New(v8::Isolate*, long long)
+v8::Locker::Initialize(v8::Isolate*)
+v8::Locker::~Locker()
+v8::Module::InstantiateModule(v8::Local<v8::Context>, v8::MaybeLocal<v8::Module> (*)(v8::Local<v8::Context>, v8::Local<v8::String>, v8::Local<v8::FixedArray>, v8::Local<v8::Module>), v8::MaybeLocal<v8::Object> (*)(v8::Local<v8::Context>, v8::Local<v8::String>, v8::Local<v8::FixedArray>, v8::Local<v8::Module>))
+v8::Module::GetModuleNamespace()
+v8::Module::CreateSyntheticModule(v8::Isolate*, v8::Local<v8::String>, v8::MemorySpan<v8::Local<v8::String> const> const&, v8::MaybeLocal<v8::Value> (*)(v8::Local<v8::Context>, v8::Local<v8::Module>))
+v8::Module::GetUnboundModuleScript()
+v8::Module::SetSyntheticModuleExport(v8::Isolate*, v8::Local<v8::String>, v8::Local<v8::Value>)
+v8::Module::Evaluate(v8::Local<v8::Context>)
+v8::Number::NewFromInt32(v8::Isolate*, int)
+v8::Number::NewFromUint32(v8::Isolate*, unsigned int)
+v8::Number::New(v8::Isolate*, double)
+v8::Object::GetPrivate(v8::Local<v8::Context>, v8::Local<v8::Private>)
+v8::Object::HasPrivate(v8::Local<v8::Context>, v8::Local<v8::Private>)
+v8::Object::SetPrivate(v8::Local<v8::Context>, v8::Local<v8::Private>, v8::Local<v8::Value>)
+v8::Object::WrapGlobal(v8::Isolate*, v8::Local<v8::Object> const&, v8::Object::Wrappable*, v8::CppHeapPointerTag)
+v8::Object::DeletePrivate(v8::Local<v8::Context>, v8::Local<v8::Private>)
+v8::Object::CallAsFunction(v8::Local<v8::Context>, v8::Local<v8::Value>, int, v8::Local<v8::Value>*)
+v8::Object::DefineProperty(v8::Local<v8::Context>, v8::Local<v8::Name>, v8::PropertyDescriptor&)
+v8::Object::GetPrototypeV2()
+v8::Object::HasOwnProperty(v8::Local<v8::Context>, v8::Local<v8::Name>)
+v8::Object::HasOwnProperty(v8::Local<v8::Context>, unsigned int)
+v8::Object::SetPrototypeV2(v8::Local<v8::Context>, v8::Local<v8::Value>)
+v8::Object::GetIdentityHash()
+v8::Object::GetPropertyNames(v8::Local<v8::Context>)
+v8::Object::SetInternalField(int, v8::Local<v8::Data>)
+v8::Object::CallAsConstructor(v8::Local<v8::Context>, int, v8::Local<v8::Value>*)
+v8::Object::DefineOwnProperty(v8::Local<v8::Context>, v8::Local<v8::Name>, v8::Local<v8::Value>, v8::PropertyAttribute)
+v8::Object::SetIntegrityLevel(v8::Local<v8::Context>, v8::IntegrityLevel)
+v8::Object::CreateDataProperty(v8::Local<v8::Context>, v8::Local<v8::Name>, v8::Local<v8::Value>)
+v8::Object::CreateDataProperty(v8::Local<v8::Context>, unsigned int, v8::Local<v8::Value>)
+v8::Object::GetConstructorName()
+v8::Object::GetCreationContext(v8::Isolate*)
+v8::Object::GetCreationContext()
+v8::Object::GetOwnPropertyNames(v8::Local<v8::Context>)
+v8::Object::GetOwnPropertyNames(v8::Local<v8::Context>, v8::PropertyFilter, v8::KeyConversionMode)
+v8::Object::SetAccessorProperty(v8::Local<v8::Name>, v8::Local<v8::Function>, v8::Local<v8::Function>, v8::PropertyAttribute)
+v8::Object::SetLazyDataProperty(v8::Local<v8::Context>, v8::Local<v8::Name>, void (*)(v8::Local<v8::Name>, v8::PropertyCallbackInfo<v8::Value> const&), v8::Local<v8::Value>, v8::PropertyAttribute, v8::SideEffectType, v8::SideEffectType)
+v8::Object::CheckGlobalWrappable(v8::Isolate*, v8::Local<v8::Object> const&, v8::CppHeapPointerTagRange)
+v8::Object::GetRealNamedProperty(v8::Local<v8::Context>, v8::Local<v8::Name>)
+v8::Object::HasRealNamedProperty(v8::Local<v8::Context>, v8::Local<v8::Name>)
+v8::Object::SlowGetInternalField(int)
+v8::Object::GetPropertyAttributes(v8::Local<v8::Context>, v8::Local<v8::Value>)
+v8::Object::SetNativeDataProperty(v8::Local<v8::Context>, v8::Local<v8::Name>, void (*)(v8::Local<v8::Name>, v8::PropertyCallbackInfo<v8::Value> const&), void (*)(v8::Local<v8::Name>, v8::Local<v8::Value>, v8::PropertyCallbackInfo<void> const&), v8::Local<v8::Value>, v8::PropertyAttribute, v8::SideEffectType, v8::SideEffectType)
+v8::Object::HasRealIndexedProperty(v8::Local<v8::Context>, unsigned int)
+v8::Object::GetOwnPropertyDescriptor(v8::Local<v8::Context>, v8::Local<v8::Name>)
+v8::Object::GetCreationContextChecked(v8::Isolate*)
+v8::Object::GetCreationContextChecked()
+v8::Object::SetAlignedPointerInInternalField(int, void*, unsigned short)
+v8::Object::GetRealNamedPropertyInPrototypeChain(v8::Local<v8::Context>, v8::Local<v8::Name>)
+v8::Object::SlowGetAlignedPointerFromInternalField(int, unsigned short)
+v8::Object::Get(v8::Local<v8::Context>, v8::Local<v8::Value>)
+v8::Object::Get(v8::Local<v8::Context>, unsigned int)
+v8::Object::Has(v8::Local<v8::Context>, v8::Local<v8::Value>)
+v8::Object::Has(v8::Local<v8::Context>, unsigned int)
+v8::Object::New(v8::Isolate*)
+v8::Object::New(v8::Isolate*, v8::Local<v8::Value>, v8::Local<v8::Name>*, v8::Local<v8::Value>*, unsigned int)
+v8::Object::Set(v8::Local<v8::Context>, v8::Local<v8::Value>, v8::Local<v8::Value>)
+v8::Object::Set(v8::Local<v8::Context>, unsigned int, v8::Local<v8::Value>)
+v8::Object::GetRealNamedPropertyAttributesInPrototypeChain(v8::Local<v8::Context>, v8::Local<v8::Name>)
+v8::Object::Wrap(v8::Isolate*, unsigned int, v8::CppHeapPointerTag, void*)
+v8::Object::GetAlignedPointerFromEmbedderDataInCreationContext(v8::Isolate*, int, unsigned short)
+v8::Object::Clone(v8::Isolate*)
+v8::Object::Delete(v8::Local<v8::Context>, v8::Local<v8::Value>)
+v8::RegExp::NewWithBacktrackLimit(v8::Local<v8::Context>, v8::Local<v8::String>, v8::RegExp::Flags, unsigned int)
+v8::RegExp::New(v8::Local<v8::Context>, v8::Local<v8::String>, v8::RegExp::Flags)
+v8::RegExp::Exec(v8::Local<v8::Context>, v8::Local<v8::String>)
+v8::Script::GetResourceName()
+v8::Script::GetUnboundScript()
+v8::Script::Run(v8::Local<v8::Context>)
+v8::Script::Run(v8::Local<v8::Context>, v8::Local<v8::Data>)
+v8::Script::Compile(v8::Local<v8::Context>, v8::Local<v8::String>, v8::ScriptOrigin*)
+v8::String::NewFromUtf8(v8::Isolate*, char const*, v8::NewStringType, int)
+v8::String::MakeExternal(v8::String::ExternalStringResource*)
+v8::String::MakeExternal(v8::String::ExternalOneByteStringResource*)
+v8::String::NewFromOneByte(v8::Isolate*, unsigned char const*, v8::NewStringType, int)
+v8::String::NewFromTwoByte(v8::Isolate*, unsigned short const*, v8::NewStringType, int)
+v8::String::InternalizeString(v8::Isolate*)
+v8::String::NewExternalOneByte(v8::Isolate*, v8::String::ExternalOneByteStringResource*)
+v8::String::NewExternalTwoByte(v8::Isolate*, v8::String::ExternalStringResource*)
+v8::String::NewFromUtf8Literal(v8::Isolate*, char const*, v8::NewStringType, int)
+v8::String::Value::Value(v8::Isolate*, v8::Local<v8::Value>)
+v8::String::Value::~Value()
+v8::String::Concat(v8::Isolate*, v8::Local<v8::String>, v8::Local<v8::String>)
+v8::String::Utf8Value::Utf8Value(v8::Isolate*, v8::Local<v8::Value>)
+v8::String::Utf8Value::~Utf8Value()
+v8::Symbol::GetIterator(v8::Isolate*)
+v8::Symbol::GetHasInstance(v8::Isolate*)
+v8::Symbol::GetToPrimitive(v8::Isolate*)
+v8::Symbol::GetToStringTag(v8::Isolate*)
+v8::Symbol::GetUnscopables(v8::Isolate*)
+v8::Symbol::GetAsyncIterator(v8::Isolate*)
+v8::Symbol::GetIsConcatSpreadable(v8::Isolate*)
+v8::Context::DeepFreeze(v8::Context::DeepFreezeDelegate*)
+v8::Context::DetachGlobal()
+v8::Context::NewRemoteContext(v8::Isolate*, v8::Local<v8::ObjectTemplate>, v8::MaybeLocal<v8::Value>)
+v8::Context::SetSecurityToken(v8::Local<v8::Value>)
+v8::Context::GetMicrotaskQueue()
+v8::Context::SetMicrotaskQueue(v8::MicrotaskQueue*)
+v8::Context::BackupIncumbentScope::BackupIncumbentScope(v8::Local<v8::Context>)
+v8::Context::BackupIncumbentScope::~BackupIncumbentScope()
+v8::Context::SetAbortScriptExecution(void (*)(v8::Isolate*, v8::Local<v8::Context>))
+v8::Context::UseDefaultSecurityToken()
+v8::Context::HasTemplateLiteralObject(v8::Local<v8::Value>)
+v8::Context::GetNumberOfEmbedderDataFields()
+v8::Context::AllowCodeGenerationFromStrings(bool)
+v8::Context::SetAlignedPointerInEmbedderData(int, void*, unsigned short)
+v8::Context::SetErrorMessageForWasmCodeGeneration(v8::Local<v8::String>)
+v8::Context::New(v8::Isolate*, v8::ExtensionConfiguration*, v8::MaybeLocal<v8::ObjectTemplate>, v8::MaybeLocal<v8::Value>, v8::DeserializeInternalFieldsCallback, v8::MicrotaskQueue*, v8::DeserializeContextDataCallback, v8::DeserializeAPIWrapperCallback)
+v8::Context::SetErrorMessageForCodeGenerationFromStrings(v8::Local<v8::String>)
+v8::Context::Exit()
+v8::Context::Enter()
+v8::Context::Global()
+v8::CppHeap::GetHeapHandle()
+v8::CppHeap::CollectStatistics(cppgc::HeapStatistics::DetailLevel)
+v8::CppHeap::GetAllocationHandle()
+v8::CppHeap::CollectGarbageForTesting(cppgc::EmbedderStackState)
+v8::CppHeap::CollectCustomSpaceStatisticsAtLastGC(std::__Cr::vector<cppgc::CustomSpaceIndex, std::__Cr::allocator<cppgc::CustomSpaceIndex> >, std::__Cr::unique_ptr<v8::CustomSpaceStatisticsReceiver, std::__Cr::default_delete<v8::CustomSpaceStatisticsReceiver> >)
+v8::CppHeap::Create(v8::Platform*, v8::CppHeapCreateParams const&)
+v8::Integer::NewFromUnsigned(v8::Isolate*, unsigned int)
+v8::Integer::New(v8::Isolate*, int)
+v8::Isolate::GetCurrent()
+v8::Isolate::Initialize(v8::Isolate*, v8::Isolate::CreateParams const&)
+v8::Isolate::SetPriority(v8::Isolate::Priority)
+v8::Isolate::CreateParams::CreateParams()
+v8::Isolate::CreateParams::~CreateParams()
+v8::Isolate::SetIsLoading(bool)
+v8::Isolate::CopyCodePages(unsigned int, v8::MemoryRange*)
+v8::Isolate::MeasureMemory(std::__Cr::unique_ptr<v8::MeasureMemoryDelegate, std::__Cr::default_delete<v8::MeasureMemoryDelegate> >, v8::MeasureMemoryExecution)
+v8::Isolate::SetStackLimit(unsigned int)
+v8::Isolate::TryGetCurrent()
+v8::Isolate::SetPromiseHook(void (*)(v8::PromiseHookType, v8::Local<v8::Promise>, v8::Local<v8::Value>))
+v8::Isolate::ThrowException(v8::Local<v8::Value>)
+v8::Isolate::GetHeapProfiler()
+v8::Isolate::GetJSEntryStubs()
+v8::Isolate::RequestInterrupt(void (*)(v8::Isolate*, void*), void*)
+v8::Isolate::DumpAndResetStats()
+v8::Isolate::GetCurrentContext()
+v8::Isolate::GetHeapStatistics(v8::HeapStatistics*)
+v8::Isolate::GetStackTraceLimit()
+v8::Isolate::NumberOfHeapSpaces()
+v8::Isolate::SetMemorySaverMode(bool)
+v8::Isolate::SetMetricsRecorder(std::__Cr::shared_ptr<v8::metrics::Recorder> const&)
+v8::Isolate::TerminateExecution()
+v8::Isolate::GetIncumbentContext()
+v8::Isolate::HasPendingException()
+v8::Isolate::RetryCustomAllocate(std::__Cr::function<bool ()>)
+v8::Isolate::SetAllowAtomicsWait(bool)
+v8::Isolate::SetBatterySaverMode(bool)
+v8::Isolate::SetMicrotasksPolicy(v8::MicrotasksPolicy)
+v8::Isolate::GetEmbeddedCodeRange(void const**, unsigned int*)
+v8::Isolate::SetFatalErrorHandler(void (*)(char const*, char const*))
+v8::Isolate::AddGCEpilogueCallback(void (*)(v8::Isolate*, v8::GCType, v8::GCCallbackFlags), v8::GCType)
+v8::Isolate::AddGCPrologueCallback(void (*)(v8::Isolate*, v8::GCType, v8::GCCallbackFlags), v8::GCType)
+v8::Isolate::ClearCachesForTesting()
+v8::Isolate::LowMemoryNotification()
+v8::Isolate::SetUseCounterCallback(void (*)(v8::Isolate*, v8::Isolate::UseCounterFeature))
+v8::Isolate::SetWasmModuleCallback(bool (*)(v8::FunctionCallbackInfo<v8::Value> const&))
+v8::Isolate::GetHeapSpaceStatistics(v8::HeapSpaceStatistics*, unsigned int)
+v8::Isolate::IsExecutionTerminating()
+v8::Isolate::RemoveMessageListeners(void (*)(v8::Local<v8::Message>, v8::Local<v8::Value>))
+v8::Isolate::SetAddCrashKeyCallback(void (*)(v8::CrashKeyId, std::__Cr::basic_string<char, std::__Cr::char_traits<char>, std::__Cr::allocator<char> > const&))
+v8::Isolate::SetEmbedderRootsHandler(v8::EmbedderRootsHandler*)
+v8::Isolate::SetWasmInstanceCallback(bool (*)(v8::FunctionCallbackInfo<v8::Value> const&))
+v8::Isolate::CancelTerminateExecution()
+v8::Isolate::RemoveGCEpilogueCallback(void (*)(v8::Isolate*, v8::GCType, v8::GCCallbackFlags))
+v8::Isolate::RemoveGCPrologueCallback(void (*)(v8::Isolate*, v8::GCType, v8::GCCallbackFlags))
+v8::Isolate::SetPromiseRejectCallback(void (*)(v8::PromiseRejectMessage))
+v8::Isolate::SetWasmStreamingCallback(void (*)(v8::FunctionCallbackInfo<v8::Value> const&))
+v8::Isolate::InstallConditionalFeatures(v8::Local<v8::Context>)
+v8::Isolate::MemoryPressureNotification(v8::MemoryPressureLevel)
+v8::Isolate::SetCrashKeyStringCallbacks(std::__Cr::function<void* (char const*, v8::CrashKeySize)>, std::__Cr::function<void (void*, std::__Cr::basic_string_view<char, std::__Cr::char_traits<char> >)>)
+v8::Isolate::ContextDisposedNotification(bool)
+v8::Isolate::AddBeforeCallEnteredCallback(void (*)(v8::Isolate*))
+v8::Isolate::GetEnteredOrMicrotaskContext()
+v8::Isolate::AllowJavascriptExecutionScope::AllowJavascriptExecutionScope(v8::Isolate*)
+v8::Isolate::AllowJavascriptExecutionScope::~AllowJavascriptExecutionScope()
+v8::Isolate::IncreaseHeapLimitForDebugging()
+v8::Isolate::NumberOfTrackedHeapObjectTypes()
+v8::Isolate::GetHeapObjectStatisticsAtLastGC(v8::HeapObjectStatistics*, unsigned int)
+v8::Isolate::RemoveBeforeCallEnteredCallback(void (*)(v8::Isolate*))
+v8::Isolate::SetExceptionPropagationCallback(void (*)(v8::ExceptionPropagationMessage))
+v8::Isolate::AddMessageListenerWithErrorLevel(void (*)(v8::Local<v8::Message>, v8::Local<v8::Value>), int, v8::Local<v8::Value>)
+v8::Isolate::DisallowJavascriptExecutionScope::DisallowJavascriptExecutionScope(v8::Isolate*, v8::Isolate::DisallowJavascriptExecutionScope::OnFailure)
+v8::Isolate::DisallowJavascriptExecutionScope::~DisallowJavascriptExecutionScope()
+v8::Isolate::GetHeapCodeAndMetadataStatistics(v8::HeapCodeStatistics*)
+v8::Isolate::IsHeapLimitIncreasedForDebugging()
+v8::Isolate::RequestGarbageCollectionForTesting(v8::Isolate::GarbageCollectionType)
+v8::Isolate::SetAllowWasmCodeGenerationCallback(bool (*)(v8::Local<v8::Context>, v8::Local<v8::String>))
+v8::Isolate::SetWasmAsyncResolvePromiseCallback(void (*)(v8::Isolate*, v8::Local<v8::Context>, v8::Local<v8::Promise::Resolver>, v8::Local<v8::Value>, v8::WasmAsyncSuccess))
+v8::Isolate::SetFailedAccessCheckCallbackFunction(void (*)(v8::Local<v8::Object>, v8::AccessType, v8::Local<v8::Value>))
+v8::Isolate::SetIsJSApiWrapperNativeErrorCallback(bool (*)(v8::Isolate*, v8::Local<v8::Object>))
+v8::Isolate::AdjustAmountOfExternalAllocatedMemory(long long)
+v8::Isolate::LocaleConfigurationChangeNotification()
+v8::Isolate::GetContinuationPreservedEmbedderDataV2()
+v8::Isolate::SetContinuationPreservedEmbedderDataV2(v8::Local<v8::Data>)
+v8::Isolate::SetHostImportModuleDynamicallyCallback(v8::MaybeLocal<v8::Promise> (*)(v8::Local<v8::Context>, v8::Local<v8::Data>, v8::Local<v8::Value>, v8::Local<v8::String>, v8::Local<v8::FixedArray>))
+v8::Isolate::ValidateAndCanonicalizeUnicodeLocaleId(std::__Cr::basic_string_view<char, std::__Cr::char_traits<char> >)
+v8::Isolate::DateTimeConfigurationChangeNotification(v8::Isolate::TimeZoneDetection)
+v8::Isolate::SetHostCreateShadowRealmContextCallback(v8::MaybeLocal<v8::Context> (*)(v8::Local<v8::Context>))
+v8::Isolate::SetWasmCustomDescriptorsEnabledCallback(bool (*)(v8::Local<v8::Context>))
+v8::Isolate::New(v8::Isolate::CreateParams const&)
+v8::Isolate::SetCaptureStackTraceForUncaughtExceptions(bool, int, v8::StackTrace::StackTraceOptions)
+v8::Isolate::SetHostInitializeImportMetaObjectCallback(void (*)(v8::Local<v8::Context>, v8::Local<v8::Module>, v8::Local<v8::Object>))
+v8::Isolate::SetModifyCodeGenerationFromStringsCallback(v8::ModifyCodeGenerationFromStringsResult (*)(v8::Local<v8::Context>, v8::Local<v8::Value>, bool))
+v8::Isolate::SetSharedArrayBufferConstructorEnabledCallback(bool (*)(v8::Local<v8::Context>))
+v8::Isolate::SetHostImportModuleWithPhaseDynamicallyCallback(v8::MaybeLocal<v8::Promise> (*)(v8::Local<v8::Context>, v8::Local<v8::Data>, v8::Local<v8::Value>, v8::Local<v8::String>, v8::ModuleImportPhase, v8::Local<v8::FixedArray>))
+v8::Isolate::Exit()
+v8::Isolate::Enter()
+v8::Isolate::IsDead()
+v8::Isolate::Dispose()
+v8::Isolate::Allocate()
+v8::Isolate::InContext()
+v8::Message::PrintCurrentStackTrace(v8::Isolate*, std::__Cr::basic_ostream<char, std::__Cr::char_traits<char> >&, bool (*)(v8::Isolate*, v8::Local<v8::String>))
+v8::Private::New(v8::Isolate*, v8::Local<v8::String>)
+v8::Private::ForApi(v8::Isolate*, v8::Local<v8::String>)
+v8::Promise::MarkAsSilent()
+v8::Promise::MarkAsHandled()
+v8::Promise::Then(v8::Local<v8::Context>, v8::Local<v8::Function>)
+v8::Promise::Then(v8::Local<v8::Context>, v8::Local<v8::Function>, v8::Local<v8::Function>)
+v8::Promise::Catch(v8::Local<v8::Context>, v8::Local<v8::Function>)
+v8::Promise::State()
+v8::Promise::Result()
+v8::Promise::Resolver::GetPromise()
+v8::Promise::Resolver::New(v8::Local<v8::Context>)
+v8::Promise::Resolver::Reject(v8::Local<v8::Context>, v8::Local<v8::Value>)
+v8::Promise::Resolver::Resolve(v8::Local<v8::Context>, v8::Local<v8::Value>)
+v8::metrics::LongTaskStats::Get(v8::Isolate*)
+v8::metrics::Recorder::GetContext(v8::Isolate*, v8::metrics::Recorder::ContextId)
+v8::DataView::New(v8::Local<v8::ArrayBuffer>, unsigned int, unsigned int)
+v8::External::New(v8::Isolate*, void*, unsigned short)
+v8::Function::FunctionProtoToString(v8::Local<v8::Context>)
+v8::Function::New(v8::Local<v8::Context>, void (*)(v8::FunctionCallbackInfo<v8::Value> const&), v8::Local<v8::Data>, int, v8::ConstructorBehavior, v8::SideEffectType)
+v8::Function::Call(v8::Local<v8::Context>, v8::Local<v8::Value>, int, v8::Local<v8::Value>*)
+v8::Function::Call(v8::Isolate*, v8::Local<v8::Context>, v8::Local<v8::Value>, int, v8::Local<v8::Value>*)
+v8::Function::SetName(v8::Local<v8::String>)
+v8::Template::SetAccessorProperty(v8::Local<v8::Name>, v8::Local<v8::FunctionTemplate>, v8::Local<v8::FunctionTemplate>, v8::PropertyAttribute)
+v8::Template::SetLazyDataProperty(v8::Local<v8::Name>, void (*)(v8::Local<v8::Name>, v8::PropertyCallbackInfo<v8::Value> const&), v8::Local<v8::Value>, v8::PropertyAttribute, v8::SideEffectType, v8::SideEffectType)
+v8::Template::SetNativeDataProperty(v8::Local<v8::Name>, void (*)(v8::Local<v8::Name>, v8::PropertyCallbackInfo<v8::Value> const&), void (*)(v8::Local<v8::Name>, v8::Local<v8::Value>, v8::PropertyCallbackInfo<void> const&), v8::Local<v8::Value>, v8::PropertyAttribute, v8::SideEffectType, v8::SideEffectType)
+v8::Template::SetIntrinsicDataProperty(v8::Local<v8::Name>, v8::Intrinsic, v8::PropertyAttribute)
+v8::Template::Set(v8::Local<v8::Name>, v8::Local<v8::Data>, v8::PropertyAttribute)
+v8::TryCatch::SetVerbose(bool)
+v8::TryCatch::StackTrace(v8::Local<v8::Context>, v8::Local<v8::Value>)
+v8::TryCatch::SetCaptureMessage(bool)
+v8::TryCatch::Reset()
+v8::TryCatch::ReThrow()
+v8::TryCatch::TryCatch(v8::Isolate*)
+v8::TryCatch::~TryCatch()
+v8::Unlocker::Initialize(v8::Isolate*)
+v8::Unlocker::~Unlocker()
+v8::Unwinder::TryUnwindV8Frames(v8::JSEntryStubs const&, unsigned int, v8::MemoryRange const*, v8::RegisterState*, void const*)
+v8::internal::ShouldThrowOnError(v8::internal::Isolate*)
+v8::internal::CopyTracedReference(unsigned int const* const*, unsigned int**)
+v8::internal::MoveTracedReference(unsigned int**, unsigned int**)
+v8::internal::DisposeTracedReference(unsigned int*)
+v8::internal::GlobalizeTracedReference(v8::internal::Isolate*, unsigned int, unsigned int*, v8::internal::TracedReferenceStoreMode, v8::internal::TracedReferenceHandling)
+v8::internal::Internals::GetCurrentIsolate()
+v8::CFunction::CFunction(void const*, v8::CFunctionInfo const*)
+v8::Exception::RangeError(v8::Local<v8::String>, v8::Local<v8::Value>)
+v8::Exception::SyntaxError(v8::Local<v8::String>, v8::Local<v8::Value>)
+v8::Exception::CreateMessage(v8::Isolate*, v8::Local<v8::Value>)
+v8::Exception::WasmCompileError(v8::Local<v8::String>, v8::Local<v8::Value>)
+v8::Exception::CaptureStackTrace(v8::Local<v8::Context>, v8::Local<v8::Object>)
+v8::Exception::Error(v8::Local<v8::String>, v8::Local<v8::Value>)
+v8::Exception::TypeError(v8::Local<v8::String>, v8::Local<v8::Value>)
+v8::Extension::Extension(char const*, char const*, int, char const**, int)
+v8::Extension::Extension(char const*, char const*, int, char const**, int)
+v8::Int8Array::New(v8::Local<v8::ArrayBuffer>, unsigned int, unsigned int)
+v8::Int8Array::New(v8::Local<v8::SharedArrayBuffer>, unsigned int, unsigned int)
+v8::Signature::New(v8::Isolate*, v8::Local<v8::FunctionTemplate>)
+node::AsyncHooks::pop_async_context(double)
+node::AsyncHooks::clear_async_id_stack()
+node::NewContext(v8::Isolate*, v8::Local<v8::ObjectTemplate>)
+node::ResetStdio()
+node::per_process::cli_options
+node::MakeCallback(v8::Isolate*, v8::Local<v8::Object>, v8::Local<v8::Function>, int, v8::Local<v8::Value>*, node::async_context)
+node::MakeCallback(v8::Isolate*, v8::Local<v8::Object>, char const*, int, v8::Local<v8::Value>*, node::async_context)
+node::wasm_web_api::StartStreamingCompilation(v8::FunctionCallbackInfo<v8::Value> const&)
+node::CallbackScope::CallbackScope(v8::Isolate*, v8::Local<v8::Object>, node::async_context)
+node::CallbackScope::CallbackScope(node::Environment*, v8::Local<v8::Object>, node::async_context)
+node::CallbackScope::~CallbackScope()
+node::GetNodeReport(v8::Isolate*, char const*, char const*, v8::Local<v8::Value>, std::__Cr::basic_ostream<char, std::__Cr::char_traits<char> >&)
+node::SpinEventLoop(node::Environment*)
+node::FreeEnvironment(node::Environment*)
+node::FreeIsolateData(node::IsolateData*)
+node::LoadEnvironment(node::Environment*, std::__Cr::function<v8::MaybeLocal<v8::Value> (node::StartExecutionCallbackInfo const&)>, std::__Cr::function<void (node::Environment*, v8::Local<v8::Value>, v8::Local<v8::Value>)>)
+node::CreateEnvironment(node::IsolateData*, v8::Local<v8::Context>, std::__Cr::vector<std::__Cr::basic_string<char, std::__Cr::char_traits<char>, std::__Cr::allocator<char> >, std::__Cr::allocator<std::__Cr::basic_string<char, std::__Cr::char_traits<char>, std::__Cr::allocator<char> > > > const&, std::__Cr::vector<std::__Cr::basic_string<char, std::__Cr::char_traits<char>, std::__Cr::allocator<char> >, std::__Cr::allocator<std::__Cr::basic_string<char, std::__Cr::char_traits<char>, std::__Cr::allocator<char> > > > const&, node::EnvironmentFlags::Flags, node::ThreadId, std::__Cr::unique_ptr<node::InspectorParentHandle, std::__Cr::default_delete<node::InspectorParentHandle> >)
+node::CreateIsolateData(v8::Isolate*, uv_loop_s*, node::MultiIsolatePlatform*, node::ArrayBufferAllocator*, node::EmbedderSnapshotData const*)
+node::InitializeContext(v8::Local<v8::Context>)
+node::CheckedUvLoopClose(uv_loop_s*)
+node::ContextEmbedderTag::kNodeContextTagPtr
+node::SetIsolateUpForNode(v8::Isolate*)
+node::SetIsolateUpForNode(v8::Isolate*, node::IsolateSettings const&)
+node::MultiIsolatePlatform::Create(int, v8::TracingController*, v8::PageAllocator*)
+node::SetProcessExitHandler(node::Environment*, std::__Cr::function<void (node::Environment*, int)>&&)
+node::NodeRuntimeEnvironment::GetInstance()
+node::NodeRuntimeEnvironment::SetDelegate(std::__Cr::unique_ptr<node::RuntimeDelegate, std::__Cr::default_delete<node::RuntimeDelegate> >)
+node::InitializeOncePerProcess(std::__Cr::vector<std::__Cr::basic_string<char, std::__Cr::char_traits<char>, std::__Cr::allocator<char> >, std::__Cr::allocator<std::__Cr::basic_string<char, std::__Cr::char_traits<char>, std::__Cr::allocator<char> > > > const&, node::ProcessInitializationFlags::Flags)
+node::DefaultProcessExitHandler(node::Environment*, int)
+node::ProcessEmitWarningGeneric(node::Environment*, std::__Cr::basic_string_view<char, std::__Cr::char_traits<char> >, std::__Cr::basic_string_view<char, std::__Cr::char_traits<char> >, std::__Cr::basic_string_view<char, std::__Cr::char_traits<char> >)
+node::AllowWasmCodeGenerationCallback(v8::Local<v8::Context>, v8::Local<v8::String>)
+node::Stop(node::Environment*, node::StopFlags::Flags)
+node::Assert(node::AssertionInfo const&)
+node::Buffer::HasInstance(v8::Local<v8::Value>)
+node::Buffer::New(v8::Isolate*, v8::Local<v8::ArrayBuffer>, unsigned int, unsigned int)
+node::Buffer::New(v8::Isolate*, unsigned int)
+node::Buffer::Copy(v8::Isolate*, char const*, unsigned int)
+node::Buffer::Data(v8::Local<v8::Value>)
+node::Buffer::Length(v8::Local<v8::Value>)
+node::errors::TriggerUncaughtException(v8::Isolate*, v8::TryCatch const&)
+node::binding::get_linked_module(char const*)
+node::tracing::TraceEventHelper::GetAgent()
+node::tracing::TraceEventHelper::SetAgent(node::tracing::Agent*)
+node::tracing::Agent::Agent()
+node::builtins::BuiltinLoader::LookupAndCompile(v8::Local<v8::Context>, char const*, v8::LocalVector<v8::String>*, node::Realm*)
+node::builtins::BuiltinLoader::BuiltinLoader()
+node::AsyncWrap::EmitAfter(node::Environment*, double)
+cppgc::InitializeProcess(v8::PageAllocator*, unsigned int)
+cppgc::ProcessHeapStatistics::total_allocated_space_
+cppgc::ProcessHeapStatistics::total_allocated_object_size_
+cppgc::subtle::NoGarbageCollectionScope::Enter(cppgc::HeapHandle&)
+cppgc::subtle::NoGarbageCollectionScope::Leave(cppgc::HeapHandle&)
+cppgc::subtle::NoGarbageCollectionScope::NoGarbageCollectionScope(cppgc::HeapHandle&)
+cppgc::subtle::NoGarbageCollectionScope::~NoGarbageCollectionScope()
+cppgc::subtle::DisallowGarbageCollectionScope::IsGarbageCollectionAllowed(cppgc::HeapHandle&)
+cppgc::subtle::DisallowGarbageCollectionScope::DisallowGarbageCollectionScope(cppgc::HeapHandle&)
+cppgc::subtle::DisallowGarbageCollectionScope::~DisallowGarbageCollectionScope()
+cppgc::subtle::HeapState::IsInAtomicPause(cppgc::HeapHandle const&)
+cppgc::subtle::HeapState::IsMarking(cppgc::HeapHandle const&)
+cppgc::internal::WriteBarrier::write_barrier_enabled_
+void cppgc::internal::WriteBarrier::CombinedWriteBarrierSlow<(cppgc::internal::WriteBarrierSlotType)1>(void const*)
+cppgc::internal::WriteBarrier::DijkstraMarkingBarrierRangeSlow(cppgc::HeapHandle&, void const*, unsigned int, unsigned int, void (*)(cppgc::Visitor*, void const*))
+cppgc::internal::WriteBarrier::SteeleMarkingBarrierSlowWithSentinelCheck(void const*)
+cppgc::internal::WriteBarrier::DijkstraMarkingBarrierSlowWithSentinelCheck(void const*)
+cppgc::internal::PersistentRegion::IsCreationThread()
+cppgc::internal::BaseObjectSizeTrait::GetObjectSizeForGarbageCollected(void const*)
+cppgc::internal::PersistentRegionBase::RefillFreeListAndAllocateNode(void*, void (*)(cppgc::internal::RootVisitor&, void const*))
+cppgc::internal::PersistentRegionLock::AssertLocked()
+cppgc::internal::PersistentRegionLock::PersistentRegionLock()
+cppgc::internal::PersistentRegionLock::~PersistentRegionLock()
+cppgc::internal::WeakPersistentPolicy::GetPersistentRegion(void const*)
+cppgc::internal::EnsureGCInfoIndexTrait::EnsureGCInfoIndex(std::__Cr::atomic<unsigned short>&, void (*)(cppgc::Visitor*, void const*))
+cppgc::internal::EnsureGCInfoIndexTrait::EnsureGCInfoIndex(std::__Cr::atomic<unsigned short>&, void (*)(cppgc::Visitor*, void const*), void (*)(void*))
+cppgc::internal::EnsureGCInfoIndexTrait::EnsureGCInfoIndex(std::__Cr::atomic<unsigned short>&, void (*)(cppgc::Visitor*, void const*), void (*)(void*), cppgc::internal::HeapObjectName (*)(void const*, cppgc::internal::HeapObjectNameForUnnamedObject))
+cppgc::internal::ExplicitManagementImpl::FreeUnreferencedObject(cppgc::HeapHandle&, void*)
+cppgc::internal::ExplicitManagementImpl::Resize(void*, unsigned int)
+cppgc::internal::StrongPersistentPolicy::GetPersistentRegion(void const*)
+cppgc::internal::PrefinalizerRegistration::PrefinalizerRegistration(void*, bool (*)(cppgc::LivenessBroker const&, void*))
+cppgc::internal::TraceTraitFromInnerAddressImpl::GetTraceDescriptor(void const*)
+cppgc::internal::WeakCrossThreadPersistentPolicy::GetPersistentRegion(void const*)
+cppgc::internal::MakeGarbageCollectedTraitInternal::Allocate(cppgc::AllocationHandle&, unsigned int, std::align_val_t, unsigned short)
+cppgc::internal::MakeGarbageCollectedTraitInternal::Allocate(cppgc::AllocationHandle&, unsigned int, std::align_val_t, unsigned short, cppgc::CustomSpaceIndex)
+cppgc::internal::MakeGarbageCollectedTraitInternal::Allocate(cppgc::AllocationHandle&, unsigned int, unsigned short)
+cppgc::internal::MakeGarbageCollectedTraitInternal::Allocate(cppgc::AllocationHandle&, unsigned int, unsigned short, cppgc::CustomSpaceIndex)
+cppgc::internal::StrongCrossThreadPersistentPolicy::GetPersistentRegion(void const*)
+cppgc::internal::FatalImpl(char const*, v8::SourceLocation)
+v8_inspector::V8DebuggerId::toString() const
+v8_inspector::V8StackTraceId::IsInvalid() const
+v8::CpuProfile::GetSampleState(int) const
+v8::CpuProfile::GetSamplesCount() const
+v8::CpuProfile::GetSampleTimestamp(int) const
+v8::CpuProfile::GetSampleEmbedderState(int) const
+v8::CpuProfile::GetSample(int) const
+v8::FixedArray::Get(int) const
+v8::FixedArray::Length() const
+v8::StackFrame::GetLocation() const
+v8::StackFrame::GetScriptId() const
+v8::StackFrame::GetScriptName() const
+v8::StackFrame::GetFunctionName() const
+v8::StackFrame::GetSourcePosition() const
+v8::StackFrame::GetScriptNameOrSourceURL() const
+v8::StackTrace::GetFrameCount() const
+v8::StackTrace::GetFrame(v8::Isolate*, unsigned int) const
+v8::ArrayBuffer::ByteLength() const
+v8::ArrayBuffer::WasDetached() const
+v8::ArrayBuffer::IsDetachable() const
+v8::ArrayBuffer::IsResizableByUserJavaScript() const
+v8::ArrayBuffer::Data() const
+v8::BackingStore::ByteLength() const
+v8::BackingStore::MaxByteLength() const
+v8::BackingStore::IsResizableByUserJavaScript() const
+v8::BackingStore::Data() const
+v8::BackingStore::IsShared() const
+v8::HeapSnapshot::Serialize(v8::OutputStream*, v8::HeapSnapshot::SerializationFormat) const
+v8::ScriptOrigin::VerifyHostDefinedOptions() const
+v8::ModuleRequest::GetSpecifier() const
+v8::ModuleRequest::GetSourceOffset() const
+v8::ModuleRequest::GetImportAttributes() const
+v8::ModuleRequest::GetPhase() const
+v8::UnboundScript::GetId() const
+v8::CpuProfileNode::GetScriptId() const
+v8::CpuProfileNode::GetLineNumber() const
+v8::CpuProfileNode::GetSourceType() const
+v8::CpuProfileNode::GetColumnNumber() const
+v8::CpuProfileNode::GetFunctionName() const
+v8::CpuProfileNode::GetFunctionNameStr() const
+v8::CpuProfileNode::GetScriptResourceName() const
+v8::CpuProfileNode::GetScriptResourceNameStr() const
+v8::CpuProfileNode::IsScriptSharedCrossOrigin() const
+v8::CpuProfileNode::GetNodeId() const
+v8::CpuProfileNode::GetParent() const
+v8::ObjectTemplate::InternalFieldCount() const
+v8::PrimitiveArray::Length() const
+v8::ScriptCompiler::ConsumeCodeCacheTask::ShouldMergeWithExistingScript() const
+v8::ArrayBufferView::HasBuffer() const
+v8::CppHeapExternal::ValueImpl(v8::Isolate*, v8::CppHeapPointerTagRange) const
+v8::SharedArrayBuffer::ByteLength() const
+v8::SharedArrayBuffer::Data() const
+v8::ValueDeserializer::GetWireFormatVersion() const
+v8::PropertyDescriptor::enumerable() const
+v8::PropertyDescriptor::configurable() const
+v8::PropertyDescriptor::get() const
+v8::PropertyDescriptor::set() const
+v8::PropertyDescriptor::value() const
+v8::PropertyDescriptor::has_get() const
+v8::PropertyDescriptor::has_set() const
+v8::PropertyDescriptor::writable() const
+v8::PropertyDescriptor::has_value() const
+v8::CompileHintsCollector::GetCompileHints(v8::Isolate*) const
+v8::Map::Size() const
+v8::Map::AsArray() const
+v8::Data::IsFixedArray() const
+v8::Data::IsFunctionTemplate() const
+v8::Data::IsValue() const
+v8::Date::ValueOf() const
+v8::Array::Length() const
+v8::Int32::Value() const
+v8::Value::FullIsTrue() const
+v8::Value::Int32Value(v8::Local<v8::Context>) const
+v8::Value::IsDataView() const
+v8::Value::IsExternal() const
+v8::Value::IsFunction() const
+v8::Value::IsInt8Array() const
+v8::Value::NumberValue(v8::Local<v8::Context>) const
+v8::Value::Uint32Value(v8::Local<v8::Context>) const
+v8::Value::BooleanValue(v8::Isolate*) const
+v8::Value::IntegerValue(v8::Local<v8::Context>) const
+v8::Value::IsInt16Array() const
+v8::Value::IsInt32Array() const
+v8::Value::IsTypedArray() const
+v8::Value::IsUint8Array() const
+v8::Value::ToArrayIndex(v8::Local<v8::Context>) const
+v8::Value::IsArrayBuffer() const
+v8::Value::IsMapIterator() const
+v8::Value::IsNativeError() const
+v8::Value::IsSetIterator() const
+v8::Value::IsUint16Array() const
+v8::Value::IsUint32Array() const
+v8::Value::IsBigIntObject() const
+v8::Value::IsFloat16Array() const
+v8::Value::IsFloat32Array() const
+v8::Value::IsFloat64Array() const
+v8::Value::IsNumberObject() const
+v8::Value::IsStringObject() const
+v8::Value::IsSymbolObject() const
+v8::Value::IsBigInt64Array() const
+v8::Value::IsBooleanObject() const
+v8::Value::IsBigUint64Array() const
+v8::Value::IsArgumentsObject() const
+v8::Value::IsArrayBufferView() const
+v8::Value::IsGeneratorObject() const
+v8::Value::IsWasmMemoryObject() const
+v8::Value::IsWasmModuleObject() const
+v8::Value::IsSharedArrayBuffer() const
+v8::Value::IsUint8ClampedArray() const
+v8::Value::IsModuleNamespaceObject() const
+v8::Value::IsMap() const
+v8::Value::IsSet() const
+v8::Value::Equals(v8::Local<v8::Context>, v8::Local<v8::Value>) const
+v8::Value::IsDate() const
+v8::Value::IsName() const
+v8::Value::IsArray() const
+v8::Value::IsInt32() const
+v8::Value::IsProxy() const
+v8::Value::ToInt32(v8::Local<v8::Context>) const
+v8::Value::IsBigInt() const
+v8::Value::IsNumber() const
+v8::Value::IsObject() const
+v8::Value::IsRegExp() const
+v8::Value::IsSymbol() const
+v8::Value::IsUint32() const
+v8::Value::ToBigInt(v8::Local<v8::Context>) const
+v8::Value::ToNumber(v8::Local<v8::Context>) const
+v8::Value::ToObject(v8::Local<v8::Context>) const
+v8::Value::ToString(v8::Local<v8::Context>) const
+v8::Value::ToUint32(v8::Local<v8::Context>) const
+v8::Value::IsBoolean() const
+v8::Value::IsPromise() const
+v8::Value::IsWeakMap() const
+v8::Value::IsWeakSet() const
+v8::Value::ToBoolean(v8::Isolate*) const
+v8::Value::ToNumeric(v8::Local<v8::Context>) const
+v8::BigInt::Int64Value(bool*) const
+v8::BigInt::ToWordsArray(int*, int*, unsigned long long*) const
+v8::BigInt::WordCount() const
+v8::Module::IsGraphAsync() const
+v8::Module::GetIdentityHash() const
+v8::Module::GetModuleRequests() const
+v8::Module::IsSourceTextModule() const
+v8::Module::SourceOffsetToLocation(int) const
+v8::Module::ScriptId() const
+v8::Module::GetStatus() const
+v8::Number::Value() const
+v8::Object::IsCallable() const
+v8::Object::IsApiWrapper() const
+v8::Object::IsConstructor() const
+v8::Object::InternalFieldCount() const
+v8::RegExp::GetSource() const
+v8::Script::GetCompileHintsCollector() const
+v8::String::WriteUtf8V2(v8::Isolate*, char*, unsigned int, int, unsigned int*) const
+v8::String::StringEquals(v8::Local<v8::String>) const
+v8::String::Utf8LengthV2(v8::Isolate*) const
+v8::String::WriteOneByteV2(v8::Isolate*, unsigned int, unsigned int, unsigned char*, int) const
+v8::String::CanMakeExternal(v8::String::Encoding) const
+v8::String::ContainsOnlyOneByte() const
+v8::String::GetExternalStringResourceBaseSlow(v8::String::Encoding*) const
+v8::String::Length() const
+v8::String::WriteV2(v8::Isolate*, unsigned int, unsigned int, unsigned short*, int) const
+v8::String::IsOneByte() const
+v8::Uint32::Value() const
+v8::Boolean::Value() const
+v8::Integer::Value() const
+v8::Isolate::GetCppHeap() const
+v8::Isolate::GetMicrotasksPolicy() const
+v8::Isolate::IsCurrent() const
+v8::Message::ErrorLevel() const
+v8::Message::GetLineNumber(v8::Local<v8::Context>) const
+v8::Message::GetSourceLine(v8::Local<v8::Context>) const
+v8::Message::GetStackTrace() const
+v8::Message::GetStartColumn(v8::Local<v8::Context>) const
+v8::Message::GetStartColumn() const
+v8::Message::GetScriptOrigin() const
+v8::Message::IsSharedCrossOrigin() const
+v8::Message::GetScriptResourceName() const
+v8::Message::Get() const
+v8::Promise::HasHandler() const
+v8::External::Value(unsigned short) const
+v8::Function::NewInstance(v8::Local<v8::Context>, int, v8::Local<v8::Value>*) const
+v8::Function::GetDebugName() const
+v8::Function::GetScriptOrigin() const
+v8::Function::GetBoundFunction() const
+v8::Function::GetScriptLocation() const
+v8::Function::GetScriptStartPosition() const
+v8::Function::Experimental_IsNopFunction() const
+v8::Function::NewInstanceWithSideEffectType(v8::Local<v8::Context>, int, v8::Local<v8::Value>*, v8::SideEffectType) const
+v8::Function::GetName() const
+v8::Function::ScriptId() const
+v8::TryCatch::StackTrace(v8::Local<v8::Context>) const
+v8::TryCatch::CanContinue() const
+v8::TryCatch::HasTerminated() const
+v8::TryCatch::Message() const
+v8::TryCatch::Exception() const
+v8::TryCatch::HasCaught() const
+node::PrincipalRealm::process_object() const
+cppgc::LivenessBroker::IsHeapObjectAliveImpl(void const*) const
+TLS init function for openscreen::internal::ScopedTraceOperation::traces_
+v8::HandleScope::DeleteExtensions(v8::Isolate*)
+v8::HandleScope::Extend(v8::Isolate*)
+v8::api_internal::ToLocalEmpty()
+v8::api_internal::DisposeGlobal(unsigned int*)
+v8::api_internal::FromJustIsNothing()
+v8::api_internal::GlobalizeReference(v8::internal::Isolate*, unsigned int)
+v8::api_internal::GetFunctionTemplateData(v8::Isolate*, v8::Local<v8::Data>)
+v8::api_internal::MakeWeak(unsigned int*, void*, void (*)(v8::WeakCallbackInfo<void> const&), v8::WeakCallbackType)
+v8::api_internal::ClearWeak(unsigned int*)
+v8::ObjectTemplate::NewInstance(v8::Local<v8::Context>)
+v8::ObjectTemplate::SetInternalFieldCount(int)
+v8::ObjectTemplate::New(v8::Isolate*, v8::Local<v8::FunctionTemplate>)
+v8::FunctionTemplate::GetFunction(v8::Local<v8::Context>)
+v8::FunctionTemplate::New(v8::Isolate*, void (*)(v8::FunctionCallbackInfo<v8::Value> const&), v8::Local<v8::Value>, v8::Local<v8::Signature>, int, v8::ConstructorBehavior, v8::SideEffectType, v8::CFunction const*, unsigned short, unsigned short, unsigned short)
+v8::Array::New(v8::Isolate*, v8::Local<v8::Value>*, unsigned int)
+v8::Object::SetAlignedPointerInInternalField(int, void*, unsigned short)
+v8::Object::Get(v8::Local<v8::Context>, v8::Local<v8::Value>)
+v8::Object::New(v8::Isolate*)
+v8::Object::Set(v8::Local<v8::Context>, v8::Local<v8::Value>, v8::Local<v8::Value>)
+v8::String::NewFromUtf8(v8::Isolate*, char const*, v8::NewStringType, int)
+v8::String::Utf8Value::Utf8Value(v8::Isolate*, v8::Local<v8::Value>)
+v8::String::Utf8Value::~Utf8Value()
+v8::Isolate::GetCurrent()
+v8::Isolate::ThrowException(v8::Local<v8::Value>)
+v8::Isolate::GetCurrentContext()
+v8::External::New(v8::Isolate*, void*, unsigned short)
+v8::Function::Call(v8::Local<v8::Context>, v8::Local<v8::Value>, int, v8::Local<v8::Value>*)
+v8::Function::SetName(v8::Local<v8::String>)
+v8::Template::Set(v8::Local<v8::Name>, v8::Local<v8::Data>, v8::PropertyAttribute)
+v8::Exception::TypeError(v8::Local<v8::String>, v8::Local<v8::Value>)
+wgt::application_widget_keys::kTizenServiceKey
+wgt::parse::PermissionsInfo::Key()
+wgt::parse::WidgetConfigParser::ParseManifest(std::__Cr::filesystem::path const&)
+wgt::parse::WidgetConfigParser::WidgetConfigParser()
+node::NodeRuntimeEnvironment::ProcessEmit(char const*, char const*)
+node::NodeRuntimeEnvironment::StartServiceRuntime(int, char**, char const*, void (*)(void*))
+parser::ManifestParser::~ManifestParser()
+v8::Value::IsExternal() const
+v8::Value::IsFunction() const
+v8::External::Value(unsigned short) const
+wgt::parse::WidgetConfigParser::GetManifestData(std::__Cr::basic_string<char, std::__Cr::char_traits<char>, std::__Cr::allocator<char> > const&) const
+v8::CpuProfile::Delete()
+v8::Int32Array::New(v8::Local<v8::ArrayBuffer>, unsigned int, unsigned int)
+v8::StackTrace::CurrentStackTrace(v8::Isolate*, int, v8::StackTrace::StackTraceOptions)
+v8::TypedArray::Length()
+v8::Uint8Array::New(v8::Local<v8::ArrayBuffer>, unsigned int, unsigned int)
+v8::ArrayBuffer::GetBackingStore()
+v8::ArrayBuffer::NewBackingStore(v8::Isolate*, unsigned int, v8::BackingStoreInitializationMode, v8::BackingStoreOnFailureMode)
+v8::ArrayBuffer::NewBackingStore(void*, unsigned int, void (*)(void*, unsigned int, void*), void*)
+v8::ArrayBuffer::New(v8::Isolate*, std::__Cr::shared_ptr<v8::BackingStore>)
+v8::ArrayBuffer::New(v8::Isolate*, unsigned int, v8::BackingStoreInitializationMode)
+v8::ArrayBuffer::Detach(v8::Local<v8::Value>)
+v8::ArrayBuffer::Allocator::NewDefaultAllocator()
+v8::CpuProfiler::UseDetailedSourcePositionsForProfiling(v8::Isolate*)
+v8::CpuProfiler::New(v8::Isolate*, v8::CpuProfilingNamingMode, v8::CpuProfilingLoggingMode)
+v8::CpuProfiler::Stop(unsigned int)
+v8::CpuProfiler::Start(v8::CpuProfilingOptions, std::__Cr::unique_ptr<v8::DiscardedSamplesDelegate, std::__Cr::default_delete<v8::DiscardedSamplesDelegate> >)
+v8::CpuProfiler::Dispose()
+v8::HandleScope::DeleteExtensions(v8::Isolate*)
+v8::HandleScope::Extend(v8::Isolate*)
+v8::Uint32Array::New(v8::Local<v8::ArrayBuffer>, unsigned int, unsigned int)
+v8::BackingStore::~BackingStore()
+v8::Float64Array::New(v8::Local<v8::ArrayBuffer>, unsigned int, unsigned int)
+v8::HeapProfiler::QueryObjects(v8::Local<v8::Context>, v8::QueryObjectPredicate*, std::__Cr::vector<v8::Global<v8::Object>, std::__Cr::allocator<v8::Global<v8::Object> > >*)
+v8::HeapProfiler::TakeHeapSnapshot(v8::HeapProfiler::HeapSnapshotOptions const&)
+v8::HeapProfiler::GetAllocationProfile()
+v8::HeapProfiler::StopSamplingHeapProfiler()
+v8::HeapProfiler::StartSamplingHeapProfiler(unsigned long long, int, v8::HeapProfiler::SamplingFlags)
+v8::HeapProfiler::AddBuildEmbedderGraphCallback(void (*)(v8::Isolate*, v8::EmbedderGraph*, void*), void*)
+v8::HeapProfiler::RemoveBuildEmbedderGraphCallback(void (*)(v8::Isolate*, v8::EmbedderGraph*, void*), void*)
+v8::HeapSnapshot::Delete()
+v8::IsolateGroup::GetDefault()
+v8::IsolateGroup::CanCreateNewGroups()
+v8::IsolateGroup::Create()
+v8::IsolateGroup::~IsolateGroup()
+v8::api_internal::Eternalize(v8::Isolate*, v8::Value*)
+v8::api_internal::ToLocalEmpty()
+v8::api_internal::DisposeGlobal(unsigned int*)
+v8::api_internal::FromJustIsNothing()
+v8::api_internal::GlobalizeReference(v8::internal::Isolate*, unsigned int)
+v8::api_internal::MoveGlobalReference(unsigned int**, unsigned int**)
+v8::api_internal::GetFunctionTemplateData(v8::Isolate*, v8::Local<v8::Data>)
+v8::api_internal::MakeWeak(unsigned int**)
+v8::api_internal::MakeWeak(unsigned int*, void*, void (*)(v8::WeakCallbackInfo<void> const&), v8::WeakCallbackType)
+v8::api_internal::ClearWeak(unsigned int*)
+v8::BigInt64Array::New(v8::Local<v8::ArrayBuffer>, unsigned int, unsigned int)
+v8::CFunctionInfo::CFunctionInfo(v8::CTypeInfo const&, unsigned int, v8::CTypeInfo const*, v8::CFunctionInfo::Int64Representation)
+v8::RegisterState::RegisterState()
+v8::RegisterState::~RegisterState()
+v8::UnboundScript::GetSourceURL()
+v8::UnboundScript::GetSourceMappingURL()
+v8::UnboundScript::BindToCurrentContext()
+v8::WasmStreaming::OnBytesReceived(unsigned char const*, unsigned int)
+v8::WasmStreaming::Abort(v8::MaybeLocal<v8::Value>)
+v8::WasmStreaming::Finish(std::__Cr::function<void (v8::WasmStreaming::ModuleCachingInterface&)> const&)
+v8::WasmStreaming::SetUrl(char const*, unsigned int)
+v8::WasmStreaming::Unpack(v8::Isolate*, v8::Local<v8::Value>)
+v8::HeapStatistics::HeapStatistics()
+v8::MicrotaskQueue::New(v8::Isolate*, v8::MicrotasksPolicy)
+v8::ObjectTemplate::SetHandler(v8::NamedPropertyHandlerConfiguration const&)
+v8::ObjectTemplate::SetHandler(v8::IndexedPropertyHandlerConfiguration const&)
+v8::ObjectTemplate::NewInstance(v8::Local<v8::Context>)
+v8::ObjectTemplate::SetInternalFieldCount(int)
+v8::ObjectTemplate::New(v8::Isolate*, v8::Local<v8::FunctionTemplate>)
+v8::PrimitiveArray::New(v8::Isolate*, int)
+v8::PrimitiveArray::Set(v8::Isolate*, int, v8::Local<v8::Primitive>)
+v8::ScriptCompiler::CachedData::CachedData(unsigned char const*, int, v8::ScriptCompiler::CachedData::BufferPolicy)
+v8::ScriptCompiler::CachedData::~CachedData()
+v8::ScriptCompiler::CompileModule(v8::Isolate*, v8::ScriptCompiler::Source*, v8::ScriptCompiler::CompileOptions, v8::ScriptCompiler::NoCacheReason)
+v8::ScriptCompiler::CompileFunction(v8::Local<v8::Context>, v8::ScriptCompiler::Source*, unsigned int, v8::Local<v8::String>*, unsigned int, v8::Local<v8::Object>*, v8::ScriptCompiler::CompileOptions, v8::ScriptCompiler::NoCacheReason)
+v8::ScriptCompiler::CreateCodeCache(v8::Local<v8::UnboundScript>)
+v8::ScriptCompiler::CreateCodeCache(v8::Local<v8::UnboundModuleScript>)
+v8::ScriptCompiler::CachedDataVersionTag()
+v8::ScriptCompiler::CompileUnboundScript(v8::Isolate*, v8::ScriptCompiler::Source*, v8::ScriptCompiler::CompileOptions, v8::ScriptCompiler::NoCacheReason)
+v8::ScriptCompiler::ConsumeCodeCacheTask::~ConsumeCodeCacheTask()
+v8::ScriptCompiler::CreateCodeCacheForFunction(v8::Local<v8::Function>)
+v8::ArrayBufferView::ByteLength()
+v8::ArrayBufferView::ByteOffset()
+v8::ArrayBufferView::CopyContents(void*, unsigned int)
+v8::ArrayBufferView::Buffer()
+v8::SealHandleScope::SealHandleScope(v8::Isolate*)
+v8::SealHandleScope::~SealHandleScope()
+v8::SnapshotCreator::AddData(v8::Local<v8::Context>, unsigned int)
+v8::SnapshotCreator::SnapshotCreator(v8::Isolate*, v8::Isolate::CreateParams const&)
+v8::SnapshotCreator::~SnapshotCreator()
+v8::ValueSerializer::WriteValue(v8::Local<v8::Context>, v8::Local<v8::Value>)
+v8::ValueSerializer::WriteDouble(double)
+v8::ValueSerializer::WriteHeader()
+v8::ValueSerializer::WriteUint32(unsigned int)
+v8::ValueSerializer::WriteUint64(unsigned long long)
+v8::ValueSerializer::WriteRawBytes(void const*, unsigned int)
+v8::ValueSerializer::TransferArrayBuffer(unsigned int, v8::Local<v8::ArrayBuffer>)
+v8::ValueSerializer::SetTreatArrayBufferViewsAsHostObjects(bool)
+v8::ValueSerializer::Release()
+v8::ValueSerializer::Delegate::IsHostObject(v8::Isolate*, v8::Local<v8::Object>)
+v8::ValueSerializer::Delegate::WriteHostObject(v8::Isolate*, v8::Local<v8::Object>)
+v8::ValueSerializer::Delegate::FreeBufferMemory(void*)
+v8::ValueSerializer::Delegate::HasCustomHostObject(v8::Isolate*)
+v8::ValueSerializer::Delegate::GetSharedArrayBufferId(v8::Isolate*, v8::Local<v8::SharedArrayBuffer>)
+v8::ValueSerializer::Delegate::ReallocateBufferMemory(void*, unsigned int, unsigned int*)
+v8::ValueSerializer::Delegate::GetWasmModuleTransferId(v8::Isolate*, v8::Local<v8::WasmModuleObject>)
+v8::ValueSerializer::Delegate::AdoptSharedValueConveyor(v8::Isolate*, v8::SharedValueConveyor&&)
+v8::ValueSerializer::ValueSerializer(v8::Isolate*, v8::ValueSerializer::Delegate*)
+v8::ValueSerializer::~ValueSerializer()
+v8::FunctionTemplate::GetFunction(v8::Local<v8::Context>)
+v8::FunctionTemplate::HasInstance(v8::Local<v8::Value>)
+v8::FunctionTemplate::SetClassName(v8::Local<v8::String>)
+v8::FunctionTemplate::InstanceTemplate()
+v8::FunctionTemplate::PrototypeTemplate()
+v8::FunctionTemplate::ReadOnlyPrototype()
+v8::FunctionTemplate::NewWithCFunctionOverloads(v8::Isolate*, void (*)(v8::FunctionCallbackInfo<v8::Value> const&), v8::Local<v8::Value>, v8::Local<v8::Signature>, int, v8::ConstructorBehavior, v8::SideEffectType, v8::MemorySpan<v8::CFunction const> const&)
+v8::FunctionTemplate::New(v8::Isolate*, void (*)(v8::FunctionCallbackInfo<v8::Value> const&), v8::Local<v8::Value>, v8::Local<v8::Signature>, int, v8::ConstructorBehavior, v8::SideEffectType, v8::CFunction const*, unsigned short, unsigned short, unsigned short)
+v8::FunctionTemplate::Inherit(v8::Local<v8::FunctionTemplate>)
+v8::FunctionTemplate::SetLength(int)
+v8::WasmMemoryObject::Buffer()
+v8::WasmModuleObject::GetCompiledModule()
+v8::WasmModuleObject::FromCompiledModule(v8::Isolate*, v8::CompiledWasmModule const&)
+v8::SharedArrayBuffer::GetBackingStore()
+v8::SharedArrayBuffer::New(v8::Isolate*, std::__Cr::shared_ptr<v8::BackingStore>)
+v8::SharedArrayBuffer::MaybeNew(v8::Isolate*, unsigned int, v8::BackingStoreInitializationMode)
+v8::ValueDeserializer::ReadDouble(double*)
+v8::ValueDeserializer::ReadHeader(v8::Local<v8::Context>)
+v8::ValueDeserializer::ReadUint32(unsigned int*)
+v8::ValueDeserializer::ReadUint64(unsigned long long*)
+v8::ValueDeserializer::ReadRawBytes(unsigned int, void const**)
+v8::ValueDeserializer::TransferArrayBuffer(unsigned int, v8::Local<v8::ArrayBuffer>)
+v8::ValueDeserializer::TransferSharedArrayBuffer(unsigned int, v8::Local<v8::SharedArrayBuffer>)
+v8::ValueDeserializer::Delegate::ReadHostObject(v8::Isolate*)
+v8::ValueDeserializer::Delegate::GetWasmModuleFromId(v8::Isolate*, unsigned int)
+v8::ValueDeserializer::Delegate::GetSharedValueConveyor(v8::Isolate*)
+v8::ValueDeserializer::Delegate::GetSharedArrayBufferFromId(v8::Isolate*, unsigned int)
+v8::ValueDeserializer::ReadValue(v8::Local<v8::Context>)
+v8::ValueDeserializer::ValueDeserializer(v8::Isolate*, unsigned char const*, unsigned int, v8::ValueDeserializer::Delegate*)
+v8::ValueDeserializer::~ValueDeserializer()
+v8::DictionaryTemplate::NewInstance(v8::Local<v8::Context>, v8::MemorySpan<v8::MaybeLocal<v8::Value> >)
+v8::DictionaryTemplate::New(v8::Isolate*, v8::MemorySpan<std::__Cr::basic_string_view<char, std::__Cr::char_traits<char> > const>)
+v8::HeapCodeStatistics::HeapCodeStatistics()
+v8::PropertyDescriptor::set_enumerable(bool)
+v8::PropertyDescriptor::set_configurable(bool)
+v8::PropertyDescriptor::PropertyDescriptor(v8::Local<v8::Value>)
+v8::PropertyDescriptor::PropertyDescriptor(v8::Local<v8::Value>, v8::Local<v8::Value>)
+v8::PropertyDescriptor::PropertyDescriptor(v8::Local<v8::Value>, bool)
+v8::PropertyDescriptor::~PropertyDescriptor()
+v8::CpuProfilingOptions::CpuProfilingOptions(v8::CpuProfilingMode, unsigned int, int, v8::MaybeLocal<v8::Context>, v8::CpuProfileSource)
+v8::HeapSpaceStatistics::HeapSpaceStatistics()
+v8::ResourceConstraints::ConfigureDefaults(unsigned long long, unsigned long long)
+v8::SharedValueConveyor::SharedValueConveyor(v8::SharedValueConveyor&&)
+v8::SharedValueConveyor::~SharedValueConveyor()
+v8::UnboundModuleScript::GetSourceURL()
+v8::UnboundModuleScript::GetSourceMappingURL()
+v8::ToExternalPointerTag(unsigned short)
+v8::MeasureMemoryDelegate::Default(v8::Isolate*, v8::Local<v8::Context>, v8::Local<v8::Promise::Resolver>, v8::MeasureMemoryMode)
+v8::ExternalMemoryAccounter::Update(v8::Isolate*, long long)
+v8::ExternalMemoryAccounter::Decrease(v8::Isolate*, unsigned int)
+v8::ExternalMemoryAccounter::Increase(v8::Isolate*, unsigned int)
+v8::ExternalMemoryAccounter::~ExternalMemoryAccounter()
+v8::EscapableHandleScopeBase::EscapeSlot(unsigned int*)
+v8::EscapableHandleScopeBase::EscapableHandleScopeBase(v8::Isolate*)
+v8::TryHandleWebAssemblyTrapPosix(int, siginfo_t*, void*)
+v8::V8::GetVersion()
+v8::V8::Initialize(int)
+v8::V8::DisposePlatform()
+v8::V8::InitializePlatform(v8::Platform*)
+v8::V8::SetFlagsFromString(char const*)
+v8::V8::SetFlagsFromString(char const*, unsigned int)
+v8::V8::SetFlagsFromCommandLine(int*, char**, bool)
+v8::V8::EnableWebAssemblyTrapHandler(bool)
+v8::V8::InitializeExternalStartupData(char const*)
+v8::V8::Dispose()
+v8::Map::Get(v8::Local<v8::Context>, v8::Local<v8::Value>)
+v8::Map::New(v8::Isolate*)
+v8::Map::Set(v8::Local<v8::Context>, v8::Local<v8::Value>, v8::Local<v8::Value>)
+v8::Map::Delete(v8::Local<v8::Context>, v8::Local<v8::Value>)
+v8::Set::Add(v8::Local<v8::Context>, v8::Local<v8::Value>)
+v8::Set::New(v8::Isolate*)
+v8::Date::New(v8::Local<v8::Context>, double)
+v8::JSON::Stringify(v8::Local<v8::Context>, v8::Local<v8::Value>, v8::Local<v8::String>)
+v8::Name::GetIdentityHash()
+v8::Array::New(v8::Local<v8::Context>, unsigned int, std::__Cr::function<v8::MaybeLocal<v8::Value> ()>)
+v8::Array::New(v8::Isolate*, v8::Local<v8::Value>*, unsigned int)
+v8::Array::New(v8::Isolate*, int)
+v8::Array::Iterate(v8::Local<v8::Context>, v8::Array::CallbackResult (*)(unsigned int, v8::Local<v8::Value>, void*), void*)
+v8::Proxy::GetHandler()
+v8::Proxy::GetTarget()
+v8::Value::TypeOf(v8::Isolate*)
+v8::BigInt::NewFromUnsigned(v8::Isolate*, unsigned long long)
+v8::BigInt::New(v8::Isolate*, long long)
+v8::Locker::Initialize(v8::Isolate*)
+v8::Locker::~Locker()
+v8::Module::InstantiateModule(v8::Local<v8::Context>, v8::MaybeLocal<v8::Module> (*)(v8::Local<v8::Context>, v8::Local<v8::String>, v8::Local<v8::FixedArray>, v8::Local<v8::Module>), v8::MaybeLocal<v8::Object> (*)(v8::Local<v8::Context>, v8::Local<v8::String>, v8::Local<v8::FixedArray>, v8::Local<v8::Module>))
+v8::Module::GetModuleNamespace()
+v8::Module::CreateSyntheticModule(v8::Isolate*, v8::Local<v8::String>, v8::MemorySpan<v8::Local<v8::String> const> const&, v8::MaybeLocal<v8::Value> (*)(v8::Local<v8::Context>, v8::Local<v8::Module>))
+v8::Module::GetUnboundModuleScript()
+v8::Module::SetSyntheticModuleExport(v8::Isolate*, v8::Local<v8::String>, v8::Local<v8::Value>)
+v8::Module::GetStalledTopLevelAwaitMessages(v8::Isolate*)
+v8::Module::Evaluate(v8::Local<v8::Context>)
+v8::Number::NewFromInt32(v8::Isolate*, int)
+v8::Number::NewFromUint32(v8::Isolate*, unsigned int)
+v8::Number::New(v8::Isolate*, double)
+v8::Object::GetPrivate(v8::Local<v8::Context>, v8::Local<v8::Private>)
+v8::Object::HasPrivate(v8::Local<v8::Context>, v8::Local<v8::Private>)
+v8::Object::SetPrivate(v8::Local<v8::Context>, v8::Local<v8::Private>, v8::Local<v8::Value>)
+v8::Object::DeletePrivate(v8::Local<v8::Context>, v8::Local<v8::Private>)
+v8::Object::DefineProperty(v8::Local<v8::Context>, v8::Local<v8::Name>, v8::PropertyDescriptor&)
+v8::Object::GetPrototypeV2()
+v8::Object::HasOwnProperty(v8::Local<v8::Context>, v8::Local<v8::Name>)
+v8::Object::PreviewEntries(bool*)
+v8::Object::SetPrototypeV2(v8::Local<v8::Context>, v8::Local<v8::Value>)
+v8::Object::GetPropertyNames(v8::Local<v8::Context>, v8::KeyCollectionMode, v8::PropertyFilter, v8::IndexFilter, v8::KeyConversionMode)
+v8::Object::SetInternalField(int, v8::Local<v8::Data>)
+v8::Object::DefineOwnProperty(v8::Local<v8::Context>, v8::Local<v8::Name>, v8::Local<v8::Value>, v8::PropertyAttribute)
+v8::Object::SetIntegrityLevel(v8::Local<v8::Context>, v8::IntegrityLevel)
+v8::Object::GetConstructorName()
+v8::Object::GetCreationContext()
+v8::Object::GetOwnPropertyNames(v8::Local<v8::Context>)
+v8::Object::SetLazyDataProperty(v8::Local<v8::Context>, v8::Local<v8::Name>, void (*)(v8::Local<v8::Name>, v8::PropertyCallbackInfo<v8::Value> const&), v8::Local<v8::Value>, v8::PropertyAttribute, v8::SideEffectType, v8::SideEffectType)
+v8::Object::GetRealNamedProperty(v8::Local<v8::Context>, v8::Local<v8::Name>)
+v8::Object::HasRealNamedProperty(v8::Local<v8::Context>, v8::Local<v8::Name>)
+v8::Object::SlowGetInternalField(int)
+v8::Object::SetNativeDataProperty(v8::Local<v8::Context>, v8::Local<v8::Name>, void (*)(v8::Local<v8::Name>, v8::PropertyCallbackInfo<v8::Value> const&), void (*)(v8::Local<v8::Name>, v8::Local<v8::Value>, v8::PropertyCallbackInfo<void> const&), v8::Local<v8::Value>, v8::PropertyAttribute, v8::SideEffectType, v8::SideEffectType)
+v8::Object::GetOwnPropertyDescriptor(v8::Local<v8::Context>, v8::Local<v8::Name>)
+v8::Object::GetCreationContextChecked()
+v8::Object::GetRealNamedPropertyAttributes(v8::Local<v8::Context>, v8::Local<v8::Name>)
+v8::Object::SetAlignedPointerInInternalField(int, void*, unsigned short)
+v8::Object::SlowGetAlignedPointerFromInternalField(int, unsigned short)
+v8::Object::Get(v8::Local<v8::Context>, v8::Local<v8::Value>)
+v8::Object::Get(v8::Local<v8::Context>, unsigned int)
+v8::Object::Has(v8::Local<v8::Context>, v8::Local<v8::Value>)
+v8::Object::New(v8::Isolate*)
+v8::Object::New(v8::Isolate*, v8::Local<v8::Value>, v8::Local<v8::Name>*, v8::Local<v8::Value>*, unsigned int)
+v8::Object::Set(v8::Local<v8::Context>, v8::Local<v8::Value>, v8::Local<v8::Value>)
+v8::Object::Set(v8::Local<v8::Context>, unsigned int, v8::Local<v8::Value>)
+v8::Object::Wrap(v8::Isolate*, unsigned int, v8::CppHeapPointerTag, void*)
+v8::Object::Clone()
+v8::Object::Delete(v8::Local<v8::Context>, v8::Local<v8::Value>)
+v8::Object::Delete(v8::Local<v8::Context>, unsigned int)
+v8::RegExp::New(v8::Local<v8::Context>, v8::Local<v8::String>, v8::RegExp::Flags)
+v8::RegExp::Exec(v8::Local<v8::Context>, v8::Local<v8::String>)
+v8::Script::Run(v8::Local<v8::Context>)
+v8::Script::Compile(v8::Local<v8::Context>, v8::Local<v8::String>, v8::ScriptOrigin*)
+v8::String::NewFromUtf8(v8::Isolate*, char const*, v8::NewStringType, int)
+v8::String::NewFromOneByte(v8::Isolate*, unsigned char const*, v8::NewStringType, int)
+v8::String::NewFromTwoByte(v8::Isolate*, unsigned short const*, v8::NewStringType, int)
+v8::String::NewExternalOneByte(v8::Isolate*, v8::String::ExternalOneByteStringResource*)
+v8::String::NewExternalTwoByte(v8::Isolate*, v8::String::ExternalStringResource*)
+v8::String::NewFromUtf8Literal(v8::Isolate*, char const*, v8::NewStringType, int)
+v8::String::Concat(v8::Isolate*, v8::Local<v8::String>, v8::Local<v8::String>)
+v8::String::Utf8Value::Utf8Value(v8::Isolate*, v8::Local<v8::Value>)
+v8::String::Utf8Value::~Utf8Value()
+v8::String::ValueView::ValueView(v8::Isolate*, v8::Local<v8::String>)
+v8::String::ValueView::~ValueView()
+v8::Symbol::GetDispose(v8::Isolate*)
+v8::Symbol::GetIterator(v8::Isolate*)
+v8::Symbol::GetToStringTag(v8::Isolate*)
+v8::Symbol::For(v8::Isolate*, v8::Local<v8::String>)
+v8::Symbol::New(v8::Isolate*, v8::Local<v8::String>)
+v8::Context::FromSnapshot(v8::Isolate*, unsigned int, v8::DeserializeInternalFieldsCallback, v8::ExtensionConfiguration*, v8::MaybeLocal<v8::Value>, v8::MicrotaskQueue*, v8::DeserializeContextDataCallback, v8::DeserializeAPIWrapperCallback)
+v8::Context::SetEmbedderData(int, v8::Local<v8::Value>)
+v8::Context::SetPromiseHooks(v8::Local<v8::Function>, v8::Local<v8::Function>, v8::Local<v8::Function>, v8::Local<v8::Function>)
+v8::Context::GetSecurityToken()
+v8::Context::SetSecurityToken(v8::Local<v8::Value>)
+v8::Context::GetMicrotaskQueue()
+v8::Context::GetExtrasBindingObject()
+v8::Context::GetDataFromSnapshotOnce(unsigned int)
+v8::Context::GetNumberOfEmbedderDataFields()
+v8::Context::AllowCodeGenerationFromStrings(bool)
+v8::Context::SetAlignedPointerInEmbedderData(int, void*, unsigned short)
+v8::Context::New(v8::Isolate*, v8::ExtensionConfiguration*, v8::MaybeLocal<v8::ObjectTemplate>, v8::MaybeLocal<v8::Value>, v8::DeserializeInternalFieldsCallback, v8::MicrotaskQueue*, v8::DeserializeContextDataCallback, v8::DeserializeAPIWrapperCallback)
+v8::Context::Exit()
+v8::Context::Enter()
+v8::Context::Global()
+v8::CppHeap::CollectStatistics(cppgc::HeapStatistics::DetailLevel)
+v8::CppHeap::GetAllocationHandle()
+v8::CppHeap::Create(v8::Platform*, v8::CppHeapCreateParams const&)
+v8::Integer::NewFromUnsigned(v8::Isolate*, unsigned int)
+v8::Integer::New(v8::Isolate*, int)
+v8::Isolate::GetCurrent()
+v8::Isolate::Initialize(v8::Isolate*, v8::Isolate::CreateParams const&)
+v8::Isolate::GetHashSeed()
+v8::Isolate::CreateParams::CreateParams()
+v8::Isolate::CreateParams::~CreateParams()
+v8::Isolate::Deinitialize()
+v8::Isolate::MeasureMemory(std::__Cr::unique_ptr<v8::MeasureMemoryDelegate, std::__Cr::default_delete<v8::MeasureMemoryDelegate> >, v8::MeasureMemoryExecution)
+v8::Isolate::SetStackLimit(unsigned int)
+v8::Isolate::TryGetCurrent()
+v8::Isolate::GetStackSample(v8::RegisterState const&, void**, unsigned int, v8::SampleInfo*)
+v8::Isolate::SetPromiseHook(void (*)(v8::PromiseHookType, v8::Local<v8::Promise>, v8::Local<v8::Value>))
+v8::Isolate::ThrowException(v8::Local<v8::Value>)
+v8::Isolate::GetHeapProfiler()
+v8::Isolate::ClearKeptObjects()
+v8::Isolate::GetDefaultLocale()
+v8::Isolate::RequestInterrupt(void (*)(v8::Isolate*, void*), void*)
+v8::Isolate::DumpAndResetStats()
+v8::Isolate::GetCurrentContext()
+v8::Isolate::GetHeapStatistics(v8::HeapStatistics*)
+v8::Isolate::NumberOfHeapSpaces()
+v8::Isolate::SetOOMErrorHandler(void (*)(char const*, v8::OOMDetails const&))
+v8::Isolate::TerminateExecution()
+v8::Isolate::SetMicrotasksPolicy(v8::MicrotasksPolicy)
+v8::Isolate::SetFatalErrorHandler(void (*)(char const*, char const*))
+v8::Isolate::AddGCEpilogueCallback(void (*)(v8::Isolate*, v8::GCType, v8::GCCallbackFlags, void*), void*, v8::GCType)
+v8::Isolate::AddGCPrologueCallback(void (*)(v8::Isolate*, v8::GCType, v8::GCCallbackFlags, void*), void*, v8::GCType)
+v8::Isolate::LowMemoryNotification()
+v8::Isolate::GetHeapSpaceStatistics(v8::HeapSpaceStatistics*, unsigned int)
+v8::Isolate::IsExecutionTerminating()
+v8::Isolate::GetDataFromSnapshotOnce(unsigned int)
+v8::Isolate::AddNearHeapLimitCallback(unsigned int (*)(void*, unsigned int, unsigned int), void*)
+v8::Isolate::CancelTerminateExecution()
+v8::Isolate::RemoveGCEpilogueCallback(void (*)(v8::Isolate*, v8::GCType, v8::GCCallbackFlags, void*), void*)
+v8::Isolate::RemoveGCPrologueCallback(void (*)(v8::Isolate*, v8::GCType, v8::GCCallbackFlags, void*), void*)
+v8::Isolate::SetPromiseRejectCallback(void (*)(v8::PromiseRejectMessage))
+v8::Isolate::SetWasmStreamingCallback(void (*)(v8::FunctionCallbackInfo<v8::Value> const&))
+v8::Isolate::RemoveNearHeapLimitCallback(unsigned int (*)(void*, unsigned int, unsigned int), unsigned int)
+v8::Isolate::SetPrepareStackTraceCallback(v8::MaybeLocal<v8::Value> (*)(v8::Local<v8::Context>, v8::Local<v8::Value>, v8::Local<v8::Array>))
+v8::Isolate::AllowJavascriptExecutionScope::AllowJavascriptExecutionScope(v8::Isolate*)
+v8::Isolate::AllowJavascriptExecutionScope::~AllowJavascriptExecutionScope()
+v8::Isolate::AddMessageListenerWithErrorLevel(void (*)(v8::Local<v8::Message>, v8::Local<v8::Value>), int, v8::Local<v8::Value>)
+v8::Isolate::DisallowJavascriptExecutionScope::DisallowJavascriptExecutionScope(v8::Isolate*, v8::Isolate::DisallowJavascriptExecutionScope::OnFailure)
+v8::Isolate::DisallowJavascriptExecutionScope::~DisallowJavascriptExecutionScope()
+v8::Isolate::GetHeapCodeAndMetadataStatistics(v8::HeapCodeStatistics*)
+v8::Isolate::SetAllowWasmCodeGenerationCallback(bool (*)(v8::Local<v8::Context>, v8::Local<v8::String>))
+v8::Isolate::SetAbortOnUncaughtExceptionCallback(bool (*)(v8::Isolate*))
+v8::Isolate::AutomaticallyRestoreInitialHeapLimit(double)
+v8::Isolate::GetContinuationPreservedEmbedderData()
+v8::Isolate::SetContinuationPreservedEmbedderData(v8::Local<v8::Value>)
+v8::Isolate::SetHostImportModuleDynamicallyCallback(v8::MaybeLocal<v8::Promise> (*)(v8::Local<v8::Context>, v8::Local<v8::Data>, v8::Local<v8::Value>, v8::Local<v8::String>, v8::Local<v8::FixedArray>))
+v8::Isolate::DateTimeConfigurationChangeNotification(v8::Isolate::TimeZoneDetection)
+v8::Isolate::SetHostCreateShadowRealmContextCallback(v8::MaybeLocal<v8::Context> (*)(v8::Local<v8::Context>))
+v8::Isolate::SetCaptureStackTraceForUncaughtExceptions(bool, int, v8::StackTrace::StackTraceOptions)
+v8::Isolate::SetHostInitializeImportMetaObjectCallback(void (*)(v8::Local<v8::Context>, v8::Local<v8::Module>, v8::Local<v8::Object>))
+v8::Isolate::SetModifyCodeGenerationFromStringsCallback(v8::ModifyCodeGenerationFromStringsResult (*)(v8::Local<v8::Context>, v8::Local<v8::Value>, bool))
+v8::Isolate::SetHostImportModuleWithPhaseDynamicallyCallback(v8::MaybeLocal<v8::Promise> (*)(v8::Local<v8::Context>, v8::Local<v8::Data>, v8::Local<v8::Value>, v8::Local<v8::String>, v8::ModuleImportPhase, v8::Local<v8::FixedArray>))
+v8::Isolate::Exit()
+v8::Isolate::Free(v8::Isolate*)
+v8::Isolate::Enter()
+v8::Isolate::SetIdle(bool)
+v8::Isolate::Allocate(v8::IsolateGroup const&)
+v8::Isolate::InContext()
+v8::Private::New(v8::Isolate*, v8::Local<v8::String>)
+v8::Private::ForApi(v8::Isolate*, v8::Local<v8::String>)
+v8::Promise::MarkAsHandled()
+v8::Promise::Then(v8::Local<v8::Context>, v8::Local<v8::Function>, v8::Local<v8::Function>)
+v8::Promise::State()
+v8::Promise::Result()
+v8::Promise::Resolver::GetPromise()
+v8::Promise::Resolver::New(v8::Local<v8::Context>)
+v8::Promise::Resolver::Reject(v8::Local<v8::Context>, v8::Local<v8::Value>)
+v8::Promise::Resolver::Resolve(v8::Local<v8::Context>, v8::Local<v8::Value>)
+v8::External::New(v8::Isolate*, void*, unsigned short)
+v8::Function::New(v8::Local<v8::Context>, void (*)(v8::FunctionCallbackInfo<v8::Value> const&), v8::Local<v8::Data>, int, v8::ConstructorBehavior, v8::SideEffectType)
+v8::Function::Call(v8::Local<v8::Context>, v8::Local<v8::Value>, int, v8::Local<v8::Value>*)
+v8::Function::SetName(v8::Local<v8::String>)
+v8::Platform::SystemClockTimeMillis()
+v8::Template::SetAccessorProperty(v8::Local<v8::Name>, v8::Local<v8::FunctionTemplate>, v8::Local<v8::FunctionTemplate>, v8::PropertyAttribute)
+v8::Template::SetLazyDataProperty(v8::Local<v8::Name>, void (*)(v8::Local<v8::Name>, v8::PropertyCallbackInfo<v8::Value> const&), v8::Local<v8::Value>, v8::PropertyAttribute, v8::SideEffectType, v8::SideEffectType)
+v8::Template::SetNativeDataProperty(v8::Local<v8::Name>, void (*)(v8::Local<v8::Name>, v8::PropertyCallbackInfo<v8::Value> const&), void (*)(v8::Local<v8::Name>, v8::Local<v8::Value>, v8::PropertyCallbackInfo<void> const&), v8::Local<v8::Value>, v8::PropertyAttribute, v8::SideEffectType, v8::SideEffectType)
+v8::Template::Set(v8::Local<v8::Name>, v8::Local<v8::Data>, v8::PropertyAttribute)
+v8::TryCatch::SetVerbose(bool)
+v8::TryCatch::Reset()
+v8::TryCatch::ReThrow()
+v8::TryCatch::TryCatch(v8::Isolate*)
+v8::TryCatch::TryCatch(v8::Isolate*)
+v8::TryCatch::~TryCatch()
+v8::TryCatch::~TryCatch()
+v8::internal::ShouldThrowOnError(v8::internal::Isolate*)
+v8::internal::MoveTracedReference(unsigned int**, unsigned int**)
+v8::internal::DisposeTracedReference(unsigned int*)
+v8::internal::GlobalizeTracedReference(v8::internal::Isolate*, unsigned int, unsigned int*, v8::internal::TracedReferenceStoreMode, v8::internal::TracedReferenceHandling)
+v8::internal::Internals::GetCurrentIsolate()
+v8::CFunction::CFunction(void const*, v8::CFunctionInfo const*)
+v8::Exception::RangeError(v8::Local<v8::String>, v8::Local<v8::Value>)
+v8::Exception::SyntaxError(v8::Local<v8::String>, v8::Local<v8::Value>)
+v8::Exception::CreateMessage(v8::Isolate*, v8::Local<v8::Value>)
+v8::Exception::Error(v8::Local<v8::String>, v8::Local<v8::Value>)
+v8::Exception::TypeError(v8::Local<v8::String>, v8::Local<v8::Value>)
+v8::Signature::New(v8::Isolate*, v8::Local<v8::FunctionTemplate>)
+cppgc::IsInitialized()
+cppgc::ShutdownProcess()
+cppgc::InitializeProcess(v8::PageAllocator*, unsigned int)
+cppgc::internal::PersistentRegion::IsCreationThread()
+cppgc::internal::PersistentRegionBase::RefillFreeListAndAllocateNode(void*, void (*)(cppgc::internal::RootVisitor&, void const*))
+cppgc::internal::WeakPersistentPolicy::GetPersistentRegion(void const*)
+cppgc::internal::EnsureGCInfoIndexTrait::EnsureGCInfoIndex(std::__Cr::atomic<unsigned short>&, void (*)(cppgc::Visitor*, void const*), void (*)(void*), cppgc::internal::HeapObjectName (*)(void const*, cppgc::internal::HeapObjectNameForUnnamedObject))
+cppgc::internal::TraceTraitFromInnerAddressImpl::GetTraceDescriptor(void const*)
+cppgc::internal::MakeGarbageCollectedTraitInternal::Allocate(cppgc::AllocationHandle&, unsigned int, unsigned short)
+cppgc::internal::FatalImpl(char const*, v8::SourceLocation)
+v8::CpuProfile::Serialize(v8::OutputStream*, v8::CpuProfile::SerializationFormat) const
+v8::FixedArray::Get(int) const
+v8::FixedArray::Length() const
+v8::StackFrame::GetLocation() const
+v8::StackFrame::GetScriptId() const
+v8::StackFrame::GetScriptName() const
+v8::StackFrame::GetFunctionName() const
+v8::StackFrame::GetScriptNameOrSourceURL() const
+v8::StackFrame::IsEval() const
+v8::StackTrace::GetFrameCount() const
+v8::StackTrace::GetFrame(v8::Isolate*, unsigned int) const
+v8::ArrayBuffer::ByteLength() const
+v8::ArrayBuffer::WasDetached() const
+v8::ArrayBuffer::IsDetachable() const
+v8::ArrayBuffer::Data() const
+v8::BackingStore::ByteLength() const
+v8::BackingStore::MaxByteLength() const
+v8::BackingStore::Data() const
+v8::HeapSnapshot::Serialize(v8::OutputStream*, v8::HeapSnapshot::SerializationFormat) const
+v8::ScriptOrigin::VerifyHostDefinedOptions() const
+v8::ModuleRequest::GetSpecifier() const
+v8::ModuleRequest::GetImportAttributes() const
+v8::ModuleRequest::GetPhase() const
+v8::ArrayBufferView::HasBuffer() const
+v8::SharedArrayBuffer::ByteLength() const
+v8::SharedArrayBuffer::Data() const
+v8::ValueDeserializer::GetWireFormatVersion() const
+v8::PropertyDescriptor::enumerable() const
+v8::PropertyDescriptor::configurable() const
+v8::PropertyDescriptor::has_writable() const
+v8::PropertyDescriptor::has_enumerable() const
+v8::PropertyDescriptor::has_configurable() const
+v8::PropertyDescriptor::get() const
+v8::PropertyDescriptor::set() const
+v8::PropertyDescriptor::value() const
+v8::PropertyDescriptor::has_get() const
+v8::PropertyDescriptor::has_set() const
+v8::PropertyDescriptor::writable() const
+v8::PropertyDescriptor::has_value() const
+v8::Map::Size() const
+v8::Data::IsValue() const
+v8::Array::Length() const
+v8::Int32::Value() const
+v8::Value::FullIsTrue() const
+v8::Value::Int32Value(v8::Local<v8::Context>) const
+v8::Value::IsDataView() const
+v8::Value::IsExternal() const
+v8::Value::IsFunction() const
+v8::Value::FullIsFalse() const
+v8::Value::NumberValue(v8::Local<v8::Context>) const
+v8::Value::Uint32Value(v8::Local<v8::Context>) const
+v8::Value::BooleanValue(v8::Isolate*) const
+v8::Value::IntegerValue(v8::Local<v8::Context>) const
+v8::Value::IsTypedArray() const
+v8::Value::IsUint8Array() const
+v8::Value::StrictEquals(v8::Local<v8::Value>) const
+v8::Value::IsArrayBuffer() const
+v8::Value::IsMapIterator() const
+v8::Value::IsNativeError() const
+v8::Value::IsSetIterator() const
+v8::Value::IsUint32Array() const
+v8::Value::IsBigIntObject() const
+v8::Value::IsFloat64Array() const
+v8::Value::IsNumberObject() const
+v8::Value::IsStringObject() const
+v8::Value::IsSymbolObject() const
+v8::Value::ToDetailString(v8::Local<v8::Context>) const
+v8::Value::IsAsyncFunction() const
+v8::Value::IsBooleanObject() const
+v8::Value::IsArgumentsObject() const
+v8::Value::IsArrayBufferView() const
+v8::Value::IsGeneratorObject() const
+v8::Value::IsWasmMemoryObject() const
+v8::Value::IsGeneratorFunction() const
+v8::Value::IsSharedArrayBuffer() const
+v8::Value::IsModuleNamespaceObject() const
+v8::Value::IsMap() const
+v8::Value::IsSet() const
+v8::Value::Equals(v8::Local<v8::Context>, v8::Local<v8::Value>) const
+v8::Value::IsDate() const
+v8::Value::IsArray() const
+v8::Value::IsInt32() const
+v8::Value::IsProxy() const
+v8::Value::IsBigInt() const
+v8::Value::IsNumber() const
+v8::Value::IsObject() const
+v8::Value::IsRegExp() const
+v8::Value::IsSymbol() const
+v8::Value::IsUint32() const
+v8::Value::ToObject(v8::Local<v8::Context>) const
+v8::Value::ToString(v8::Local<v8::Context>) const
+v8::Value::IsBoolean() const
+v8::Value::IsPromise() const
+v8::Value::IsWeakMap() const
+v8::Value::IsWeakSet() const
+v8::Value::SameValue(v8::Local<v8::Value>) const
+v8::Value::ToBoolean(v8::Isolate*) const
+v8::BigInt::Int64Value(bool*) const
+v8::BigInt::Uint64Value(bool*) const
+v8::Module::GetException() const
+v8::Module::IsGraphAsync() const
+v8::Module::GetIdentityHash() const
+v8::Module::HasTopLevelAwait() const
+v8::Module::GetModuleRequests() const
+v8::Module::IsSourceTextModule() const
+v8::Module::GetStatus() const
+v8::Number::Value() const
+v8::Object::IsConstructor() const
+v8::Object::InternalFieldCount() const
+v8::String::WriteUtf8V2(v8::Isolate*, char*, unsigned int, int, unsigned int*) const
+v8::String::Utf8LengthV2(v8::Isolate*) const
+v8::String::WriteOneByteV2(v8::Isolate*, unsigned int, unsigned int, unsigned char*, int) const
+v8::String::IsExternalOneByte() const
+v8::String::IsExternalTwoByte() const
+v8::String::GetExternalStringResourceSlow() const
+v8::String::GetExternalOneByteStringResource() const
+v8::String::Length() const
+v8::String::WriteV2(v8::Isolate*, unsigned int, unsigned int, unsigned short*, int) const
+v8::String::IsOneByte() const
+v8::Symbol::Description(v8::Isolate*) const
+v8::Uint32::Value() const
+v8::Boolean::Value() const
+v8::Context::IsCodeGenerationFromStringsAllowed() const
+v8::Integer::Value() const
+v8::Isolate::GetCppHeap() const
+v8::Message::ErrorLevel() const
+v8::Message::GetEndColumn(v8::Local<v8::Context>) const
+v8::Message::GetLineNumber(v8::Local<v8::Context>) const
+v8::Message::GetSourceLine(v8::Local<v8::Context>) const
+v8::Message::GetStackTrace() const
+v8::Message::GetStartColumn(v8::Local<v8::Context>) const
+v8::Message::GetStartColumn() const
+v8::Message::GetScriptOrigin() const
+v8::Message::GetScriptResourceName() const
+v8::Message::Get() const
+v8::External::Value(unsigned short) const
+v8::Function::NewInstance(v8::Local<v8::Context>, int, v8::Local<v8::Value>*) const
+v8::Function::GetScriptOrigin() const
+v8::TryCatch::CanContinue() const
+v8::TryCatch::HasTerminated() const
+v8::TryCatch::Message() const
+v8::TryCatch::Exception() const
+v8::TryCatch::HasCaught() const
+v8::TryCatch::IsVerbose() const
+cppgc::LivenessBroker::IsHeapObjectAliveImpl(void const*) const
+TLS init function for v8::internal::trap_handler::TrapHandlerGuard::is_active_
+wgt::parse::WidgetInfo::Key[abi:cxx11]()
+wgt::parse::ContentInfo::Key[abi:cxx11]()
+wgt::parse::ServiceInfo::Key[abi:cxx11]()
+wgt::parse::SettingInfo::Key[abi:cxx11]()
+wgt::parse::SettingInfo::SettingInfo()
+wgt::parse::MetaDataInfo::Key[abi:cxx11]()
+wgt::parse::AppControlInfo::Key[abi:cxx11]()
+wgt::parse::ProfileTagInfo::Key[abi:cxx11]()
+wgt::parse::PermissionsInfo::Key[abi:cxx11]()
+wgt::parse::CategoryInfoList::Key[abi:cxx11]()
+wgt::parse::LaunchScreenInfo::Key[abi:cxx11]()
+wgt::parse::WidgetConfigParser::ParseManifest(std::filesystem::__cxx11::path const&)
+wgt::parse::WidgetConfigParser::WidgetConfigParser()
+wgt::parse::TizenApplicationInfo::Key[abi:cxx11]()
+wgt::parse::AllowedNavigationInfo::Key[abi:cxx11]()
+wgt::parse::CSPInfo::Report_only_key[abi:cxx11]()
+wgt::parse::CSPInfo::Key[abi:cxx11]()
+wgt::parse::WarpInfo::Key[abi:cxx11]()
+wgt::parse::AddonInfo::Key[abi:cxx11]()
+parser::ManifestParser::~ManifestParser()
+wgt::parse::WidgetConfigParser::GetManifestData(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const
+std::filesystem::__cxx11::path::_List::_Impl_deleter::operator()(std::filesystem::__cxx11::path::_List::_Impl*) const
+std::type_info::operator==(std::type_info const&) const
+std::filesystem::__cxx11::path::_M_split_cmpts()
+std::filesystem::__cxx11::path::_List::_List()
+std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_dispose()
+std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_create(unsigned int&, unsigned int)
+std::_Rb_tree_increment(std::_Rb_tree_node_base const*)
+vtable for __cxxabiv1::__class_type_info
+vtable for __cxxabiv1::__si_class_type_info
+operator delete[](void*)
+operator delete(void*, unsigned int)
+operator new[](unsigned int)
+operator new(unsigned int)

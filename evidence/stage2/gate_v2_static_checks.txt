@@ -1,0 +1,3 @@
+bash_n=PASS
+shellcheck=UNAVAILABLE
+git_apply_check=PASS

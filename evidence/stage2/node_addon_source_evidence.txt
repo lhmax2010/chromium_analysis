@@ -1,0 +1,252 @@
+source_head=394713cfd95e9597793255ec71496aef6ef84574
+--- WRT launches Node runtime ---
+    31	const char* kWrtServiceNode = XWALK_EXTENSION_PATH "/libnode-runtime.so";
+    32	const char* kRuntimeJs = XWALK_EXTENSION_PATH "/node-runtime.js";
+   142	int ServiceStart(int argc, char* argv[]) {
+   143	  auto handle = dlopen(kWrtServiceNode, RTLD_LAZY);
+   144	  if (!handle) {
+   145	    LOG(ERROR) << "dlopen() fail : " << dlerror();
+   146	    return kDlopenFailed;
+   147	  }
+   148
+   149	  typedef int (*node_main)(int, char**, const char*);
+   150	  node_main NodeStart = (node_main)dlsym(handle, "NodeStart");
+   151	  if (!NodeStart) {
+   152	    LOG(ERROR) << "dlsym() fail : " << dlerror();
+   153	    dlclose(handle);
+   154	    return kDlopenFailed;
+   155	  }
+   156
+   157	  for (int i = 0; i < argc; ++i) {
+   158	    LOG(INFO) << "argv[" << i << "] " << argv[i];
+   159	  }
+   160	  int result = NodeStart(argc, argv, kRuntimeJs);
+--- WRT service uses standard CommonJS require ---
+   314	function registerExtensionResolver(package_path, wrtnode) {
+   315	    let extensionResolver = (module, file_path) => {
+   316	      console.debug(`resolved path: ${file_path}`);
+   317	      let content = wrtnode.decryptFile(package_path, file_path);
+   318	      if (content) {
+   319	        // Remove BOM
+   320	        if (content.charCodeAt(0) === 0xFEFF)
+   321	          content = content.slice(1);
+   322	        module._compile(content, file_path);
+   323	      }
+   324	    };
+   325	    const Module = require('module');
+   326	    Module._extensions['.js.spm'] = extensionResolver;
+   327	    Module._extensions['.spm'] = extensionResolver;
+   328	    if (Module.enableEsmResolveExtensions) {
+   329	      Module.enableEsmResolveExtensions(true);
+   330	    }
+   351	  // initialize service app and get start JS path from config.xml
+   352	  wrtnode.initServiceApp(package_path, appid);
+   353	  registerExtensionResolver(package_path, wrtnode);
+   354	  var startServiceFile = wrtnode.getStartServiceFile();
+   355	  if (!startServiceFile) {
+   356	    console.debug('there is no start file');
+   357	    wrtnode.requestQuit();
+   358	    return;
+   359	  }
+   360
+   361	  new XWalkExtension();
+   362	  new WRTServiceExtension(package_id);
+   363
+   364	  var app = null;
+   365	  var started = false;
+   366	  process.on('start', function (encoded_bundle) {
+   367	    runtime_variables['encoded_bundle'] = encoded_bundle;
+   368	    console.debug('encoded_bundle : ' + encoded_bundle);
+   369
+   370	    try {
+   371	      if (app == null)
+   372	        app = require(startServiceFile);
+--- standard CJS .node loader ---
+  1923	 * @param {Module} module The module to compile
+  1924	 * @param {string} filename The file path of the module
+  1925	 * @returns {any}
+  1926	 */
+  1927	Module._extensions['.node'] = function(module, filename) {
+  1928	  // Be aware this doesn't use `content`
+  1929	  return process.dlopen(module, path.toNamespacedPath(filename));
+  1930	};
+--- native loader supports legacy/V8 and N-API paths ---
+   435	// DLOpen is process.dlopen(module, filename, flags).
+   436	// Used to load 'module.node' dynamically shared objects.
+   437	//
+   438	// FIXME(bnoordhuis) Not multi-context ready. TBD how to resolve the conflict
+   439	// when two contexts try to load the same shared object. Maybe have a shadow
+   440	// cache that's a plain C list or hash table that's shared across contexts?
+   441	void DLOpen(const FunctionCallbackInfo<Value>& args) {
+   442	  Environment* env = Environment::GetCurrent(args);
+   443
+   444	  if (env->no_native_addons()) {
+   445	    return THROW_ERR_DLOPEN_DISABLED(
+   446	      env, "Cannot load native addon because loading addons is disabled.");
+   447	  }
+   472	  node::Utf8Value filename(env->isolate(), args[1]);  // Cast
+   473	  env->TryLoadAddon(*filename, flags, [&](DLib* dlib) {
+   474	    static Mutex dlib_load_mutex;
+   475	    Mutex::ScopedLock lock(dlib_load_mutex);
+   476
+   477	    const bool is_opened = dlib->Open();
+   478
+   479	    // Objects containing v14 or later modules will have registered themselves
+   480	    // on the pending list.  Activate all of them now.  At present, only one
+   481	    // module per object is supported.
+   482	    node_module* mp = thread_local_modpending;
+   483	    thread_local_modpending = nullptr;
+   496	    if (mp != nullptr) {
+   497	      if (mp->nm_context_register_func == nullptr) {
+   498	        if (env->force_context_aware()) {
+   499	          dlib->Close();
+   500	          THROW_ERR_NON_CONTEXT_AWARE_DISABLED(env);
+   501	          return false;
+   502	        }
+   503	      }
+   504	      mp->nm_dso_handle = dlib->handle_;
+   505	      dlib->SaveInGlobalHandleMap(mp);
+   506	    } else {
+   507	      if (auto callback = GetInitializerCallback(dlib)) {
+   508	        callback(exports, module, context);
+   509	        return true;
+   510	      } else if (auto napi_callback = GetNapiInitializerCallback(dlib)) {
+   511	        int32_t module_api_version = NODE_API_DEFAULT_MODULE_API_VERSION;
+   512	        if (auto get_version = GetNapiAddonGetApiVersionCallback(dlib)) {
+   513	          module_api_version = get_version();
+   514	        }
+   515	        napi_module_register_by_symbol(
+   516	            exports, module, context, napi_callback, module_api_version);
+   517	        return true;
+   529	    // -1 is used for N-API modules
+   530	    if ((mp->nm_version != -1) && (mp->nm_version != NODE_MODULE_VERSION)) {
+   531	      // Even if the module did self-register, it may have done so with the
+   532	      // wrong version. We must only give up after having checked to see if it
+   533	      // has an appropriate initializer callback.
+   534	      if (auto callback = GetInitializerCallback(dlib)) {
+   535	        callback(exports, module, context);
+   536	        return true;
+--- WRT creates default Node Environment ---
+  1633	int RunNodeInstance(MultiIsolatePlatform* platform,
+  1634	                    const std::vector<std::string>& args,
+  1635	                    const std::vector<std::string>& exec_args,
+  1636	                    const char* runtime_js, runtime_cb cb) {
+  1637	  int exit_code = 0;
+  1638
+  1639	  std::vector<std::string> errors;
+  1640	  std::unique_ptr<CommonEnvironmentSetup> setup =
+  1641	      CommonEnvironmentSetup::Create(platform, &errors, args, exec_args);
+  1642	  if (!setup) {
+  1659	    std::string script =
+  1660	        "process.argv[0] = '" + args[0] + "';" +
+  1661	        "const fs = require('fs'); const script = fs.readFileSync('" +
+  1662	        std::string(runtime_js) + "'); const publicRequire =" +
+  1663	        "  require('module').createRequire(process.cwd() + '/');" +
+  1664	        "globalThis.require = publicRequire;" +
+  1665	        "require('vm').runInThisContext(script);";
+  1666	    MaybeLocal<Value> loadenv_ret = node::LoadEnvironment(env, script);
+   641	namespace EnvironmentFlags {
+   642	enum Flags : uint64_t {
+   643	  kNoFlags = 0,
+   644	  // Use the default behaviour for Node.js instances.
+   645	  kDefaultFlags = 1 << 0,
+   646	  // Controls whether this Environment is allowed to affect per-process state
+   647	  // (e.g. cwd, process title, uid, etc.).
+   648	  // This is set when using kDefaultFlags.
+   649	  kOwnsProcessState = 1 << 1,
+   650	  // Set if this Environment instance is associated with the global inspector
+   651	  // handling code (i.e. listening on SIGUSR1).
+   652	  // This is set when using kDefaultFlags.
+   653	  kOwnsInspector = 1 << 2,
+   654	  // Set if Node.js should not run its own esm loader. This is needed by some
+   655	  // embedders, because it's possible for the Node.js esm loader to conflict
+   656	  // with another one in an embedder environment, e.g. Blink's in Chromium.
+   657	  kNoRegisterESMLoader = 1 << 3,
+   658	  // Set this flag to make Node.js track "raw" file descriptors, i.e. managed
+   659	  // by fs.open() and fs.close(), and close them during FreeEnvironment().
+   660	  kTrackUnmanagedFds = 1 << 4,
+   661	  // Set this flag to force hiding console windows when spawning child
+   662	  // processes. This is usually used when embedding Node.js in GUI programs on
+   663	  // Windows.
+   664	  kHideConsoleWindows = 1 << 5,
+   665	  // Set this flag to disable loading native addons via `process.dlopen`.
+   666	  // This environment flag is especially important for worker threads
+   667	  // so that a worker thread can't load a native addon even if `execArgv`
+   668	  // is overwritten and `--no-addons` is not specified but was specified
+   669	  // for this Environment instance.
+   670	  kNoNativeAddons = 1 << 6,
+   730	NODE_EXTERN Environment* CreateEnvironment(
+   731	    IsolateData* isolate_data,
+   732	    v8::Local<v8::Context> context,
+   733	    const std::vector<std::string>& args,
+   734	    const std::vector<std::string>& exec_args,
+   735	    EnvironmentFlags::Flags flags = EnvironmentFlags::kDefaultFlags,
+   736	    ThreadId thread_id = {} /* allocates a thread id automatically */,
+  1009	// Implementation for CommonEnvironmentSetup::Create
+  1010	template <typename... EnvironmentArgs>
+  1011	std::unique_ptr<CommonEnvironmentSetup> CommonEnvironmentSetup::Create(
+  1012	    MultiIsolatePlatform* platform,
+  1013	    std::vector<std::string>* errors,
+  1014	    EnvironmentArgs&&... env_args) {
+  1015	  auto ret = std::unique_ptr<CommonEnvironmentSetup>(new CommonEnvironmentSetup(
+  1016	      platform, errors,
+  1017	      [&](const CommonEnvironmentSetup* setup) -> Environment* {
+  1018	        return CreateEnvironment(
+  1019	            setup->isolate_data(), setup->context(),
+  1020	            std::forward<EnvironmentArgs>(env_args)...);
+  1021	      }));
+   157	  uint64_t max_http_header_size = 16 * 1024;
+   158	  bool deprecation = true;
+   159	  bool force_async_hooks_checks = true;
+   160	  bool allow_native_addons = true;
+   161	  bool global_search_paths = true;
+   162	  bool warnings = true;
+--- downstream no-addons disable search ---
+downstream_disable_hits=0
+--- WRT itself uses legacy V8 NODE_MODULE API ---
+   386	void InitializeWrtNode(v8::Local<v8::Object> exports,
+   387	                       v8::Local<v8::Object> module) {
+   388	  NODE_SET_METHOD(exports, "log", Log);
+   389	  NODE_SET_METHOD(exports, "createExtension", CreateExtension);
+   390	  NODE_SET_METHOD(exports, "getExtensionNames", GetExtensionsNames);
+   391	  NODE_SET_METHOD(exports, "decryptFile", DecryptFile);
+   392	  NODE_SET_METHOD(exports, "getStartServiceFile", GetStartServiceFile);
+   393	  NODE_SET_METHOD(exports, "initServiceApp", InitServiceApp);
+   394	  NODE_SET_METHOD(exports, "requestQuit", RequestQuit);
+   395	  NODE_SET_METHOD(exports, "finalize", Finalize);
+   396	}
+   397
+   398	NODE_MODULE(wrtnode, InitializeWrtNode)
+   399
+   400	}  // namespace wrt
+--- Node/V8 headers and libnode packaging ---
+   395	# node module is required for nmt and category public features.
+   396	%if "%{?profile}" != "tv" && "%{?profile}" != "wearable" && "%{?_with_da_profile}" != "1"
+   397	%define _support_node_module 1
+   398	%endif
+   971	%if 0%{?_support_node_module}
+   972	install -d "%{buildroot}"%{_includedir}/node
+   973	install -m 0644 third_party/electron_node/src/*.h "%{buildroot}"%{_includedir}/node/
+   974	%endif
+  1071	install -d "%{buildroot}"%{_includedir}/v8
+  1072	install -m 0644 v8/include/*.h "%{buildroot}"%{_includedir}/v8/
+  1073
+  1214	%if ! 0%{?__disable_node_v8_component}
+  1215	  install -m 0644 %{OUTPUT_FOLDER}/libnode.so                 %{buildroot}%{CHROMIUM_LIB_DIR}/lib/
+  1216	%endif
+  1567	%files devel
+  1568	%defattr(-,root,root,-)
+  1569	%{_includedir}/chromium-ewk/*.h
+  1570	%{_libdir}/pkgconfig/*.pc
+  1571	%{_includedir}/v8/*
+  1572
+  1573	%if 0%{?_support_node_module}
+  1574	%{_includedir}/node/*
+  1575	%endif
+--- node_module_register export ---
+    41	    # ENABLE_WRT_JS
+    42	    WRTMain;
+    43	    WRTServiceMain;
+    44	    ime_app_main;
+    45	    node_module_register;
+    46	    # CHROMIUM BROWSER

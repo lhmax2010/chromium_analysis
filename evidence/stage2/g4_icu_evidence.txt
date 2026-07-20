@@ -1,0 +1,30 @@
+raw_symbol=_ZN2v88internal4Intl14CompareStringsEPNS0_7IsolateERKN6icu_778CollatorENS0_12DirectHandleINS0_6StringEEESA_NS1_21CompareStringsOptionsE
+demangled=v8::internal::Intl::CompareStrings(v8::internal::Isolate*, icu_77::Collator const&, v8::internal::DirectHandle<v8::internal::String>, v8::internal::DirectHandle<v8::internal::String>, v8::internal::Intl::CompareStringsOptions)
+classification=BUNDLED_ICU_EXPECTED
+reason=use_system_icu=false when __use_bundled_libcxx=1; V8 Intl exported function signature embeds bundled ICU 77 namespace
+--- packaging/chromium-efl.spec:125-133 ---
+   125	%define __use_bundled_libcxx 1
+   126
+   127	%define __use_system_icu 0
+   128	%if !0%{?__use_bundled_libcxx} && (%{tizen_version} >= 100  || "%{_use_system_icu}" == "1") && "%{?_with_emulator}" != "1"
+   129	%define __use_system_icu 1
+   130	%endif
+   131
+   132	%if !0%{?__disable_node_v8_component} && !0%{?__use_system_icu} && !0%{?__use_bundled_libcxx}
+   133	%error "use_system_icu should be enabled when disable_node_v8_component is false"
+--- packaging/chromium-efl.spec:727-733 ---
+   727	  "use_custom_libcxx=%{macro_to_bool __use_bundled_libcxx}" \
+   728	  "use_custom_libcxx_for_host=%{macro_to_bool __use_bundled_libcxx}" \
+   729	%if "%{?__use_system_icu}" == "1"
+   730	  "use_system_icu=true" \
+   731	%else
+   732	  "use_system_icu=false" \
+   733	%endif
+--- v8/src/objects/intl-objects.h:189-195 ---
+   189	  V8_EXPORT_PRIVATE static CompareStringsOptions CompareStringsOptionsFor(
+   190	      IsolateT* isolate, DirectHandle<Object> locales,
+   191	      DirectHandle<Object> options);
+   192	  V8_EXPORT_PRIVATE V8_WARN_UNUSED_RESULT static int CompareStrings(
+   193	      Isolate* isolate, const icu::Collator& collator, DirectHandle<String> s1,
+   194	      DirectHandle<String> s2,
+   195	      CompareStringsOptions compare_strings_options =

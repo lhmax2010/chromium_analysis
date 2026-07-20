@@ -1,0 +1,20 @@
+diff --git a/packaging/chromium-efl.spec b/packaging/chromium-efl.spec
+index 000000000000..111111111111 100644
+--- a/packaging/chromium-efl.spec
++++ b/packaging/chromium-efl.spec
+@@ -926,1 +926,15 @@
+ %endif
++%check
++%if 0%{?__use_bundled_libcxx}
++# Draft only: the gate script and three reviewed inputs must be added to
++# packaging before this patch can be applied. It scans DSOs in OUTPUT_FOLDER and
++# fails closed on __Cr signatures, dynamic libc++ dependencies, bridge drift,
++# or exports absent from the reviewed allowlist; demangle failures are recorded.
++bash packaging/abi_gate_v2.sh \
++  --candidate-root "%{OUTPUT_FOLDER}" \
++  --baseline-exports packaging/abi_baseline_exports.tsv \
++  --added-allowlist packaging/abi_added_exports.allowlist.tsv \
++  --bridge-allowlist packaging/wrt_bridge_exports.allowlist.txt \
++  --out "%{_builddir}/abi-gate-v2"
++%endif
++

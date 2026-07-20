@@ -1,0 +1,1 @@
+ 0x00000001 (NEEDED)                     Shared library: [libstdc++.so.6]

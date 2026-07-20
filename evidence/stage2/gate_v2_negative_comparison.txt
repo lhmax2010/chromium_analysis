@@ -1,0 +1,4 @@
+v1_prefix_equivalent_G1_hits=5
+v1_prefix_equivalent_G2_hits=0
+nested_signature_G1_hits_only_v2=488
+nested_signature_G2_hits_only_v2=43

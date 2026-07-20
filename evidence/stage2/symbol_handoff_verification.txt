@@ -1,0 +1,11 @@
+source_ref=17d59f3a15e1fbe7e48c119b4f128bf2f228c88d
+export_cr_lines=488
+export_cr_demangle_failed=2
+export_cr_bad_field_count=0
+export_cr_duplicate_rows=0
+baseline_v8node_lines=19748
+baseline_libv8_lines=18909
+baseline_libnode_lines=839
+baseline_bad_field_count=0
+baseline_duplicate_rows=0
+baseline_binding_scope=GLOBAL_OR_WEAK_NON_UND (original analyze_rpms.sh provider definition)

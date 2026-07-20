@@ -1,0 +1,12 @@
+status=FAIL
+G1_full_signature_export_hits=493
+G2_full_signature_und_hits=43
+G3_needed_libcxx_hits=0
+unknown_symbols=124
+added_exports=730
+added_exports_unallowlisted=730
+bridge_count=1
+bridge_unexpected=0
+bridge_missing=0
+bridge_ZNSt_exports=0
+bridge_NEEDED_libstdcxx=1
