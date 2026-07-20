@@ -10,6 +10,11 @@
 2. 再把 [`prompts/REMOTE_AI_PROMPT.md`](prompts/REMOTE_AI_PROMPT.md) 原样作为任务 prompt 发给它。
 3. 最终报告必须按 [`guides/REPORT_TEMPLATE.md`](guides/REPORT_TEMPLATE.md) 填写，并把纯文本证据推回本仓库的新分支。
 
+远端构建已经完成、只需修正构建后 ABI 审计时，使用
+[`prompts/REMOTE_AI_POSTBUILD_AUDIT_PROMPT.md`](prompts/REMOTE_AI_POSTBUILD_AUDIT_PROMPT.md)，
+不得重新编译。当前 PM 阶段汇报稿见
+[`reports/PM_STAGE_REPORT_2026-07-20.md`](reports/PM_STAGE_REPORT_2026-07-20.md)。
+
 关键材料：
 
 - `patches/bundled_libcxx_spike.patch`：以 Chromium 基线提交 `394713cfd95e9597793255ec71496aef6ef84574` 为基准的完整 8 文件补丁。
