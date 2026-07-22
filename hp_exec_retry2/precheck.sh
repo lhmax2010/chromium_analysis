@@ -1,0 +1,230 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+export LC_ALL=C
+
+script_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+analysis_root=$(cd "$script_dir/.." && pwd)
+inputs="$script_dir/inputs"
+logs="$script_dir/logs"
+generated="$script_dir/generated"
+source_repo=$(cd "$analysis_root/.." && pwd)/chromium-efl
+backup_repo=$(cd "$analysis_root/.." && pwd)/chromium-efl_backup
+stage4_source_commit=$(<"$inputs/SOURCE_COMMIT")
+source_start_commit=$(<"$inputs/SOURCE_START_COMMIT")
+base_commit=$(<"$inputs/SOURCE_BASE_COMMIT")
+started=0
+failure_reported=0
+
+precheck_fail() {
+  failure_reported=1
+  echo "[PRECHECK-FAIL] precheck.sh: $*" >&2
+  exit 1
+}
+step_fail() {
+  failure_reported=1
+  echo "[STEP-0-FAIL] precheck.sh: $*" >&2
+  exit 1
+}
+trap 'rc=$?; if ((rc != 0 && failure_reported == 0)); then if ((started)); then echo "[STEP-0-FAIL] precheck.sh: line=${LINENO} rc=${rc}" >&2; else echo "[PRECHECK-FAIL] precheck.sh: line=${LINENO} rc=${rc}" >&2; fi; fi' EXIT
+
+mkdir -p "$logs" "$generated"
+
+required_tools=(
+  awk bash c++filt chmod cmp cpio curl cut df dirname du file find free gbs git grep gzip
+  head mkdir mktemp nm nproc paste readelf readlink rpm2cpio sed sha256sum
+  sort stat systemctl systemd-run tail tar tee timeout tr uname uniq wc
+)
+for tool in "${required_tools[@]}"; do
+  command -v "$tool" >/dev/null 2>&1 || precheck_fail "missing tool: $tool"
+done
+[[ -x /usr/bin/time ]] || precheck_fail "missing executable: /usr/bin/time"
+if command -v qemu-arm-static >/dev/null 2>&1; then
+  qemu_arm=$(command -v qemu-arm-static)
+elif command -v qemu-arm >/dev/null 2>&1; then
+  qemu_arm=$(command -v qemu-arm)
+else
+  precheck_fail "missing qemu-arm-static and qemu-arm"
+fi
+
+[[ -d "$source_repo/.git" ]] || precheck_fail "missing independent clone: $source_repo"
+[[ -d "$backup_repo/.git" ]] || precheck_fail "missing independent clone: $backup_repo"
+[[ -f "$inputs/SHA256SUMS" ]] || precheck_fail "missing inputs/SHA256SUMS"
+(cd "$inputs" && sha256sum -c SHA256SUMS) >"$logs/input_sha256_check.txt" 2>&1 ||
+  precheck_fail "input SHA256 verification failed; see logs/input_sha256_check.txt"
+[[ "$stage4_source_commit" =~ ^[0-9a-f]{40}$ &&
+   "$source_start_commit" =~ ^[0-9a-f]{40}$ &&
+   "$base_commit" =~ ^[0-9a-f]{40}$ ]] ||
+  precheck_fail "one or more source commit inputs are not 40-character SHAs"
+[[ $(wc -l <"$inputs/internal_cr_allowlist.tsv") -eq 34 ]] ||
+  precheck_fail "internal C++ allowlist count is not 34"
+[[ $(wc -l <"$inputs/expected_hidden_cr_exports.tsv") -eq 454 ]] ||
+  precheck_fail "hidden export assertion count is not 454"
+[[ $(wc -l <"$inputs/expected_added_exports.tsv") -eq 166 ]] ||
+  precheck_fail "added export allowlist count is not 166"
+[[ $(wc -l <"$inputs/bridge_export_allowlist.txt") -eq 92 ]] ||
+  precheck_fail "bridge export allowlist count is not 92"
+[[ $(wc -l <"$inputs/removed_59_input.tsv") -eq 59 ]] ||
+  precheck_fail "removed residual input count is not 59"
+[[ $(wc -l <"$inputs/removed_59_triage.tsv") -eq 60 ]] ||
+  precheck_fail "removed residual triage count is not 59 data rows"
+[[ $(wc -l <"$inputs/baseline_exports.tsv") -eq 21842 ]] ||
+  precheck_fail "baseline export snapshot count is not 21842"
+[[ $(wc -l <"$inputs/node_nonstd_export_allowlist.tsv") -eq 354 ]] ||
+  precheck_fail "stable non-STL libnode allowlist count is not 354"
+[[ $(wc -l <"$inputs/retry1_visible_undefined.demangled.txt") -eq 20 ]] ||
+  precheck_fail "Retry 1 visible undefined-symbol evidence count is not 20"
+
+for repo in "$source_repo" "$backup_repo"; do
+  [[ -z $(git -C "$repo" status --porcelain=v1 --untracked-files=all) ]] ||
+    precheck_fail "repository is not clean: $repo"
+  git -C "$repo" cat-file -e "$base_commit^{commit}" 2>/dev/null ||
+    precheck_fail "base commit $base_commit is absent from $repo"
+done
+backup_head=$(git -C "$backup_repo" rev-parse HEAD)
+[[ "$backup_head" == "$base_commit" ]] ||
+  precheck_fail "chromium-efl_backup HEAD=$backup_head expected=$base_commit"
+source_head=$(git -C "$source_repo" rev-parse HEAD)
+git -C "$source_repo" cat-file -e "$stage4_source_commit^{commit}" 2>/dev/null ||
+  precheck_fail "Stage 4 source commit $stage4_source_commit is absent from chromium-efl"
+remote_head=$(git ls-remote \
+  'ssh://lhmax2025@review.tizen.org:29418/platform/framework/web/chromium-efl' \
+  refs/heads/sandbox/lhmax2025/toolchain | awk '{print $1}')
+[[ "$remote_head" == "$source_start_commit" ]] ||
+  precheck_fail "Gerrit toolchain HEAD=$remote_head expected=$source_start_commit"
+
+base_repo_url=https://download.tizen.org/snapshots/TIZEN/Tizen/Tizen-Base-Toolchain/reference/repos/standard/packages/repodata/repomd.xml
+unified_repo_url=https://download.tizen.org/snapshots/TIZEN/Tizen/Tizen-Unified-Toolchain/reference/repos/standard/packages/repodata/repomd.xml
+proxy_names=(
+  HTTP_PROXY HTTPS_PROXY FTP_PROXY NO_PROXY
+  http_proxy https_proxy ftp_proxy no_proxy
+)
+proxy_env_args=()
+curl_bin=$(command -v curl)
+for proxy_name in "${proxy_names[@]}"; do
+  if [[ -v $proxy_name ]]; then
+    proxy_env_args+=(--setenv="$proxy_name=${!proxy_name}")
+  else
+    proxy_env_args+=(--setenv="$proxy_name=")
+  fi
+done
+
+for entry in "base:$base_repo_url" "unified:$unified_repo_url"; do
+  label=${entry%%:*}
+  url=${entry#*:}
+  curl -fsSL --connect-timeout 15 --max-time 45 -D - -o /dev/null "$url" \
+    >"$logs/repo_${label}_shell_probe.txt" 2>&1 ||
+    precheck_fail "$label repository is unreachable from the current shell"
+  systemd-run --user --wait --pipe --quiet \
+    --property=MemoryMax=512M --property=CPUQuota=100% \
+    "${proxy_env_args[@]}" \
+    "$curl_bin" -fsSL --connect-timeout 15 --max-time 45 -D - -o /dev/null "$url" \
+    >"$logs/repo_${label}_service_probe.txt" 2>&1 ||
+    precheck_fail "$label repository is unreachable from a systemd user service"
+done
+
+mem_total_kib=$(awk '/^MemTotal:/ {print $2}' /proc/meminfo)
+mem_available_kib=$(awk '/^MemAvailable:/ {print $2}' /proc/meminfo)
+[[ "$mem_total_kib" =~ ^[0-9]+$ ]] || precheck_fail "cannot read MemTotal"
+[[ "$mem_available_kib" =~ ^[0-9]+$ ]] || precheck_fail "cannot read MemAvailable"
+mem_total_gib=$((mem_total_kib / 1024 / 1024))
+mem_available_gib=$((mem_available_kib / 1024 / 1024))
+((mem_total_gib >= 64)) ||
+  precheck_fail "total RAM ${mem_total_gib}GiB is below the 64GiB machine threshold"
+((mem_available_gib >= 48)) ||
+  precheck_fail "MemAvailable ${mem_available_gib}GiB is below the 48GiB build threshold"
+disk_avail_kib=$(df -Pk "$analysis_root" | awk 'NR==2 {print $4}')
+[[ "$disk_avail_kib" =~ ^[0-9]+$ ]] || precheck_fail "cannot read free disk space"
+disk_avail_gib=$((disk_avail_kib / 1024 / 1024))
+((disk_avail_gib >= 300)) ||
+  precheck_fail "free disk ${disk_avail_gib}GiB is below the 300GiB threshold"
+cores=$(nproc)
+[[ "$cores" =~ ^[0-9]+$ ]] || precheck_fail "cannot read CPU count"
+((cores >= 16)) || precheck_fail "CPU count $cores is below the 16-core threshold"
+
+mem_total_mib=$((mem_total_kib / 1024))
+mem_available_mib=$((mem_available_kib / 1024))
+host_reserve_mib=16384
+memory_max_mib=$((mem_available_mib - host_reserve_mib))
+memory_total_cap_mib=$((mem_total_mib * 75 / 100))
+((memory_max_mib > memory_total_cap_mib)) && memory_max_mib=$memory_total_cap_mib
+((memory_max_mib >= 32768)) ||
+  precheck_fail "safe build budget ${memory_max_mib}MiB is below 32768MiB"
+jobs_by_mem=$((memory_max_mib / 4096))
+jobs=$((cores - 1))
+((jobs > jobs_by_mem)) && jobs=$jobs_by_mem
+((jobs > 32)) && jobs=32
+((jobs >= 8)) || precheck_fail "derived job count $jobs is below 8"
+memory_high_mib=$((memory_max_mib * 90 / 100))
+cpu_quota=$((jobs * 100))
+gbs_root="$HOME/GBS-ROOT-TIZEN-UNIFIED-LLVM"
+
+started=1
+{
+  printf 'ANALYSIS_ROOT=%q\n' "$analysis_root"
+  printf 'SOURCE_REPO=%q\n' "$source_repo"
+  printf 'BACKUP_REPO=%q\n' "$backup_repo"
+  printf 'SOURCE_START_COMMIT=%q\n' "$source_start_commit"
+  printf 'STAGE4_SOURCE_COMMIT=%q\n' "$stage4_source_commit"
+  printf 'SOURCE_COMMIT=%q\n' "$source_start_commit"
+  printf 'SOURCE_BASE_COMMIT=%q\n' "$base_commit"
+  printf 'INPUTS_DIR=%q\n' "$inputs"
+  printf 'LOG_DIR=%q\n' "$logs"
+  printf 'GENERATED_DIR=%q\n' "$generated"
+  printf 'GBS_CONF=%q\n' "$inputs/gbs_llvm.conf"
+  printf 'GBS_ROOT=%q\n' "$gbs_root"
+  printf 'QEMU_ARM=%q\n' "$qemu_arm"
+  printf 'BUILD_JOBS=%q\n' "$jobs"
+  printf 'MEMORY_MAX=%q\n' "${memory_max_mib}M"
+  printf 'MEMORY_HIGH=%q\n' "${memory_high_mib}M"
+  printf 'CPU_QUOTA=%q\n' "${cpu_quota}%"
+  printf 'GERRIT_URL=%q\n' 'ssh://lhmax2025@review.tizen.org:29418/platform/framework/web/chromium-efl'
+  printf 'GERRIT_BRANCH=%q\n' 'sandbox/lhmax2025/toolchain'
+  for proxy_name in "${proxy_names[@]}"; do
+    if [[ -v $proxy_name ]]; then
+      printf '%s=%q\n' "$proxy_name" "${!proxy_name}"
+    else
+      printf '%s=%q\n' "$proxy_name" ""
+    fi
+  done
+} >"$generated/stage4.env"
+
+{
+  echo "timestamp=$(date --iso-8601=seconds)"
+  echo "analysis_root=$analysis_root"
+  echo "source_repo=$source_repo"
+  echo "backup_repo=$backup_repo"
+  echo "source_head=$source_head"
+  echo "backup_head=$backup_head"
+  echo "stage4_source_commit=$stage4_source_commit"
+  echo "source_start_commit=$source_start_commit"
+  echo "gerrit_remote_head=$remote_head"
+  echo "base_commit=$base_commit"
+  echo "memory_total_gib=$mem_total_gib"
+  echo "memory_available_gib=$mem_available_gib"
+  echo "host_reserve_mib=$host_reserve_mib"
+  echo "disk_available_gib=$disk_avail_gib"
+  echo "cpu_count=$cores"
+  echo "build_jobs=$jobs"
+  echo "memory_max=${memory_max_mib}M"
+  echo "memory_high=${memory_high_mib}M"
+  echo "cpu_quota=${cpu_quota}%"
+  echo "qemu_arm=$qemu_arm"
+  echo "base_repository_shell_and_service=OK"
+  echo "unified_repository_shell_and_service=OK"
+} >"$logs/precheck_summary.txt"
+
+{
+  bash --version | head -1
+  git --version
+  gbs --version
+  readelf --version | head -1
+  nm --version | head -1
+  "$qemu_arm" --version | head -1
+  systemd-run --version | head -1
+  uname -a
+  free -h
+  df -h "$analysis_root"
+} >"$logs/tool_versions.txt" 2>&1 || step_fail "failed to record tool versions"
+
+trap - EXIT
+echo "[STEP-0-OK] jobs=$jobs memory_max=${memory_max_mib}M mem_available=${mem_available_gib}GiB disk_available=${disk_avail_gib}GiB repositories=OK"

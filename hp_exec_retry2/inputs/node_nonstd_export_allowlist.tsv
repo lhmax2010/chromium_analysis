@@ -1,0 +1,354 @@
+_ZN4node10AsyncHooks11DeserializeEN2v85LocalINS1_7ContextEEE	node::AsyncHooks::Deserialize(v8::Local<v8::Context>)
+_ZN4node10AsyncHooks17ResetPromiseHooksEN2v85LocalINS1_8FunctionEEES4_S4_S4_	node::AsyncHooks::ResetPromiseHooks(v8::Local<v8::Function>, v8::Local<v8::Function>, v8::Local<v8::Function>, v8::Local<v8::Function>)
+_ZN4node10AsyncHooks17pop_async_contextEd	node::AsyncHooks::pop_async_context(double)
+_ZN4node10AsyncHooks18push_async_contextEddPN2v85LocalINS1_6ObjectEEE	node::AsyncHooks::push_async_context(double, double, v8::Local<v8::Object>*)
+_ZN4node10AsyncHooks19InstallPromiseHooksEN2v85LocalINS1_7ContextEEE	node::AsyncHooks::InstallPromiseHooks(v8::Local<v8::Context>)
+_ZN4node10AsyncHooks20clear_async_id_stackEv	node::AsyncHooks::clear_async_id_stack()
+_ZN4node10AsyncHooks20grow_async_ids_stackEv	node::AsyncHooks::grow_async_ids_stack()
+_ZN4node10AsyncHooks26DefaultTriggerAsyncIdScopeC1EPNS_11EnvironmentEd	node::AsyncHooks::DefaultTriggerAsyncIdScope::DefaultTriggerAsyncIdScope(node::Environment*, double)
+_ZN4node10AsyncHooks26DefaultTriggerAsyncIdScopeC1EPNS_9AsyncWrapE	node::AsyncHooks::DefaultTriggerAsyncIdScope::DefaultTriggerAsyncIdScope(node::AsyncWrap*)
+_ZN4node10AsyncHooks26DefaultTriggerAsyncIdScopeC2EPNS_11EnvironmentEd	node::AsyncHooks::DefaultTriggerAsyncIdScope::DefaultTriggerAsyncIdScope(node::Environment*, double)
+_ZN4node10AsyncHooks26DefaultTriggerAsyncIdScopeC2EPNS_9AsyncWrapE	node::AsyncHooks::DefaultTriggerAsyncIdScope::DefaultTriggerAsyncIdScope(node::AsyncWrap*)
+_ZN4node10AsyncHooks26DefaultTriggerAsyncIdScopeD1Ev	node::AsyncHooks::DefaultTriggerAsyncIdScope::~DefaultTriggerAsyncIdScope()
+_ZN4node10AsyncHooks26DefaultTriggerAsyncIdScopeD2Ev	node::AsyncHooks::DefaultTriggerAsyncIdScope::~DefaultTriggerAsyncIdScope()
+_ZN4node10AsyncHooks27FailWithCorruptedAsyncStackEd	node::AsyncHooks::FailWithCorruptedAsyncStack(double)
+_ZN4node10AsyncHooks9SerializeEN2v85LocalINS1_7ContextEEEPNS1_15SnapshotCreatorE	node::AsyncHooks::Serialize(v8::Local<v8::Context>, v8::SnapshotCreator*)
+_ZN4node10AsyncHooksC1EPN2v87IsolateEPKNS0_13SerializeInfoE	node::AsyncHooks::AsyncHooks(v8::Isolate*, node::AsyncHooks::SerializeInfo const*)
+_ZN4node10AsyncHooksC2EPN2v87IsolateEPKNS0_13SerializeInfoE	node::AsyncHooks::AsyncHooks(v8::Isolate*, node::AsyncHooks::SerializeInfo const*)
+_ZN4node10NewContextEPN2v87IsolateENS0_5LocalINS0_14ObjectTemplateEEE	node::NewContext(v8::Isolate*, v8::Local<v8::ObjectTemplate>)
+_ZN4node10ResetStdioEv	node::ResetStdio()
+_ZN4node11per_process11cli_optionsE	node::per_process::cli_options
+_ZN4node11per_process11dotenv_fileE	node::per_process::dotenv_file
+_ZN4node11per_process11umask_mutexE	node::per_process::umask_mutex
+_ZN4node11per_process11v8_platformE	node::per_process::v8_platform
+_ZN4node11per_process12reverted_cveE	node::per_process::reverted_cve
+_ZN4node11per_process13config_readerE	node::per_process::config_reader
+_ZN4node11per_process13env_var_mutexE	node::per_process::env_var_mutex
+_ZN4node11per_process14v8_initializedE	node::per_process::v8_initialized
+_ZN4node11per_process15node_start_timeE	node::per_process::node_start_time
+_ZN4node11per_process17cli_options_mutexE	node::per_process::cli_options_mutex
+_ZN4node11per_process18enabled_debug_listE	node::per_process::enabled_debug_list
+_ZN4node11per_process18system_environmentE	node::per_process::system_environment
+_ZN4node11per_process8metadataE	node::per_process::metadata
+_ZN4node12MakeCallbackEPN2v87IsolateENS0_5LocalINS0_6ObjectEEENS3_INS0_6StringEEEiPNS3_INS0_5ValueEEE	node::MakeCallback(v8::Isolate*, v8::Local<v8::Object>, v8::Local<v8::String>, int, v8::Local<v8::Value>*)
+_ZN4node12MakeCallbackEPN2v87IsolateENS0_5LocalINS0_6ObjectEEENS3_INS0_6StringEEEiPNS3_INS0_5ValueEEENS_13async_contextE	node::MakeCallback(v8::Isolate*, v8::Local<v8::Object>, v8::Local<v8::String>, int, v8::Local<v8::Value>*, node::async_context)
+_ZN4node12MakeCallbackEPN2v87IsolateENS0_5LocalINS0_6ObjectEEENS3_INS0_8FunctionEEEiPNS3_INS0_5ValueEEE	node::MakeCallback(v8::Isolate*, v8::Local<v8::Object>, v8::Local<v8::Function>, int, v8::Local<v8::Value>*)
+_ZN4node12MakeCallbackEPN2v87IsolateENS0_5LocalINS0_6ObjectEEENS3_INS0_8FunctionEEEiPNS3_INS0_5ValueEEENS_13async_contextE	node::MakeCallback(v8::Isolate*, v8::Local<v8::Object>, v8::Local<v8::Function>, int, v8::Local<v8::Value>*, node::async_context)
+_ZN4node12MakeCallbackEPN2v87IsolateENS0_5LocalINS0_6ObjectEEEPKciPNS3_INS0_5ValueEEE	node::MakeCallback(v8::Isolate*, v8::Local<v8::Object>, char const*, int, v8::Local<v8::Value>*)
+_ZN4node12MakeCallbackEPN2v87IsolateENS0_5LocalINS0_6ObjectEEEPKciPNS3_INS0_5ValueEEENS_13async_contextE	node::MakeCallback(v8::Isolate*, v8::Local<v8::Object>, char const*, int, v8::Local<v8::Value>*, node::async_context)
+_ZN4node12wasm_web_api10InitializeEN2v85LocalINS1_6ObjectEEENS2_INS1_5ValueEEENS2_INS1_7ContextEEEPv	node::wasm_web_api::Initialize(v8::Local<v8::Object>, v8::Local<v8::Value>, v8::Local<v8::Context>, void*)
+_ZN4node12wasm_web_api17SetImplementationERKN2v820FunctionCallbackInfoINS1_5ValueEEE	node::wasm_web_api::SetImplementation(v8::FunctionCallbackInfo<v8::Value> const&)
+_ZN4node12wasm_web_api19WasmStreamingObject10InitializeEPNS_11EnvironmentE	node::wasm_web_api::WasmStreamingObject::Initialize(node::Environment*)
+_ZN4node12wasm_web_api19WasmStreamingObject26RegisterExternalReferencesEPNS_25ExternalReferenceRegistryE	node::wasm_web_api::WasmStreamingObject::RegisterExternalReferences(node::ExternalReferenceRegistry*)
+_ZN4node12wasm_web_api19WasmStreamingObject3NewERKN2v820FunctionCallbackInfoINS2_5ValueEEE	node::wasm_web_api::WasmStreamingObject::New(v8::FunctionCallbackInfo<v8::Value> const&)
+_ZN4node12wasm_web_api19WasmStreamingObject4PushERKN2v820FunctionCallbackInfoINS2_5ValueEEE	node::wasm_web_api::WasmStreamingObject::Push(v8::FunctionCallbackInfo<v8::Value> const&)
+_ZN4node12wasm_web_api19WasmStreamingObject5AbortERKN2v820FunctionCallbackInfoINS2_5ValueEEE	node::wasm_web_api::WasmStreamingObject::Abort(v8::FunctionCallbackInfo<v8::Value> const&)
+_ZN4node12wasm_web_api19WasmStreamingObject6FinishERKN2v820FunctionCallbackInfoINS2_5ValueEEE	node::wasm_web_api::WasmStreamingObject::Finish(v8::FunctionCallbackInfo<v8::Value> const&)
+_ZN4node12wasm_web_api19WasmStreamingObject6SetURLERKN2v820FunctionCallbackInfoINS2_5ValueEEE	node::wasm_web_api::WasmStreamingObject::SetURL(v8::FunctionCallbackInfo<v8::Value> const&)
+_ZN4node12wasm_web_api25StartStreamingCompilationERKN2v820FunctionCallbackInfoINS1_5ValueEEE	node::wasm_web_api::StartStreamingCompilation(v8::FunctionCallbackInfo<v8::Value> const&)
+_ZN4node12wasm_web_api26RegisterExternalReferencesEPNS_25ExternalReferenceRegistryE	node::wasm_web_api::RegisterExternalReferences(node::ExternalReferenceRegistry*)
+_ZN4node13CallbackScopeC1EPN2v87IsolateENS1_5LocalINS1_6ObjectEEENS_13async_contextE	node::CallbackScope::CallbackScope(v8::Isolate*, v8::Local<v8::Object>, node::async_context)
+_ZN4node13CallbackScopeC1EPNS_11EnvironmentEN2v85LocalINS3_6ObjectEEENS_13async_contextE	node::CallbackScope::CallbackScope(node::Environment*, v8::Local<v8::Object>, node::async_context)
+_ZN4node13CallbackScopeC2EPN2v87IsolateENS1_5LocalINS1_6ObjectEEENS_13async_contextE	node::CallbackScope::CallbackScope(v8::Isolate*, v8::Local<v8::Object>, node::async_context)
+_ZN4node13CallbackScopeC2EPNS_11EnvironmentEN2v85LocalINS3_6ObjectEEENS_13async_contextE	node::CallbackScope::CallbackScope(node::Environment*, v8::Local<v8::Object>, node::async_context)
+_ZN4node13CallbackScopeD1Ev	node::CallbackScope::~CallbackScope()
+_ZN4node13CallbackScopeD2Ev	node::CallbackScope::~CallbackScope()
+_ZN4node13SpinEventLoopEPNS_11EnvironmentE	node::SpinEventLoop(node::Environment*)
+_ZN4node14PrincipalRealm14BootstrapRealmEv	node::PrincipalRealm::BootstrapRealm()
+_ZN4node14PrincipalRealm15set_primordialsEN2v85LocalINS1_6ObjectEEE	node::PrincipalRealm::set_primordials(v8::Local<v8::Object>)
+_ZN4node14PrincipalRealm16set_message_portEN2v85LocalINS1_6ObjectEEE	node::PrincipalRealm::set_message_port(v8::Local<v8::Object>)
+_ZN4node14PrincipalRealm18set_process_objectEN2v85LocalINS1_6ObjectEEE	node::PrincipalRealm::set_process_object(v8::Local<v8::Object>)
+_ZN4node14PrincipalRealm23set_async_hooks_bindingEN2v85LocalINS1_6ObjectEEE	node::PrincipalRealm::set_async_hooks_binding(v8::Local<v8::Object>)
+_ZN4node14PrincipalRealm26set_builtin_module_requireEN2v85LocalINS1_8FunctionEEE	node::PrincipalRealm::set_builtin_module_require(v8::Local<v8::Function>)
+_ZN4node14PrincipalRealm26set_modules_read_file_syncEN2v85LocalINS1_8FunctionEEE	node::PrincipalRealm::set_modules_read_file_sync(v8::Local<v8::Function>)
+_ZN4node14PrincipalRealm26set_tick_callback_functionEN2v85LocalINS1_8FunctionEEE	node::PrincipalRealm::set_tick_callback_function(v8::Local<v8::Function>)
+_ZN4node14PrincipalRealm27set_buffer_prototype_objectEN2v85LocalINS1_6ObjectEEE	node::PrincipalRealm::set_buffer_prototype_object(v8::Local<v8::Object>)
+_ZN4node14PrincipalRealm27set_internal_binding_loaderEN2v85LocalINS1_8FunctionEEE	node::PrincipalRealm::set_internal_binding_loader(v8::Local<v8::Function>)
+_ZN4node14PrincipalRealm27set_promise_reject_callbackEN2v85LocalINS1_8FunctionEEE	node::PrincipalRealm::set_promise_reject_callback(v8::Local<v8::Function>)
+_ZN4node14PrincipalRealm27set_source_map_cache_getterEN2v85LocalINS1_8FunctionEEE	node::PrincipalRealm::set_source_map_cache_getter(v8::Local<v8::Function>)
+_ZN4node14PrincipalRealm28set_timers_callback_functionEN2v85LocalINS1_8FunctionEEE	node::PrincipalRealm::set_timers_callback_function(v8::Local<v8::Function>)
+_ZN4node14PrincipalRealm28set_udp_constructor_functionEN2v85LocalINS1_8FunctionEEE	node::PrincipalRealm::set_udp_constructor_function(v8::Local<v8::Function>)
+_ZN4node14PrincipalRealm29set_async_hooks_init_functionEN2v85LocalINS1_8FunctionEEE	node::PrincipalRealm::set_async_hooks_init_function(v8::Local<v8::Function>)
+_ZN4node14PrincipalRealm29set_process_emit_warning_syncEN2v85LocalINS1_8FunctionEEE	node::PrincipalRealm::set_process_emit_warning_sync(v8::Local<v8::Function>)
+_ZN4node14PrincipalRealm29set_snapshot_deserialize_mainEN2v85LocalINS1_8FunctionEEE	node::PrincipalRealm::set_snapshot_deserialize_main(v8::Local<v8::Function>)
+_ZN4node14PrincipalRealm30set_async_hooks_after_functionEN2v85LocalINS1_8FunctionEEE	node::PrincipalRealm::set_async_hooks_after_function(v8::Local<v8::Function>)
+_ZN4node14PrincipalRealm30set_performance_entry_callbackEN2v85LocalINS1_8FunctionEEE	node::PrincipalRealm::set_performance_entry_callback(v8::Local<v8::Function>)
+_ZN4node14PrincipalRealm31set_async_hooks_before_functionEN2v85LocalINS1_8FunctionEEE	node::PrincipalRealm::set_async_hooks_before_function(v8::Local<v8::Function>)
+_ZN4node14PrincipalRealm31set_get_source_map_error_sourceEN2v85LocalINS1_8FunctionEEE	node::PrincipalRealm::set_get_source_map_error_source(v8::Local<v8::Function>)
+_ZN4node14PrincipalRealm31set_immediate_callback_functionEN2v85LocalINS1_8FunctionEEE	node::PrincipalRealm::set_immediate_callback_function(v8::Local<v8::Function>)
+_ZN4node14PrincipalRealm31set_snapshot_serialize_callbackEN2v85LocalINS1_8FunctionEEE	node::PrincipalRealm::set_snapshot_serialize_callback(v8::Local<v8::Function>)
+_ZN4node14PrincipalRealm32set_async_hooks_destroy_functionEN2v85LocalINS1_8FunctionEEE	node::PrincipalRealm::set_async_hooks_destroy_function(v8::Local<v8::Function>)
+_ZN4node14PrincipalRealm32set_inspector_enable_async_hooksEN2v85LocalINS1_8FunctionEEE	node::PrincipalRealm::set_inspector_enable_async_hooks(v8::Local<v8::Function>)
+_ZN4node14PrincipalRealm32set_prepare_stack_trace_callbackEN2v85LocalINS1_8FunctionEEE	node::PrincipalRealm::set_prepare_stack_trace_callback(v8::Local<v8::Function>)
+_ZN4node14PrincipalRealm33set_http2session_on_ping_functionEN2v85LocalINS1_8FunctionEEE	node::PrincipalRealm::set_http2session_on_ping_function(v8::Local<v8::Function>)
+_ZN4node14PrincipalRealm33set_inspector_disable_async_hooksEN2v85LocalINS1_8FunctionEEE	node::PrincipalRealm::set_inspector_disable_async_hooks(v8::Local<v8::Function>)
+_ZN4node14PrincipalRealm33set_snapshot_deserialize_callbackEN2v85LocalINS1_8FunctionEEE	node::PrincipalRealm::set_snapshot_deserialize_callback(v8::Local<v8::Function>)
+_ZN4node14PrincipalRealm33set_tls_wrap_constructor_functionEN2v85LocalINS1_8FunctionEEE	node::PrincipalRealm::set_tls_wrap_constructor_function(v8::Local<v8::Function>)
+_ZN4node14PrincipalRealm33set_trace_category_state_functionEN2v85LocalINS1_8FunctionEEE	node::PrincipalRealm::set_trace_category_state_function(v8::Local<v8::Function>)
+_ZN4node14PrincipalRealm34set_http2session_on_error_functionEN2v85LocalINS1_8FunctionEEE	node::PrincipalRealm::set_http2session_on_error_function(v8::Local<v8::Function>)
+_ZN4node14PrincipalRealm35set_async_hooks_callback_trampolineEN2v85LocalINS1_8FunctionEEE	node::PrincipalRealm::set_async_hooks_callback_trampoline(v8::Local<v8::Function>)
+_ZN4node14PrincipalRealm35set_http2session_on_altsvc_functionEN2v85LocalINS1_8FunctionEEE	node::PrincipalRealm::set_http2session_on_altsvc_function(v8::Local<v8::Function>)
+_ZN4node14PrincipalRealm35set_http2session_on_origin_functionEN2v85LocalINS1_8FunctionEEE	node::PrincipalRealm::set_http2session_on_origin_function(v8::Local<v8::Function>)
+_ZN4node14PrincipalRealm35set_wasm_streaming_compilation_implEN2v85LocalINS1_8FunctionEEE	node::PrincipalRealm::set_wasm_streaming_compilation_impl(v8::Local<v8::Function>)
+_ZN4node14PrincipalRealm36set_http2session_on_headers_functionEN2v85LocalINS1_8FunctionEEE	node::PrincipalRealm::set_http2session_on_headers_function(v8::Local<v8::Function>)
+_ZN4node14PrincipalRealm36set_maybe_cache_generated_source_mapEN2v85LocalINS1_8FunctionEEE	node::PrincipalRealm::set_maybe_cache_generated_source_map(v8::Local<v8::Function>)
+_ZN4node14PrincipalRealm37set_http2session_on_priority_functionEN2v85LocalINS1_8FunctionEEE	node::PrincipalRealm::set_http2session_on_priority_function(v8::Local<v8::Function>)
+_ZN4node14PrincipalRealm37set_http2session_on_settings_functionEN2v85LocalINS1_8FunctionEEE	node::PrincipalRealm::set_http2session_on_settings_function(v8::Local<v8::Function>)
+_ZN4node14PrincipalRealm37set_inspector_enable_network_trackingEN2v85LocalINS1_8FunctionEEE	node::PrincipalRealm::set_inspector_enable_network_tracking(v8::Local<v8::Function>)
+_ZN4node14PrincipalRealm37set_wasm_streaming_object_constructorEN2v85LocalINS1_8FunctionEEE	node::PrincipalRealm::set_wasm_streaming_object_constructor(v8::Local<v8::Function>)
+_ZN4node14PrincipalRealm38set_inspector_disable_network_trackingEN2v85LocalINS1_8FunctionEEE	node::PrincipalRealm::set_inspector_disable_network_tracking(v8::Local<v8::Function>)
+_ZN4node14PrincipalRealm39set_enhance_fatal_stack_after_inspectorEN2v85LocalINS1_8FunctionEEE	node::PrincipalRealm::set_enhance_fatal_stack_after_inspector(v8::Local<v8::Function>)
+_ZN4node14PrincipalRealm39set_messaging_deserialize_create_objectEN2v85LocalINS1_8FunctionEEE	node::PrincipalRealm::set_messaging_deserialize_create_object(v8::Local<v8::Function>)
+_ZN4node14PrincipalRealm40set_async_hooks_promise_resolve_functionEN2v85LocalINS1_8FunctionEEE	node::PrincipalRealm::set_async_hooks_promise_resolve_function(v8::Local<v8::Function>)
+_ZN4node14PrincipalRealm40set_crypto_key_object_public_constructorEN2v85LocalINS1_8FunctionEEE	node::PrincipalRealm::set_crypto_key_object_public_constructor(v8::Local<v8::Function>)
+_ZN4node14PrincipalRealm40set_crypto_key_object_secret_constructorEN2v85LocalINS1_8FunctionEEE	node::PrincipalRealm::set_crypto_key_object_secret_constructor(v8::Local<v8::Function>)
+_ZN4node14PrincipalRealm40set_enhance_fatal_stack_before_inspectorEN2v85LocalINS1_8FunctionEEE	node::PrincipalRealm::set_enhance_fatal_stack_before_inspector(v8::Local<v8::Function>)
+_ZN4node14PrincipalRealm40set_http2session_on_frame_error_functionEN2v85LocalINS1_8FunctionEEE	node::PrincipalRealm::set_http2session_on_frame_error_function(v8::Local<v8::Function>)
+_ZN4node14PrincipalRealm40set_http2session_on_goaway_data_functionEN2v85LocalINS1_8FunctionEEE	node::PrincipalRealm::set_http2session_on_goaway_data_function(v8::Local<v8::Function>)
+_ZN4node14PrincipalRealm41set_crypto_key_object_private_constructorEN2v85LocalINS1_8FunctionEEE	node::PrincipalRealm::set_crypto_key_object_private_constructor(v8::Local<v8::Function>)
+_ZN4node14PrincipalRealm41set_http2session_on_stream_close_functionEN2v85LocalINS1_8FunctionEEE	node::PrincipalRealm::set_http2session_on_stream_close_function(v8::Local<v8::Function>)
+_ZN4node14PrincipalRealm41set_inspector_console_extension_installerEN2v85LocalINS1_8FunctionEEE	node::PrincipalRealm::set_inspector_console_extension_installer(v8::Local<v8::Function>)
+_ZN4node14PrincipalRealm41set_primordials_safe_map_prototype_objectEN2v85LocalINS1_6ObjectEEE	node::PrincipalRealm::set_primordials_safe_map_prototype_object(v8::Local<v8::Object>)
+_ZN4node14PrincipalRealm41set_primordials_safe_set_prototype_objectEN2v85LocalINS1_6ObjectEEE	node::PrincipalRealm::set_primordials_safe_set_prototype_object(v8::Local<v8::Object>)
+_ZN4node14PrincipalRealm43set_host_import_module_dynamically_callbackEN2v85LocalINS1_8FunctionEEE	node::PrincipalRealm::set_host_import_module_dynamically_callback(v8::Local<v8::Function>)
+_ZN4node14PrincipalRealm44set_http2session_on_stream_trailers_functionEN2v85LocalINS1_8FunctionEEE	node::PrincipalRealm::set_http2session_on_stream_trailers_function(v8::Local<v8::Function>)
+_ZN4node14PrincipalRealm46set_primordials_safe_weak_map_prototype_objectEN2v85LocalINS1_6ObjectEEE	node::PrincipalRealm::set_primordials_safe_weak_map_prototype_object(v8::Local<v8::Object>)
+_ZN4node14PrincipalRealm46set_primordials_safe_weak_set_prototype_objectEN2v85LocalINS1_6ObjectEEE	node::PrincipalRealm::set_primordials_safe_weak_set_prototype_object(v8::Local<v8::Object>)
+_ZN4node14PrincipalRealm47set_host_initialize_import_meta_object_callbackEN2v85LocalINS1_8FunctionEEE	node::PrincipalRealm::set_host_initialize_import_meta_object_callback(v8::Local<v8::Function>)
+_ZN4node14PrincipalRealmC1EPNS_11EnvironmentEN2v85LocalINS3_7ContextEEEPKNS_18RealmSerializeInfoE	node::PrincipalRealm::PrincipalRealm(node::Environment*, v8::Local<v8::Context>, node::RealmSerializeInfo const*)
+_ZN4node14PrincipalRealmC2EPNS_11EnvironmentEN2v85LocalINS3_7ContextEEEPKNS_18RealmSerializeInfoE	node::PrincipalRealm::PrincipalRealm(node::Environment*, v8::Local<v8::Context>, node::RealmSerializeInfo const*)
+_ZN4node14PrincipalRealmD0Ev	node::PrincipalRealm::~PrincipalRealm()
+_ZN4node14PrincipalRealmD1Ev	node::PrincipalRealm::~PrincipalRealm()
+_ZN4node14PrincipalRealmD2Ev	node::PrincipalRealm::~PrincipalRealm()
+_ZN4node15FreeEnvironmentEPNS_11EnvironmentE	node::FreeEnvironment(node::Environment*)
+_ZN4node15FreeIsolateDataEPNS_11IsolateDataE	node::FreeIsolateData(node::IsolateData*)
+_ZN4node17CreateIsolateDataEPN2v87IsolateEP9uv_loop_sPNS_20MultiIsolatePlatformEPNS_20ArrayBufferAllocatorEPKNS_20EmbedderSnapshotDataE	node::CreateIsolateData(v8::Isolate*, uv_loop_s*, node::MultiIsolatePlatform*, node::ArrayBufferAllocator*, node::EmbedderSnapshotData const*)
+_ZN4node17InitializeContextEN2v85LocalINS0_7ContextEEE	node::InitializeContext(v8::Local<v8::Context>)
+_ZN4node18CheckedUvLoopCloseEP9uv_loop_s	node::CheckedUvLoopClose(uv_loop_s*)
+_ZN4node18ContextEmbedderTag15kNodeContextTagE	node::ContextEmbedderTag::kNodeContextTag
+_ZN4node18ContextEmbedderTag18kNodeContextTagPtrE	node::ContextEmbedderTag::kNodeContextTagPtr
+_ZN4node19SetIsolateUpForNodeEPN2v87IsolateE	node::SetIsolateUpForNode(v8::Isolate*)
+_ZN4node19SetIsolateUpForNodeEPN2v87IsolateERKNS_15IsolateSettingsE	node::SetIsolateUpForNode(v8::Isolate*, node::IsolateSettings const&)
+_ZN4node20MultiIsolatePlatform6CreateEiPN2v817TracingControllerEPNS1_13PageAllocatorE	node::MultiIsolatePlatform::Create(int, v8::TracingController*, v8::PageAllocator*)
+_ZN4node21SpinEventLoopInternalEPNS_11EnvironmentE	node::SpinEventLoopInternal(node::Environment*)
+_ZN4node22NodeRuntimeEnvironment11GetDelegateEv	node::NodeRuntimeEnvironment::GetDelegate()
+_ZN4node22NodeRuntimeEnvironment11GetInstanceEv	node::NodeRuntimeEnvironment::GetInstance()
+_ZN4node22NodeRuntimeEnvironment11ProcessEmitEPKcS2_	node::NodeRuntimeEnvironment::ProcessEmit(char const*, char const*)
+_ZN4node22NodeRuntimeEnvironment14InitTaskRunnerEP9uv_loop_s	node::NodeRuntimeEnvironment::InitTaskRunner(uv_loop_s*)
+_ZN4node22NodeRuntimeEnvironment16GetMaxThreadsNumEv	node::NodeRuntimeEnvironment::GetMaxThreadsNum()
+_ZN4node22NodeRuntimeEnvironment17CleanUpTaskRunnerEPN2v87IsolateE	node::NodeRuntimeEnvironment::CleanUpTaskRunner(v8::Isolate*)
+_ZN4node22NodeRuntimeEnvironment17CreateIsolateDataEPN2v87IsolateEPNS2_12CreateParamsE	node::NodeRuntimeEnvironment::CreateIsolateData(v8::Isolate*, v8::Isolate::CreateParams*)
+_ZN4node22NodeRuntimeEnvironment19StartServiceRuntimeEiPPcPKcPFvPvE	node::NodeRuntimeEnvironment::StartServiceRuntime(int, char**, char const*, void (*)(void*))
+_ZN4node24InitializeContextRuntimeEN2v85LocalINS0_7ContextEEE	node::InitializeContextRuntime(v8::Local<v8::Context>)
+_ZN4node25DefaultProcessExitHandlerEPNS_11EnvironmentEi	node::DefaultProcessExitHandler(node::Environment*, int)
+_ZN4node31AllowWasmCodeGenerationCallbackEN2v85LocalINS0_7ContextEEENS1_INS0_6StringEEE	node::AllowWasmCodeGenerationCallback(v8::Local<v8::Context>, v8::Local<v8::String>)
+_ZN4node33DefaultProcessExitHandlerInternalEPNS_11EnvironmentENS_8ExitCodeE	node::DefaultProcessExitHandlerInternal(node::Environment*, node::ExitCode)
+_ZN4node4StopEPNS_11EnvironmentENS_9StopFlags5FlagsE	node::Stop(node::Environment*, node::StopFlags::Flags)
+_ZN4node6AssertERKNS_13AssertionInfoE	node::Assert(node::AssertionInfo const&)
+_ZN4node6Buffer11HasInstanceEN2v85LocalINS1_5ValueEEE	node::Buffer::HasInstance(v8::Local<v8::Value>)
+_ZN4node6Buffer11HasInstanceEN2v85LocalINS1_6ObjectEEE	node::Buffer::HasInstance(v8::Local<v8::Object>)
+_ZN4node6Buffer26RegisterExternalReferencesEPNS_25ExternalReferenceRegistryE	node::Buffer::RegisterExternalReferences(node::ExternalReferenceRegistry*)
+_ZN4node6Buffer3NewEPN2v87IsolateENS1_5LocalINS1_11ArrayBufferEEEjj	node::Buffer::New(v8::Isolate*, v8::Local<v8::ArrayBuffer>, unsigned int, unsigned int)
+_ZN4node6Buffer3NewEPN2v87IsolateENS1_5LocalINS1_6StringEEENS_8encodingE	node::Buffer::New(v8::Isolate*, v8::Local<v8::String>, node::encoding)
+_ZN4node6Buffer3NewEPN2v87IsolateEPcj	node::Buffer::New(v8::Isolate*, char*, unsigned int)
+_ZN4node6Buffer3NewEPN2v87IsolateEPcjPFvS4_PvES5_	node::Buffer::New(v8::Isolate*, char*, unsigned int, void (*)(char*, void*), void*)
+_ZN4node6Buffer3NewEPN2v87IsolateEj	node::Buffer::New(v8::Isolate*, unsigned int)
+_ZN4node6Buffer3NewEPNS_11EnvironmentEN2v85LocalINS3_11ArrayBufferEEEjj	node::Buffer::New(node::Environment*, v8::Local<v8::ArrayBuffer>, unsigned int, unsigned int)
+_ZN4node6Buffer3NewEPNS_11EnvironmentEPcj	node::Buffer::New(node::Environment*, char*, unsigned int)
+_ZN4node6Buffer3NewEPNS_11EnvironmentEPcjPFvS3_PvES4_	node::Buffer::New(node::Environment*, char*, unsigned int, void (*)(char*, void*), void*)
+_ZN4node6Buffer3NewEPNS_11EnvironmentEj	node::Buffer::New(node::Environment*, unsigned int)
+_ZN4node6Buffer4CopyEPN2v87IsolateEPKcj	node::Buffer::Copy(v8::Isolate*, char const*, unsigned int)
+_ZN4node6Buffer4CopyEPNS_11EnvironmentEPKcj	node::Buffer::Copy(node::Environment*, char const*, unsigned int)
+_ZN4node6Buffer4DataEN2v85LocalINS1_5ValueEEE	node::Buffer::Data(v8::Local<v8::Value>)
+_ZN4node6Buffer4DataEN2v85LocalINS1_6ObjectEEE	node::Buffer::Data(v8::Local<v8::Object>)
+_ZN4node6Buffer6LengthEN2v85LocalINS1_5ValueEEE	node::Buffer::Length(v8::Local<v8::Value>)
+_ZN4node6Buffer6LengthEN2v85LocalINS1_6ObjectEEE	node::Buffer::Length(v8::Local<v8::Object>)
+_ZN4node6errors10InitializeEN2v85LocalINS1_6ObjectEEENS2_INS1_5ValueEEENS2_INS1_7ContextEEEPv	node::errors::Initialize(v8::Local<v8::Object>, v8::Local<v8::Value>, v8::Local<v8::Context>, void*)
+_ZN4node6errors12errno_stringEi	node::errors::errno_string(int)
+_ZN4node6errors13TryCatchScopeD1Ev	node::errors::TryCatchScope::~TryCatchScope()
+_ZN4node6errors13TryCatchScopeD2Ev	node::errors::TryCatchScope::~TryCatchScope()
+_ZN4node6errors15PrinterTryCatchD1Ev	node::errors::PrinterTryCatch::~PrinterTryCatch()
+_ZN4node6errors15PrinterTryCatchD2Ev	node::errors::PrinterTryCatch::~PrinterTryCatch()
+_ZN4node6errors18DecorateErrorStackEPNS_11EnvironmentEN2v85LocalINS3_5ValueEEENS4_INS3_7MessageEEE	node::errors::DecorateErrorStack(node::Environment*, v8::Local<v8::Value>, v8::Local<v8::Message>)
+_ZN4node6errors18DecorateErrorStackEPNS_11EnvironmentERKNS0_13TryCatchScopeE	node::errors::DecorateErrorStack(node::Environment*, node::errors::TryCatchScope const&)
+_ZN4node6errors23GetErrorSourcePositionsERKN2v820FunctionCallbackInfoINS1_5ValueEEE	node::errors::GetErrorSourcePositions(v8::FunctionCallbackInfo<v8::Value> const&)
+_ZN4node6errors24TriggerUncaughtExceptionEPN2v87IsolateENS1_5LocalINS1_5ValueEEENS4_INS1_7MessageEEEb	node::errors::TriggerUncaughtException(v8::Isolate*, v8::Local<v8::Value>, v8::Local<v8::Message>, bool)
+_ZN4node6errors24TriggerUncaughtExceptionEPN2v87IsolateERKNS1_8TryCatchE	node::errors::TriggerUncaughtException(v8::Isolate*, v8::TryCatch const&)
+_ZN4node6errors25PerIsolateMessageListenerEN2v85LocalINS1_7MessageEEENS2_INS1_5ValueEEE	node::errors::PerIsolateMessageListener(v8::Local<v8::Message>, v8::Local<v8::Value>)
+_ZN4node6errors26RegisterExternalReferencesEPNS_25ExternalReferenceRegistryE	node::errors::RegisterExternalReferences(node::ExternalReferenceRegistry*)
+_ZN4node6errors28SetPrepareStackTraceCallbackERKN2v820FunctionCallbackInfoINS1_5ValueEEE	node::errors::SetPrepareStackTraceCallback(v8::FunctionCallbackInfo<v8::Value> const&)
+_ZN4node7binding16GetLinkedBindingERKN2v820FunctionCallbackInfoINS1_5ValueEEE	node::binding::GetLinkedBinding(v8::FunctionCallbackInfo<v8::Value> const&)
+_ZN4node7binding17get_linked_moduleEPKc	node::binding::get_linked_module(char const*)
+_ZN4node7binding18GetInternalBindingERKN2v820FunctionCallbackInfoINS1_5ValueEEE	node::binding::GetInternalBinding(v8::FunctionCallbackInfo<v8::Value> const&)
+_ZN4node7binding23RegisterBuiltinBindingsEv	node::binding::RegisterBuiltinBindings()
+_ZN4node7binding26RegisterExternalReferencesEPNS_25ExternalReferenceRegistryE	node::binding::RegisterExternalReferences(node::ExternalReferenceRegistry*)
+_ZN4node7binding30CreateInternalBindingTemplatesEPNS_11IsolateDataE	node::binding::CreateInternalBindingTemplates(node::IsolateData*)
+_ZN4node7binding4DLib16GetSymbolAddressEPKc	node::binding::DLib::GetSymbolAddress(char const*)
+_ZN4node7binding4DLib21SaveInGlobalHandleMapEPNS_11node_moduleE	node::binding::DLib::SaveInGlobalHandleMap(node::node_module*)
+_ZN4node7binding4DLib33GetSavedModuleFromGlobalHandleMapEv	node::binding::DLib::GetSavedModuleFromGlobalHandleMap()
+_ZN4node7binding4DLib4OpenEv	node::binding::DLib::Open()
+_ZN4node7binding4DLib5CloseEv	node::binding::DLib::Close()
+_ZN4node7binding4DLibC1EPKci	node::binding::DLib::DLib(char const*, int)
+_ZN4node7binding4DLibC2EPKci	node::binding::DLib::DLib(char const*, int)
+_ZN4node7binding6DLOpenERKN2v820FunctionCallbackInfoINS1_5ValueEEE	node::binding::DLOpen(v8::FunctionCallbackInfo<v8::Value> const&)
+_ZN4node7tracing11TracedValue10AppendNullEv	node::tracing::TracedValue::AppendNull()
+_ZN4node7tracing11TracedValue10BeginArrayEPKc	node::tracing::TracedValue::BeginArray(char const*)
+_ZN4node7tracing11TracedValue10BeginArrayEv	node::tracing::TracedValue::BeginArray()
+_ZN4node7tracing11TracedValue10SetBooleanEPKcb	node::tracing::TracedValue::SetBoolean(char const*, bool)
+_ZN4node7tracing11TracedValue10SetIntegerEPKci	node::tracing::TracedValue::SetInteger(char const*, int)
+_ZN4node7tracing11TracedValue10WriteCommaEv	node::tracing::TracedValue::WriteComma()
+_ZN4node7tracing11TracedValue11CreateArrayEv	node::tracing::TracedValue::CreateArray()
+_ZN4node7tracing11TracedValue12AppendDoubleEd	node::tracing::TracedValue::AppendDouble(double)
+_ZN4node7tracing11TracedValue12AppendStringEPKc	node::tracing::TracedValue::AppendString(char const*)
+_ZN4node7tracing11TracedValue13AppendBooleanEb	node::tracing::TracedValue::AppendBoolean(bool)
+_ZN4node7tracing11TracedValue13AppendIntegerEi	node::tracing::TracedValue::AppendInteger(int)
+_ZN4node7tracing11TracedValue13EndDictionaryEv	node::tracing::TracedValue::EndDictionary()
+_ZN4node7tracing11TracedValue15BeginDictionaryEPKc	node::tracing::TracedValue::BeginDictionary(char const*)
+_ZN4node7tracing11TracedValue15BeginDictionaryEv	node::tracing::TracedValue::BeginDictionary()
+_ZN4node7tracing11TracedValue6CreateEv	node::tracing::TracedValue::Create()
+_ZN4node7tracing11TracedValue7SetNullEPKc	node::tracing::TracedValue::SetNull(char const*)
+_ZN4node7tracing11TracedValue8EndArrayEv	node::tracing::TracedValue::EndArray()
+_ZN4node7tracing11TracedValue9SetDoubleEPKcd	node::tracing::TracedValue::SetDouble(char const*, double)
+_ZN4node7tracing11TracedValue9SetStringEPKcS3_	node::tracing::TracedValue::SetString(char const*, char const*)
+_ZN4node7tracing11TracedValue9WriteNameEPKc	node::tracing::TracedValue::WriteName(char const*)
+_ZN4node7tracing11TracedValueC1Eb	node::tracing::TracedValue::TracedValue(bool)
+_ZN4node7tracing11TracedValueC2Eb	node::tracing::TracedValue::TracedValue(bool)
+_ZN4node7tracing12g_controllerE	node::tracing::g_controller
+_ZN4node7tracing15NodeTraceWriter10AfterWriteEv	node::tracing::NodeTraceWriter::AfterWrite()
+_ZN4node7tracing15NodeTraceWriter10StartWriteE8uv_buf_t	node::tracing::NodeTraceWriter::StartWrite(uv_buf_t)
+_ZN4node7tracing15NodeTraceWriter11WriteSuffixEv	node::tracing::NodeTraceWriter::WriteSuffix()
+_ZN4node7tracing15NodeTraceWriter12ExitSignalCbEP10uv_async_s	node::tracing::NodeTraceWriter::ExitSignalCb(uv_async_s*)
+_ZN4node7tracing15NodeTraceWriter12FlushPrivateEv	node::tracing::NodeTraceWriter::FlushPrivate()
+_ZN4node7tracing15NodeTraceWriter18InitializeOnThreadEP9uv_loop_s	node::tracing::NodeTraceWriter::InitializeOnThread(uv_loop_s*)
+_ZN4node7tracing15NodeTraceWriter23OpenNewFileForStreamingEv	node::tracing::NodeTraceWriter::OpenNewFileForStreaming()
+_ZN4node7tracing15NodeTraceWriter5FlushEb	node::tracing::NodeTraceWriter::Flush(bool)
+_ZN4node7tracing15NodeTraceWriterD0Ev	node::tracing::NodeTraceWriter::~NodeTraceWriter()
+_ZN4node7tracing15NodeTraceWriterD1Ev	node::tracing::NodeTraceWriter::~NodeTraceWriter()
+_ZN4node7tracing15NodeTraceWriterD2Ev	node::tracing::NodeTraceWriter::~NodeTraceWriter()
+_ZN4node7tracing16TraceEventHelper20GetTracingControllerEv	node::tracing::TraceEventHelper::GetTracingController()
+_ZN4node7tracing16TraceEventHelper20SetTracingControllerEPN2v817TracingControllerE	node::tracing::TraceEventHelper::SetTracingController(v8::TracingController*)
+_ZN4node7tracing16TraceEventHelper8GetAgentEv	node::tracing::TraceEventHelper::GetAgent()
+_ZN4node7tracing16TraceEventHelper8SetAgentEPNS0_5AgentE	node::tracing::TraceEventHelper::SetAgent(node::tracing::Agent*)
+_ZN4node7tracing5Agent10DisconnectEi	node::tracing::Agent::Disconnect(int)
+_ZN4node7tracing5Agent11StopTracingEv	node::tracing::Agent::StopTracing()
+_ZN4node7tracing5Agent13DefaultHandleEv	node::tracing::Agent::DefaultHandle()
+_ZN4node7tracing5Agent25InitializeWritersOnThreadEv	node::tracing::Agent::InitializeWritersOnThread()
+_ZN4node7tracing5Agent5FlushEb	node::tracing::Agent::Flush(bool)
+_ZN4node7tracing5Agent5StartEv	node::tracing::Agent::Start()
+_ZN4node7tracing5AgentC1Ev	node::tracing::Agent::Agent()
+_ZN4node7tracing5AgentC2Ev	node::tracing::Agent::Agent()
+_ZN4node7tracing5AgentD1Ev	node::tracing::Agent::~Agent()
+_ZN4node7tracing5AgentD2Ev	node::tracing::Agent::~Agent()
+_ZN4node7tracing7g_agentE	node::tracing::g_agent
+_ZN4node8builtins13BuiltinLoader10GetNativesEN2v85LocalINS2_4NameEEERKNS2_20PropertyCallbackInfoINS2_5ValueEEE	node::builtins::BuiltinLoader::GetNatives(v8::Local<v8::Name>, v8::PropertyCallbackInfo<v8::Value> const&)
+_ZN4node8builtins13BuiltinLoader12RecordResultEPKcNS1_6ResultEPNS_5RealmE	node::builtins::BuiltinLoader::RecordResult(char const*, node::builtins::BuiltinLoader::Result, node::Realm*)
+_ZN4node8builtins13BuiltinLoader13GetCacheUsageERKN2v820FunctionCallbackInfoINS2_5ValueEEE	node::builtins::BuiltinLoader::GetCacheUsage(v8::FunctionCallbackInfo<v8::Value> const&)
+_ZN4node8builtins13BuiltinLoader13SaveCodeCacheEPKcN2v85LocalINS4_8FunctionEEE	node::builtins::BuiltinLoader::SaveCodeCache(char const*, v8::Local<v8::Function>)
+_ZN4node8builtins13BuiltinLoader14CompileAndCallEN2v85LocalINS2_7ContextEEEPKcPNS_5RealmE	node::builtins::BuiltinLoader::CompileAndCall(v8::Local<v8::Context>, char const*, node::Realm*)
+_ZN4node8builtins13BuiltinLoader14CompileAndCallEN2v85LocalINS2_7ContextEEEPKciPNS3_INS2_5ValueEEEPNS_5RealmE	node::builtins::BuiltinLoader::CompileAndCall(v8::Local<v8::Context>, char const*, int, v8::Local<v8::Value>*, node::Realm*)
+_ZN4node8builtins13BuiltinLoader15CompileFunctionERKN2v820FunctionCallbackInfoINS2_5ValueEEE	node::builtins::BuiltinLoader::CompileFunction(v8::FunctionCallbackInfo<v8::Value> const&)
+_ZN4node8builtins13BuiltinLoader15GetConfigStringEPN2v87IsolateE	node::builtins::BuiltinLoader::GetConfigString(v8::Isolate*)
+_ZN4node8builtins13BuiltinLoader16BuiltinIdsGetterEN2v85LocalINS2_4NameEEERKNS2_20PropertyCallbackInfoINS2_5ValueEEE	node::builtins::BuiltinLoader::BuiltinIdsGetter(v8::Local<v8::Name>, v8::PropertyCallbackInfo<v8::Value> const&)
+_ZN4node8builtins13BuiltinLoader16LookupAndCompileEN2v85LocalINS2_7ContextEEEPKcPNS2_11LocalVectorINS2_6StringEEEPNS_5RealmE	node::builtins::BuiltinLoader::LookupAndCompile(v8::Local<v8::Context>, char const*, v8::LocalVector<v8::String>*, node::Realm*)
+_ZN4node8builtins13BuiltinLoader16LookupAndCompileEN2v85LocalINS2_7ContextEEEPKcPNS_5RealmE	node::builtins::BuiltinLoader::LookupAndCompile(v8::Local<v8::Context>, char const*, node::Realm*)
+_ZN4node8builtins13BuiltinLoader17HasCachedBuiltinsERKN2v820FunctionCallbackInfoINS2_5ValueEEE	node::builtins::BuiltinLoader::HasCachedBuiltins(v8::FunctionCallbackInfo<v8::Value> const&)
+_ZN4node8builtins13BuiltinLoader18ConfigStringGetterEN2v85LocalINS2_4NameEEERKNS2_20PropertyCallbackInfoINS2_5ValueEEE	node::builtins::BuiltinLoader::ConfigStringGetter(v8::Local<v8::Name>, v8::PropertyCallbackInfo<v8::Value> const&)
+_ZN4node8builtins13BuiltinLoader20GetBuiltinCategoriesEN2v85LocalINS2_4NameEEERKNS2_20PropertyCallbackInfoINS2_5ValueEEE	node::builtins::BuiltinLoader::GetBuiltinCategories(v8::Local<v8::Name>, v8::PropertyCallbackInfo<v8::Value> const&)
+_ZN4node8builtins13BuiltinLoader20LoadJavaScriptSourceEv	node::builtins::BuiltinLoader::LoadJavaScriptSource()
+_ZN4node8builtins13BuiltinLoader22AddExternalizedBuiltinEPKcS3_	node::builtins::BuiltinLoader::AddExternalizedBuiltin(char const*, char const*)
+_ZN4node8builtins13BuiltinLoader24LookupAndCompileInternalEN2v85LocalINS2_7ContextEEEPKcPNS2_11LocalVectorINS2_6StringEEEPNS_5RealmE	node::builtins::BuiltinLoader::LookupAndCompileInternal(v8::Local<v8::Context>, char const*, v8::LocalVector<v8::String>*, node::Realm*)
+_ZN4node8builtins13BuiltinLoader26CreatePerContextPropertiesEN2v85LocalINS2_6ObjectEEENS3_INS2_5ValueEEENS3_INS2_7ContextEEEPv	node::builtins::BuiltinLoader::CreatePerContextProperties(v8::Local<v8::Object>, v8::Local<v8::Value>, v8::Local<v8::Context>, void*)
+_ZN4node8builtins13BuiltinLoader26CreatePerIsolatePropertiesEPNS_11IsolateDataEN2v85LocalINS4_14ObjectTemplateEEE	node::builtins::BuiltinLoader::CreatePerIsolateProperties(node::IsolateData*, v8::Local<v8::ObjectTemplate>)
+_ZN4node8builtins13BuiltinLoader26RegisterExternalReferencesEPNS_25ExternalReferenceRegistryE	node::builtins::BuiltinLoader::RegisterExternalReferences(node::ExternalReferenceRegistry*)
+_ZN4node8builtins13BuiltinLoader28LoadEmbedderJavaScriptSourceEv	node::builtins::BuiltinLoader::LoadEmbedderJavaScriptSource()
+_ZN4node8builtins13BuiltinLoader35CopySourceAndCodeCacheReferenceFromEPKS1_	node::builtins::BuiltinLoader::CopySourceAndCodeCacheReferenceFrom(node::builtins::BuiltinLoader const*)
+_ZN4node8builtins13BuiltinLoader3AddEPKcRKNS_10UnionBytesE	node::builtins::BuiltinLoader::Add(char const*, node::UnionBytes const&)
+_ZN4node8builtins13BuiltinLoader6ExistsEPKc	node::builtins::BuiltinLoader::Exists(char const*)
+_ZN4node8builtins13BuiltinLoader9GetConfigEv	node::builtins::BuiltinLoader::GetConfig()
+_ZN4node8builtins13BuiltinLoaderC1Ev	node::builtins::BuiltinLoader::BuiltinLoader()
+_ZN4node8builtins13BuiltinLoaderC2Ev	node::builtins::BuiltinLoader::BuiltinLoader()
+_ZN4node8builtins18SetInternalLoadersERKN2v820FunctionCallbackInfoINS1_5ValueEEE	node::builtins::SetInternalLoaders(v8::FunctionCallbackInfo<v8::Value> const&)
+_ZN4node8builtins52RegisterExternalReferencesForInternalizedBuiltinCodeEPNS_25ExternalReferenceRegistryE	node::builtins::RegisterExternalReferencesForInternalizedBuiltinCode(node::ExternalReferenceRegistry*)
+_ZN4node8builtins60EmbedderRegisterExternalReferencesForInternalizedBuiltinCodeEPNS_25ExternalReferenceRegistryE	node::builtins::EmbedderRegisterExternalReferencesForInternalizedBuiltinCode(node::ExternalReferenceRegistry*)
+_ZN4node9AsyncWrap9EmitAfterEPNS_11EnvironmentEd	node::AsyncWrap::EmitAfter(node::Environment*, double)
+_ZNK4node10AsyncHooks10MemoryInfoEPNS_13MemoryTrackerE	node::AsyncHooks::MemoryInfo(node::MemoryTracker*) const
+_ZNK4node10AsyncHooks15GetPromiseHooksEPN2v87IsolateE	node::AsyncHooks::GetPromiseHooks(v8::Isolate*) const
+_ZNK4node10AsyncHooks8SelfSizeEv	node::AsyncHooks::SelfSize() const
+_ZNK4node12wasm_web_api19WasmStreamingObject10MemoryInfoEPNS_13MemoryTrackerE	node::wasm_web_api::WasmStreamingObject::MemoryInfo(node::MemoryTracker*) const
+_ZNK4node12wasm_web_api19WasmStreamingObject8SelfSizeEv	node::wasm_web_api::WasmStreamingObject::SelfSize() const
+_ZNK4node14PrincipalRealm11primordialsEv	node::PrincipalRealm::primordials() const
+_ZNK4node14PrincipalRealm12message_portEv	node::PrincipalRealm::message_port() const
+_ZNK4node14PrincipalRealm14process_objectEv	node::PrincipalRealm::process_object() const
+_ZNK4node14PrincipalRealm19async_hooks_bindingEv	node::PrincipalRealm::async_hooks_binding() const
+_ZNK4node14PrincipalRealm22builtin_module_requireEv	node::PrincipalRealm::builtin_module_require() const
+_ZNK4node14PrincipalRealm22modules_read_file_syncEv	node::PrincipalRealm::modules_read_file_sync() const
+_ZNK4node14PrincipalRealm22tick_callback_functionEv	node::PrincipalRealm::tick_callback_function() const
+_ZNK4node14PrincipalRealm23buffer_prototype_objectEv	node::PrincipalRealm::buffer_prototype_object() const
+_ZNK4node14PrincipalRealm23internal_binding_loaderEv	node::PrincipalRealm::internal_binding_loader() const
+_ZNK4node14PrincipalRealm23promise_reject_callbackEv	node::PrincipalRealm::promise_reject_callback() const
+_ZNK4node14PrincipalRealm23source_map_cache_getterEv	node::PrincipalRealm::source_map_cache_getter() const
+_ZNK4node14PrincipalRealm24timers_callback_functionEv	node::PrincipalRealm::timers_callback_function() const
+_ZNK4node14PrincipalRealm24udp_constructor_functionEv	node::PrincipalRealm::udp_constructor_function() const
+_ZNK4node14PrincipalRealm25async_hooks_init_functionEv	node::PrincipalRealm::async_hooks_init_function() const
+_ZNK4node14PrincipalRealm25process_emit_warning_syncEv	node::PrincipalRealm::process_emit_warning_sync() const
+_ZNK4node14PrincipalRealm25snapshot_deserialize_mainEv	node::PrincipalRealm::snapshot_deserialize_main() const
+_ZNK4node14PrincipalRealm26async_hooks_after_functionEv	node::PrincipalRealm::async_hooks_after_function() const
+_ZNK4node14PrincipalRealm26performance_entry_callbackEv	node::PrincipalRealm::performance_entry_callback() const
+_ZNK4node14PrincipalRealm27async_hooks_before_functionEv	node::PrincipalRealm::async_hooks_before_function() const
+_ZNK4node14PrincipalRealm27get_source_map_error_sourceEv	node::PrincipalRealm::get_source_map_error_source() const
+_ZNK4node14PrincipalRealm27immediate_callback_functionEv	node::PrincipalRealm::immediate_callback_function() const
+_ZNK4node14PrincipalRealm27snapshot_serialize_callbackEv	node::PrincipalRealm::snapshot_serialize_callback() const
+_ZNK4node14PrincipalRealm28async_hooks_destroy_functionEv	node::PrincipalRealm::async_hooks_destroy_function() const
+_ZNK4node14PrincipalRealm28inspector_enable_async_hooksEv	node::PrincipalRealm::inspector_enable_async_hooks() const
+_ZNK4node14PrincipalRealm28prepare_stack_trace_callbackEv	node::PrincipalRealm::prepare_stack_trace_callback() const
+_ZNK4node14PrincipalRealm29http2session_on_ping_functionEv	node::PrincipalRealm::http2session_on_ping_function() const
+_ZNK4node14PrincipalRealm29inspector_disable_async_hooksEv	node::PrincipalRealm::inspector_disable_async_hooks() const
+_ZNK4node14PrincipalRealm29snapshot_deserialize_callbackEv	node::PrincipalRealm::snapshot_deserialize_callback() const
+_ZNK4node14PrincipalRealm29tls_wrap_constructor_functionEv	node::PrincipalRealm::tls_wrap_constructor_function() const
+_ZNK4node14PrincipalRealm29trace_category_state_functionEv	node::PrincipalRealm::trace_category_state_function() const
+_ZNK4node14PrincipalRealm30http2session_on_error_functionEv	node::PrincipalRealm::http2session_on_error_function() const
+_ZNK4node14PrincipalRealm31async_hooks_callback_trampolineEv	node::PrincipalRealm::async_hooks_callback_trampoline() const
+_ZNK4node14PrincipalRealm31http2session_on_altsvc_functionEv	node::PrincipalRealm::http2session_on_altsvc_function() const
+_ZNK4node14PrincipalRealm31http2session_on_origin_functionEv	node::PrincipalRealm::http2session_on_origin_function() const
+_ZNK4node14PrincipalRealm31wasm_streaming_compilation_implEv	node::PrincipalRealm::wasm_streaming_compilation_impl() const
+_ZNK4node14PrincipalRealm32http2session_on_headers_functionEv	node::PrincipalRealm::http2session_on_headers_function() const
+_ZNK4node14PrincipalRealm32maybe_cache_generated_source_mapEv	node::PrincipalRealm::maybe_cache_generated_source_map() const
+_ZNK4node14PrincipalRealm33http2session_on_priority_functionEv	node::PrincipalRealm::http2session_on_priority_function() const
+_ZNK4node14PrincipalRealm33http2session_on_settings_functionEv	node::PrincipalRealm::http2session_on_settings_function() const
+_ZNK4node14PrincipalRealm33inspector_enable_network_trackingEv	node::PrincipalRealm::inspector_enable_network_tracking() const
+_ZNK4node14PrincipalRealm33wasm_streaming_object_constructorEv	node::PrincipalRealm::wasm_streaming_object_constructor() const
+_ZNK4node14PrincipalRealm34inspector_disable_network_trackingEv	node::PrincipalRealm::inspector_disable_network_tracking() const
+_ZNK4node14PrincipalRealm35enhance_fatal_stack_after_inspectorEv	node::PrincipalRealm::enhance_fatal_stack_after_inspector() const
+_ZNK4node14PrincipalRealm35messaging_deserialize_create_objectEv	node::PrincipalRealm::messaging_deserialize_create_object() const
+_ZNK4node14PrincipalRealm36async_hooks_promise_resolve_functionEv	node::PrincipalRealm::async_hooks_promise_resolve_function() const
+_ZNK4node14PrincipalRealm36crypto_key_object_public_constructorEv	node::PrincipalRealm::crypto_key_object_public_constructor() const
+_ZNK4node14PrincipalRealm36crypto_key_object_secret_constructorEv	node::PrincipalRealm::crypto_key_object_secret_constructor() const
+_ZNK4node14PrincipalRealm36enhance_fatal_stack_before_inspectorEv	node::PrincipalRealm::enhance_fatal_stack_before_inspector() const
+_ZNK4node14PrincipalRealm36http2session_on_frame_error_functionEv	node::PrincipalRealm::http2session_on_frame_error_function() const
+_ZNK4node14PrincipalRealm36http2session_on_goaway_data_functionEv	node::PrincipalRealm::http2session_on_goaway_data_function() const
+_ZNK4node14PrincipalRealm37crypto_key_object_private_constructorEv	node::PrincipalRealm::crypto_key_object_private_constructor() const
+_ZNK4node14PrincipalRealm37http2session_on_stream_close_functionEv	node::PrincipalRealm::http2session_on_stream_close_function() const
+_ZNK4node14PrincipalRealm37inspector_console_extension_installerEv	node::PrincipalRealm::inspector_console_extension_installer() const
+_ZNK4node14PrincipalRealm37primordials_safe_map_prototype_objectEv	node::PrincipalRealm::primordials_safe_map_prototype_object() const
+_ZNK4node14PrincipalRealm37primordials_safe_set_prototype_objectEv	node::PrincipalRealm::primordials_safe_set_prototype_object() const
+_ZNK4node14PrincipalRealm39host_import_module_dynamically_callbackEv	node::PrincipalRealm::host_import_module_dynamically_callback() const
+_ZNK4node14PrincipalRealm40http2session_on_stream_trailers_functionEv	node::PrincipalRealm::http2session_on_stream_trailers_function() const
+_ZNK4node14PrincipalRealm42primordials_safe_weak_map_prototype_objectEv	node::PrincipalRealm::primordials_safe_weak_map_prototype_object() const
+_ZNK4node14PrincipalRealm42primordials_safe_weak_set_prototype_objectEv	node::PrincipalRealm::primordials_safe_weak_set_prototype_object() const
+_ZNK4node14PrincipalRealm43host_initialize_import_meta_object_callbackEv	node::PrincipalRealm::host_initialize_import_meta_object_callback() const
+_ZNK4node14PrincipalRealm8SelfSizeEv	node::PrincipalRealm::SelfSize() const
+_ZNK4node7tracing11ProcessMeta4CastEv	node::tracing::ProcessMeta::Cast() const
+_ZNK4node7tracing13AsyncWrapArgs4CastEv	node::tracing::AsyncWrapArgs::Cast() const
+_ZNK4node7tracing15EnvironmentArgs4CastEv	node::tracing::EnvironmentArgs::Cast() const
+_ZNK4node7tracing5Agent17CreateTraceConfigEv	node::tracing::Agent::CreateTraceConfig() const
+_ZNK4node7tracing5Agent20GetEnabledCategoriesB5cxx11Ev	node::tracing::Agent::GetEnabledCategories[abi:cxx11]() const
+_ZNK4node8builtins13BuiltinLoader13GetBuiltinIdsB5cxx11Ev	node::builtins::BuiltinLoader::GetBuiltinIds[abi:cxx11]() const
+_ZNK4node8builtins13BuiltinLoader17LoadBuiltinSourceEPN2v87IsolateEPKc	node::builtins::BuiltinLoader::LoadBuiltinSource(v8::Isolate*, char const*) const
+_ZNK4node8builtins13BuiltinLoader20GetBuiltinCategoriesEv	node::builtins::BuiltinLoader::GetBuiltinCategories() const
+_ZZN4node7binding10FindModuleEPNS_11node_moduleEPKciE20error_and_abort_args	node::binding::FindModule(node::node_module*, char const*, int)::error_and_abort_args
+_ZZN4node7binding19global_handle_map_t25get_and_increase_refcountEPvE20error_and_abort_args	node::binding::global_handle_map_t::get_and_increase_refcount(void*)::error_and_abort_args
+_ZZN4node7binding19global_handle_map_t3setEPvPNS_11node_moduleEE20error_and_abort_args	node::binding::global_handle_map_t::set(void*, node::node_module*)::error_and_abort_args
+_ZZN4node7binding19global_handle_map_t5eraseEPvE20error_and_abort_args	node::binding::global_handle_map_t::erase(void*)::error_and_abort_args
+_ZZN4node7binding19global_handle_map_t5eraseEPvE20error_and_abort_args_0	node::binding::global_handle_map_t::erase(void*)::error_and_abort_args
+_ZZN4node7tracing5Agent20GetTracingControllerEvE20error_and_abort_args	node::tracing::Agent::GetTracingController()::error_and_abort_args
+_ZZN4node7tracing5Agent20ScopedSuspendTracingC1EPNS0_17TracingControllerEPS1_bE20error_and_abort_args	node::tracing::Agent::ScopedSuspendTracing::ScopedSuspendTracing(node::tracing::TracingController*, node::tracing::Agent*, bool)::error_and_abort_args
