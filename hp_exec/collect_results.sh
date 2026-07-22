@@ -45,6 +45,10 @@ for dir in logs generated verify_results; do
     cp -a "$script_dir/$dir" "$staging/$dir"
   fi
 done
+if [[ -f "$script_dir/generated/stage4.env" ]]; then
+  awk '!/^(HTTP_PROXY|HTTPS_PROXY|FTP_PROXY|NO_PROXY|http_proxy|https_proxy|ftp_proxy|no_proxy)=/' \
+    "$script_dir/generated/stage4.env" >"$staging/generated/stage4.env"
+fi
 mkdir "$staging/package_inputs"
 for input in \
   SHA256SUMS SOURCE_COMMIT SOURCE_BASE_COMMIT EVIDENCE_SOURCE_COMMIT \
@@ -53,7 +57,8 @@ for input in \
   removed_59_triage.tsv; do
   cp "$inputs/$input" "$staging/package_inputs/$input"
 done
-cp "$script_dir/GUIDE.md" "$script_dir/ANALYSIS_PLAN.md" "$staging/"
+cp "$script_dir/GUIDE.md" "$script_dir/ANALYSIS_PLAN.md" \
+  "$script_dir/RETRY_V2_NOTES.md" "$staging/"
 
 {
   echo "collected=$(date --iso-8601=seconds)"

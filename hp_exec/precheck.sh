@@ -29,7 +29,7 @@ trap 'rc=$?; if ((rc != 0 && failure_reported == 0)); then if ((started)); then 
 mkdir -p "$logs" "$generated"
 
 required_tools=(
-  awk bash c++filt cmp cpio cut df dirname du file find free gbs git grep gzip
+  awk bash c++filt cmp cpio curl cut df dirname du file find free gbs git grep gzip
   head mkdir mktemp nm nproc paste readelf readlink rpm2cpio sed sha256sum
   sort stat systemctl systemd-run tail tar tee timeout tr uname uniq wc
 )
@@ -86,10 +86,46 @@ git -C "$source_repo" bundle verify "$inputs/chromium_stage4.bundle" \
   >"$logs/source_bundle_verify.txt" 2>&1 ||
   precheck_fail "source bundle verification failed; see logs/source_bundle_verify.txt"
 
-mem_kib=$(awk '/^MemTotal:/ {print $2}' /proc/meminfo)
-[[ "$mem_kib" =~ ^[0-9]+$ ]] || precheck_fail "cannot read MemTotal"
-mem_gib=$((mem_kib / 1024 / 1024))
-((mem_gib >= 64)) || precheck_fail "RAM ${mem_gib}GiB is below the 64GiB threshold"
+base_repo_url=https://download.tizen.org/snapshots/TIZEN/Tizen/Tizen-Base-Toolchain/reference/repos/standard/packages/repodata/repomd.xml
+unified_repo_url=https://download.tizen.org/snapshots/TIZEN/Tizen/Tizen-Unified-Toolchain/reference/repos/standard/packages/repodata/repomd.xml
+proxy_names=(
+  HTTP_PROXY HTTPS_PROXY FTP_PROXY NO_PROXY
+  http_proxy https_proxy ftp_proxy no_proxy
+)
+proxy_env_args=()
+curl_bin=$(command -v curl)
+for proxy_name in "${proxy_names[@]}"; do
+  if [[ -v $proxy_name ]]; then
+    proxy_env_args+=(--setenv="$proxy_name=${!proxy_name}")
+  else
+    proxy_env_args+=(--setenv="$proxy_name=")
+  fi
+done
+
+for entry in "base:$base_repo_url" "unified:$unified_repo_url"; do
+  label=${entry%%:*}
+  url=${entry#*:}
+  curl -fsSL --connect-timeout 15 --max-time 45 -D - -o /dev/null "$url" \
+    >"$logs/repo_${label}_shell_probe.txt" 2>&1 ||
+    precheck_fail "$label repository is unreachable from the current shell"
+  systemd-run --user --wait --pipe --quiet \
+    --property=MemoryMax=512M --property=CPUQuota=100% \
+    "${proxy_env_args[@]}" \
+    "$curl_bin" -fsSL --connect-timeout 15 --max-time 45 -D - -o /dev/null "$url" \
+    >"$logs/repo_${label}_service_probe.txt" 2>&1 ||
+    precheck_fail "$label repository is unreachable from a systemd user service"
+done
+
+mem_total_kib=$(awk '/^MemTotal:/ {print $2}' /proc/meminfo)
+mem_available_kib=$(awk '/^MemAvailable:/ {print $2}' /proc/meminfo)
+[[ "$mem_total_kib" =~ ^[0-9]+$ ]] || precheck_fail "cannot read MemTotal"
+[[ "$mem_available_kib" =~ ^[0-9]+$ ]] || precheck_fail "cannot read MemAvailable"
+mem_total_gib=$((mem_total_kib / 1024 / 1024))
+mem_available_gib=$((mem_available_kib / 1024 / 1024))
+((mem_total_gib >= 64)) ||
+  precheck_fail "total RAM ${mem_total_gib}GiB is below the 64GiB machine threshold"
+((mem_available_gib >= 48)) ||
+  precheck_fail "MemAvailable ${mem_available_gib}GiB is below the 48GiB build threshold"
 disk_avail_kib=$(df -Pk "$analysis_root" | awk 'NR==2 {print $4}')
 [[ "$disk_avail_kib" =~ ^[0-9]+$ ]] || precheck_fail "cannot read free disk space"
 disk_avail_gib=$((disk_avail_kib / 1024 / 1024))
@@ -99,20 +135,22 @@ cores=$(nproc)
 [[ "$cores" =~ ^[0-9]+$ ]] || precheck_fail "cannot read CPU count"
 ((cores >= 16)) || precheck_fail "CPU count $cores is below the 16-core threshold"
 
-jobs_by_mem=$((mem_gib / 3))
-jobs=$cores
+mem_total_mib=$((mem_total_kib / 1024))
+mem_available_mib=$((mem_available_kib / 1024))
+host_reserve_mib=16384
+memory_max_mib=$((mem_available_mib - host_reserve_mib))
+memory_total_cap_mib=$((mem_total_mib * 75 / 100))
+((memory_max_mib > memory_total_cap_mib)) && memory_max_mib=$memory_total_cap_mib
+((memory_max_mib >= 32768)) ||
+  precheck_fail "safe build budget ${memory_max_mib}MiB is below 32768MiB"
+jobs_by_mem=$((memory_max_mib / 4096))
+jobs=$((cores - 1))
 ((jobs > jobs_by_mem)) && jobs=$jobs_by_mem
-((jobs > 64)) && jobs=64
+((jobs > 32)) && jobs=32
 ((jobs >= 8)) || precheck_fail "derived job count $jobs is below 8"
-memory_max_mib=$((mem_kib / 1024 * 80 / 100))
 memory_high_mib=$((memory_max_mib * 90 / 100))
 cpu_quota=$((jobs * 100))
 gbs_root="$HOME/GBS-ROOT-TIZEN-UNIFIED-LLVM"
-
-systemd-run --user --wait --pipe --quiet \
-  --property=MemoryMax=512M --property=CPUQuota=100% /usr/bin/true \
-  >"$logs/systemd_user_probe.txt" 2>&1 ||
-  precheck_fail "systemd --user transient services are unavailable"
 
 started=1
 {
@@ -131,6 +169,13 @@ started=1
   printf 'MEMORY_MAX=%q\n' "${memory_max_mib}M"
   printf 'MEMORY_HIGH=%q\n' "${memory_high_mib}M"
   printf 'CPU_QUOTA=%q\n' "${cpu_quota}%"
+  for proxy_name in "${proxy_names[@]}"; do
+    if [[ -v $proxy_name ]]; then
+      printf '%s=%q\n' "$proxy_name" "${!proxy_name}"
+    else
+      printf '%s=%q\n' "$proxy_name" ""
+    fi
+  done
 } >"$generated/stage4.env"
 
 {
@@ -142,7 +187,9 @@ started=1
   echo "backup_head=$backup_head"
   echo "source_commit=$source_commit"
   echo "base_commit=$base_commit"
-  echo "memory_gib=$mem_gib"
+  echo "memory_total_gib=$mem_total_gib"
+  echo "memory_available_gib=$mem_available_gib"
+  echo "host_reserve_mib=$host_reserve_mib"
   echo "disk_available_gib=$disk_avail_gib"
   echo "cpu_count=$cores"
   echo "build_jobs=$jobs"
@@ -150,6 +197,8 @@ started=1
   echo "memory_high=${memory_high_mib}M"
   echo "cpu_quota=${cpu_quota}%"
   echo "qemu_arm=$qemu_arm"
+  echo "base_repository_shell_and_service=OK"
+  echo "unified_repository_shell_and_service=OK"
 } >"$logs/precheck_summary.txt"
 
 {
@@ -166,4 +215,4 @@ started=1
 } >"$logs/tool_versions.txt" 2>&1 || step_fail "failed to record tool versions"
 
 trap - EXIT
-echo "[STEP-0-OK] jobs=$jobs memory_max=${memory_max_mib}M disk_available=${disk_avail_gib}GiB"
+echo "[STEP-0-OK] jobs=$jobs memory_max=${memory_max_mib}M mem_available=${mem_available_gib}GiB disk_available=${disk_avail_gib}GiB repositories=OK"

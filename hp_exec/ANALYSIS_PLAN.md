@@ -2,12 +2,16 @@
 
 此文件供结果回传后的本地收口使用，不是高性能 PC 的操作说明。
 
+Retry 1 的固定回传分支是 `stage4-results-retry1-111f88ff`。上一次失败证据为提交 `ff1704193562f208bc05f819206a72d6025911ab`；它只用于核对恢复原因，不与 Retry 1 的结果文件混用。
+
 ## 1. 包完整性与执行链
 
 1. 对 `results_stage4.tar.gz` 执行随包 SHA256 校验。
-2. 查 `collection_summary.txt` 与四份 console log；正常链必须各出现一次 `[STEP-0-OK]`、`[STEP-1-OK]`、`[STEP-2-OK]`、`[STEP-3-OK]`，并有 `[STEP-4-OK]`，不得出现任何 FAIL。
-3. 核对 `repository_state.txt`：候选必须是 `111f88ff245928cc9db2a717185267054570300f`，backup 必须是 `394713cfd95e9597793255ec71496aef6ef84574`。
-4. 核对 `RETURN_MANIFEST.tsv`，确认无 RPM、rootfs/out、ELF、未剥离 `.so`；未剥离信息只能以 `nm/readelf` 文本存在。
+2. 查 `collection_summary.txt` 与四份 console log；正常链必须各出现一次 `[STEP-0-OK]`、`[STEP-1-OK]`、`[STEP-2-OK]`、`[STEP-3-OK]`，并有 `[STEP-4-OK]`，不得出现任何 FAIL。Retry 1 的 Step 0 标记还必须含 `repositories=OK`。
+3. 核对 `repo_base_shell_probe.txt`、`repo_unified_shell_probe.txt`、`repo_base_service_probe.txt`、`repo_unified_service_probe.txt` 与两个 `step2_repo_*_service_probe.txt` 均显示 HTTP 成功；再核对 `build_invocation.txt` 含 `proxy_forwarding=explicit` 和 `repository_preflight=base:OK,unified:OK`。归档中不得记录代理变量值。
+4. 核对 `precheck_summary.txt` 与 `build_invocation.txt`：两次 `MemAvailable` 均不低于 48 GiB，`MemoryMax` 不超过“当时 MemAvailable - 16 GiB”和总内存 75% 中的较小值。
+5. 核对 `repository_state.txt`：候选必须是 `111f88ff245928cc9db2a717185267054570300f`，backup 必须是 `394713cfd95e9597793255ec71496aef6ef84574`。
+6. 核对 `RETURN_MANIFEST.tsv`，确认无 RPM、rootfs/out、ELF、未剥离 `.so`；未剥离信息只能以 `nm/readelf` 文本存在。
 
 ## 2. 门禁预期表
 

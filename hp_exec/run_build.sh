@@ -36,7 +36,7 @@ trap 'rc=$?; if ((rc != 0 && failure_reported == 0)); then if ((started)); then 
 # shellcheck disable=SC1090
 source "$env_file"
 required_tools=(
-  awk bash basename cat cmp cp date df dirname find gbs git grep head mktemp
+  awk bash basename cat cmp cp curl date df dirname find gbs git grep head mktemp
   sha256sum sort stat systemctl systemd-run tee touch wc
 )
 for tool in "${required_tools[@]}"; do
@@ -52,12 +52,49 @@ done
   precheck_fail "chromium-efl is not clean before build"
 [[ $(git -C "$BACKUP_REPO" rev-parse HEAD) == "$SOURCE_BASE_COMMIT" ]] ||
   precheck_fail "chromium-efl_backup is not at fixed baseline commit"
-mem_gib=$(awk '/^MemTotal:/ {print int($2/1024/1024)}' /proc/meminfo)
+mem_total_kib=$(awk '/^MemTotal:/ {print $2}' /proc/meminfo)
+mem_available_kib=$(awk '/^MemAvailable:/ {print $2}' /proc/meminfo)
+[[ "$mem_total_kib" =~ ^[0-9]+$ ]] || precheck_fail "cannot read MemTotal"
+[[ "$mem_available_kib" =~ ^[0-9]+$ ]] || precheck_fail "cannot read MemAvailable"
+mem_total_gib=$((mem_total_kib / 1024 / 1024))
+mem_available_gib=$((mem_available_kib / 1024 / 1024))
 disk_gib=$(df -Pk "$ANALYSIS_ROOT" | awk 'NR==2 {print int($4/1024/1024)}')
-((mem_gib >= 64)) || precheck_fail "RAM ${mem_gib}GiB is below 64GiB"
+((mem_total_gib >= 64)) || precheck_fail "total RAM ${mem_total_gib}GiB is below 64GiB"
+((mem_available_gib >= 48)) ||
+  precheck_fail "MemAvailable ${mem_available_gib}GiB is below 48GiB; stop other workloads and rerun only the precheck"
 ((disk_gib >= 350)) || precheck_fail "free disk ${disk_gib}GiB is below 350GiB"
+[[ "$MEMORY_MAX" =~ ^[0-9]+M$ ]] || precheck_fail "invalid MEMORY_MAX: $MEMORY_MAX"
+configured_memory_max_mib=${MEMORY_MAX%M}
+safe_memory_max_mib=$((mem_available_kib / 1024 - 16384))
+total_cap_mib=$((mem_total_kib / 1024 * 75 / 100))
+((safe_memory_max_mib > total_cap_mib)) && safe_memory_max_mib=$total_cap_mib
+((safe_memory_max_mib >= configured_memory_max_mib)) ||
+  precheck_fail "current safe memory budget ${safe_memory_max_mib}MiB is below configured MemoryMax ${configured_memory_max_mib}MiB"
 [[ ! -e "$GENERATED_DIR/build_started.marker" ]] ||
   precheck_fail "build marker already exists; do not rerun in this checkout"
+
+base_repo_url=https://download.tizen.org/snapshots/TIZEN/Tizen/Tizen-Base-Toolchain/reference/repos/standard/packages/repodata/repomd.xml
+unified_repo_url=https://download.tizen.org/snapshots/TIZEN/Tizen/Tizen-Unified-Toolchain/reference/repos/standard/packages/repodata/repomd.xml
+proxy_names=(
+  HTTP_PROXY HTTPS_PROXY FTP_PROXY NO_PROXY
+  http_proxy https_proxy ftp_proxy no_proxy
+)
+proxy_env_args=()
+for proxy_name in "${proxy_names[@]}"; do
+  proxy_env_args+=(--setenv="$proxy_name=${!proxy_name-}")
+done
+curl_bin=$(command -v curl)
+for entry in "base:$base_repo_url" "unified:$unified_repo_url"; do
+  label=${entry%%:*}
+  url=${entry#*:}
+  probe_unit="chromium-stage4-repo-${label}-$(date +%Y%m%d%H%M%S%N)"
+  systemd-run --user --unit="$probe_unit" --wait --pipe --quiet \
+    --property=MemoryMax=512M --property=CPUQuota=100% \
+    "${proxy_env_args[@]}" \
+    "$curl_bin" -fsSL --connect-timeout 15 --max-time 45 -D - -o /dev/null "$url" \
+    >"$LOG_DIR/step2_repo_${label}_service_probe.txt" 2>&1 ||
+    precheck_fail "$label repository is unreachable from the build service environment"
+done
 
 tmp_dir=$(mktemp -d "$GENERATED_DIR/filter-check.XXXXXX")
 "$SOURCE_REPO/tizen_src/build/abi/generate_libcxx_export_filters.sh" \
@@ -88,6 +125,9 @@ unit="chromium-stage4-build-$(date +%Y%m%d%H%M%S)"
   echo "MemorySwapMax=0"
   echo "CPUQuota=$CPU_QUOTA"
   echo "Nice=5"
+  echo "MemAvailable=${mem_available_gib}GiB"
+  echo "repository_preflight=base:OK,unified:OK"
+  echo "proxy_forwarding=explicit"
   echo "started=$(date --iso-8601=seconds)"
 } >"$LOG_DIR/build_invocation.txt"
 
@@ -98,6 +138,7 @@ systemd-run --user --unit="$unit" --wait --pipe --quiet \
   --property="MemorySwapMax=0" \
   --property="CPUQuota=$CPU_QUOTA" \
   --property="Nice=5" \
+  "${proxy_env_args[@]}" \
   --setenv="STAGE4_ENV_FILE=$env_file" \
   "$script_dir/run_build.sh" --worker 2>&1 | tee "$LOG_DIR/build_console.log"
 build_rc=${PIPESTATUS[0]}
