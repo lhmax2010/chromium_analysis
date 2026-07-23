@@ -2,7 +2,7 @@
 
 此文件供回传后的只读收口，不是高性能 PC 的操作说明。
 
-1. 确认 Gerrit `sandbox/lhmax2025/toolchain` 以 fast-forward 方式包含固定起点 `65e8e6d9a338b0ac64521fb04923f234924ecb70`、三文件源码修正提交以及 `stage4_retry2_results/` 结果提交。
+1. 确认 Gerrit `sandbox/lhmax2025/toolchain` 以 fast-forward 方式包含 V2 固定起点 `daef2b191983f49c63b6489ab4ad307588b2fc1a`、三文件源码修正提交以及 `stage4_retry2_v2_results/` 结果提交。
 2. 校验 `results_stage4.tar.gz.sha256`，核对 Step 0 至 Step 5 标记链；失败时以第一个 FAIL 为终点，不推断未执行步骤。
 3. 源码修正必须只有 `node.filter`、生成脚本和 `node_nonstd_export_allowlist.tsv`；Node filter 必须有 354 个稳定非 STL精确符号、7 个 `__Cr` 精确符号和原 C 接口。
 4. Retry 1 可见的 20 个 Node undefined family 必须不再出现；若 lld 仍失败，保存新一轮完整错误集合并与 354 TSV 交叉。

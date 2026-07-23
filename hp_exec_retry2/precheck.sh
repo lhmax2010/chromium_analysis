@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -Eeuo pipefail
 export LC_ALL=C
+export GIT_SSH_COMMAND='ssh -o ServerAliveInterval=15 -o ServerAliveCountMax=4 -o TCPKeepAlive=yes'
 
 script_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 analysis_root=$(cd "$script_dir/.." && pwd)
@@ -32,7 +33,7 @@ mkdir -p "$logs" "$generated"
 required_tools=(
   awk bash c++filt chmod cmp cpio curl cut df dirname du file find free gbs git grep gzip
   head mkdir mktemp nm nproc paste readelf readlink rpm2cpio sed sha256sum
-  sort stat systemctl systemd-run tail tar tee timeout tr uname uniq wc
+  sleep sort ssh stat systemctl systemd-run tail tar tee timeout tr uname uniq wc
 )
 for tool in "${required_tools[@]}"; do
   command -v "$tool" >/dev/null 2>&1 || precheck_fail "missing tool: $tool"
@@ -86,9 +87,21 @@ backup_head=$(git -C "$backup_repo" rev-parse HEAD)
 source_head=$(git -C "$source_repo" rev-parse HEAD)
 git -C "$source_repo" cat-file -e "$stage4_source_commit^{commit}" 2>/dev/null ||
   precheck_fail "Stage 4 source commit $stage4_source_commit is absent from chromium-efl"
-remote_head=$(git ls-remote \
-  'ssh://lhmax2025@review.tizen.org:29418/platform/framework/web/chromium-efl' \
-  refs/heads/sandbox/lhmax2025/toolchain | awk '{print $1}')
+gerrit_url=ssh://lhmax2025@review.tizen.org:29418/platform/framework/web/chromium-efl
+gerrit_ref=refs/heads/sandbox/lhmax2025/toolchain
+: >"$logs/gerrit_precheck_attempts.txt"
+remote_head=
+for attempt in 1 2 3; do
+  echo "attempt=$attempt" >>"$logs/gerrit_precheck_attempts.txt"
+  if remote_output=$(timeout 75 git ls-remote "$gerrit_url" "$gerrit_ref" \
+      2>>"$logs/gerrit_precheck_attempts.txt"); then
+    remote_head=$(awk '{print $1}' <<<"$remote_output")
+    [[ "$remote_head" =~ ^[0-9a-f]{40}$ ]] && break
+  fi
+  sleep 5
+done
+[[ "$remote_head" =~ ^[0-9a-f]{40}$ ]] ||
+  precheck_fail "Gerrit HEAD query failed after 3 bounded attempts"
 [[ "$remote_head" == "$source_start_commit" ]] ||
   precheck_fail "Gerrit toolchain HEAD=$remote_head expected=$source_start_commit"
 
@@ -135,8 +148,8 @@ mem_available_gib=$((mem_available_kib / 1024 / 1024))
 disk_avail_kib=$(df -Pk "$analysis_root" | awk 'NR==2 {print $4}')
 [[ "$disk_avail_kib" =~ ^[0-9]+$ ]] || precheck_fail "cannot read free disk space"
 disk_avail_gib=$((disk_avail_kib / 1024 / 1024))
-((disk_avail_gib >= 300)) ||
-  precheck_fail "free disk ${disk_avail_gib}GiB is below the 300GiB threshold"
+((disk_avail_gib >= 275)) ||
+  precheck_fail "free disk ${disk_avail_gib}GiB is below the 275GiB threshold"
 cores=$(nproc)
 [[ "$cores" =~ ^[0-9]+$ ]] || precheck_fail "cannot read CPU count"
 ((cores >= 16)) || precheck_fail "CPU count $cores is below the 16-core threshold"
@@ -177,7 +190,7 @@ started=1
   printf 'MEMORY_MAX=%q\n' "${memory_max_mib}M"
   printf 'MEMORY_HIGH=%q\n' "${memory_high_mib}M"
   printf 'CPU_QUOTA=%q\n' "${cpu_quota}%"
-  printf 'GERRIT_URL=%q\n' 'ssh://lhmax2025@review.tizen.org:29418/platform/framework/web/chromium-efl'
+  printf 'GERRIT_URL=%q\n' "$gerrit_url"
   printf 'GERRIT_BRANCH=%q\n' 'sandbox/lhmax2025/toolchain'
   for proxy_name in "${proxy_names[@]}"; do
     if [[ -v $proxy_name ]]; then

@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -Eeuo pipefail
 export LC_ALL=C
+export GIT_SSH_COMMAND='ssh -o ServerAliveInterval=15 -o ServerAliveCountMax=4 -o TCPKeepAlive=yes'
 
 script_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 env_file="$script_dir/generated/stage4.env"
@@ -22,7 +23,7 @@ trap 'rc=$?; if ((rc != 0 && failure_reported == 0)); then if ((started)); then 
 [[ -f "$env_file" ]] || precheck_fail "missing generated/stage4.env; run precheck.sh first"
 # shellcheck disable=SC1090
 source "$env_file"
-for tool in awk chmod cmp cp df git grep mktemp sed sha256sum sort wc; do
+for tool in awk chmod cmp cp df git grep mktemp sed sha256sum sleep sort ssh timeout wc; do
   command -v "$tool" >/dev/null 2>&1 || precheck_fail "missing tool: $tool"
 done
 (cd "$INPUTS_DIR" && sha256sum -c SHA256SUMS) >"$LOG_DIR/step1_input_sha256.txt" 2>&1 ||
@@ -36,9 +37,19 @@ done
 mem_available_gib=$(awk '/^MemAvailable:/ {print int($2/1024/1024)}' /proc/meminfo)
 disk_gib=$(df -Pk "$ANALYSIS_ROOT" | awk 'NR==2 {print int($4/1024/1024)}')
 ((mem_available_gib >= 48)) || precheck_fail "MemAvailable ${mem_available_gib}GiB is below 48GiB"
-((disk_gib >= 300)) || precheck_fail "free disk ${disk_gib}GiB is below 300GiB"
+((disk_gib >= 275)) || precheck_fail "free disk ${disk_gib}GiB is below 275GiB"
 
-remote_head=$(git ls-remote "$GERRIT_URL" "refs/heads/$GERRIT_BRANCH" | awk '{print $1}')
+remote_head=
+for attempt in 1 2 3; do
+  if remote_output=$(timeout 75 git ls-remote "$GERRIT_URL" "refs/heads/$GERRIT_BRANCH" \
+      2>>"$LOG_DIR/step1_gerrit_connectivity.txt"); then
+    remote_head=$(awk '{print $1}' <<<"$remote_output")
+    [[ "$remote_head" =~ ^[0-9a-f]{40}$ ]] && break
+  fi
+  sleep 5
+done
+[[ "$remote_head" =~ ^[0-9a-f]{40}$ ]] ||
+  precheck_fail "Gerrit HEAD query failed after 3 bounded attempts"
 [[ "$remote_head" == "$SOURCE_START_COMMIT" ]] ||
   precheck_fail "Gerrit toolchain HEAD=$remote_head expected=$SOURCE_START_COMMIT"
 
@@ -66,8 +77,16 @@ while IFS= read -r symbol; do
 done <"$INPUTS_DIR/retry1_visible_undefined.demangled.txt"
 
 started=1
-git -C "$SOURCE_REPO" fetch --no-tags "$GERRIT_URL" "refs/heads/$GERRIT_BRANCH" \
-  >"$LOG_DIR/step1_gerrit_fetch.txt" 2>&1
+fetch_ok=0
+for attempt in 1 2 3; do
+  if timeout 180 git -C "$SOURCE_REPO" fetch --no-tags "$GERRIT_URL" \
+      "refs/heads/$GERRIT_BRANCH" >>"$LOG_DIR/step1_gerrit_fetch.txt" 2>&1; then
+    fetch_ok=1
+    break
+  fi
+  sleep 5
+done
+((fetch_ok == 1)) || step_fail "Gerrit fetch failed after 3 bounded attempts"
 [[ $(git -C "$SOURCE_REPO" rev-parse FETCH_HEAD) == "$SOURCE_START_COMMIT" ]] ||
   step_fail "fetched Gerrit HEAD changed after precheck"
 git -C "$SOURCE_REPO" checkout --detach "$SOURCE_START_COMMIT" \

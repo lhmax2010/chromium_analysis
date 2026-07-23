@@ -1,12 +1,12 @@
-# Stage 4 Retry 2 高性能 PC 零判断执行手册
+# Stage 4 Retry 2 V2 高性能 PC 零判断执行手册
 
-固定 Gerrit 起点：`65e8e6d9a338b0ac64521fb04923f234924ecb70`。固定基线提交：`394713cfd95e9597793255ec71496aef6ef84574`。固定目标分支：`sandbox/lhmax2025/toolchain`。
+固定 Gerrit 起点：`daef2b191983f49c63b6489ab4ad307588b2fc1a`。固定基线提交：`394713cfd95e9597793255ec71496aef6ef84574`。固定目标分支：`sandbox/lhmax2025/toolchain`。
 
-每条命令都在新建的 `chromium_analysis_retry2` 根目录执行。不得修改命令、脚本或源码；源码修正、提交和结果推送全部由脚本完成。看到任何 FAIL 后立即停止当前流程并执行 §5，禁止重试。
+每条命令都在新建的 `chromium_analysis_retry2_v2` 根目录执行。不得修改命令、脚本或源码；源码修正、提交和结果推送全部由脚本完成。看到任何 FAIL 后立即停止当前流程并执行 §5，禁止重试。
 
 ## §0 机器与输入预检
 
-三个同级目录必须是 `chromium_analysis_retry2/`、`chromium-efl/`、`chromium-efl_backup/`。脚本验证输入 SHA256、固定 Gerrit HEAD、两个源码仓状态、工具、代理、Tizen 仓库、至少 48 GiB `MemAvailable`、至少 300 GiB磁盘及 systemd user service；自动生成资源上限。
+三个同级目录必须是 `chromium_analysis_retry2_v2/`、`chromium-efl/`、`chromium-efl_backup/`。脚本验证输入 SHA256、固定 Gerrit HEAD、两个源码仓状态、工具、代理、Tizen 仓库、至少 48 GiB `MemAvailable`、至少 275 GiB 磁盘及 systemd user service；Gerrit 操作带 SSH keepalive 和三次有界重试，资源上限自动生成。
 
 ```bash
 mkdir -p hp_exec_retry2/logs
@@ -58,7 +58,7 @@ bash -o pipefail -c 'bash hp_exec_retry2/publish_results.sh 2>&1 | tee hp_exec_r
 grep -F '[STEP-5-OK]' hp_exec_retry2/logs/step5-publish.console.log
 ```
 
-成功标准：第一条输出 `[STEP-4-OK]`，第二条输出 `OK`，第四条恰好输出一行 `[STEP-5-OK]`。脚本只 fast-forward 推送现有 `sandbox/lhmax2025/toolchain`，不创建新分支。最终报告源码修正提交、结果提交和归档 SHA256。
+成功标准：第一条输出 `[STEP-4-OK]`，第二条输出 `OK`，第四条恰好输出一行 `[STEP-5-OK]`。脚本只 fast-forward 推送现有 `sandbox/lhmax2025/toolchain`，结果进入 `stage4_retry2_v2_results/`，不创建新分支。最终报告源码修正提交、结果提交和归档 SHA256。
 
 ## §5 故障处置
 

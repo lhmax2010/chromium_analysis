@@ -62,7 +62,7 @@ disk_gib=$(df -Pk "$ANALYSIS_ROOT" | awk 'NR==2 {print int($4/1024/1024)}')
 ((mem_total_gib >= 64)) || precheck_fail "total RAM ${mem_total_gib}GiB is below 64GiB"
 ((mem_available_gib >= 48)) ||
   precheck_fail "MemAvailable ${mem_available_gib}GiB is below 48GiB; stop other workloads and rerun only the precheck"
-((disk_gib >= 300)) || precheck_fail "free disk ${disk_gib}GiB is below 300GiB"
+((disk_gib >= 275)) || precheck_fail "free disk ${disk_gib}GiB is below 275GiB"
 [[ "$MEMORY_MAX" =~ ^[0-9]+M$ ]] || precheck_fail "invalid MEMORY_MAX: $MEMORY_MAX"
 configured_memory_max_mib=${MEMORY_MAX%M}
 safe_memory_max_mib=$((mem_available_kib / 1024 - 16384))
